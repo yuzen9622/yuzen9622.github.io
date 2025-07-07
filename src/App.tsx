@@ -35,14 +35,14 @@ function App() {
             squareSize={40}
             direction="diagonal"
             borderColor="#fff"
-            hoverFillColor="transperant"
+            hoverFillColor="transparent"
           />
         </div>
       )}
 
       <Routes>
-        <Route path="/" element={<About />} />
-        <Route path="/projects" element={<Project />} />
+        <Route path=" " element={<About />} />
+        <Route index path="/projects" element={<Project />} />
       </Routes>
       <Footer />
     </div>
