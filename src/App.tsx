@@ -41,8 +41,8 @@ function App() {
       )}
 
       <Routes>
-        <Route path=" " element={<About />} />
-        <Route index path="/projects" element={<Project />} />
+        <Route path="" element={<About />} />
+        <Route path="/projects" element={<Project />} />
       </Routes>
       <Footer />
     </div>
