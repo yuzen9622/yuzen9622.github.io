@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
 
-import AnimatedContent from "../gsap/aniamtion/AnimatedContent";
+import AnimatedContent from "../gsap/animation/AnimatedContent";
 
 import { useProfile } from "@/hook/useProfile";
 

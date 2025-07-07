@@ -5,7 +5,7 @@ import {
   Puzzle,
   SquareFunction,
 } from "lucide-react";
-import AnimatedContent from "../gsap/aniamtion/AnimatedContent";
+import AnimatedContent from "../gsap/animation/AnimatedContent";
 import RotatingText from "../gsap/text/RotatingText";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
@@ -28,7 +28,7 @@ export default function AboutSkill() {
             </Card>
 
             <RotatingText
-              texts={["Programming", "Framwork", "SQL", "CICD"]}
+              texts={["Programming", "framework", "SQL", "CICD"]}
               mainClassName="text-slate-700 font-bold text-2xl dark:text-slate-200"
               staggerFrom={"last"}
               initial={{ y: "100%" }}
@@ -53,9 +53,9 @@ export default function AboutSkill() {
                 <Code2 />
                 <p className="sm:block hidden">Programming</p>
               </TabsTrigger>
-              <TabsTrigger value="framwork">
+              <TabsTrigger value="framework">
                 <Puzzle />
-                <p className="sm:block hidden">Framwork</p>
+                <p className="sm:block hidden">framework</p>
               </TabsTrigger>
               <TabsTrigger value="other">
                 <Ellipsis />
@@ -93,10 +93,10 @@ export default function AboutSkill() {
                 })}
               </div>
             </TabsContent>
-            <TabsContent value="framwork">
+            <TabsContent value="framework">
               <div className="grid  lg:grid-cols-2 gap-8">
                 {mySkill.map((skill, index) => {
-                  if (skill.group === "framwork")
+                  if (skill.group === "framework")
                     return (
                       <AnimatedContent
                         key={index}

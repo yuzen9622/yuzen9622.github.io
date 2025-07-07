@@ -60,7 +60,7 @@ export default function Footer() {
             className=" text-slate-500 outline  outline-slate-400  dark:text-slate-200"
           >
             <MapPin absoluteStrokeWidth size={20} />
-            <p className=" font-bold text-[16px]"> {mySelf.contry}</p>
+            <p className=" font-bold text-[16px]"> {mySelf.country}</p>
           </Badge>
           <Badge
             variant={"outline"}

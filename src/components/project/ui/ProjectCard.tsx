@@ -2,6 +2,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -14,6 +15,11 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+
+import CircularText from "@/components/gsap/text/CircularText";
+import { NavLink } from "react-router-dom";
+import { Github, SquareArrowOutUpRight } from "lucide-react";
+
 export default function ProjectCard({ project }: { project: Project }) {
   return (
     <Card className=" group backdrop-blur-lg bg-transparent w-full">
@@ -21,12 +27,20 @@ export default function ProjectCard({ project }: { project: Project }) {
         <Badge>
           {project.type.toUpperCase()}．{project.year}
         </Badge>
-        <div className=" w-full flex  rounded-lg items-center justify-center overflow-hidden">
+        <div className="  relative w-full flex  rounded-lg items-center justify-center overflow-hidden">
           <img
             src={`/${project.image}`}
             alt={project.title}
-            className=" w-full aspect-video  group-hover:scale-110 transition-all"
+            className="  w-full aspect-video  group-hover:scale-110 transition-all"
           />
+          {project.previewUrl && (
+            <NavLink
+              className=" absolute inset-0 w-full grid   place-content-center h-full group-hover:bg-secondary/70 transition-opacity opacity-0 group-hover:opacity-100"
+              to={project.previewUrl}
+            >
+              <CircularText text={"Get*In*Touch"} />
+            </NavLink>
+          )}
         </div>
 
         <CardTitle className="flex justify-between items-center w-full">
@@ -58,6 +72,26 @@ export default function ProjectCard({ project }: { project: Project }) {
       <CardContent>
         <CardDescription>{project.description}</CardDescription>
       </CardContent>
+      <CardFooter className=" flex gap-2">
+        {project.previewUrl && (
+          <NavLink
+            className={
+              " flex text-xs bg-secondary p-2 rounded-3xl items-center gap-2 "
+            }
+            to={project.previewUrl}
+          >
+            Visit <SquareArrowOutUpRight size={16} />
+          </NavLink>
+        )}
+        <NavLink
+          className={
+            " flex text-xs bg-secondary p-2 rounded-3xl items-center gap-2  "
+          }
+          to={project.sourceUrl}
+        >
+          Source Code <Github size={16} />
+        </NavLink>
+      </CardFooter>
     </Card>
   );
 }

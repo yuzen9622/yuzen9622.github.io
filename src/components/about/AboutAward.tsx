@@ -1,7 +1,7 @@
 import { Award } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import RotatingText from "../gsap/text/RotatingText";
-import AnimatedContent from "../gsap/aniamtion/AnimatedContent";
+import AnimatedContent from "../gsap/animation/AnimatedContent";
 
 import { Badge } from "../ui/badge";
 import { useProfile } from "@/hook/useProfile";

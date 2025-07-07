@@ -1,12 +1,12 @@
 import { createContext } from "react";
-import type { PorfileProviderState } from "@/type";
+import type { ProfileProviderState } from "@/type";
 
-const initialState: PorfileProviderState = {
+const initialState: ProfileProviderState = {
   navigation: [],
   mySelf: {
     name: "Small Z",
     bio: ["Full Stack Debugger", 1000, "Full Stack Developer", 1000],
-    contry: "Hsichu, TW",
+    country: "Hsichu, TW",
     email: "oscar48079@gmail.com",
     avatar: "/avatar.webp",
     description:

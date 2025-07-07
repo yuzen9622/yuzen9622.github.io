@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { AtSign, BookUser, MapPin } from "lucide-react";
 import SplitText from "../gsap/text/SplitText";
 import CircularText from "../gsap/text/CircularText";
-import AnimatedContent from "../gsap/aniamtion/AnimatedContent";
+import AnimatedContent from "../gsap/animation/AnimatedContent";
 import { useProfile } from "@/hook/useProfile";
 
 export default function AboutHeader() {
@@ -32,7 +32,7 @@ export default function AboutHeader() {
                   text="Creative*Coder*Dream*Builder*"
                   onHover="pause"
                   spinDuration={20}
-                  className=" w-full h-full  "
+                  className=" w-full h-full   text-white"
                 />
               </div>
             </Avatar>
@@ -51,7 +51,7 @@ export default function AboutHeader() {
             <div className=" flex gap-3 lg:justify-start justify-center max-sm:flex-col items-center">
               <Badge variant={"outline"}>
                 <MapPin absoluteStrokeWidth size={20} />
-                <p className=" font-bold text-[16px]"> {mySelf.contry}</p>
+                <p className=" font-bold text-[16px]"> {mySelf.country}</p>
               </Badge>
               <Badge variant={"outline"} asChild>
                 <a href={`mailto:${mySelf.email}`}>

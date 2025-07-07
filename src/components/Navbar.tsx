@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 import { useTheme } from "@/hook/useTheme";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useState } from "react";
-import AnimatedContent from "./gsap/aniamtion/AnimatedContent";
+import AnimatedContent from "./gsap/animation/AnimatedContent";
 import { useProfile } from "@/hook/useProfile";
 
 export default function Navbar() {

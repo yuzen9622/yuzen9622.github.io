@@ -8,7 +8,7 @@ import {
 } from "../ui/card";
 import TrueFocus from "../gsap/text/TrueFoucsText";
 import { NavLink } from "react-router-dom";
-import AnimatedContent from "../gsap/aniamtion/AnimatedContent";
+import AnimatedContent from "../gsap/animation/AnimatedContent";
 
 export default function AboutProgram() {
   return (

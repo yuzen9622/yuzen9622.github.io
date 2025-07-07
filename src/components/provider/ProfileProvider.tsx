@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 import { ProfileProviderContext } from "./ProfileContextProvider";
 import { Calendar, Code, Github } from "lucide-react";
-import type { PorfileProviderState } from "@/type";
+import type { ProfileProviderState } from "@/type";
 
 export function ProfileProvider({ children }: { children: ReactNode }) {
-  const initialState: PorfileProviderState = {
+  const initialState: ProfileProviderState = {
     navigation: [
       { title: "Small Z", route: "/" },
       { title: "Project", route: "/projects" },
@@ -14,7 +14,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
     mySelf: {
       name: "Small Z",
       bio: ["Full Stack Debugger", 1000, "Full Stack Developer", 1000],
-      contry: "Hsichu, TW",
+      country: "Hsinchu, TW",
       email: "oscar48079@gmail.com",
       avatar: "/avatar.webp",
       description:
@@ -29,7 +29,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
         description: "實作三級分 觀念四級分",
       },
       { title: "龍華程式競賽", time: "2025-06-09", description: "特優" },
-      { title: "TQC Pyhton", time: "2025-06-13", description: "" },
+      { title: "TQC Python", time: "2025-06-13", description: "" },
     ],
     myCard: [
       {
@@ -41,7 +41,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
       {
         icon: <Code size={30} />,
         title: "3+",
-        description: "Programming languge",
+        description: "Programming language",
       },
     ],
     mySkill: [
@@ -51,9 +51,9 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
       { title: "C", process: 60, group: "programming" },
       { title: "Python", process: 50, group: "programming" },
       { title: "Java", process: 40, group: "programming" },
-      { title: "React.js", process: 80, group: "framwork" },
-      { title: "Next.js", process: 70, group: "framwork" },
-      { title: "Express.js", process: 60, group: "framwork" },
+      { title: "React.js", process: 80, group: "framework" },
+      { title: "Next.js", process: 70, group: "framework" },
+      { title: "Express.js", process: 60, group: "framework" },
       { title: "Git", process: 65, group: "other" },
       { title: "MySQL", process: 50, group: "other" },
       { title: "MongoDB", process: 55, group: "other" },
@@ -61,7 +61,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
     projects: [
       {
         title: "chat.to",
-        tech: ["typescript", "nextdotjs", "supabase"],
+        tech: ["typescript", "nextdotjs", "supabase", "tailwindcss"],
         image: "project/chatto.png",
         year: "2025",
         sourceUrl: "https://github.com/yuzen9622/chat.to",
@@ -71,8 +71,19 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
           "Chat.to is a sleek, real-time chat application that lets you connect with friends and groups effortlessly. Powered by Ably, Next.js, Supabase, and NextAuth, it delivers a seamless, secure, and engaging messaging experience.",
       },
       {
+        title: "Dcard Clone",
+        tech: ["python", "django", "html5", "css"],
+        image: "project/dcard.png",
+        year: "2025",
+        sourceUrl: "https://github.com/yuzen9622/Dcard",
+        previewUrl: "https://dcard-rosy.vercel.app/category/",
+        type: "web",
+        description:
+          "A personal blog demo built with Django, featuring user authentication, article creation and management, commenting, categorization, and pagination. Utilizes Django’s built-in admin for easy content management and Bootstrap for responsive design.",
+      },
+      {
         title: "微財",
-        tech: ["react", "javascript", "mongodb", "nodedotjs"],
+        tech: ["react", "javascript", "mongodb", "nodedotjs", "css"],
         image: "project/微財.png",
         sourceUrl: "https://github.com/yuzen9622/Account-App",
         previewUrl: "https://account-app-phi.vercel.app/",
@@ -81,7 +92,6 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
         description:
           "A simple and intuitive budgeting app that helps you easily manage your income and expenses, giving you control over your finances.",
       },
-
       {
         title: "Introduction to Web Technology",
         tech: ["html5", "css", "javascript"],
@@ -92,6 +102,17 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
         type: "web",
         description:
           "This website serves as an educational platform introducing modern web technologies, covering both frontend and backend development, as well as CI/CD practices. It provides an overview of essential tools and frameworks used in the creation and deployment of modern websites and web applications.",
+      },
+      {
+        title: "Weather App",
+        tech: ["react", "javascript", "css"],
+        image: "project/weatherapp.png",
+        year: "2023",
+        sourceUrl: "https://github.com/yuzen9622/weather-app",
+        previewUrl: "https://yuzen9622.github.io/weather-app/",
+        type: "web",
+        description:
+          "A React-based weather app that fetches real-time and 3-hour interval forecasts from Taiwan's Central Weather Bureau API. It features location selection across Taiwan, responsive design for mobile devices, and dynamic display of temperature, humidity, wind speed, and weather conditions.",
       },
     ],
   };

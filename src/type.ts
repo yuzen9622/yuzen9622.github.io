@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 export type SystemTheme = "dark" | "light";
 export type Theme = "dark" | "light" | "system";
-export type SkillGroup = "framwork" | "programming" | "other";
+export type SkillGroup = "framework" | "programming" | "other";
 export type ProjectType = "web" | "android";
 export type TechType =
   | "react"
@@ -14,14 +14,17 @@ export type TechType =
   | "nextdotjs"
   | "supabase"
   | "html5"
-  | "css";
+  | "css"
+  | "django"
+  | "python"
+  | "tailwindcss";
 
 export type Navigation = { route: string; title: string };
 
 export type User = {
   name: string;
   bio: Array<string | number>;
-  contry: string;
+  country: string;
   email: string;
   avatar: string;
   description: string;
@@ -56,7 +59,7 @@ export type ThemeProviderState = {
   setTheme: (theme: Theme) => void;
 };
 
-export type PorfileProviderState = {
+export type ProfileProviderState = {
   navigation: Navigation[];
   mySelf: User;
   mySkill: Skill[];
