@@ -19,6 +19,7 @@ const ScrollToTop = () => {
 
   return null; // This component doesn't render any visible UI
 };
+
 function App() {
   const { theme, systemTheme } = useTheme();
   const isDark =
