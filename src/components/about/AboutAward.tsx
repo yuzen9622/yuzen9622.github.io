@@ -2,18 +2,15 @@ import { Award } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import RotatingText from "../gsap/text/RotatingText";
 import AnimatedContent from "../gsap/aniamtion/AnimatedContent";
-import type { AboutAward } from "@/type";
-import { Badge } from "../ui/badge";
 
-const achievements: AboutAward[] = [
-  { title: "APCS", time: "2025-06-14", description: "實作三級分 觀念四級分" },
-  { title: "龍華程式競賽", time: "2025-06-09", description: "特優" },
-  { title: "TQC Pyhton", time: "2025-06-13", description: "" },
-];
+import { Badge } from "../ui/badge";
+import { useProfile } from "@/hook/useProfile";
+
 export default function AboutAward() {
+  const { myAward } = useProfile();
   return (
     <AnimatedContent
-      className=" w-full flex  justify-center"
+      className=" w-full flex  justify-center "
       initialOpacity={1}
     >
       <Card className="bg-white/80 backdrop-blur-xs border-0 p-5  shadow-lg w-11/12 dark:bg-transparent">
@@ -40,7 +37,7 @@ export default function AboutAward() {
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
-            {achievements.map((achievement, index) => (
+            {myAward.map((achievement, index) => (
               <div
                 key={index}
                 className="flex items-center gap-4 p-4 bg-gradient-to-r from-yellow-50 to-orange-50 hover:translate-x-1 transition-transform  dark:bg-none rounded-xl border border-yellow-200/50"

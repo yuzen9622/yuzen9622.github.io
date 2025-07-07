@@ -1,6 +1,6 @@
 import CountUp from "@/components/gsap/text/CountText";
 import { Progress } from "@/components/ui/progress";
-import type { AboutSkill } from "@/type";
+import type { Skill } from "@/type";
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useState } from "react";
 
@@ -8,7 +8,7 @@ export default function AnimationProgress({
   skill,
   delay = 0,
 }: {
-  skill: AboutSkill;
+  skill: Skill;
   delay?: number;
 }) {
   const [animaProcess, setAnimaProcess] = useState(0);

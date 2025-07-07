@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 
 import About from "@/components/About";
@@ -6,6 +6,19 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Squares from "./components/gsap/background/square";
 import { useTheme } from "@/hook/useTheme";
+import Project from "./components/Project";
+
+import { useEffect } from "react";
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top-left of the window
+  }, [pathname]); // Re-run effect whenever the pathname changes
+
+  return null; // This component doesn't render any visible UI
+};
 function App() {
   const { theme, systemTheme } = useTheme();
   const isDark =
@@ -13,6 +26,7 @@ function App() {
   return (
     <div className=" relative w-full flex    items-center flex-col gap-5 min-h-screen z-10  ">
       <Navbar />
+      <ScrollToTop />
       {isDark && (
         <div className="absolute inset-0 z-0">
           <Squares
@@ -27,7 +41,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<About />} />
-        <Route path="/experience" element={<></>} />
+        <Route path="/projects" element={<Project />} />
       </Routes>
       <Footer />
     </div>

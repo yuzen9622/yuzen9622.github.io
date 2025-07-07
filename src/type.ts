@@ -1,6 +1,24 @@
 import type { JSX } from "react";
+export type SystemTheme = "dark" | "light";
+export type Theme = "dark" | "light" | "system";
+export type SkillGroup = "framwork" | "programming" | "other";
+export type ProjectType = "web" | "android";
+export type TechType =
+  | "react"
+  | "typescript"
+  | "javascript"
+  | "php"
+  | "mysql"
+  | "mongodb"
+  | "nodedotjs"
+  | "nextdotjs"
+  | "supabase"
+  | "html5"
+  | "css";
 
-export type AboutType = {
+export type Navigation = { route: string; title: string };
+
+export type User = {
   name: string;
   bio: Array<string | number>;
   contry: string;
@@ -10,20 +28,39 @@ export type AboutType = {
   content: string;
 };
 
-export type AboutCard = {
+export type Card = {
   icon: JSX.Element;
   title: string;
   description: string;
 };
 
-export type AboutAward = { title: string; time: string; description: string };
-export type SkillGroup = "framwork" | "programming" | "other";
-export type AboutSkill = { title: string; process: number; group: SkillGroup };
-export type SystemTheme = "dark" | "light";
-export type Theme = "dark" | "light" | "system";
+export type Award = { title: string; time: string; description: string };
 
+export type Skill = { title: string; process: number; group: SkillGroup };
+
+export type Project = {
+  title: string;
+  image: string;
+  tech: TechType[];
+  sourceUrl: string;
+  previewUrl?: string;
+  year: string;
+  type: ProjectType;
+  description: string;
+};
+
+/*provider type*/
 export type ThemeProviderState = {
   theme: Theme;
   systemTheme: SystemTheme;
   setTheme: (theme: Theme) => void;
+};
+
+export type PorfileProviderState = {
+  navigation: Navigation[];
+  mySelf: User;
+  mySkill: Skill[];
+  myAward: Award[];
+  myCard: Card[];
+  projects: Project[];
 };

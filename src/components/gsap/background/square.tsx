@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import React, { useRef, useEffect } from "react";
 
 type CanvasStrokeStyle = string | CanvasGradient | CanvasPattern;
@@ -163,7 +164,7 @@ const Squares: React.FC<SquaresProps> = ({
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-full border-none block"
+      className={cn("w-full h-full border-none block ")}
     ></canvas>
   );
 };

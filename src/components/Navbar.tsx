@@ -10,26 +10,21 @@ import { useTheme } from "@/hook/useTheme";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useState } from "react";
 import AnimatedContent from "./gsap/aniamtion/AnimatedContent";
-
-const navigation = [
-  { title: "Small Z", route: "/" },
-  { title: "Project", route: "/projects" },
-  { title: "Experience", route: "/experience" },
-  { title: "Contact", route: "/contact" },
-];
+import { useProfile } from "@/hook/useProfile";
 
 export default function Navbar() {
   const { setTheme, theme, systemTheme } = useTheme();
+  const { navigation } = useProfile();
   const [isOpen, setIsOpen] = useState(false);
   const isDark =
     (theme === "system" && systemTheme === "dark") || theme === "dark";
   return (
     <>
-      <NavigationMenu className="p-3 w-11/12 rounded-full h-fit hidden sm:block flex-none sticky top-2 z-10  backdrop-blur-lg">
+      <NavigationMenu className="p-3 w-11/12 rounded-full  h-fit hidden sm:block flex-none sticky top-2 z-10  backdrop-blur-lg">
         <NavigationMenuList>
           {navigation.map((item, index) => (
             <NavigationMenuItem key={index}>
-              <NavLink to={item.route}>
+              <NavLink to={item.route} preventScrollReset={true}>
                 {({ isActive }) => (
                   <NavigationMenuLink
                     asChild

@@ -8,26 +8,13 @@ import {
 import AnimatedContent from "../gsap/aniamtion/AnimatedContent";
 import RotatingText from "../gsap/text/RotatingText";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import type { AboutSkill } from "@/type";
+
 import AnimationProgress from "./ui/AnimationProgress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-
-const skills: AboutSkill[] = [
-  { title: "JavaScript", process: 95, group: "programming" },
-  { title: "TypeScript", process: 90, group: "programming" },
-  { title: "C++", process: 70, group: "programming" },
-  { title: "C", process: 60, group: "programming" },
-  { title: "Python", process: 50, group: "programming" },
-  { title: "Java", process: 40, group: "programming" },
-  { title: "React.js", process: 80, group: "framwork" },
-  { title: "Next.js", process: 70, group: "framwork" },
-  { title: "Express.js", process: 60, group: "framwork" },
-  { title: "Git", process: 65, group: "other" },
-  { title: "MySQL", process: 50, group: "other" },
-  { title: "MongoDB", process: 55, group: "other" },
-];
+import { useProfile } from "@/hook/useProfile";
 
 export default function AboutSkill() {
+  const { mySkill } = useProfile();
   return (
     <AnimatedContent
       className=" w-full flex  justify-center"
@@ -77,7 +64,7 @@ export default function AboutSkill() {
             </TabsList>
             <TabsContent value="all">
               <div className="grid gap-8 lg:grid-cols-2  ">
-                {skills.map((skill, index) => (
+                {mySkill.map((skill, index) => (
                   <AnimatedContent
                     key={index}
                     delay={index / 2 / 10}
@@ -91,7 +78,7 @@ export default function AboutSkill() {
             </TabsContent>
             <TabsContent value="programming">
               <div className="grid  lg:grid-cols-2 gap-8">
-                {skills.map((skill, index) => {
+                {mySkill.map((skill, index) => {
                   if (skill.group === "programming")
                     return (
                       <AnimatedContent
@@ -108,7 +95,7 @@ export default function AboutSkill() {
             </TabsContent>
             <TabsContent value="framwork">
               <div className="grid  lg:grid-cols-2 gap-8">
-                {skills.map((skill, index) => {
+                {mySkill.map((skill, index) => {
                   if (skill.group === "framwork")
                     return (
                       <AnimatedContent
@@ -125,7 +112,7 @@ export default function AboutSkill() {
             </TabsContent>
             <TabsContent value="other">
               <div className="grid  lg:grid-cols-2 gap-8">
-                {skills.map((skill, index) => {
+                {mySkill.map((skill, index) => {
                   if (skill.group === "other")
                     return (
                       <AnimatedContent
