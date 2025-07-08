@@ -15,7 +15,7 @@ export default function AboutCard() {
           initialOpacity={1}
         >
           <Card className="flex-1 flex flex-col items-center justify-center gap-2  hover:-translate-y-1  hover:shadow-md transition-transform ">
-            <Card className=" bg-gradient-to-r from-slate-100  to-slate-300  rounded-full text-slate-600 p-2">
+            <Card className="  bg-secondary rounded-full text-primary p-2">
               {item.icon}
             </Card>
             <CardContent className="text-2xl text-slate-600 dark:text-slate-200 font-extrabold">

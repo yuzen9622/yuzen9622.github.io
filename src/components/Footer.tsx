@@ -7,7 +7,7 @@ import { useProfile } from "@/hook/useProfile";
 export default function Footer() {
   const { navigation, mySelf } = useProfile();
   return (
-    <footer className="w-full min-h-60 dark:bg-none dark:border-t-2 backdrop-blur-xs bg-gradient-to-r from-slate-300 via-slate-100   to-slate-300 p-5">
+    <footer className="w-full min-h-60 dark:bg-none dark:border-t-2 backdrop-blur-xs  p-5">
       <section className="flex gap-3 lg:flex-row flex-col">
         <div className="flex-1 text-center">
           <span className="flex items-center gap-3 space-y-1 justify-center">

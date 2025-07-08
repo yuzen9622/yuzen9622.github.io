@@ -16,7 +16,7 @@ export default function AboutHeader() {
         className=" w-full flex  justify-center"
         initialOpacity={1}
       >
-        <Card className=" w-11/12 min-h-1/3  flex lg:flex-row items-center dark:bg-none backdrop-blur-xs  flex-col bg-gradient-to-r from-slate-50  to-slate-100  ">
+        <Card className=" w-11/12 min-h-1/3  flex lg:flex-row items-center dark:bg-none backdrop-blur-xs  flex-col  bg-transparent  ">
           <CardContent className="h-full w-fit ">
             <Avatar className="  relative w-3xs   h-full aspect-square">
               <AvatarImage
@@ -95,7 +95,7 @@ export default function AboutHeader() {
         className=" w-full flex  justify-center"
         initialOpacity={1}
       >
-        <Card className="flex w-11/12 p-5 bg-gradient-to-r backdrop-blur-xs  from-slate-50  to-slate-100 dark:bg-none">
+        <Card className="flex w-11/12 p-5 bg-transparent   backdrop-blur-xs  dark:bg-none">
           <CardHeader>
             <CardTitle className="flex items-center gap-3   ">
               <Card className=" text-slate-700   dark:text-slate-200  p-2 rounded-md ">

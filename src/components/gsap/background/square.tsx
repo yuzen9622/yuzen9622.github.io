@@ -1,6 +1,7 @@
+import { useTheme } from "@/hook/useTheme";
 import { cn } from "@/lib/utils";
 import React, { useRef, useEffect } from "react";
-
+import { useLocation } from "react-router-dom";
 type CanvasStrokeStyle = string | CanvasGradient | CanvasPattern;
 
 interface GridOffset {
@@ -23,6 +24,10 @@ const Squares: React.FC<SquaresProps> = ({
   squareSize = 40,
   hoverFillColor = "#222",
 }) => {
+  const { theme, systemTheme } = useTheme();
+  const isDark =
+    (theme === "system" && systemTheme === "dark") || theme === "dark";
+  const location = useLocation();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const requestRef = useRef<number | null>(null);
   const numSquaresX = useRef<number>(0);
@@ -64,27 +69,16 @@ const Squares: React.FC<SquaresProps> = ({
               hoveredSquareRef.current.x &&
             Math.floor((y - startY) / squareSize) === hoveredSquareRef.current.y
           ) {
-            ctx.fillStyle = hoverFillColor;
+            ctx.fillStyle = "rgba(225,225,225,0.7)";
             ctx.fillRect(squareX, squareY, squareSize, squareSize);
           }
 
-          ctx.strokeStyle = borderColor;
+          ctx.strokeStyle = isDark ? borderColor : "#999999";
           ctx.strokeRect(squareX, squareY, squareSize, squareSize);
         }
       }
 
-      const gradient = ctx.createRadialGradient(
-        canvas.width / 2,
-        canvas.height / 2,
-        0,
-        canvas.width / 2,
-        canvas.height / 2,
-        Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2
-      );
-      gradient.addColorStop(0, "rgba(0, 0, 0, 0)");
-      gradient.addColorStop(1, "#060010");
-
-      ctx.fillStyle = gradient;
+      ctx.fillStyle = "rgba(225, 225, 225, 0.0)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
@@ -159,12 +153,20 @@ const Squares: React.FC<SquaresProps> = ({
       canvas.removeEventListener("mousemove", handleMouseMove);
       canvas.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [direction, speed, borderColor, hoverFillColor, squareSize]);
+  }, [
+    direction,
+    speed,
+    borderColor,
+    hoverFillColor,
+    squareSize,
+    isDark,
+    location,
+  ]);
 
   return (
     <canvas
       ref={canvasRef}
-      className={cn("w-full h-full border-none block ")}
+      className={cn("w-full h-full border-none block  ")}
     ></canvas>
   );
 };

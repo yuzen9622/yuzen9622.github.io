@@ -20,7 +20,7 @@ export default function Navbar() {
     (theme === "system" && systemTheme === "dark") || theme === "dark";
   return (
     <>
-      <NavigationMenu className="p-3 w-11/12 rounded-full  h-fit hidden sm:block flex-none sticky top-2 z-10  backdrop-blur-lg">
+      <NavigationMenu className="p-3 w-11/12 rounded-full  h-fit hidden sm:block flex-none sticky top-2 z-10 dark:bg-background/30  backdrop-blur-lg">
         <NavigationMenuList>
           {navigation.map((item, index) => (
             <NavigationMenuItem key={index}>
@@ -29,9 +29,9 @@ export default function Navbar() {
                   <NavigationMenuLink
                     asChild
                     className={cn(
-                      "rounded-3xl px-4 py-2 hover:bg-slate-200 dark:hover:bg-white/10 transition",
+                      "rounded-3xl px-4 py-2 hover:bg-secondary hover:underline  dark:hover:bg-white/30 transition",
                       isActive
-                        ? "bg-slate-200 dark:bg-white/10"
+                        ? " bg-secondary dark:bg-white/30"
                         : "bg-transparent"
                     )}
                   >

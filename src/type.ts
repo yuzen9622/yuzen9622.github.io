@@ -29,6 +29,7 @@ export type User = {
   avatar: string;
   description: string;
   content: string;
+  phone: string;
 };
 
 export type Card = {
@@ -52,6 +53,13 @@ export type Project = {
   description: string;
 };
 
+export type SocialLink = {
+  title: string;
+  icon: JSX.Element;
+  link: string;
+  desc?: string;
+};
+
 /*provider type*/
 export type ThemeProviderState = {
   theme: Theme;
@@ -66,4 +74,5 @@ export type ProfileProviderState = {
   myAward: Award[];
   myCard: Card[];
   projects: Project[];
+  socialLink: SocialLink[];
 };

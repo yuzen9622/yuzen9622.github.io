@@ -35,7 +35,9 @@ export default function ProjectCard({ project }: { project: Project }) {
           />
           {project.previewUrl && (
             <NavLink
-              className=" absolute inset-0 w-full grid   place-content-center h-full group-hover:bg-secondary/70 transition-opacity opacity-0 group-hover:opacity-100"
+              target="_BLANK"
+              rel="noreferrer"
+              className=" absolute inset-0 w-full grid   place-content-center h-full group-hover:bg-secondary/70 group-hover:opacity-100 group-active:bg-secondary/70 group-active:opacity-100 transition-opacity opacity-0 "
               to={project.previewUrl}
             >
               <CircularText text={"Get*In*Touch"} />

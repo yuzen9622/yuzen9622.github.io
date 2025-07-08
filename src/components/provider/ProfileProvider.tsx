@@ -2,13 +2,12 @@ import type { ReactNode } from "react";
 import { ProfileProviderContext } from "./ProfileContextProvider";
 import { Calendar, Code, Github } from "lucide-react";
 import type { ProfileProviderState } from "@/type";
-
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 export function ProfileProvider({ children }: { children: ReactNode }) {
   const initialState: ProfileProviderState = {
     navigation: [
       { title: "Small Z", route: "/" },
       { title: "Project", route: "/projects" },
-      { title: "Experience", route: "/experience" },
       { title: "Contact", route: "/contact" },
     ],
     mySelf: {
@@ -19,6 +18,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
       avatar: "/avatar.webp",
       description:
         "Hi,I'm Small Z(17y)!Now is a five-year program at National Taichung University of Science and Technology(NUTC) Student.",
+      phone: "+8869665303635",
       content:
         "A third-year student in the five-year program at National Taichung University of Science and Technology, majoring in Information Management.I'm passionate about web development and enjoy building applications that solve real-world problems. My current focus is on full-stack development, and I'm actively learning and working with technologies like JavaScript, React, Next.js, Node.js, Express, and MongoDB. I have experience using Socket.io for real-time communication, along with RESTful API development for client-server interaction.",
     },
@@ -113,6 +113,26 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
         type: "web",
         description:
           "A React-based weather app that fetches real-time and 3-hour interval forecasts from Taiwan's Central Weather Bureau API. It features location selection across Taiwan, responsive design for mobile devices, and dynamic display of temperature, humidity, wind speed, and weather conditions.",
+      },
+    ],
+    socialLink: [
+      {
+        title: "Instagram",
+        link: "https://www.instagram.com/zn._622/",
+        desc: "My live!",
+        icon: <FaInstagram size={25} />,
+      },
+      {
+        title: "GitHub",
+        link: "https://github.com/yuzen9622/",
+        desc: "Let's dev some cool thing.",
+        icon: <FaGithub size={25} />,
+      },
+      {
+        title: "LinkedIn",
+        link: "https://www.linkedin.com/in/yu-zen-tsao-52824233b/",
+        icon: <FaLinkedin size={25} />,
+        desc: "Need Full Stack Developer ?",
       },
     ],
   };

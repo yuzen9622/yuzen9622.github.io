@@ -13,7 +13,7 @@ export default function AboutAward() {
       className=" w-full flex  justify-center "
       initialOpacity={1}
     >
-      <Card className="bg-white/80 backdrop-blur-xs border-0 p-5  shadow-lg w-11/12 dark:bg-transparent">
+      <Card className=" backdrop-blur-xs border-0 p-5  shadow-lg w-11/12 bg-transparent">
         <CardHeader>
           <CardTitle className="flex items-center gap-3   ">
             <Card className=" text-slate-700   dark:text-slate-200  p-2 rounded-md ">
@@ -40,9 +40,9 @@ export default function AboutAward() {
             {myAward.map((achievement, index) => (
               <div
                 key={index}
-                className="flex items-center gap-4 p-4 bg-gradient-to-r from-yellow-50 to-orange-50 hover:translate-x-1 transition-transform  dark:bg-none rounded-xl border border-yellow-200/50"
+                className="flex items-center gap-4 p-4 bg-background hover:translate-x-1 hover:shadow-2xl transition-transform  dark:bg-none rounded-xl border border-secondary"
               >
-                <div className="p-3 bg-gradient-to-br from-yellow-500 to-orange-600 dark:bg-white/10 rounded-full text-white">
+                <div className="p-3 bg-secondary rounded-full text-primary">
                   <Award className="w-5 h-5" />
                 </div>
                 <div className="flex-1">

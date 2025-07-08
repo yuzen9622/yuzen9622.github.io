@@ -1,7 +1,7 @@
 import GlitchText from "../gsap/text/GlitchText";
 import RotatingText from "../gsap/text/RotatingText";
 
-export default function ProjectHeader() {
+export default function ContactHeader() {
   return (
     <div className=" w-full h-[33dvh] flex flex-col gap-10 items-center justify-center   animate-test">
       <GlitchText
@@ -9,13 +9,11 @@ export default function ProjectHeader() {
         enableShadows
         className="  text-black! dark:text-white! text-5xl"
       >
-        Projects
+        Contact
       </GlitchText>
-      <span className="flex items-center gap-2 backdrop-blur-xs rounded-md">
-        <p className=" text-4xl   font-extrabold p-2   ">Creative</p>
-
+      <span className="flex items-center gap-2">
         <RotatingText
-          texts={["Design", "Idea", "Coding"]}
+          texts={["Got an Idea?", "Need a Dev?", "Ping Me!"]}
           splitBy="characters"
           staggerFrom={"last"}
           initial={{ y: "100%" }}
