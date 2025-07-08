@@ -32,36 +32,19 @@ export default function ContactContent() {
           </CardTitle>
         </CardHeader>
         <CardContent className=" flex flex-col gap-3">
-          <Card>
-            <CardContent>
-              <a
-                href={`mailto:${mySelf.email}`}
-                className="flex items-center gap-3"
-              >
-                <div className=" p-2 bg-secondary rounded-3xl">
-                  <AtSign />
-                </div>
-
-                {mySelf.email}
-              </a>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent>
-              <a
-                href={`tel:${mySelf.phone}`}
-                className="flex items-center gap-3"
-              >
-                <div className=" p-2 bg-secondary rounded-3xl">
-                  <Phone />
-                </div>
-
-                {mySelf.phone}
-              </a>
-            </CardContent>
-          </Card>
+          <ContactCard
+            title={mySelf.email}
+            href={`mailto:${mySelf.email}`}
+            icon={<AtSign />}
+          />
+          <ContactCard
+            title={mySelf.phone}
+            href={`tel:${mySelf.phone}`}
+            icon={<Phone />}
+          />
         </CardContent>
       </Card>
+
       <Card className=" flex-1 backdrop-blur-xs">
         <CardHeader>
           <CardTitle className=" flex items-center gap-3">
@@ -73,17 +56,17 @@ export default function ContactContent() {
               <h1 className=" text-2xl">Social Link</h1>
             </span>
           </CardTitle>
-          <CardContent className=" flex flex-col gap-3">
-            {socialLink.map((item) => (
-              <ContactCard
-                title={item.title}
-                href={item.link}
-                desc={item.desc}
-                icon={item.icon}
-              />
-            ))}
-          </CardContent>
         </CardHeader>
+        <CardContent className=" flex flex-col gap-3">
+          {socialLink.map((item) => (
+            <ContactCard
+              title={item.title}
+              href={item.link}
+              desc={item.desc}
+              icon={item.icon}
+            />
+          ))}
+        </CardContent>
       </Card>
     </div>
   );
