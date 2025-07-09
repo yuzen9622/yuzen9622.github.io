@@ -33,14 +33,16 @@ export default function ContactContent() {
         </CardHeader>
         <CardContent className=" flex flex-col gap-3">
           <ContactCard
-            title={mySelf.email}
+            title={"Email"}
+            desc={mySelf.email}
             href={`mailto:${mySelf.email}`}
             icon={<AtSign />}
           />
           <ContactCard
-            title={mySelf.phone}
+            title="Phone"
             href={`tel:${mySelf.phone}`}
             icon={<Phone />}
+            desc={mySelf.phone}
           />
         </CardContent>
       </Card>

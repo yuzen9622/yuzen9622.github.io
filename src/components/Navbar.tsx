@@ -42,6 +42,7 @@ export default function Navbar() {
             </NavigationMenuItem>
           ))}
           <NavigationMenuItem
+            className=" p-2"
             onClick={() => {
               setTheme(isDark ? "light" : "dark");
             }}
