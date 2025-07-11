@@ -1,4 +1,5 @@
 import ContactContent from "./contact/ContactContent";
+import ContactForm from "./contact/ContactForm";
 import ContactHeader from "./contact/ContactHeader";
 
 export default function Contact() {
@@ -6,6 +7,7 @@ export default function Contact() {
     <>
       <ContactHeader />
       <ContactContent />
+      <ContactForm />
     </>
   );
 }

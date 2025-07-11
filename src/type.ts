@@ -60,6 +60,12 @@ export type SocialLink = {
   desc?: string;
 };
 
+export type Contact = {
+  name: string;
+  email: string;
+  message: string;
+  time: string;
+};
 /*provider type*/
 export type ThemeProviderState = {
   theme: Theme;

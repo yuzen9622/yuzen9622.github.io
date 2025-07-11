@@ -60,8 +60,9 @@ export default function ContactContent() {
           </CardTitle>
         </CardHeader>
         <CardContent className=" flex flex-col gap-3">
-          {socialLink.map((item) => (
+          {socialLink.map((item, index) => (
             <ContactCard
+              key={index}
               title={item.title}
               href={item.link}
               desc={item.desc}

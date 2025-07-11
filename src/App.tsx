@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Squares from "./components/gsap/background/square";
 import Project from "./components/Project";
-
+import { Toaster } from "@/components/ui/sonner";
 import { useEffect } from "react";
 import Contact from "./components/Contact";
 
@@ -25,18 +25,16 @@ function App() {
     <div className=" relative w-full flex  bg-transparent   items-center flex-col gap-5 min-h-screen z-10  ">
       <Navbar />
       <ScrollToTop />
-      {
-        <div className="absolute inset-0 z-0 bg-white dark:bg-black">
-          <Squares
-            speed={0.5}
-            squareSize={40}
-            direction="diagonal"
-            borderColor="#ffffff "
-            hoverFillColor="transparent"
-          />
-        </div>
-      }
-
+      <Toaster richColors />
+      <div className=" fixed inset-0 z-0 w-dvw h-dvh bg-white dark:bg-black">
+        <Squares
+          speed={0.5}
+          squareSize={40}
+          direction="diagonal"
+          borderColor="#ffffff "
+          hoverFillColor="transparent"
+        />
+      </div>
       <Routes>
         <Route path="" element={<About />} />
         <Route path="/projects" element={<Project />} />
