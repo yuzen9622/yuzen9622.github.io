@@ -26,7 +26,7 @@ export default function AboutHeader() {
                 height={48}
                 src={mySelf.avatar}
               />
-              <AvatarFallback>Small Z</AvatarFallback>
+              <AvatarFallback>{mySelf.name}</AvatarFallback>
               <div className=" absolute flex items-center justify-center w-full h-full">
                 <CircularText
                   text="Creative*Coder*Dream*Builder*"
@@ -37,21 +37,26 @@ export default function AboutHeader() {
               </div>
             </Avatar>
           </CardContent>
-          <CardContent className="h-full flex justify-center  w-full lg:text-start text-center flex-col gap-5 ">
-            <h1 className="lg:text-5xl text-4xl font-extrabold text-slate-700 dark:text-slate-200">
+          <CardContent className="h-full flex justify-center  w-full lg:items-start items-center flex-col gap-5 ">
+            <h1 className="lg:text-5xl text-4xl font-extrabold text-primary">
               {mySelf.name}
             </h1>
 
             <TypeAnimation
               sequence={mySelf.bio}
               speed={30}
-              className=" lg:text-2xl text-lg   font-bold text-slate-600 dark:text-slate-400"
+              className=" lg:text-2xl text-lg   font-bold bg-blue-600 w-fit rounded-md p-2"
               repeat={Infinity}
             />
             <div className=" flex gap-3 lg:justify-start justify-center max-sm:flex-col items-center">
-              <Badge variant={"outline"}>
-                <MapPin absoluteStrokeWidth size={20} />
-                <p className=" font-bold text-[16px]"> {mySelf.country}</p>
+              <Badge asChild variant={"outline"}>
+                <a
+                  target="_BLANK"
+                  href="https://www.google.com/maps/place/%E6%96%B0%E7%AB%B9%E7%B8%A3"
+                >
+                  <MapPin absoluteStrokeWidth size={20} />
+                  <p className=" font-bold text-[16px]"> {mySelf.country}</p>
+                </a>
               </Badge>
               <Badge variant={"outline"} asChild>
                 <a href={`mailto:${mySelf.email}`}>
@@ -63,7 +68,7 @@ export default function AboutHeader() {
           </CardContent>
           <CardContent className="h-full flex justify-center  w-full lg:text-start text-center flex-col gap-5 ">
             <SplitText
-              text="Hello,I'm"
+              text="You can call me"
               className="text-3xl font-semibold text-center"
               delay={100}
               duration={0.6}

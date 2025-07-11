@@ -23,6 +23,7 @@ export type Navigation = { route: string; title: string };
 
 export type User = {
   name: string;
+  nickName: string;
   bio: Array<string | number>;
   country: string;
   email: string;

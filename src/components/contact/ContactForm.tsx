@@ -6,7 +6,7 @@ import { useCallback } from "react";
 import { toast } from "sonner";
 import { Input } from "../ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { Loader2, Signature } from "lucide-react";
+import { Loader2, SendHorizonal, Signature } from "lucide-react";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 
@@ -109,10 +109,12 @@ export default function ContactForm() {
             />
 
             <Button disabled={form.formState.isSubmitting}>
-              {form.formState.isSubmitting && (
+              Send
+              {form.formState.isSubmitting ? (
                 <Loader2 className="  animate-spin" />
+              ) : (
+                <SendHorizonal />
               )}
-              Submit
             </Button>
           </form>
         </Form>

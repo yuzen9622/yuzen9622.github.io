@@ -6,12 +6,13 @@ import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 export function ProfileProvider({ children }: { children: ReactNode }) {
   const initialState: ProfileProviderState = {
     navigation: [
-      { title: "Small Z", route: "/" },
+      { title: "Yuzen", route: "/" },
       { title: "Project", route: "/projects" },
       { title: "Contact", route: "/contact" },
     ],
     mySelf: {
-      name: "Small Z",
+      name: "Yuzen",
+      nickName: "Small Z",
       bio: ["Full Stack Debugger", 1000, "Full Stack Developer", 1000],
       country: "Hsinchu, TW",
       email: "oscar48079@gmail.com",

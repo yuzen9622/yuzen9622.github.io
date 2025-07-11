@@ -14,7 +14,7 @@ import { useProfile } from "@/hook/useProfile";
 
 export default function Navbar() {
   const { setTheme, theme, systemTheme } = useTheme();
-  const { navigation } = useProfile();
+  const { navigation, mySelf } = useProfile();
   const [isOpen, setIsOpen] = useState(false);
   const isDark =
     (theme === "system" && systemTheme === "dark") || theme === "dark";
@@ -58,7 +58,7 @@ export default function Navbar() {
         )}
       >
         <span className=" font-bold text-xl text-slate-600 dark:text-slate-300">
-          Small Z
+          {mySelf.name}
         </span>
         <NavigationMenuList>
           <div className="flex gap-2">

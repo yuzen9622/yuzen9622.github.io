@@ -7,7 +7,8 @@ const initialState: ProfileProviderState = {
     { title: "Contact", route: "/contact" },
   ],
   mySelf: {
-    name: "Small Z",
+    name: "Yuzen",
+    nickName: "Small Z",
     bio: ["Full Stack Debugger", 1000, "Full Stack Developer", 1000],
     country: "Hsinchu, TW",
     email: "oscar48079@gmail.com",
