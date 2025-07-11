@@ -45,7 +45,7 @@ export default function AboutHeader() {
             <TypeAnimation
               sequence={mySelf.bio}
               speed={30}
-              className=" lg:text-2xl text-lg   font-bold bg-blue-600 w-fit rounded-md p-2"
+              className=" lg:text-2xl text-lg text-white   font-bold bg-blue-600 w-fit rounded-md p-2"
               repeat={Infinity}
             />
             <div className=" flex gap-3 lg:justify-start justify-center max-sm:flex-col items-center">

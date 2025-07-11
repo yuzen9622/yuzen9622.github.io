@@ -32,7 +32,7 @@ export default function AnimationProgress({
           <CountUp from={0} to={skill.process} />%
         </p>
       </span>
-      <Progress value={animaProcess} className="w-full" />
+      <Progress title={skill.title} value={animaProcess} className="w-full" />
     </div>
   );
 }
