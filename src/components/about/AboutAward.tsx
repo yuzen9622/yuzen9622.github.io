@@ -46,10 +46,10 @@ export default function AboutAward() {
                   <Award className="w-5 h-5" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-gray-900  dark:text-white text-lg flex items-center gap-2">
+                  <h2 className="font-semibold text-gray-900  dark:text-white text-lg flex items-center gap-2">
                     {achievement.title}
                     <Badge variant={"outline"}>{achievement.time}</Badge>
-                  </h3>
+                  </h2>
                   <p className="font-bold">{achievement.description}</p>
                 </div>
               </div>
