@@ -1,7 +1,6 @@
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
@@ -20,24 +19,24 @@ export default function Navbar() {
     (theme === "system" && systemTheme === "dark") || theme === "dark";
   return (
     <>
-      <NavigationMenu className="p-3 w-11/12 rounded-full  h-fit hidden sm:block flex-none sticky top-2 z-10 dark:bg-background/30  backdrop-blur-lg">
+      <NavigationMenu className="p-3 w-11/12 rounded-full  h-fit hidden sm:block flex-none sticky top-2 z-10 bg-background/80  backdrop-blur-xs">
         <NavigationMenuList>
           {navigation.map((item, index) => (
             <NavigationMenuItem key={index}>
-              <NavLink to={item.route} preventScrollReset={true}>
-                {({ isActive }) => (
-                  <NavigationMenuLink
-                    asChild
-                    className={cn(
-                      "rounded-3xl px-4 py-2 hover:bg-secondary hover:underline  dark:hover:bg-white/30 transition",
-                      isActive
-                        ? " bg-secondary dark:bg-white/30"
-                        : "bg-transparent"
-                    )}
-                  >
-                    <span>{item.title}</span>
-                  </NavigationMenuLink>
+              <NavLink
+                className={cn(
+                  "group/a rounded-3xl px-4 py-2 transition hover:bg-secondary  "
                 )}
+                to={item.route}
+              >
+                <span
+                  className={cn(
+                    " relative after:bg-primary after:content-['']  after:transition-all after:scale-x-0 after:origin-left  after:absolute after:w-full  after:h-0.5 after:bottom-0 after:right-0 rounded-3xl",
+                    `group-hover/a:after:scale-x-100`
+                  )}
+                >
+                  {item.title}
+                </span>
               </NavLink>
             </NavigationMenuItem>
           ))}
@@ -47,13 +46,15 @@ export default function Navbar() {
               setTheme(isDark ? "light" : "dark");
             }}
           >
-            {isDark ? <Sun /> : <Moon />}
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
+
+      {/** RWD navbar */}
       <NavigationMenu
         className={cn(
-          "p-3  w-11/12 max-w-none  h-fit  hidden max-sm:flex rounded-2xl  justify-between flex-none sticky top-2 z-50  backdrop-blur-lg",
+          "p-3  w-11/12 max-w-none  h-fit  hidden max-sm:flex rounded-2xl justify-between flex-none sticky top-2 z-50  backdrop-blur-xs bg-background/80",
           isOpen && "max-sm:backdrop-blur-none"
         )}
       >
@@ -61,7 +62,7 @@ export default function Navbar() {
           {mySelf.name}
         </span>
         <NavigationMenuList>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center ">
             <NavigationMenuItem
               onClick={() => {
                 setIsOpen((prev) => !prev);
@@ -74,13 +75,13 @@ export default function Navbar() {
                 setTheme(isDark ? "light" : "dark");
               }}
             >
-              {isDark ? <Sun /> : <Moon />}
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </NavigationMenuItem>
           </div>
         </NavigationMenuList>
       </NavigationMenu>
       {isOpen && (
-        <div className=" fixed z-10  sm:hidden w-dvw h-dvh backdrop-blur-3xl flex justify-center flex-col items-center gap-10 bg-transparent">
+        <div className=" fixed z-10  bg-background/80  sm:hidden w-dvw h-dvh backdrop-blur-3xl flex justify-center flex-col items-center gap-10 ">
           {navigation.map((item, index) => (
             <AnimatedContent delay={index / 10} key={index}>
               <NavLink

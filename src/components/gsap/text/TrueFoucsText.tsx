@@ -29,7 +29,7 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
 }) => {
   const words = sentence.split(" ");
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [lastActiveIndex, setLastActiveIndex] = useState<number | null>(null);
+  const [lastActiveIndex, setLastActiveIndex] = useState<number | null>(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const [focusRect, setFocusRect] = useState<FocusRect>({
@@ -50,18 +50,30 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
   }, [manualMode, animationDuration, pauseBetweenAnimations, words.length]);
 
   useEffect(() => {
-    if (currentIndex === null || currentIndex === -1) return;
-    if (!wordRefs.current[currentIndex] || !containerRef.current) return;
+    const settingFocusRect = () => {
+      if (currentIndex === null || currentIndex === -1) return;
+      if (!wordRefs.current[currentIndex] || !containerRef.current) return;
+      const parentRect = containerRef.current.getBoundingClientRect();
+      const activeRect =
+        wordRefs.current[currentIndex]!.getBoundingClientRect();
 
-    const parentRect = containerRef.current.getBoundingClientRect();
-    const activeRect = wordRefs.current[currentIndex]!.getBoundingClientRect();
+      setFocusRect({
+        x: activeRect.left - parentRect.left,
+        y: activeRect.top - parentRect.top,
+        width: activeRect.width,
+        height: activeRect.height,
+      });
+    };
 
-    setFocusRect({
-      x: activeRect.left - parentRect.left,
-      y: activeRect.top - parentRect.top,
-      width: activeRect.width,
-      height: activeRect.height,
+    settingFocusRect();
+    const observer = new ResizeObserver(() => {
+      settingFocusRect();
     });
+    observer.observe(document.body);
+
+    return () => {
+      observer.disconnect();
+    };
   }, [currentIndex, words.length]);
 
   const handleMouseEnter = (index: number) => {

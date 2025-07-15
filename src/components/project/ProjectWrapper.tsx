@@ -5,7 +5,7 @@ export default function ProjectWrapper() {
   const { projects } = useProfile();
   return (
     <div className=" w-full">
-      <section className="grid  gap-5  sm:grid-cols-2 justify-items-center w-full p-5   ">
+      <section className="grid  gap-5  lg:grid-cols-2 justify-items-center w-full p-5   ">
         {projects.map((project) => (
           <ProjectCard project={project} />
         ))}

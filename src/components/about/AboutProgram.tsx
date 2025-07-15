@@ -16,13 +16,13 @@ export default function AboutProgram() {
       className=" w-full flex  justify-center"
       initialOpacity={1}
     >
-      <Card className="bg-white/80 backdrop-blur-xs border-0 p-5  shadow-lg w-11/12 dark:bg-transparent">
+      <Card className="bg-background/80 backdrop-blur-xs border-0 p-5  shadow-lg w-11/12 ">
         <CardHeader>
           <CardTitle className="flex items-center gap-3   ">
-            <Card className=" text-slate-700   dark:text-slate-200  p-2 rounded-md ">
+            <Card className="text-primary p-2 rounded-md ">
               <Code className="w-5 h-5" />
             </Card>
-            <p className="text-slate-700 font-bold text-2xl dark:text-slate-200">
+            <p className="text-primary font-bold text-2xl ">
               Most Programming I Use
             </p>
           </CardTitle>

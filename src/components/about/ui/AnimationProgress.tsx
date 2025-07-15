@@ -29,7 +29,7 @@ export default function AnimationProgress({
           </Badge>
         </span>
         <p>
-          <CountUp from={0} to={skill.process} />%
+          <CountUp from={0} duration={1} to={skill.process} />%
         </p>
       </span>
       <Progress title={skill.title} value={animaProcess} className="w-full" />

@@ -3,6 +3,7 @@ export type SystemTheme = "dark" | "light";
 export type Theme = "dark" | "light" | "system";
 export type SkillGroup = "framework" | "programming" | "other";
 export type ProjectType = "web" | "android";
+
 export type TechType =
   | "react"
   | "typescript"
@@ -18,6 +19,8 @@ export type TechType =
   | "django"
   | "python"
   | "tailwindcss";
+
+export type TechIcon = Record<TechType, string>;
 
 export type Navigation = { route: string; title: string };
 
@@ -82,4 +85,5 @@ export type ProfileProviderState = {
   myCard: Card[];
   projects: Project[];
   socialLink: SocialLink[];
+  techIcons: TechIcon;
 };

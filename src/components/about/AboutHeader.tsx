@@ -16,7 +16,7 @@ export default function AboutHeader() {
         className=" w-full flex  justify-center"
         initialOpacity={1}
       >
-        <Card className=" w-11/12 min-h-1/3  flex lg:flex-row items-center dark:bg-none backdrop-blur-xs  flex-col  bg-transparent  ">
+        <Card className=" w-11/12 min-h-1/3  flex lg:flex-row items-center dark:bg-none backdrop-blur-xs bg-background/80  flex-col   ">
           <CardContent className="h-full w-fit ">
             <Avatar className="  relative w-3xs   h-full aspect-square">
               <AvatarImage
@@ -100,7 +100,7 @@ export default function AboutHeader() {
         className=" w-full flex  justify-center"
         initialOpacity={1}
       >
-        <Card className="flex w-11/12 p-5 bg-transparent   backdrop-blur-xs  dark:bg-none">
+        <Card className="flex w-11/12 p-5 bg-background/80  backdrop-blur-xs  dark:bg-none">
           <CardHeader>
             <CardTitle className="flex items-center gap-3   ">
               <Card className=" text-slate-700   dark:text-slate-200  p-2 rounded-md ">
@@ -113,8 +113,10 @@ export default function AboutHeader() {
             </CardTitle>
           </CardHeader>
 
-          <CardContent className=" font-bold  ">
-            <p className="max-sm:text-center">{mySelf.content}</p>
+          <CardContent className=" font-bold  max-lg:p-0">
+            <p className="max-lg:text-center text-[clamp(1rem,1.5vw,1.125rem)] tracking-wide  text-lg">
+              {mySelf.content}
+            </p>
           </CardContent>
         </Card>
       </AnimatedContent>

@@ -13,16 +13,16 @@ export default function AboutAward() {
       className=" w-full flex  justify-center "
       initialOpacity={1}
     >
-      <Card className=" backdrop-blur-xs border-0 p-5  shadow-lg w-11/12 bg-transparent">
+      <Card className=" backdrop-blur-xs border-0 p-5  shadow-lg w-11/12 bg-background/80">
         <CardHeader>
           <CardTitle className="flex items-center gap-3   ">
-            <Card className=" text-slate-700   dark:text-slate-200  p-2 rounded-md ">
+            <Card className="  text-primary  p-2 rounded-md ">
               <Award className="w-5 h-5" />
             </Card>
 
             <RotatingText
               texts={["Achievements ", " Certifications"]}
-              mainClassName="text-slate-700 font-bold text-2xl dark:text-slate-200"
+              mainClassName="text-primary font-bold text-2xl "
               staggerFrom={"last"}
               initial={{ y: "100%" }}
               animate={{ y: 0 }}

@@ -18,7 +18,7 @@ export default function AboutCard() {
             <Card className="  bg-secondary rounded-full text-primary p-2">
               {item.icon}
             </Card>
-            <CardContent className="text-2xl text-slate-600 dark:text-slate-200 font-extrabold">
+            <CardContent className="text-2xl text-primary font-extrabold">
               {item.title}
             </CardContent>
             <CardDescription className="font-bold">

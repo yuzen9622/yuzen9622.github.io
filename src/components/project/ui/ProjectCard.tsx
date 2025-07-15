@@ -19,30 +19,31 @@ import {
 import CircularText from "@/components/gsap/text/CircularText";
 import { NavLink } from "react-router-dom";
 import { Github, SquareArrowOutUpRight } from "lucide-react";
+import { useProfile } from "@/hook/useProfile";
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const { techIcons } = useProfile();
   return (
-    <NavLink to={project.previewUrl ? project.previewUrl : project.sourceUrl}>
-      <Card className=" group backdrop-blur-lg bg-transparent w-full">
+    <NavLink
+      target="_BLANK"
+      rel="noreferrer"
+      to={project.previewUrl ? project.previewUrl : project.sourceUrl}
+    >
+      <Card className=" h-full   group backdrop-blur-xs bg-background/80 w-full">
         <CardHeader className=" flex flex-col  gap-3">
           <Badge>
             {project.type.toUpperCase()}．{project.year}
           </Badge>
-          <div className="  relative w-full flex  rounded-lg items-center justify-center overflow-hidden">
+          <div className="  relative w-full flex rounded-lg items-center justify-center overflow-hidden">
             <img
               src={`/${project.image}`}
               alt={project.title}
-              className="  w-full aspect-video  group-hover:scale-110 transition-all"
+              className="  w-full aspect-video   group-hover:scale-110 transition-all"
             />
             {project.previewUrl && (
-              <NavLink
-                target="_BLANK"
-                rel="noreferrer"
-                className=" absolute inset-0 w-full grid   place-content-center h-full group-hover:bg-secondary/70 group-hover:opacity-100 transition-opacity opacity-0 "
-                to={project.previewUrl}
-              >
+              <div className=" absolute inset-0 w-full grid   place-content-center h-full group-hover:bg-secondary/70 group-hover:opacity-100 transition-opacity opacity-0 ">
                 <CircularText text={"Get*In*Touch*"} />
-              </NavLink>
+              </div>
             )}
           </div>
 
@@ -65,7 +66,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                     </Avatar>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>{item}</p>
+                    <p>{techIcons[item]}</p>
                   </TooltipContent>
                 </Tooltip>
               ))}
