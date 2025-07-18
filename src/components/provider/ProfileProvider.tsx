@@ -1,51 +1,66 @@
 import { type ReactNode } from "react";
 import { ProfileProviderContext } from "./ProfileContextProvider";
 import { Calendar, Code, Github } from "lucide-react";
-import type { ProfileProviderState } from "@/type";
+import type { ProfileProviderState } from "@/types/type";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import i18n from "@/i18n";
 const initialState: ProfileProviderState = {
   navigation: [
-    { title: "Yuzen", route: "/" },
+    { title: i18n.t("mySelf.name"), route: "/" },
     { title: "Project", route: "/projects" },
     { title: "Contact", route: "/contact" },
   ],
   mySelf: {
-    name: "Yuzen",
-    nickName: "Small Z",
-    bio: ["Full Stack Debugger", 1000, "Full Stack Developer", 1000],
-    country: "Hsinchu, TW",
+    name: i18n.t("mySelf.name"),
+    nickName: i18n.t("mySelf.nickName"),
+    bio: [i18n.t("mySelf.bio.0"), 1000, i18n.t("mySelf.bio.1"), 1000],
+    country: i18n.t("mySelf.country"),
     email: "oscar48079@gmail.com",
     avatar: "/avatar.webp",
-    description:
-      "Hi,I'm Small Z(17y)!Now is a five-year program at National Taichung University of Science and Technology(NUTC) Student.",
-    phone: "+8869665303635",
-    content:
-      "I'm a 3 year Information Management student at National Taichung University of Science and Technology, passionate about web development and building practical applications. I focus on full-stack development and enjoy turning ideas into functional solutions.",
+    description: i18n.t("mySelf.description"),
+    phone: i18n.t("mySelf.phone"),
+    content: i18n.t("mySelf.content"),
   },
   myAward: [
     {
-      title: "APCS",
-      time: "2025-06-14",
-      description: "實作三級分 觀念四級分",
+      title: i18n.t("myAward.0.title"),
+      time: i18n.t("myAward.0.time"),
+      description: i18n.t("myAward.0.description"),
     },
-    { title: "龍華程式競賽", time: "2025-06-09", description: "特優" },
-    { title: "TQC Python", time: "2025-06-13", description: "" },
+    {
+      title: i18n.t("myAward.1.title"),
+      time: i18n.t("myAward.1.time"),
+      description: i18n.t("myAward.1.description"),
+    },
+    {
+      title: i18n.t("myAward.2.title"),
+      time: i18n.t("myAward.2.time"),
+      description: i18n.t("myAward.2.description"),
+    },
   ],
   myCard: [
     {
       icon: <Calendar size={30} />,
-      title: "2+",
-      description: "Years experience",
+      title: i18n.t("myCard.0.title"),
+      description: i18n.t("myCard.0.description"),
     },
-    { icon: <Github size={30} />, title: "10+", description: "Projects" },
+    {
+      icon: <Github size={30} />,
+      title: i18n.t("myCard.1.title"),
+      description: i18n.t("myCard.1.description"),
+    },
     {
       icon: <Code size={30} />,
-      title: "3+",
-      description: "Programming language",
+      title: i18n.t("myCard.2.title"),
+      description: i18n.t("myCard.2.description"),
     },
   ],
   mySkill: [
-    { title: "JavaScript", process: 95, group: "programming" },
+    {
+      title: i18n.t("mySkill.0.title"),
+      process: Number(i18n.t("mySkill.0.process")),
+      group: i18n.t("mySkill.0.group"),
+    },
     { title: "TypeScript", process: 90, group: "programming" },
     { title: "C++", process: 70, group: "programming" },
     { title: "C", process: 60, group: "programming" },

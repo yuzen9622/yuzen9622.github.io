@@ -1,6 +1,6 @@
 import CountUp from "@/components/gsap/text/CountText";
 import { Progress } from "@/components/ui/progress";
-import type { Skill } from "@/type";
+import type { Skill } from "@/types/type";
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useState } from "react";
 

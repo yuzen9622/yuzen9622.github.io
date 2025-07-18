@@ -1,0 +1,19 @@
+{
+    "socialLink": [
+        {
+            "title": "Instagram",
+            "desc": "My live!",
+            "link": "https://www.instagram.com/zn._622/"
+        },
+        {
+            "title": "GitHub",
+            "desc": "Let's dev some cool thing.",
+            "link": "https://github.com/yuzen9622/"
+        },
+        {
+            "title": "LinkedIn",
+            "desc": "Need Full Stack Developer ?",
+            "link": "https://www.linkedin.com/in/yu-zen-tsao-52824233b/"
+        }
+    ]
+}

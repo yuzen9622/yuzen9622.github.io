@@ -1,18 +1,16 @@
 import { Award } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import RotatingText from "../gsap/text/RotatingText";
-import AnimatedContent from "../gsap/animation/AnimatedContent";
-
 import { Badge } from "../ui/badge";
-import { useProfile } from "@/hook/useProfile";
+import { useTranslation } from "react-i18next";
+import InMotionDiv from "../animations/InMotionDiv";
 
 export default function AboutAward() {
-  const { myAward } = useProfile();
+  const { t } = useTranslation("about");
+  const myAward = t("myAward", { returnObjects: true });
+
   return (
-    <AnimatedContent
-      className=" w-full flex  justify-center "
-      initialOpacity={1}
-    >
+    <InMotionDiv>
       <Card className=" backdrop-blur-xs border-0 p-5  shadow-lg w-11/12 bg-background/80">
         <CardHeader>
           <CardTitle className="flex items-center gap-3   ">
@@ -21,7 +19,7 @@ export default function AboutAward() {
             </Card>
 
             <RotatingText
-              texts={["Achievements ", " Certifications"]}
+              texts={t("title.award", { returnObjects: true })}
               mainClassName="text-primary font-bold text-2xl "
               staggerFrom={"last"}
               initial={{ y: "100%" }}
@@ -57,6 +55,6 @@ export default function AboutAward() {
           </div>
         </CardContent>
       </Card>
-    </AnimatedContent>
+    </InMotionDiv>
   );
 }

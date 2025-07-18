@@ -1,0 +1,136 @@
+{
+    "title": {
+        "about": "關於我",
+        "award": [
+            "成就",
+            "證照"
+        ],
+        "mostLang": "我最常使用的程式語言",
+        "skill": [
+            "程式語言",
+            "框架",
+            "資料庫",
+            "持續整合與部署"
+        ]
+    },
+    "mySelf": {
+        "name": "Yuzen",
+        "nickName": "Small Z",
+        "bio": [
+            "全端除錯者",
+            1000,
+            "全端開發者",
+            1000
+        ],
+        "call": "你可以叫我",
+        "country": "新竹，台灣",
+        "circularText": "創意＊工程師＊夢想＊實現者＊",
+        "email": "oscar48079@gmail.com",
+        "avatar": "/avatar.webp",
+        "description": "嗨，我是 Small Z（17 歲）！目前就讀國立臺中科技大學五專部。",
+        "phone": "+8869665303635",
+        "content": "我是一位就讀臺中科大資管科三年級的學生，熱衷於網頁開發與實作應用，專注於全端開發，喜歡把想法實現為功能完善的解決方案。"
+    },
+    "myAward": [
+        {
+            "title": "APCS",
+            "time": "2025-06-14",
+            "description": "實作三級分，觀念四級分"
+        },
+        {
+            "title": "龍華程式競賽",
+            "time": "2025-06-09",
+            "description": "特優"
+        },
+        {
+            "title": "TQC Python",
+            "time": "2025-06-13",
+            "description": ""
+        }
+    ],
+    "myCard": [
+        {
+            "icon": "calendar",
+            "title": "2+",
+            "description": "年開發經驗"
+        },
+        {
+            "icon": "github",
+            "title": "10+",
+            "description": "專案數量"
+        },
+        {
+            "icon": "code",
+            "title": "3+",
+            "description": "使用的程式語言"
+        }
+    ],
+    "skillGroup": {
+        "all": "全部",
+        "pr": "程式語言",
+        "fw": "框架",
+        "other": "其他"
+    },
+    "mySkill": [
+        {
+            "title": "JavaScript",
+            "process": 95,
+            "group": "程式語言"
+        },
+        {
+            "title": "TypeScript",
+            "process": 90,
+            "group": "程式語言"
+        },
+        {
+            "title": "C++",
+            "process": 70,
+            "group": "程式語言"
+        },
+        {
+            "title": "C",
+            "process": 60,
+            "group": "程式語言"
+        },
+        {
+            "title": "Python",
+            "process": 50,
+            "group": "程式語言"
+        },
+        {
+            "title": "Java",
+            "process": 40,
+            "group": "程式語言"
+        },
+        {
+            "title": "React.js",
+            "process": 80,
+            "group": "框架"
+        },
+        {
+            "title": "Next.js",
+            "process": 70,
+            "group": "框架"
+        },
+        {
+            "title": "Express.js",
+            "process": 60,
+            "group": "框架"
+        },
+        {
+            "title": "Git",
+            "process": 65,
+            "group": "其他"
+        },
+        {
+            "title": "MySQL",
+            "process": 50,
+            "group": "其他"
+        },
+        {
+            "title": "MongoDB",
+            "process": 55,
+            "group": "其他"
+        }
+    ]
+}

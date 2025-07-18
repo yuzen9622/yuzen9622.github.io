@@ -2,7 +2,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 
 import About from "@/components/About";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/index";
 import Footer from "./components/Footer";
 import Squares from "./components/gsap/background/square";
 import Project from "./components/Project";

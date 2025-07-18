@@ -1,0 +1,19 @@
+{
+    "socialLink": [
+        {
+            "title": "Instagram",
+            "desc": "我的生活！",
+            "link": "https://www.instagram.com/zn._622/"
+        },
+        {
+            "title": "GitHub",
+            "desc": "一起開發酷東西吧。",
+            "link": "https://github.com/yuzen9622/"
+        },
+        {
+            "title": "LinkedIn",
+            "desc": "需要全端開發者嗎？",
+            "link": "https://www.linkedin.com/in/yu-zen-tsao-52824233b/"
+        }
+    ]
+}

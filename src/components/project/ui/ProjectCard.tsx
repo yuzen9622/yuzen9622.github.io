@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import type { Project } from "@/type";
+import type { Project } from "@/types/type";
 import SplitText from "@/components/gsap/text/SplitText";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -23,10 +23,12 @@ import { useProfile } from "@/hook/useProfile";
 
 export default function ProjectCard({ project }: { project: Project }) {
   const { techIcons } = useProfile();
+
   return (
     <NavLink
       target="_BLANK"
       rel="noreferrer"
+      className={"w-full h-full"}
       to={project.previewUrl ? project.previewUrl : project.sourceUrl}
     >
       <Card className=" h-full   group backdrop-blur-xs bg-background/80 w-full">

@@ -5,27 +5,27 @@ import {
   Puzzle,
   SquareFunction,
 } from "lucide-react";
-import AnimatedContent from "../gsap/animation/AnimatedContent";
+
 import RotatingText from "../gsap/text/RotatingText";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import { useProfile } from "@/hook/useProfile";
+
 import { useMemo, useState } from "react";
 import SkillGrid from "./ui/SkillGrid";
+import { useTranslation } from "react-i18next";
+import InMotionDiv from "../animations/InMotionDiv";
 
 export default function AboutSkill() {
-  const { mySkill } = useProfile();
+  const { t } = useTranslation("about");
+  const mySkill = t("mySkill", { returnObjects: true });
   const [group, setGroup] = useState("all");
   const groupSkill = useMemo(() => {
     return mySkill.filter((skill) => skill.group === group || group === "all");
   }, [group, mySkill]);
 
   return (
-    <AnimatedContent
-      className=" w-full flex  justify-center"
-      initialOpacity={1}
-    >
+    <InMotionDiv>
       <Card className="bg-background/80 backdrop-blur-xs border-0 p-5  shadow-lg w-11/12 ">
         <CardHeader>
           <CardTitle className="flex items-center gap-3   ">
@@ -33,7 +33,7 @@ export default function AboutSkill() {
               <SquareFunction className="w-5 h-5" />
             </Card>
             <RotatingText
-              texts={["Programming", "framework", "SQL", "CICD"]}
+              texts={t("title.skill", { returnObjects: true })}
               mainClassName="text-slate-700 font-bold text-2xl dark:text-slate-200"
               staggerFrom={"last"}
               initial={{ y: "100%" }}
@@ -53,21 +53,24 @@ export default function AboutSkill() {
             className="w-full"
           >
             <TabsList className="w-full  ">
-              <TabsTrigger className="  outline-none border-none" value="all">
+              <TabsTrigger
+                className="  outline-none border-none"
+                value={t("skillGroup.all")}
+              >
                 <GalleryVerticalEnd />
-                <p className="sm:block hidden"> All</p>
+                <p className="sm:block hidden">{t("skillGroup.all")}</p>
               </TabsTrigger>
-              <TabsTrigger value="programming">
+              <TabsTrigger value={t("skillGroup.pr")}>
                 <Code2 />
-                <p className="sm:block hidden">Programming</p>
+                <p className="sm:block hidden">{t("skillGroup.pr")}</p>
               </TabsTrigger>
-              <TabsTrigger value="framework">
+              <TabsTrigger value={t("skillGroup.fw")}>
                 <Puzzle />
-                <p className="sm:block hidden">framework</p>
+                <p className="sm:block hidden">{t("skillGroup.fw")}</p>
               </TabsTrigger>
-              <TabsTrigger value="other">
+              <TabsTrigger value={t("skillGroup.other")}>
                 <Ellipsis />
-                <p className="sm:block hidden"> Other</p>
+                <p className="sm:block hidden"> {t("skillGroup.other")} </p>
               </TabsTrigger>
             </TabsList>
             <TabsContent value={group}>
@@ -76,6 +79,6 @@ export default function AboutSkill() {
           </Tabs>
         </CardContent>
       </Card>
-    </AnimatedContent>
+    </InMotionDiv>
   );
 }

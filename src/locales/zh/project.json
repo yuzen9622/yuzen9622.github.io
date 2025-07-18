@@ -1,0 +1,78 @@
+{
+    "projects": [
+        {
+            "title": "chat.to",
+            "description": "Chat.to 是一款簡潔的即時聊天應用程式，讓你輕鬆與朋友和群組進行交流。結合 Ably、Next.js、Supabase 和 NextAuth，提供順暢、安全且吸引人的訊息傳遞體驗。",
+            "tech": [
+                "typescript",
+                "nextdotjs",
+                "supabase",
+                "tailwindcss"
+            ],
+            "image": "project/chatto.png",
+            "year": "2025",
+            "sourceUrl": "https://github.com/yuzen9622/chat.to",
+            "previewUrl": "https://chat-to-sage.vercel.app/introduce",
+            "type": "web"
+        },
+        {
+            "title": "Dcard Clone",
+            "description": "一個使用 Django 打造的個人部落格展示網站，包含使用者認證、文章新增與管理、留言、分類與分頁功能。整合 Django 的後台管理介面與 Bootstrap 響應式設計，便於管理與瀏覽。",
+            "tech": [
+                "python",
+                "django",
+                "html5",
+                "css"
+            ],
+            "image": "project/dcard.png",
+            "year": "2025",
+            "sourceUrl": "https://github.com/yuzen9622/Dcard",
+            "previewUrl": "https://dcard-rosy.vercel.app/category/",
+            "type": "web"
+        },
+        {
+            "title": "微財",
+            "description": "一款簡單直覺的記帳應用程式，協助你輕鬆管理收入與支出，讓你更有效掌控財務狀況。",
+            "tech": [
+                "react",
+                "javascript",
+                "mongodb",
+                "nodedotjs",
+                "css"
+            ],
+            "image": "project/微財.png",
+            "year": "2024",
+            "sourceUrl": "https://github.com/yuzen9622/Account-App",
+            "previewUrl": "https://account-app-phi.vercel.app/",
+            "type": "web"
+        },
+        {
+            "title": "網頁技術導論",
+            "description": "這個網站是一個教學平台，介紹現代網頁技術，涵蓋前端與後端開發，以及 CI/CD 實踐。內容包括建立與部署現代網站與應用程式所需的基本工具與框架。",
+            "tech": [
+                "html5",
+                "css",
+                "javascript"
+            ],
+            "image": "project/web3.png",
+            "year": "2023",
+            "sourceUrl": "https://github.com/yuzen9622/web3",
+            "previewUrl": "https://web3-six-omega.vercel.app/",
+            "type": "web"
+        },
+        {
+            "title": "台灣天氣查詢 App",
+            "description": "一款以 React 打造的天氣查詢應用程式，從中央氣象局 API 取得即時與三小時預報資訊。支援全台各地區查詢，具備行動裝置響應式設計，動態顯示溫度、濕度、風速與天氣狀況。",
+            "tech": [
+                "react",
+                "javascript",
+                "css"
+            ],
+            "image": "project/weatherapp.png",
+            "year": "2023",
+            "sourceUrl": "https://github.com/yuzen9622/weather-app",
+            "previewUrl": "https://yuzen9622.github.io/weather-app/",
+            "type": "web"
+        }
+    ]
+}

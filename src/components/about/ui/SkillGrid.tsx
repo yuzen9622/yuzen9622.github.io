@@ -1,4 +1,4 @@
-import type { Skill } from "@/type";
+import type { Skill } from "@/types/type";
 import { motion } from "framer-motion";
 
 import AnimationProgress from "./AnimationProgress";

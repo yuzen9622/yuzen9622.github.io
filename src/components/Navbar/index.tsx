@@ -5,49 +5,40 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { NavLink } from "react-router-dom";
-import { useTheme } from "@/hook/useTheme";
-import { Menu, Moon, Sun, X } from "lucide-react";
+
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import AnimatedContent from "./gsap/animation/AnimatedContent";
+import AnimatedContent from "@/components/gsap/animation/AnimatedContent";
 import { useProfile } from "@/hook/useProfile";
+import Tool from "./Tool";
 
 export default function Navbar() {
-  const { setTheme, theme, systemTheme } = useTheme();
   const { navigation, mySelf } = useProfile();
   const [isOpen, setIsOpen] = useState(false);
-  const isDark =
-    (theme === "system" && systemTheme === "dark") || theme === "dark";
+
   return (
     <>
-      <NavigationMenu className="p-3 w-11/12 rounded-full  h-fit hidden sm:block flex-none sticky top-2 z-10 bg-background/80  backdrop-blur-xs">
+      <NavigationMenu className="p-3  w-11/12 rounded-full  h-fit hidden sm:block flex-none sticky top-2 z-10 bg-background/80  backdrop-blur-xs">
         <NavigationMenuList>
           {navigation.map((item, index) => (
-            <NavigationMenuItem key={index}>
+            <NavigationMenuItem
+              asChild
+              key={index}
+              className="overflow-hidden  "
+            >
               <NavLink
                 className={cn(
-                  "group/a rounded-3xl px-4 py-2 transition hover:bg-secondary  "
+                  "rounded-3xl  px-4  py-2 z-0 transition  hover:text-background relative hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary "
                 )}
                 to={item.route}
               >
-                <span
-                  className={cn(
-                    " relative after:bg-primary after:content-['']  after:transition-all after:scale-x-0 after:origin-left  after:absolute after:w-full  after:h-0.5 after:bottom-0 after:right-0 rounded-3xl",
-                    `group-hover/a:after:scale-x-100`
-                  )}
-                >
+                <span className={cn("  ", `group-hover/a:after:translate-0`)}>
                   {item.title}
                 </span>
               </NavLink>
             </NavigationMenuItem>
           ))}
-          <NavigationMenuItem
-            className=" p-2"
-            onClick={() => {
-              setTheme(isDark ? "light" : "dark");
-            }}
-          >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
-          </NavigationMenuItem>
+          <Tool />
         </NavigationMenuList>
       </NavigationMenu>
 
@@ -58,9 +49,9 @@ export default function Navbar() {
           isOpen && "max-sm:backdrop-blur-none"
         )}
       >
-        <span className=" font-bold text-xl text-slate-600 dark:text-slate-300">
+        <NavLink to={"/"} className=" font-bold text-xl  text-primary">
           {mySelf.name}
-        </span>
+        </NavLink>
         <NavigationMenuList>
           <div className="flex gap-2 items-center ">
             <NavigationMenuItem
@@ -70,13 +61,7 @@ export default function Navbar() {
             >
               {isOpen ? <X /> : <Menu />}
             </NavigationMenuItem>
-            <NavigationMenuItem
-              onClick={() => {
-                setTheme(isDark ? "light" : "dark");
-              }}
-            >
-              {isDark ? <Sun size={18} /> : <Moon size={18} />}
-            </NavigationMenuItem>
+            <Tool />
           </div>
         </NavigationMenuList>
       </NavigationMenu>
@@ -89,10 +74,8 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={({ isActive }) =>
                   cn(
-                    " px-4 py-2 text-4xl   transition",
-                    isActive
-                      ? " underline underline-offset-2"
-                      : "bg-transparent"
+                    " px-4 py-2 text-4xl   transition ",
+                    isActive && " underline underline-offset-2"
                   )
                 }
               >

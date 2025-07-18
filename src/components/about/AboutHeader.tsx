@@ -5,31 +5,30 @@ import { Badge } from "@/components/ui/badge";
 import { AtSign, BookUser, MapPin } from "lucide-react";
 import SplitText from "../gsap/text/SplitText";
 import CircularText from "../gsap/text/CircularText";
-import AnimatedContent from "../gsap/animation/AnimatedContent";
-import { useProfile } from "@/hook/useProfile";
+
+import { useTranslation } from "react-i18next";
+import InMotionDiv from "../animations/InMotionDiv";
 
 export default function AboutHeader() {
-  const { mySelf } = useProfile();
+  const { t, i18n } = useTranslation("about");
+
   return (
     <>
-      <AnimatedContent
-        className=" w-full flex  justify-center"
-        initialOpacity={1}
-      >
+      <InMotionDiv>
         <Card className=" w-11/12 min-h-1/3  flex lg:flex-row items-center dark:bg-none backdrop-blur-xs bg-background/80  flex-col   ">
           <CardContent className="h-full w-fit ">
             <Avatar className="  relative w-3xs   h-full aspect-square">
               <AvatarImage
                 className=" rounded-full"
-                alt={mySelf.name}
+                alt={t("mySelf.name")}
                 width={48}
                 height={48}
-                src={mySelf.avatar}
+                src={t("mySelf.avatar")}
               />
-              <AvatarFallback>{mySelf.name}</AvatarFallback>
+              <AvatarFallback>{t("mySelf.name")}</AvatarFallback>
               <div className=" absolute flex items-center justify-center w-full h-full">
                 <CircularText
-                  text="Creative*Coder*Dream*Builder*"
+                  text={t("mySelf.circularText")}
                   onHover="pause"
                   spinDuration={20}
                   className=" w-full h-full   text-white"
@@ -39,11 +38,12 @@ export default function AboutHeader() {
           </CardContent>
           <CardContent className="h-full flex justify-center  w-full lg:items-start items-center flex-col gap-5 ">
             <h1 className="lg:text-5xl text-4xl font-extrabold text-primary">
-              {mySelf.name}
+              {t("mySelf.name")}
             </h1>
 
             <TypeAnimation
-              sequence={mySelf.bio}
+              key={i18n.language}
+              sequence={t("mySelf.bio", { returnObjects: true })}
               speed={30}
               className=" lg:text-2xl text-lg text-white   font-bold bg-blue-600 w-fit rounded-md p-2"
               repeat={Infinity}
@@ -55,20 +55,22 @@ export default function AboutHeader() {
                   href="https://www.google.com/maps/place/%E6%96%B0%E7%AB%B9%E7%B8%A3"
                 >
                   <MapPin absoluteStrokeWidth size={20} />
-                  <p className=" font-bold text-[16px]"> {mySelf.country}</p>
+                  <p className=" font-bold text-[16px]">
+                    {t("mySelf.country")}
+                  </p>
                 </a>
               </Badge>
               <Badge variant={"outline"} asChild>
-                <a href={`mailto:${mySelf.email}`}>
+                <a href={`mailto:${t("mySelf.email")}`}>
                   <AtSign absoluteStrokeWidth size={20} />
-                  <p className=" font-bold text-[16px]"> {mySelf.email}</p>
+                  <p className=" font-bold text-[16px]"> {t("mySelf.email")}</p>
                 </a>
               </Badge>
             </div>
           </CardContent>
           <CardContent className="h-full flex justify-center  w-full lg:text-start text-center flex-col gap-5 ">
             <SplitText
-              text="You can call me"
+              text={t("mySelf.call")}
               className="text-3xl font-semibold text-center"
               delay={100}
               duration={0.6}
@@ -95,11 +97,8 @@ export default function AboutHeader() {
             />
           </CardContent>
         </Card>
-      </AnimatedContent>
-      <AnimatedContent
-        className=" w-full flex  justify-center"
-        initialOpacity={1}
-      >
+      </InMotionDiv>
+      <InMotionDiv>
         <Card className="flex w-11/12 p-5 bg-background/80  backdrop-blur-xs  dark:bg-none">
           <CardHeader>
             <CardTitle className="flex items-center gap-3   ">
@@ -108,18 +107,18 @@ export default function AboutHeader() {
               </Card>
 
               <p className="text-slate-700 font-bold text-2xl dark:text-slate-200">
-                About
+                {t("title.about")}
               </p>
             </CardTitle>
           </CardHeader>
 
           <CardContent className=" font-bold  max-lg:p-0">
             <p className="max-lg:text-center text-[clamp(1rem,1.5vw,1.125rem)] tracking-wide  text-lg">
-              {mySelf.content}
+              {t("mySelf.content")}
             </p>
           </CardContent>
         </Card>
-      </AnimatedContent>
+      </InMotionDiv>
     </>
   );
 }

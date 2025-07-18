@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { ProfileProviderState } from "@/type";
+import type { ProfileProviderState } from "@/types/type";
 const initialState: ProfileProviderState = {
   navigation: [
     { title: "Small Z", route: "/" },

@@ -1,0 +1,136 @@
+{
+    "title": {
+        "about": "About",
+        "award": [
+            "Achievements ",
+            " Certifications"
+        ],
+        "mostLang": "Most Programming I Use",
+        "skill": [
+            "Programming",
+            "framework",
+            "SQL",
+            "CICD"
+        ]
+    },
+    "mySelf": {
+        "name": "Yuzen",
+        "nickName": "Small Z",
+        "bio": [
+            "Full Stack Debugger",
+            1000,
+            "Full Stack Developer",
+            1000
+        ],
+        "call": "You can call me",
+        "country": "Hsinchu, TW",
+        "circularText": "Creative*Coder*Dream*Builder*",
+        "email": "oscar48079@gmail.com",
+        "avatar": "/avatar.webp",
+        "description": "Hi, I'm Small Z (17y)! Now studying in the five-year program at National Taichung University of Science and Technology (NUTC).",
+        "phone": "+8869665303635",
+        "content": "I'm a 3rd-year Information Management student at NUTC, passionate about web development and building practical applications. I focus on full-stack development and enjoy turning ideas into functional solutions."
+    },
+    "myAward": [
+        {
+            "title": "APCS",
+            "time": "2025-06-14",
+            "description": "Implementation Level 3, Concept Level 4"
+        },
+        {
+            "title": "LungHwa Programming Competition",
+            "time": "2025-06-09",
+            "description": "High Distinction"
+        },
+        {
+            "title": "TQC Python",
+            "time": "2025-06-13",
+            "description": ""
+        }
+    ],
+    "myCard": [
+        {
+            "icon": "calendar",
+            "title": "2+",
+            "description": "Years experience"
+        },
+        {
+            "icon": "github",
+            "title": "10+",
+            "description": "Projects"
+        },
+        {
+            "icon": "code",
+            "title": "3+",
+            "description": "Programming languages"
+        }
+    ],
+    "skillGroup": {
+        "all": "all",
+        "pr": "programming",
+        "fw": "framework",
+        "other": "other"
+    },
+    "mySkill": [
+        {
+            "title": "JavaScript",
+            "process": 95,
+            "group": "programming"
+        },
+        {
+            "title": "TypeScript",
+            "process": 90,
+            "group": "programming"
+        },
+        {
+            "title": "C++",
+            "process": 70,
+            "group": "programming"
+        },
+        {
+            "title": "C",
+            "process": 60,
+            "group": "programming"
+        },
+        {
+            "title": "Python",
+            "process": 50,
+            "group": "programming"
+        },
+        {
+            "title": "Java",
+            "process": 40,
+            "group": "programming"
+        },
+        {
+            "title": "React.js",
+            "process": 80,
+            "group": "framework"
+        },
+        {
+            "title": "Next.js",
+            "process": 70,
+            "group": "framework"
+        },
+        {
+            "title": "Express.js",
+            "process": 60,
+            "group": "framework"
+        },
+        {
+            "title": "Git",
+            "process": 65,
+            "group": "other"
+        },
+        {
+            "title": "MySQL",
+            "process": 50,
+            "group": "other"
+        },
+        {
+            "title": "MongoDB",
+            "process": 55,
+            "group": "other"
+        }
+    ]
+}

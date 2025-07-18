@@ -1,18 +1,11 @@
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
+import type { SocialLink } from "@/types/type";
 import { SquareArrowOutUpRight } from "lucide-react";
-import type { JSX } from "react";
 
-type ContentProps = {
-  title: string;
-  icon: JSX.Element;
-  href: string;
-  desc?: string;
-};
-
-export default function ContactCard({ title, icon, desc, href }: ContentProps) {
+export default function ContactCard({ title, icon, desc, link }: SocialLink) {
   return (
     <a
-      href={href}
+      href={link}
       rel="noopener noreferrer"
       target="_BLANK"
       className=" group  w-full"
