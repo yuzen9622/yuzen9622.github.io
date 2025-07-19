@@ -1,13 +1,14 @@
 import { TypeAnimation } from "react-type-animation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { AtSign, BookUser, MapPin } from "lucide-react";
+import { AtSign, MapPin } from "lucide-react";
 import SplitText from "../gsap/text/SplitText";
 import CircularText from "../gsap/text/CircularText";
 
 import { useTranslation } from "react-i18next";
 import InMotionDiv from "../animations/InMotionDiv";
+import MaskText from "./ui/MaskText";
 
 export default function AboutHeader() {
   const { t, i18n } = useTranslation("about");
@@ -94,30 +95,12 @@ export default function AboutHeader() {
               threshold={0.1}
               rootMargin="-100px"
               textAlign="center"
-            />
+            />{" "}
           </CardContent>
-        </Card>
+        </Card>{" "}
       </InMotionDiv>
       <InMotionDiv>
-        <Card className="flex w-11/12 p-5 bg-background/80  backdrop-blur-xs  dark:bg-none">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3   ">
-              <Card className=" text-slate-700   dark:text-slate-200  p-2 rounded-md ">
-                <BookUser className="w-5 h-5" />
-              </Card>
-
-              <p className="text-slate-700 font-bold text-2xl dark:text-slate-200">
-                {t("title.about")}
-              </p>
-            </CardTitle>
-          </CardHeader>
-
-          <CardContent className=" font-bold  max-lg:p-0">
-            <p className="max-lg:text-center text-[clamp(1rem,1.5vw,1.125rem)] tracking-wide  text-lg">
-              {t("mySelf.content")}
-            </p>
-          </CardContent>
-        </Card>
+        <MaskText />
       </InMotionDiv>
     </>
   );

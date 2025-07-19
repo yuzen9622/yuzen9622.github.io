@@ -10,7 +10,7 @@ export default function ProjectWrapper() {
     <div className=" w-full">
       <section className="grid  gap-5  lg:grid-cols-2 justify-items-center w-full p-5   ">
         {projects.map((project) => (
-          <ProjectCard project={project} />
+          <ProjectCard key={project.title} project={project} />
         ))}
       </section>
     </div>

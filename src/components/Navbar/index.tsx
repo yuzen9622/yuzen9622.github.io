@@ -27,9 +27,12 @@ export default function Navbar() {
               className="overflow-hidden  "
             >
               <NavLink
-                className={cn(
-                  "rounded-3xl  px-4  py-2 z-0 transition  hover:text-background relative hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary "
-                )}
+                className={({ isActive }) =>
+                  cn(
+                    "rounded-3xl  px-4  py-2 z-0 transition  hover:text-background relative hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary ",
+                    isActive && "before:scale-100 before:opacity-100"
+                  )
+                }
                 to={item.route}
               >
                 <span className={cn("  ", `group-hover/a:after:translate-0`)}>

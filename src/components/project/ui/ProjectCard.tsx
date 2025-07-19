@@ -24,13 +24,15 @@ import { useProfile } from "@/hook/useProfile";
 export default function ProjectCard({ project }: { project: Project }) {
   const { techIcons } = useProfile();
 
+  const handleCardClick = () => {
+    if (project.previewUrl) {
+      window.open(project.previewUrl, "_blank");
+    } else {
+      window.open(project.sourceUrl, "_blank");
+    }
+  };
   return (
-    <NavLink
-      target="_BLANK"
-      rel="noreferrer"
-      className={"w-full h-full"}
-      to={project.previewUrl ? project.previewUrl : project.sourceUrl}
-    >
+    <div className={"w-full h-full cursor-pointer"} onClick={handleCardClick}>
       <Card className=" h-full   group backdrop-blur-xs bg-background/80 w-full">
         <CardHeader className=" flex flex-col  gap-3">
           <Badge>
@@ -80,25 +82,25 @@ export default function ProjectCard({ project }: { project: Project }) {
         </CardContent>
         <CardFooter className=" flex gap-2">
           {project.previewUrl && (
-            <NavLink
+            <button
               className={
                 " flex text-xs bg-secondary p-2 rounded-3xl items-center gap-2 "
               }
-              to={project.previewUrl}
             >
               Visit <SquareArrowOutUpRight size={16} />
-            </NavLink>
+            </button>
           )}
           <NavLink
             className={
-              " flex text-xs bg-secondary p-2 rounded-3xl items-center gap-2  "
+              " flex text-xs bg-secondary p-2 z-10 rounded-3xl items-center gap-2  "
             }
+            onClick={(e) => e.stopPropagation()}
             to={project.sourceUrl}
           >
             Source Code <Github size={16} />
           </NavLink>
         </CardFooter>
       </Card>
-    </NavLink>
+    </div>
   );
 }
