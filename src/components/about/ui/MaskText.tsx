@@ -1,6 +1,6 @@
 import { useMousePosition } from "@/hook/useMousePostion";
 import { motion } from "framer-motion";
-import { useRef, useState, type MouseEvent } from "react";
+import { useRef, useState } from "react";
 
 export default function MaskText() {
   const maskDiv = useRef<HTMLDivElement>(null);
