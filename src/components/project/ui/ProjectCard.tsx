@@ -21,8 +21,12 @@ import { NavLink } from "react-router-dom";
 import { Github, SquareArrowOutUpRight } from "lucide-react";
 import { useProfile } from "@/hook/useProfile";
 
+import { useRef } from "react";
+import HoverCursor from "./HoverCursor";
+
 export default function ProjectCard({ project }: { project: Project }) {
   const { techIcons } = useProfile();
+  const divRef = useRef<HTMLDivElement>(null);
 
   const handleCardClick = () => {
     if (project.previewUrl) {
@@ -31,9 +35,15 @@ export default function ProjectCard({ project }: { project: Project }) {
       window.open(project.sourceUrl, "_blank");
     }
   };
+
   return (
-    <div className={"w-full h-full cursor-pointer"} onClick={handleCardClick}>
+    <div
+      className={" relative w-full h-full cursor-pointer overflow-hidden"}
+      onClick={handleCardClick}
+      ref={divRef}
+    >
       <Card className=" h-full   group backdrop-blur-xs bg-background/80 w-full">
+        <HoverCursor title={project.title} divRef={divRef} />
         <CardHeader className=" flex flex-col  gap-3">
           <Badge>
             {project.type.toUpperCase()}．{project.year}
@@ -84,8 +94,9 @@ export default function ProjectCard({ project }: { project: Project }) {
           {project.previewUrl && (
             <button
               className={
-                " flex text-xs bg-secondary p-2 rounded-3xl items-center gap-2 "
+                " flex cursor-pointer text-xs bg-secondary p-2 rounded-3xl items-center gap-2 "
               }
+              type="button"
             >
               Visit <SquareArrowOutUpRight size={16} />
             </button>

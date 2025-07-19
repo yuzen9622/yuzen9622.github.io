@@ -37,7 +37,7 @@ export default function MaskText() {
           webkitMaskSize: isHover ? "200px" : "50px",
         }}
         transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
-        className="  absolute w-11/12 text-center  mask-[url('/mask.svg')] bg-primary mask-center  mask-no-repeat  rounded-md p-2  text-primary-foreground mask-alpha "
+        className="  absolute w-11/12 text-center  cursor-default mask-[url('/mask.svg')] bg-primary mask-center  mask-no-repeat  rounded-md p-2  text-primary-foreground mask-alpha "
       >
         <p className="text-[clamp(2rem,3vw,3.5rem)]/13 font-extrabold text-wrap  ">
           As a{" "}
