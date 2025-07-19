@@ -30,6 +30,7 @@ export default function MaskText() {
         onMouseEnter={handleMouseIn}
         onMouseLeave={handleMouseOut}
         ref={maskDiv}
+        initial={{ opacity: 0 }}
         animate={{
           webkitMaskPosition: `${x - 200 / 2}px ${y - 200 / 2}px`,
           opacity: isHover ? 1 : 0,

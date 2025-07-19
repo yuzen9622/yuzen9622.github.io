@@ -16,7 +16,7 @@ export default function AboutCard() {
   return (
     <section className=" flex   relative  bg-transparent w-11/12 lg:flex-row flex-col gap-3">
       {myCard.map((item, index) => (
-        <InMotionDiv key={index}>
+        <InMotionDiv key={index} delay={index / 10 + 0.2}>
           <Card className="flex-1 flex flex-col items-center justify-center gap-2  hover:-translate-y-1  hover:shadow-md transition-transform ">
             <Card className="  bg-secondary rounded-full text-primary p-2">
               {iconMap[item.icon]}

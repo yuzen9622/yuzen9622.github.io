@@ -15,7 +15,7 @@ export default function AboutHeader() {
 
   return (
     <>
-      <InMotionDiv>
+      <InMotionDiv delay={0.2}>
         <Card className=" w-11/12 min-h-1/3  flex lg:flex-row items-center dark:bg-none backdrop-blur-xs bg-background/80  flex-col   ">
           <CardContent className="h-full w-fit ">
             <Avatar className="  relative w-3xs   h-full aspect-square">
@@ -99,7 +99,7 @@ export default function AboutHeader() {
           </CardContent>
         </Card>{" "}
       </InMotionDiv>
-      <InMotionDiv>
+      <InMotionDiv delay={0.4}>
         <MaskText />
       </InMotionDiv>
     </>
