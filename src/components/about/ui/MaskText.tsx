@@ -22,7 +22,7 @@ export default function MaskText() {
           <span className=" text-white p-1 rounded-md  bg-blue-600">
             Full-Stack Developer
           </span>{" "}
-          enjoy tackling bugs with precision, and continuously explore new
+          enjoy tackling bugs with precision, and continuously exploring new
           technologies.
         </p>
       </div>{" "}
@@ -44,7 +44,7 @@ export default function MaskText() {
           <span className=" text-blue-500 p-1 rounded-md  bg-white ">
             Full-Stack Developer
           </span>{" "}
-          enjoy tackling bugs with precision, and continuously explore new
+          enjoy tackling bugs with precision, and continuously exploring new
           technologies.
         </p>
       </motion.div>

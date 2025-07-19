@@ -11,7 +11,7 @@ export default function AboutAward() {
 
   return (
     <InMotionDiv>
-      <Card className=" backdrop-blur-xs border-0 p-5  shadow-lg w-11/12 bg-background/80">
+      <Card className=" backdrop-blur-xs border-0 p-3  shadow-lg w-11/12 bg-background/80">
         <CardHeader>
           <CardTitle className="flex items-center gap-3   ">
             <Card className="  text-primary  p-2 rounded-md ">
@@ -33,7 +33,7 @@ export default function AboutAward() {
             <p className=""></p>
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="max-sm:px-0">
           <div className="grid gap-4">
             {myAward.map((achievement, index) => (
               <div
@@ -44,11 +44,13 @@ export default function AboutAward() {
                   <Award className="w-5 h-5" />
                 </div>
                 <div className="flex-1">
-                  <h2 className="font-semibold text-gray-900  dark:text-white text-lg flex items-center gap-2">
+                  <h2 className="font-semibold text-gray-900  dark:text-white text-lg max-sm:text-base flex items-center gap-2">
                     {achievement.title}
                     <Badge variant={"outline"}>{achievement.time}</Badge>
                   </h2>
-                  <p className="font-bold">{achievement.description}</p>
+                  <p className="font-bold  text-sm">
+                    {achievement.description}
+                  </p>
                 </div>
               </div>
             ))}
