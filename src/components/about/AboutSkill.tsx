@@ -15,14 +15,17 @@ import { useMemo, useState } from "react";
 import SkillGrid from "./ui/SkillGrid";
 import { useTranslation } from "react-i18next";
 import InMotionDiv from "../animations/InMotionDiv";
+import type { SkillGroup } from "@/types/type";
 
 export default function AboutSkill() {
   const { t } = useTranslation("about");
   const mySkill = t("mySkill", { returnObjects: true });
-  const [group, setGroup] = useState("all");
+  const [group, setGroup] = useState<SkillGroup>("all");
   const groupSkill = useMemo(() => {
-    return mySkill.filter((skill) => skill.group === group || group === "all");
-  }, [group, mySkill]);
+    return mySkill.filter(
+      (skill) => skill.group === t(`skillGroup.${group}`) || group === "all"
+    );
+  }, [group, mySkill, t]);
 
   return (
     <InMotionDiv>
@@ -48,27 +51,26 @@ export default function AboutSkill() {
         </CardHeader>
         <CardContent>
           <Tabs
-            defaultValue="all"
-            onValueChange={(val) => setGroup(val)}
+            key={group}
+            defaultValue={group}
+            value={group}
+            onValueChange={(val) => setGroup(val as SkillGroup)}
             className="w-full"
           >
             <TabsList className="w-full  ">
-              <TabsTrigger
-                className="  outline-none border-none"
-                value={t("skillGroup.all")}
-              >
+              <TabsTrigger className="  outline-none border-none" value={"all"}>
                 <GalleryVerticalEnd />
                 <p className="sm:block hidden">{t("skillGroup.all")}</p>
               </TabsTrigger>
-              <TabsTrigger value={t("skillGroup.pr")}>
+              <TabsTrigger value={"pr"}>
                 <Code2 />
                 <p className="sm:block hidden">{t("skillGroup.pr")}</p>
               </TabsTrigger>
-              <TabsTrigger value={t("skillGroup.fw")}>
+              <TabsTrigger value={"fw"}>
                 <Puzzle />
                 <p className="sm:block hidden">{t("skillGroup.fw")}</p>
               </TabsTrigger>
-              <TabsTrigger value={t("skillGroup.other")}>
+              <TabsTrigger value={"other"}>
                 <Ellipsis />
                 <p className="sm:block hidden"> {t("skillGroup.other")} </p>
               </TabsTrigger>

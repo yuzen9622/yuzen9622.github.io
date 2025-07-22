@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 export type SystemTheme = "dark" | "light";
 export type Theme = "dark" | "light" | "system";
-export type SkillGroup = "framework" | "programming" | "other";
+export type SkillGroup = "all" | "fw" | "pr" | "other";
 export type ProjectType = "web" | "android";
 
 export type TechType =
@@ -44,7 +44,7 @@ export type Card = {
 
 export type Award = { title: string; time: string; description: string };
 
-export type Skill = { title: string; process: number; group: SkillGroup };
+export type Skill = { title: string; process: number; group: string };
 
 export type Project = {
   title: string;
