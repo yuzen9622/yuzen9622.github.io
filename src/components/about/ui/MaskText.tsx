@@ -1,4 +1,4 @@
-import { useMousePosition } from "@/hook/useMousePostion";
+import { useMousePosition } from "@/hook/useMousePosition";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 

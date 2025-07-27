@@ -1,6 +1,7 @@
-import { useMousePosition } from "@/hook/useMousePostion";
+import { type RefObject, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useEffect, useState, type RefObject } from "react";
+
+import { useMousePosition } from "@/hook/useMousePosition";
 
 export default function HoverCursor({
   title,

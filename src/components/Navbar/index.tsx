@@ -1,16 +1,16 @@
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+
+import AnimatedContent from "@/components/gsap/animation/AnimatedContent";
+import Tool from "@/components/Navbar/Tool";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
-import { NavLink } from "react-router-dom";
-
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
-import AnimatedContent from "@/components/gsap/animation/AnimatedContent";
 import { useProfile } from "@/hook/useProfile";
-import Tool from "./Tool";
+import { cn } from "@/lib/utils";
 
 export default function Navbar() {
   const { navigation, mySelf } = useProfile();
@@ -21,25 +21,27 @@ export default function Navbar() {
       <NavigationMenu className="p-3  w-11/12 rounded-full  h-fit hidden sm:block flex-none sticky top-2 z-10 bg-background/80  backdrop-blur-xs">
         <NavigationMenuList>
           {navigation.map((item, index) => (
-            <NavigationMenuItem
-              asChild
-              key={index}
-              className="overflow-hidden  "
-            >
-              <NavLink
-                className={({ isActive }) =>
-                  cn(
-                    "rounded-3xl  px-4  py-2 z-0 transition  hover:text-background relative hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary ",
-                    isActive && "before:scale-100 before:opacity-100"
-                  )
-                }
-                to={item.route}
+            <li>
+              <NavigationMenuItem
+                asChild
+                key={index}
+                className="overflow-hidden  "
               >
-                <span className={cn("  ", `group-hover/a:after:translate-0`)}>
-                  {item.title}
-                </span>
-              </NavLink>
-            </NavigationMenuItem>
+                <NavLink
+                  className={({ isActive }) =>
+                    cn(
+                      "rounded-3xl  px-4  py-2 z-0 transition  hover:text-background relative hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary ",
+                      isActive && "before:scale-100 before:opacity-100"
+                    )
+                  }
+                  to={item.route}
+                >
+                  <span className={cn(`group-hover/a:after:translate-0`)}>
+                    {item.title}
+                  </span>
+                </NavLink>
+              </NavigationMenuItem>{" "}
+            </li>
           ))}
           <Tool />
         </NavigationMenuList>

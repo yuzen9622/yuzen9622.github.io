@@ -1,3 +1,12 @@
+import { Github, SquareArrowOutUpRight } from "lucide-react";
+import { useRef } from "react";
+import { NavLink } from "react-router-dom";
+
+import CircularText from "@/components/gsap/text/CircularText";
+import SplitText from "@/components/gsap/text/SplitText";
+import HoverCursor from "@/components/project/ui/HoverCursor";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -6,23 +15,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import type { Project } from "@/types/type";
-import SplitText from "@/components/gsap/text/SplitText";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
-import CircularText from "@/components/gsap/text/CircularText";
-import { NavLink } from "react-router-dom";
-import { Github, SquareArrowOutUpRight } from "lucide-react";
 import { useProfile } from "@/hook/useProfile";
 
-import { useRef } from "react";
-import HoverCursor from "./HoverCursor";
+import type { Project } from "@/types/type";
 
 export default function ProjectCard({ project }: { project: Project }) {
   const { techIcons } = useProfile();
@@ -52,7 +52,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             <img
               src={`/${project.image}`}
               alt={project.title}
-              className="  w-full aspect-video   group-hover:scale-110 transition-all"
+              className="  w-full    group-hover:scale-110 transition-all"
             />
             {project.previewUrl && (
               <div className=" absolute inset-0 w-full grid   place-content-center h-full group-hover:bg-secondary/70 group-hover:opacity-100 transition-opacity opacity-0 ">

@@ -1,5 +1,7 @@
-import ProjectCard from "./ui/ProjectCard";
 import { useTranslation } from "react-i18next";
+
+import ProjectCard from "@/components/project/ui/ProjectCard";
+
 import type { Project } from "@/types/type";
 
 export default function ProjectWrapper() {
@@ -9,8 +11,8 @@ export default function ProjectWrapper() {
   return (
     <div className=" w-full">
       <section className="grid  gap-5  lg:grid-cols-2 justify-items-center w-full p-5   ">
-        {projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
+        {projects.map((project, index) => (
+          <ProjectCard key={index} project={project} />
         ))}
       </section>
     </div>
