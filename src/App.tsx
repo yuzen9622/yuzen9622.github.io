@@ -3,14 +3,13 @@ import "./App.css";
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
-import About from "@/components/About";
+import Footer from "@/components/Footer";
+import Squares from "@/components/gsap/background/square";
+import Navbar from "@/components/Navbar/index";
 import { Toaster } from "@/components/ui/sonner";
-
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import Squares from "./components/gsap/background/square";
-import Navbar from "./components/Navbar/index";
-import Project from "./components/Project";
+import ContactPage from "@/pages/ContactPage";
+import HomePage from "@/pages/HomePage";
+import ProjectPage from "@/pages/ProjectPage";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -38,9 +37,9 @@ function App() {
         />
       </div>
       <Routes>
-        <Route path="" element={<About />} />
-        <Route path="/projects" element={<Project />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="" element={<HomePage />} />
+        <Route path="/projects" element={<ProjectPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
       <Footer />
     </div>

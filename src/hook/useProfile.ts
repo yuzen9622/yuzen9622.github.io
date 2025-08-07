@@ -1,5 +1,6 @@
-import { ProfileProviderContext } from "@/components/provider/ProfileContextProvider";
 import { useContext } from "react";
+
+import { ProfileProviderContext } from "@/provider/ProfileContextProvider";
 
 export const useProfile = () => {
   const context = useContext(ProfileProviderContext);

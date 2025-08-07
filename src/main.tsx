@@ -1,11 +1,14 @@
+import "./index.css";
+import "@/i18n";
+
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "./components/provider/ThemeProvider.tsx";
-import { ProfileProvider } from "./components/provider/ProfileProvider.tsx";
-import "@/i18n";
+
+import App from "./App.tsx";
+import { ProfileProvider } from "./provider/ProfileProvider.tsx";
+import { ThemeProvider } from "./provider/ThemeProvider.tsx";
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider>
