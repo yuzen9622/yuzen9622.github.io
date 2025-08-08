@@ -48,11 +48,11 @@ export default function ProjectCard({ project }: { project: Project }) {
           <Badge>
             {project.type.toUpperCase()}．{project.year}
           </Badge>
-          <div className="  relative w-full flex rounded-lg items-center justify-center overflow-hidden">
+          <div className="  relative w-full h-full flex rounded-lg items-center justify-center overflow-hidden">
             <img
               src={`/${project.image}`}
               alt={project.title}
-              className="  w-full    group-hover:scale-110 transition-all"
+              className="  w-full   h-full  group-hover:scale-110 transition-all"
             />
             {project.previewUrl && (
               <div className=" absolute inset-0 w-full grid   place-content-center h-full group-hover:bg-secondary/70 group-hover:opacity-100 transition-opacity opacity-0 ">

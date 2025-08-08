@@ -1,7 +1,9 @@
+import React, { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
+
 import { useTheme } from "@/hook/useTheme";
 import { cn } from "@/lib/utils";
-import React, { useRef, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+
 type CanvasStrokeStyle = string | CanvasGradient | CanvasPattern;
 
 interface GridOffset {
@@ -73,7 +75,7 @@ const Squares: React.FC<SquaresProps> = ({
             ctx.fillRect(squareX, squareY, squareSize, squareSize);
           }
 
-          ctx.strokeStyle = isDark ? borderColor : "#999999";
+          ctx.strokeStyle = "#999999";
           ctx.strokeRect(squareX, squareY, squareSize, squareSize);
         }
       }

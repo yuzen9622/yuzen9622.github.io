@@ -11,7 +11,7 @@ export default function ProjectHeader() {
       >
         Projects
       </GlitchText>
-      <span className="flex items-center gap-2 backdrop-blur-xs rounded-md">
+      <span className="flex items-center gap-2  backdrop-blur-xs bg-background/80  rounded-md">
         <p className=" text-4xl   font-extrabold p-2   ">Creative</p>
 
         <RotatingText
