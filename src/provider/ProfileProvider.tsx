@@ -1,9 +1,12 @@
-import { type ReactNode } from "react";
-import { ProfileProviderContext } from "./ProfileContextProvider";
 import { Calendar, Code, Github } from "lucide-react";
-import type { ProfileProviderState } from "@/types/type";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+
 import i18n from "@/i18n";
+
+import { ProfileProviderContext } from "./ProfileContextProvider";
+
+import type { ReactNode } from "react";
+import type { ProfileProviderState } from "@/types/type";
 const initialState: ProfileProviderState = {
   navigation: [
     { title: i18n.t("mySelf.name"), route: "/" },
@@ -73,63 +76,7 @@ const initialState: ProfileProviderState = {
     { title: "MySQL", process: 50, group: "other" },
     { title: "MongoDB", process: 55, group: "other" },
   ],
-  projects: [
-    {
-      title: "chat.to",
-      tech: ["typescript", "nextdotjs", "supabase", "tailwindcss"],
-      image: "project/chatto.png",
-      year: "2025",
-      sourceUrl: "https://github.com/yuzen9622/chat.to",
-      previewUrl: "https://chat-to-sage.vercel.app/introduce",
-      type: "web",
-      description:
-        "Chat.to is a sleek, real-time chat application that lets you connect with friends and groups effortlessly. Powered by Ably, Next.js, Supabase, and NextAuth, it delivers a seamless, secure, and engaging messaging experience.",
-    },
-    {
-      title: "Dcard Clone",
-      tech: ["python", "django", "html5", "css"],
-      image: "project/dcard.png",
-      year: "2025",
-      sourceUrl: "https://github.com/yuzen9622/Dcard",
-      previewUrl: "https://dcard-rosy.vercel.app/category/",
-      type: "web",
-      description:
-        "A personal blog demo built with Django, featuring user authentication, article creation and management, commenting, categorization, and pagination. Utilizes Django’s built-in admin for easy content management and Bootstrap for responsive design.",
-    },
-    {
-      title: "微財",
-      tech: ["react", "javascript", "mongodb", "nodedotjs", "css"],
-      image: "project/微財.png",
-      sourceUrl: "https://github.com/yuzen9622/Account-App",
-      previewUrl: "https://account-app-phi.vercel.app/",
-      type: "web",
-      year: "2024",
-      description:
-        "A simple and intuitive budgeting app that helps you easily manage your income and expenses, giving you control over your finances.",
-    },
-    {
-      title: "Introduction to Web Technology",
-      tech: ["html5", "css", "javascript"],
-      image: "project/web3.png",
-      year: "2023",
-      sourceUrl: "https://github.com/yuzen9622/web3",
-      previewUrl: "https://web3-six-omega.vercel.app/",
-      type: "web",
-      description:
-        "This website serves as an educational platform introducing modern web technologies, covering both frontend and backend development, as well as CI/CD practices. It provides an overview of essential tools and frameworks used in the creation and deployment of modern websites and web applications.",
-    },
-    {
-      title: "Weather App",
-      tech: ["react", "javascript", "css"],
-      image: "project/weatherapp.png",
-      year: "2023",
-      sourceUrl: "https://github.com/yuzen9622/weather-app",
-      previewUrl: "https://yuzen9622.github.io/weather-app/",
-      type: "web",
-      description:
-        "A React-based weather app that fetches real-time and 3-hour interval forecasts from Taiwan's Central Weather Bureau API. It features location selection across Taiwan, responsive design for mobile devices, and dynamic display of temperature, humidity, wind speed, and weather conditions.",
-    },
-  ],
+  projects: [],
   socialLink: [
     {
       title: "Instagram",

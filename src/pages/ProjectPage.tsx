@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet";
+import { Outlet } from "react-router-dom";
 
 import ProjectHeader from "@/components/project/ProjectHeader";
 import ProjectWrapper from "@/components/project/ProjectWrapper";
@@ -11,6 +12,7 @@ export default function ProjectPage() {
       </Helmet>
       <ProjectHeader />
       <ProjectWrapper />
+      <Outlet />
     </>
   );
 }

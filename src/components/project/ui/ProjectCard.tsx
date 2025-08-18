@@ -1,9 +1,7 @@
-import { Github, SquareArrowOutUpRight } from "lucide-react";
 import { useRef } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import CircularText from "@/components/gsap/text/CircularText";
-import SplitText from "@/components/gsap/text/SplitText";
 import HoverCursor from "@/components/project/ui/HoverCursor";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -11,7 +9,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -23,26 +20,23 @@ import {
 import { useProfile } from "@/hook/useProfile";
 
 import type { Project } from "@/types/type";
-
 export default function ProjectCard({ project }: { project: Project }) {
   const { techIcons } = useProfile();
   const divRef = useRef<HTMLDivElement>(null);
 
-  const handleCardClick = () => {
-    if (project.previewUrl) {
-      window.open(project.previewUrl, "_blank");
-    } else {
-      window.open(project.sourceUrl, "_blank");
-    }
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/projects/${project.id}`);
   };
 
   return (
-    <div
-      className={" relative w-full h-full cursor-pointer overflow-hidden"}
-      onClick={handleCardClick}
-      ref={divRef}
-    >
-      <Card className=" h-full   group backdrop-blur-xs bg-background/80 w-full">
+    <div className={" relative w-full h-full cursor-pointer overflow-hidden"}>
+      <Card
+        onClick={handleClick}
+        ref={divRef}
+        className=" h-full   group backdrop-blur-xs bg-background/80 w-full"
+      >
         <HoverCursor title={project.title} divRef={divRef} />
         <CardHeader className=" flex flex-col  gap-3">
           <Badge>
@@ -52,7 +46,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             <img
               src={`/${project.image}`}
               alt={project.title}
-              className="  w-full   h-full  group-hover:scale-110 transition-all"
+              className="  w-full    h-full  group-hover:scale-110 transition-all"
             />
             {project.previewUrl && (
               <div className=" absolute inset-0 w-full grid   place-content-center h-full group-hover:bg-secondary/70 group-hover:opacity-100 transition-opacity opacity-0 ">
@@ -62,10 +56,9 @@ export default function ProjectCard({ project }: { project: Project }) {
           </div>
 
           <CardTitle className="flex justify-between items-center w-full">
-            <SplitText
-              text={project.title}
-              className="text-3xl group-hover:translate-3.5 transition-all pr-3"
-            />
+            <h1 className="text-3xl group-hover:translate-3.5 transition-all pr-3">
+              {project.title}
+            </h1>
             <div className="*:data-[slot=avatar]:ring-background flex *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale  transition-all group-hover:translate-y-3.5">
               {project.tech.map((item) => (
                 <Tooltip>
@@ -90,16 +83,19 @@ export default function ProjectCard({ project }: { project: Project }) {
         <CardContent>
           <CardDescription>{project.description}</CardDescription>
         </CardContent>
-        <CardFooter className=" flex gap-2">
+        {/* <CardFooter className=" flex gap-2">
           {project.previewUrl && (
-            <button
+            <NavLink
+              viewTransition
+              onClick={(e) => e.stopPropagation()}
+              to={`/projects/${project.id}`}
               className={
                 " flex cursor-pointer text-xs bg-secondary p-2 rounded-3xl items-center gap-2 "
               }
               type="button"
             >
               Visit <SquareArrowOutUpRight size={16} />
-            </button>
+            </NavLink>
           )}
           <NavLink
             className={
@@ -110,7 +106,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           >
             Source Code <Github size={16} />
           </NavLink>
-        </CardFooter>
+        </CardFooter> */}
       </Card>
     </div>
   );

@@ -1,6 +1,7 @@
 {
     "projects": [
         {
+            "id": 1,
             "title": "chat.to",
             "description": "Chat.to 是一款簡潔的即時聊天應用程式，讓你輕鬆與朋友和群組進行交流。結合 Ably、Next.js、Supabase 和 NextAuth，提供順暢、安全且吸引人的訊息傳遞體驗。",
             "tech": [
@@ -13,9 +14,14 @@
             "year": "2025",
             "sourceUrl": "https://github.com/yuzen9622/chat.to",
             "previewUrl": "https://chat-to-sage.vercel.app/introduce",
-            "type": "web"
+            "type": "web",
+            "content": {
+                "overview": "Chat.to 是一款專為日常交流設計的即時聊天應用程式，整合 Ably、Next.js、Supabase 與 NextAuth 等現代技術。它的特色在於以輕量化與簡潔設計為核心，讓用戶能快速進行對話與群組交流，同時保有雲端同步的安全性與穩定性。整體 UI 以 Tailwind CSS 打造，提供跨平台的一致體驗。這個專案展現了我在即時通訊、身份驗證與雲端資料儲存上的開發能力。",
+                "feature": "• 支援一對一與群組聊天，訊息可即時同步並保證低延遲。\n• 整合 NextAuth 提供安全的第三方登入與使用者管理。\n• 使用 Supabase 儲存聊天記錄，具備良好的資料一致性。\n• UI 採用 Tailwind CSS，設計風格簡潔並具備響應式體驗。\n• 提供專案結構化的前後端整合，具備可擴充性。"
+            }
         },
         {
+            "id": 2,
             "title": "Dcard Clone",
             "description": "一個使用 Django 打造的個人部落格展示網站，包含使用者認證、文章新增與管理、留言、分類與分頁功能。整合 Django 的後台管理介面與 Bootstrap 響應式設計，便於管理與瀏覽。",
             "tech": [
@@ -28,9 +34,14 @@
             "year": "2025",
             "sourceUrl": "https://github.com/yuzen9622/Dcard",
             "previewUrl": "https://dcard-rosy.vercel.app/category/",
-            "type": "web"
+            "type": "web",
+            "content": {
+                "overview": "Dcard Clone 是一個以 Django 為基礎開發的部落格型網站，模擬社群平台的互動模式，讓使用者能發表文章、留言討論並進行分類瀏覽。透過 Django 的強大後端框架，專案內建完整的資料庫管理與安全性功能。這個專案展現了我在 Python Web 框架上的實作能力，特別是內容管理系統（CMS）的應用。",
+                "feature": "• 提供完整的會員系統，支援註冊、登入與身份驗證。\n• 使用者可新增、編輯與刪除文章，並能透過留言功能進行互動。\n• 文章支援分類與分頁，提高資訊瀏覽效率。\n• 整合 Django Admin 後台介面，便於網站管理與資料維護。"
+            }
         },
         {
+            "id": 3,
             "title": "微財",
             "description": "一款簡單直覺的記帳應用程式，協助你輕鬆管理收入與支出，讓你更有效掌控財務狀況。",
             "tech": [
@@ -44,9 +55,14 @@
             "year": "2024",
             "sourceUrl": "https://github.com/yuzen9622/Account-App",
             "previewUrl": "https://account-app-phi.vercel.app/",
-            "type": "web"
+            "type": "web",
+            "content": {
+                "overview": "微財是一款以簡單直觀為核心的記帳應用程式，專注於協助使用者養成收支記錄的習慣，並提供基本的財務分析功能。透過 React 打造互動性良好的前端介面，搭配 Node.js 與 MongoDB 進行後端資料儲存與管理。整體設計上偏向輕量化，讓使用者能快速輸入資料，同時保有跨裝置的使用體驗。此專案展現了我對於 MERN 技術堆疊的實際應用。",
+                "feature": "• 使用者能快速新增、編輯與刪除收支紀錄。\n• 提供分類與標籤功能，協助更有效率地整理財務資料。\n• 後端以 MongoDB 儲存資料，確保資料持久化與安全性。\n• 前端使用 React 建構，介面直觀並具備即時更新特性。\n• 響應式設計支援手機與桌機，方便隨時記錄與查詢。"
+            }
         },
         {
+            "id": 4,
             "title": "網頁技術導論",
             "description": "這個網站是一個教學平台，介紹現代網頁技術，涵蓋前端與後端開發，以及 CI/CD 實踐。內容包括建立與部署現代網站與應用程式所需的基本工具與框架。",
             "tech": [
@@ -58,9 +74,14 @@
             "year": "2023",
             "sourceUrl": "https://github.com/yuzen9622/web3",
             "previewUrl": "https://web3-six-omega.vercel.app/",
-            "type": "web"
+            "type": "web",
+            "content": {
+                "overview": "網頁技術導論是一個教學性質的網站，目標是幫助初學者快速掌握現代 Web 開發的基本概念與工具。內容涵蓋 HTML、CSS 與 JavaScript 的基礎教學，同時也簡介後端技術與 CI/CD 自動化流程。網站本身以教學展示為核心，結合實際案例與程式碼範例，讓學習者能快速上手並應用於自己的專案中。此專案展現了我在技術整理與知識分享上的能力。",
+                "feature": "• 提供 HTML、CSS 與 JavaScript 的基礎知識教學。\n• 涵蓋前後端開發基礎，讓學習者對完整網站架構有初步理解。\n• 引入 CI/CD 概念，展示自動化部署的流程與工具。\n• 結合範例與程式碼展示，讓學習更貼近實際應用。\n• 採用響應式設計，提升學習過程的可用性。"
+            }
         },
         {
+            "id": 5,
             "title": "台灣天氣查詢 App",
             "description": "一款以 React 打造的天氣查詢應用程式，從中央氣象局 API 取得即時與三小時預報資訊。支援全台各地區查詢，具備行動裝置響應式設計，動態顯示溫度、濕度、風速與天氣狀況。",
             "tech": [
@@ -72,7 +93,11 @@
             "year": "2023",
             "sourceUrl": "https://github.com/yuzen9622/weather-app",
             "previewUrl": "https://yuzen9622.github.io/weather-app/",
-            "type": "web"
+            "type": "web",
+            "content": {
+                "overview": "台灣天氣查詢 App 是一款以 React 開發的天氣應用，資料來源來自中央氣象局 API，提供全台各地的即時天氣與三小時預報。介面設計以清晰的圖示與動態數據為特色，能即時顯示溫度、濕度、風速與天氣狀況，並支援手機與桌機使用。此專案展示了我在 API 串接、資料視覺化與使用者體驗設計上的能力。",
+                "feature": "• 連接中央氣象局 API，提供全台即時天氣與預報資料。\n• 動態顯示溫度、濕度、風速與天氣狀態。\n• 支援地區搜尋，快速查詢不同縣市的天氣資訊。\n• 介面設計簡潔，並透過圖示化呈現提升可讀性。\n• 響應式設計，支援行動裝置與桌面使用。"
+            }
         }
     ]
 }

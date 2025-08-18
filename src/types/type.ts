@@ -45,14 +45,16 @@ export type Card = {
 export type Award = { title: string; time: string; description: string };
 
 export type Skill = { title: string; process: number; group: string };
-
+export type ProjectContent = { overview: string; feature: string };
 export type Project = {
+  id: number;
   title: string;
   image: string;
   tech: TechType[];
   sourceUrl: string;
   previewUrl?: string;
   year: string;
+  content: ProjectContent;
   type: ProjectType;
   description: string;
 };

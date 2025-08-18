@@ -1,6 +1,7 @@
 import "./App.css";
 
-import { useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import Footer from "@/components/Footer";
@@ -11,12 +12,22 @@ import ContactPage from "@/pages/ContactPage";
 import HomePage from "@/pages/HomePage";
 import ProjectPage from "@/pages/ProjectPage";
 
+import ViewProjectCard from "./components/project/ui/ViewProjectCard";
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-
+  const [prevPath, setPrevPath] = useState<string | null>(null);
   useEffect(() => {
+    if (
+      pathname === prevPath ||
+      pathname.split("/").length > 2 ||
+      (prevPath && prevPath.split("/").length > 2)
+    )
+      return;
     window.scrollTo(0, 0); // Scrolls to the top-left of the window
-  }, [pathname]); // Re-run effect whenever the pathname changes
+
+    setPrevPath(pathname);
+  }, [pathname, prevPath]); // Re-run effect whenever the pathname changes
 
   return null; // This component doesn't render any visible UI
 };
@@ -36,11 +47,15 @@ function App() {
           hoverFillColor="transparent"
         />
       </div>
-      <Routes>
-        <Route path="" element={<HomePage />} />
-        <Route path="/projects" element={<ProjectPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
+      <AnimatePresence mode="wait">
+        <Routes>
+          <Route path="" element={<HomePage />} />
+          <Route path="/projects" element={<ProjectPage />}>
+            <Route path=":title" element={<ViewProjectCard />} />
+          </Route>
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </AnimatePresence>
       <Footer />
     </div>
   );

@@ -53,6 +53,13 @@
   --sidebar-ring: oklch(0.709 0.01 56.259);
 }
 
+@view-transition {
+  navigation: auto;
+}
+
+
+
+
 
 
 @theme inline {
@@ -130,6 +137,23 @@
   --sidebar-accent-foreground: oklch(0.985 0.001 106.423);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.553 0.013 58.071);
+}
+
+::selection {
+  background-color: var(--primary);
+  color: var(--background)
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  /* IE & Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari */
 }
 
 @layer base {

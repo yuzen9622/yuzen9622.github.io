@@ -1,8 +1,8 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import AnimatedContent from "@/components/gsap/animation/AnimatedContent";
 import Tool from "@/components/Navbar/Tool";
 import {
   NavigationMenu,
@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 export default function Navbar() {
   const { navigation, mySelf } = useProfile();
   const [isOpen, setIsOpen] = useState(false);
-
+  const MotionLink = motion(NavLink);
   return (
     <>
       <NavigationMenu className="p-3  w-11/12 rounded-full  h-fit hidden sm:block flex-none sticky top-2 z-10 bg-background/80  backdrop-blur-xs">
@@ -51,7 +51,7 @@ export default function Navbar() {
       <NavigationMenu
         className={cn(
           "p-3  w-11/12 max-w-none  h-fit  hidden max-sm:flex rounded-2xl justify-between flex-none sticky top-2 z-50  backdrop-blur-xs bg-background/80",
-          isOpen && "max-sm:backdrop-blur-none"
+          isOpen && "max-sm:backdrop-blur-none bg-transparent"
         )}
       >
         <NavLink to={"/"} className=" font-bold text-xl  text-primary">
@@ -70,26 +70,46 @@ export default function Navbar() {
           </div>
         </NavigationMenuList>
       </NavigationMenu>
-      {isOpen && (
-        <div className=" fixed z-10  bg-background/80  sm:hidden w-dvw h-dvh backdrop-blur-3xl flex justify-center flex-col items-center gap-10 ">
-          {navigation.map((item, index) => (
-            <AnimatedContent delay={index / 10} key={index}>
-              <NavLink
-                to={item.route}
-                onClick={() => setIsOpen(false)}
-                className={({ isActive }) =>
-                  cn(
-                    " px-4 py-2 text-4xl   transition ",
-                    isActive && " underline underline-offset-2"
-                  )
-                }
-              >
-                {item.title}
-              </NavLink>
-            </AnimatedContent>
-          ))}
-        </div>
-      )}
+      <AnimatePresence mode="wait">
+        {isOpen && (
+          <motion.div
+            key="menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className=" fixed z-10  bg-background/80  sm:hidden w-dvw h-dvh backdrop-blur-3xl flex justify-center flex-col items-center gap-10 "
+          >
+            <AnimatePresence mode="wait">
+              {isOpen &&
+                navigation.map((item, index) => (
+                  <MotionLink
+                    key={item.title}
+                    layout
+                    initial={{ y: 40, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{
+                      duration: 0.3,
+                      delay: index * 0.1,
+                      ease: "easeInOut",
+                    }}
+                    exit={{ y: 40, opacity: 0 }}
+                    to={item.route}
+                    onClick={() => setIsOpen(false)}
+                    className={({ isActive }) =>
+                      cn(
+                        " px-4 py-2 text-4xl    ",
+                        isActive && " underline underline-offset-2"
+                      )
+                    }
+                  >
+                    {item.title}
+                  </MotionLink>
+                ))}
+            </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
