@@ -1,15 +1,26 @@
+import { AtSign, MapPin } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+
+import { useProfile } from "@/hook/useProfile";
+
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Badge } from "./ui/badge";
-import { AtSign, MapPin } from "lucide-react";
-import { useProfile } from "@/hook/useProfile";
 
 export default function Footer() {
   const { navigation, mySelf } = useProfile();
+  const { t } = useTranslation("contact");
+  const socialLink = t("socialLink", { returnObjects: true });
+  const iconMap = {
+    Instagram: <FaInstagram size={18} />,
+    GitHub: <FaGithub size={18} />,
+    LinkedIn: <FaLinkedin size={18} />,
+  };
   return (
     <footer className="w-full min-h-60 dark:bg-none dark:border-t-2 backdrop-blur-xs bg-background flex flex-col items-center  justify-between gap-10  p-5">
       <section className="flex gap-3 lg:flex-row flex-col">
-        <div className="flex-1 text-center">
+        <div className="flex-1 text-center flex flex-col gap-3">
           <span className="flex items-center gap-3 space-y-1 justify-center">
             <Avatar className="  w-12   h-12 aspect-square">
               <AvatarImage
@@ -30,6 +41,18 @@ export default function Footer() {
           <span className="text-wrap text-primary font-bold">
             {mySelf.description}
           </span>
+          <div className="space-x-2 flex  justify-center">
+            {socialLink.map((link) => (
+              <NavLink
+                to={link.link}
+                target="_BLANK"
+                className=" z-10 hover:text-background relative group outline p-3 rounded-full"
+              >
+                <span className=" "> {iconMap[link.title]}</span>
+                <div className=" absolute transition-all -z-10 inset-0 w-full h-full rounded-3xl bg-primary scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100"></div>
+              </NavLink>
+            ))}
+          </div>
         </div>
         <div className="flex-1  space-y-1 text-center">
           <h1 className="text-xl font-extrabold">Quick Links</h1>
