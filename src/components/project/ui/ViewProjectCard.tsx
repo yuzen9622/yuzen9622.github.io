@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Github, SquareArrowOutUpRight } from "lucide-react";
+import { Github, Share2, SquareArrowOutUpRight } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
@@ -111,37 +111,66 @@ export default function ViewProjectCard() {
                     to={project?.previewUrl}
                     rel="noreferrer"
                     className={
-                      " flex cursor-pointer hover:bg-primary transition-all hover:text-background group text-xs bg-secondary p-2 rounded-3xl items-center gap-2 "
+                      " flex cursor-pointer  relative transition-all hover:text-background  group text-xs bg-secondary  rounded-3xl items-center gap-2  "
                     }
                   >
-                    <p className="translate-x-3 group-hover:translate-0 transition-all">
-                      Visit
-                    </p>
+                    <div className=" absolute transition-all inset-0 w-full h-full rounded-3xl bg-primary scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100"></div>
+                    <span className="flex gap-2 p-2">
+                      <p className="translate-x-3  group-hover:translate-0 transition-all">
+                        Visit
+                      </p>
 
-                    <SquareArrowOutUpRight
-                      className="-translate-x-4 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-0"
-                      size={16}
-                    />
+                      <SquareArrowOutUpRight
+                        className="-translate-x-4 opacity-0 group-hover:opacity-100  transition-all group-hover:translate-0"
+                        size={16}
+                      />
+                    </span>
                   </NavLink>
                 )}
                 <NavLink
                   className={
-                    " flex text-xs bg-secondary p-2 group z-10 rounded-3xl items-center gap-2  "
+                    " relative hover:text-background flex text-xs bg-secondary group z-10 rounded-3xl items-center  "
                   }
                   rel="noreferrer"
                   target="_BLANK"
                   onClick={(e) => e.stopPropagation()}
                   to={project?.sourceUrl}
                 >
-                  {" "}
-                  <p className="translate-x-3 group-hover:translate-0 transition-all">
-                    Source Code
-                  </p>
-                  <Github
-                    className="-translate-x-4 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-0"
-                    size={16}
-                  />
+                  <div className=" absolute transition-all inset-0 w-full h-full rounded-3xl bg-primary scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100"></div>
+                  <span className="flex gap-2 p-2">
+                    <p className="translate-x-3  group-hover:translate-0 transition-all">
+                      Source Code
+                    </p>
+                    <Github
+                      className="-translate-x-4 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-0"
+                      size={16}
+                    />
+                  </span>
                 </NavLink>
+                <button
+                  className={
+                    " relative hover:text-background flex text-xs bg-secondary group z-10 rounded-3xl items-center  "
+                  }
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigator.share({
+                      title: `Project - ${project.title}`,
+                      text: project.description,
+                      url: `https://yuzen9622.github.io/projects/${project.id}`,
+                    });
+                  }}
+                >
+                  <div className=" absolute transition-all inset-0 w-full h-full rounded-3xl bg-primary scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100"></div>
+                  <span className="flex gap-2 p-2">
+                    <p className="translate-x-3  group-hover:translate-0 transition-all">
+                      Share
+                    </p>
+                    <Share2
+                      className="-translate-x-4 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-0"
+                      size={16}
+                    />
+                  </span>
+                </button>
               </CardAction>
             </CardHeader>
             <CardContent className="space-y-1">

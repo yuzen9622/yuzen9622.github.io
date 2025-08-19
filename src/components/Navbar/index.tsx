@@ -36,9 +36,7 @@ export default function Navbar() {
                   }
                   to={item.route}
                 >
-                  <span className={cn(`group-hover/a:after:translate-0`)}>
-                    {item.title}
-                  </span>
+                  <span>{item.title}</span>
                 </NavLink>
               </NavigationMenuItem>{" "}
             </li>
