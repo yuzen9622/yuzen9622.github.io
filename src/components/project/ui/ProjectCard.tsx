@@ -31,7 +31,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   };
 
   return (
-    <div className={" relative w-full h-full cursor-pointer overflow-hidden"}>
+    <div className={"  cursor-none relative w-full h-full  overflow-hidden"}>
       <Card
         onClick={handleClick}
         ref={divRef}
@@ -49,8 +49,8 @@ export default function ProjectCard({ project }: { project: Project }) {
               className="  w-full    h-full  group-hover:scale-110 transition-all"
             />
             {project.previewUrl && (
-              <div className=" absolute inset-0 w-full grid   place-content-center h-full group-hover:bg-secondary/70 group-hover:opacity-100 transition-opacity opacity-0 ">
-                <CircularText text={"Get*In*Touch*"} />
+              <div className="  absolute inset-0 w-full grid   place-content-center h-full group-hover:bg-secondary/70 group-hover:opacity-100 transition-opacity opacity-0 ">
+                <CircularText className="cursor-none" text={"Get*In*Touch*"} />
               </div>
             )}
           </div>
@@ -83,30 +83,6 @@ export default function ProjectCard({ project }: { project: Project }) {
         <CardContent>
           <CardDescription>{project.description}</CardDescription>
         </CardContent>
-        {/* <CardFooter className=" flex gap-2">
-          {project.previewUrl && (
-            <NavLink
-              viewTransition
-              onClick={(e) => e.stopPropagation()}
-              to={`/projects/${project.id}`}
-              className={
-                " flex cursor-pointer text-xs bg-secondary p-2 rounded-3xl items-center gap-2 "
-              }
-              type="button"
-            >
-              Visit <SquareArrowOutUpRight size={16} />
-            </NavLink>
-          )}
-          <NavLink
-            className={
-              " flex text-xs bg-secondary p-2 z-10 rounded-3xl items-center gap-2  "
-            }
-            onClick={(e) => e.stopPropagation()}
-            to={project.sourceUrl}
-          >
-            Source Code <Github size={16} />
-          </NavLink>
-        </CardFooter> */}
       </Card>
     </div>
   );

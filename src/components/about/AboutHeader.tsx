@@ -1,13 +1,14 @@
-import { TypeAnimation } from "react-type-animation";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { AtSign, MapPin } from "lucide-react";
-import SplitText from "../gsap/text/SplitText";
-import CircularText from "../gsap/text/CircularText";
-
 import { useTranslation } from "react-i18next";
+import { TypeAnimation } from "react-type-animation";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+
 import InMotionDiv from "../animations/InMotionDiv";
+import CircularText from "../gsap/text/CircularText";
+import SplitText from "../gsap/text/SplitText";
 import MaskText from "./ui/MaskText";
 
 export default function AboutHeader() {
@@ -32,7 +33,7 @@ export default function AboutHeader() {
                   text={t("mySelf.circularText")}
                   onHover="pause"
                   spinDuration={20}
-                  className=" w-full h-full   text-white"
+                  className=" w-full h-full  cursor-pointer  text-white"
                 />
               </div>
             </Avatar>

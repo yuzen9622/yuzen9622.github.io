@@ -1,5 +1,6 @@
-import { useEffect, useState, type RefObject } from "react";
+import { useEffect, useState } from "react";
 
+import type { RefObject } from "react";
 export const useMousePosition = (ref: RefObject<HTMLElement | null>) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   useEffect(() => {
@@ -7,8 +8,8 @@ export const useMousePosition = (ref: RefObject<HTMLElement | null>) => {
       if (!ref?.current) return;
       const rect = ref.current.getBoundingClientRect();
       setPosition({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
+        x: e.clientX - rect.left - 20,
+        y: e.clientY - rect.top - 25,
       });
     };
     window.addEventListener("mousemove", getPosition);

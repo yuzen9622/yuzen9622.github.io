@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
 import {
   motion,
+  MotionValue,
   useAnimation,
   useMotionValue,
-  MotionValue,
 } from "framer-motion";
+import React, { useEffect } from "react";
+
 import type { Transition } from "framer-motion";
 interface CircularTextProps {
   text: string;
@@ -101,7 +102,7 @@ const CircularText: React.FC<CircularTextProps> = ({
 
   return (
     <motion.div
-      className={`m-0 mx-auto rounded-full w-[200px] h-[200px] relative font-black  text-center cursor-pointer origin-center ${className}`}
+      className={`m-0 mx-auto rounded-full w-[200px] h-[200px] relative font-black  text-center origin-center ${className}`}
       style={{ rotate: rotation }}
       initial={{ rotate: 0 }}
       animate={controls}
