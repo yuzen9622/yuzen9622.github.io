@@ -1,6 +1,7 @@
-import { useMousePosition } from "@/hook/useMousePosition";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
+
+import { useMousePosition } from "@/hook/useMousePosition";
 
 export default function MaskText() {
   const maskDiv = useRef<HTMLDivElement>(null);
@@ -30,10 +31,11 @@ export default function MaskText() {
         onMouseEnter={handleMouseIn}
         onMouseLeave={handleMouseOut}
         ref={maskDiv}
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0, webkitMaskSize: "50px", maskSize: "50px" }}
         animate={{
           webkitMaskPosition: `${x - 200 / 2}px ${y - 200 / 2}px`,
           opacity: isHover ? 1 : 0,
+          maskSize: isHover ? "200px" : "50px",
           webkitMaskSize: isHover ? "200px" : "50px",
         }}
         transition={{ type: "tween", ease: "backOut", duration: 0.5 }}

@@ -61,7 +61,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             </h1>
             <div className="*:data-[slot=avatar]:ring-background flex *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale  transition-all group-hover:translate-y-3.5">
               {project.tech.map((item) => (
-                <Tooltip>
+                <Tooltip key={item}>
                   <TooltipTrigger className="duration-300 group-hover:ml-2 -ml-2">
                     <Avatar className="">
                       <AvatarImage

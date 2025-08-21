@@ -32,7 +32,7 @@ export default function ViewProjectCard() {
 
   const navigate = useNavigate();
   const project = projects.find((pro) => `${pro.id}` === title);
-  const MotionCard = motion(Card);
+  const MotionCard = motion.create(Card);
   const handleClose = () => {
     if (document.startViewTransition) {
       // 使用 ViewTransition API
@@ -78,7 +78,7 @@ export default function ViewProjectCard() {
                 <img
                   src={`/${project.image}`}
                   alt={project.title}
-                  className="  w-full   h-full   transition-all"
+                  className="  w-full  aspect-video object-cover  h-full   transition-all"
                 />
               </div>
 
@@ -86,7 +86,7 @@ export default function ViewProjectCard() {
                 <SplitText text={project.title} className="text-3xl  " />
                 <div className="*:data-[slot=avatar]:ring-background flex *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale  transition-all ">
                   {project?.tech.map((item) => (
-                    <Tooltip>
+                    <Tooltip key={item}>
                       <TooltipTrigger className="p-1">
                         <Avatar>
                           <AvatarImage
@@ -180,7 +180,7 @@ export default function ViewProjectCard() {
             <CardContent className="space-y-2 space-x-2">
               <h1 className="text-2xl">Tech Stack</h1>
               {project.tech.map((item) => (
-                <Badge className="text-center" variant={"secondary"}>
+                <Badge className="text-center" key={item} variant={"secondary"}>
                   <Avatar>
                     <AvatarImage
                       className="   p-2  "

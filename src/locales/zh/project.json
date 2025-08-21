@@ -10,7 +10,7 @@
                 "supabase",
                 "tailwindcss"
             ],
-            "image": "project/chatto.png",
+            "image": "project/chatto.webp",
             "year": "2025",
             "sourceUrl": "https://github.com/yuzen9622/chat.to",
             "previewUrl": "https://chat-to-sage.vercel.app/introduce",
@@ -30,7 +30,7 @@
                 "html5",
                 "css"
             ],
-            "image": "project/dcard.png",
+            "image": "project/dcard.webp",
             "year": "2025",
             "sourceUrl": "https://github.com/yuzen9622/Dcard",
             "previewUrl": "https://dcard-rosy.vercel.app/category/",
@@ -51,7 +51,7 @@
                 "nodedotjs",
                 "css"
             ],
-            "image": "project/微財.png",
+            "image": "project/微財.webp",
             "year": "2024",
             "sourceUrl": "https://github.com/yuzen9622/Account-App",
             "previewUrl": "https://account-app-phi.vercel.app/",
@@ -70,7 +70,7 @@
                 "css",
                 "javascript"
             ],
-            "image": "project/web3.png",
+            "image": "project/web3.webp",
             "year": "2023",
             "sourceUrl": "https://github.com/yuzen9622/web3",
             "previewUrl": "https://web3-six-omega.vercel.app/",
@@ -89,7 +89,7 @@
                 "javascript",
                 "css"
             ],
-            "image": "project/weatherapp.png",
+            "image": "project/weatherapp.webp",
             "year": "2023",
             "sourceUrl": "https://github.com/yuzen9622/weather-app",
             "previewUrl": "https://yuzen9622.github.io/weather-app/",

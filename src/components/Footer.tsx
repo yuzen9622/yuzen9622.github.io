@@ -44,6 +44,7 @@ export default function Footer() {
           <div className="space-x-2 flex  justify-center">
             {socialLink.map((link) => (
               <NavLink
+                key={link.title}
                 to={link.link}
                 target="_BLANK"
                 className=" z-10 hover:text-background relative group outline p-3 rounded-full"

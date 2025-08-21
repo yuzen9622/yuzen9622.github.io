@@ -15,13 +15,13 @@ import { cn } from "@/lib/utils";
 export default function Navbar() {
   const { navigation, mySelf } = useProfile();
   const [isOpen, setIsOpen] = useState(false);
-  const MotionLink = motion(NavLink);
+  const MotionLink = motion.create(NavLink);
   return (
     <>
       <NavigationMenu className="p-3  w-11/12 rounded-full  h-fit hidden sm:block flex-none sticky top-2 z-10 bg-background/80  backdrop-blur-xs">
         <NavigationMenuList>
           {navigation.map((item, index) => (
-            <li>
+            <li key={item.title}>
               <NavigationMenuItem
                 asChild
                 key={index}
