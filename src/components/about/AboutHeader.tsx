@@ -17,7 +17,7 @@ export default function AboutHeader() {
   return (
     <div className="min-h-dvh flex flex-col">
       <InMotionDiv delay={0.2}>
-        <Card className="mx-auto relative w-11/12   justify-center border-none shadow-none  flex lg:flex-row items-center bg-transparent   flex-col   ">
+        <Card className="mx-auto  w-11/12   justify-center border-none shadow-none  flex lg:flex-row items-center bg-transparent   flex-col   ">
           <CardContent className="h-full w-fit ">
             <Avatar className="  relative w-3xs   h-full aspect-square">
               <AvatarImage
@@ -38,19 +38,21 @@ export default function AboutHeader() {
               </div>
             </Avatar>
           </CardContent>
-          <CardContent className="h-full flex justify-center   lg:items-start items-center flex-col gap-5 ">
-            <h1 className="lg:text-5xl text-4xl font-extrabold text-primary">
+          <CardContent className="  h-full flex justify-center   lg:items-start items-center flex-col gap-5 ">
+            <h1 className=" relative lg:text-5xl text-4xl font-extrabold text-primary">
               {t("mySelf.name")}
             </h1>
+            <>
+              <TypeAnimation
+                key={i18n.language}
+                sequence={t("mySelf.bio", { returnObjects: true })}
+                speed={30}
+                className="  lg:text-2xl text-lg text-white relative   font-bold bg-blue-600 w-fit rounded-md p-2"
+                repeat={Infinity}
+              />
+            </>
 
-            <TypeAnimation
-              key={i18n.language}
-              sequence={t("mySelf.bio", { returnObjects: true })}
-              speed={30}
-              className=" lg:text-2xl text-lg text-white   font-bold bg-blue-600 w-fit rounded-md p-2"
-              repeat={Infinity}
-            />
-            <div className=" flex gap-3 lg:justify-start justify-center max-sm:flex-col items-center">
+            <div className=" relative flex gap-3 lg:justify-start justify-center max-sm:flex-col items-center">
               <Badge asChild variant={"outline"}>
                 <a
                   target="_BLANK"

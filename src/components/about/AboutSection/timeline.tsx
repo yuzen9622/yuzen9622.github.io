@@ -45,7 +45,7 @@ export default function Timeline({
           </div>
           <div
             className={cn(
-              " sticky top-0 w-6/12  flex ",
+              " sticky top-0 w-6/12 group flex ",
               index % 2 == 0
                 ? "justify-end pr-4 text-end"
                 : "justify-start pl-4"
@@ -53,10 +53,12 @@ export default function Timeline({
           >
             <span>
               {time && (
-                <p className="text-sm text-secondary-foreground/70 ">{time}</p>
+                <p className="text-lg text-secondary-foreground/70 ">{time}</p>
               )}
-              <h3 className="text-lg font-bold ">{title}</h3>
-              <p className="text-xs text-secondary-foreground/70">
+              <h3 className="text-xl font-bold   group-hover:underline">
+                {title}
+              </h3>
+              <p className="text-sm text-secondary-foreground/70">
                 {description}
               </p>
             </span>
