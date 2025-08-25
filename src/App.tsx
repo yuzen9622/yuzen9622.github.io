@@ -34,7 +34,7 @@ const ScrollToTop = () => {
 
 function App() {
   return (
-    <div className="  relative w-full flex  bg-transparent   items-center flex-col gap-5 min-h-screen z-10  ">
+    <div className="  relative w-full flex  bg-transparent   items-center flex-col min-h-screen z-10  ">
       <Navbar />
       <ScrollToTop />
       <Toaster richColors />

@@ -46,7 +46,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             <img
               src={`/${project.image}`}
               alt={project.title}
-              className="  w-full    h-full  group-hover:scale-110 transition-all"
+              className="  w-full  aspect-video object-cover   h-full  group-hover:scale-110 transition-all"
             />
             {project.previewUrl && (
               <div className="  absolute inset-0 w-full grid   place-content-center h-full group-hover:bg-secondary/70 group-hover:opacity-100 transition-opacity opacity-0 ">

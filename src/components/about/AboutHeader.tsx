@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { AtSign, MapPin } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { TypeAnimation } from "react-type-animation";
@@ -8,16 +9,15 @@ import { Card, CardContent } from "@/components/ui/card";
 
 import InMotionDiv from "../animations/InMotionDiv";
 import CircularText from "../gsap/text/CircularText";
-import SplitText from "../gsap/text/SplitText";
 import MaskText from "./ui/MaskText";
 
 export default function AboutHeader() {
   const { t, i18n } = useTranslation("about");
 
   return (
-    <>
+    <div className="min-h-dvh flex flex-col">
       <InMotionDiv delay={0.2}>
-        <Card className=" w-11/12 min-h-1/3  flex lg:flex-row items-center dark:bg-none backdrop-blur-xs bg-background/80  flex-col   ">
+        <Card className="mx-auto relative w-11/12   justify-center border-none shadow-none  flex lg:flex-row items-center bg-transparent   flex-col   ">
           <CardContent className="h-full w-fit ">
             <Avatar className="  relative w-3xs   h-full aspect-square">
               <AvatarImage
@@ -38,7 +38,7 @@ export default function AboutHeader() {
               </div>
             </Avatar>
           </CardContent>
-          <CardContent className="h-full flex justify-center  w-full lg:items-start items-center flex-col gap-5 ">
+          <CardContent className="h-full flex justify-center   lg:items-start items-center flex-col gap-5 ">
             <h1 className="lg:text-5xl text-4xl font-extrabold text-primary">
               {t("mySelf.name")}
             </h1>
@@ -70,39 +70,17 @@ export default function AboutHeader() {
               </Badge>
             </div>
           </CardContent>
-          <CardContent className="h-full flex justify-center  w-full lg:text-start text-center flex-col gap-5 ">
-            <SplitText
-              text={t("mySelf.call")}
-              className="text-3xl font-semibold text-center"
-              delay={100}
-              duration={0.6}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.1}
-              rootMargin="-100px"
-              textAlign="center"
-            />
-            <SplitText
-              text="Small Z"
-              className="text-5xl font-semibold text-center"
-              delay={100}
-              duration={0.6}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.1}
-              rootMargin="-100px"
-              textAlign="center"
-            />{" "}
-          </CardContent>
-        </Card>{" "}
+        </Card>
       </InMotionDiv>
-      <InMotionDiv delay={0.4}>
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        transition={{ duration: 0.6, ease: "easeInOut", delay: 0.5 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="h-full flex-1 flex  justify-center"
+      >
         <MaskText />
-      </InMotionDiv>
-    </>
+      </motion.div>
+    </div>
   );
 }

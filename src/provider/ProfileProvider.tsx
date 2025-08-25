@@ -1,4 +1,3 @@
-import { Calendar, Code, Github } from "lucide-react";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 import i18n from "@/i18n";
@@ -43,17 +42,14 @@ const initialState: ProfileProviderState = {
   ],
   myCard: [
     {
-      icon: <Calendar size={30} />,
       title: i18n.t("myCard.0.title"),
       description: i18n.t("myCard.0.description"),
     },
     {
-      icon: <Github size={30} />,
       title: i18n.t("myCard.1.title"),
       description: i18n.t("myCard.1.description"),
     },
     {
-      icon: <Code size={30} />,
       title: i18n.t("myCard.2.title"),
       description: i18n.t("myCard.2.description"),
     },

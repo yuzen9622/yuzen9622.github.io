@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import type { Theme, SystemTheme } from "@/types/type";
+
 import { ThemeProviderContext } from "./ThemeContextProvider";
+
+import type { Theme, SystemTheme } from "@/types/type";
 type ThemeProviderProps = {
   children: React.ReactNode;
   defaultTheme?: Theme;
@@ -17,19 +19,19 @@ export function ThemeProvider({
     () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
   );
   const [systemTheme, setSystemTheme] = useState<SystemTheme>("dark");
-
+  const [isDark, setIsDark] = useState(false);
   useEffect(() => {
     const root = window.document.documentElement;
 
     root.classList.remove("light", "dark");
-
+    setIsDark(theme === "dark");
     if (theme === "system") {
       const systemTheme: SystemTheme = window.matchMedia(
         "(prefers-color-scheme: dark)"
       ).matches
         ? "dark"
         : "light";
-
+      setIsDark(systemTheme === "dark");
       root.classList.add(systemTheme);
       setSystemTheme(systemTheme);
       return;
@@ -43,9 +45,12 @@ export function ThemeProvider({
     systemTheme,
     setTheme: (theme: Theme) => {
       localStorage.setItem(storageKey, theme);
-
+      setIsDark(
+        (theme === "system" && systemTheme === "dark") || theme === "dark"
+      );
       setTheme(theme);
     },
+    isDark,
   };
 
   return (

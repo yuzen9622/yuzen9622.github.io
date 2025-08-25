@@ -18,7 +18,7 @@ export default function Footer() {
     LinkedIn: <FaLinkedin size={18} />,
   };
   return (
-    <footer className="w-full min-h-60 dark:bg-none dark:border-t-2 backdrop-blur-xs bg-background flex flex-col items-center  justify-between gap-10  p-5">
+    <footer className="w-full min-h-60 mt-5 dark:bg-none dark:border-t-2 backdrop-blur-xs bg-background flex flex-col items-center  justify-between gap-10  p-5">
       <section className="flex gap-3 lg:flex-row flex-col">
         <div className="flex-1 text-center flex flex-col gap-3">
           <span className="flex items-center gap-3 space-y-1 justify-center">

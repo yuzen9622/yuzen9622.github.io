@@ -5,16 +5,15 @@ import {
   Puzzle,
   SquareFunction,
 } from "lucide-react";
+import { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
+import InMotionDiv from "../animations/InMotionDiv";
 import RotatingText from "../gsap/text/RotatingText";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-
-import { useMemo, useState } from "react";
 import SkillGrid from "./ui/SkillGrid";
-import { useTranslation } from "react-i18next";
-import InMotionDiv from "../animations/InMotionDiv";
+
 import type { SkillGroup } from "@/types/type";
 
 export default function AboutSkill() {
@@ -28,8 +27,8 @@ export default function AboutSkill() {
   }, [group, mySkill, t]);
 
   return (
-    <InMotionDiv>
-      <Card className="bg-background/80 backdrop-blur-xs border-0 p-5  shadow-lg w-11/12 ">
+    <InMotionDiv className="">
+      <Card className="  mx-auto bg-background/80 backdrop-blur-xs border-0 p-5  shadow-lg w-11/12 ">
         <CardHeader>
           <CardTitle className="flex items-center gap-3   ">
             <Card className=" text-primary  p-2 rounded-md ">

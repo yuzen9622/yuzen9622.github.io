@@ -29,14 +29,9 @@
         "avatar": "/avatar.webp",
         "description": "Hi, I'm Small Z (18y)! Now studying in the five-year program at National Taichung University of Science and Technology (NUTC).",
         "phone": "+886965303635",
-        "content": "I'm a 3rd-year Information Management student at NUTC, passionate about web development and building practical applications. I focus on full-stack development and enjoy turning ideas into functional solutions."
+        "content": "I'm a third-year Information Management student at NUTC. I love programming and web design. I enjoy working on my own projects and working with others, as this helps me to learn and grow. I specialise in full-stack development, and I have experience with databases and backend RESTful APIs. In the past, I thought that getting good results was the most important thing. But now I know that planning and preparation are also very important for a software engineer."
     },
     "myAward": [
-        {
-            "title": "APCS",
-            "time": "2025-06-14",
-            "description": "Implementation Level 3, Concept Level 4"
-        },
         {
             "title": "LungHwa CPC",
             "time": "2025-06-09",
@@ -46,21 +41,28 @@
             "title": "TQC Python",
             "time": "2025-06-13",
             "description": ""
+        },
+        {
+            "title": "APCS",
+            "time": "2025-06-14",
+            "description": "Implementation Level 3, Concept Level 4"
+        },
+        {
+            "title": "YTP（Young Turing Program）",
+            "time": "2025-08-23",
+            "description": "Final Contest"
         }
     ],
     "myCard": [
         {
-            "icon": "calendar",
             "title": "2+",
             "description": "Years experience"
         },
         {
-            "icon": "github",
             "title": "10+",
             "description": "Projects"
         },
         {
-            "icon": "code",
             "title": "3+",
             "description": "Programming languages"
         }

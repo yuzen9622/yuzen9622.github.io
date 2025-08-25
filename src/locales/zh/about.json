@@ -27,16 +27,11 @@
         "circularText": "創意＊工程師＊夢想＊實現者＊",
         "email": "oscar48079@gmail.com",
         "avatar": "/avatar.webp",
-        "description": "嗨，我是 Small Z（17 歲）！目前就讀國立臺中科技大學五專部。",
+        "description": "嗨，我是 Small Z（18 歲）！目前就讀國立臺中科技大學五專部。",
         "phone": "+886965303635",
-        "content": "我是一位就讀臺中科大資管科三年級的學生，熱衷於網頁開發與實作應用，專注於全端開發，喜歡把想法實現為功能完善的解決方案。"
+        "content": "我來自國立台中科技大學（NUTC），目前是一位資訊管理三年級學生，自從上了五專對程式與網頁設計有了極大的興趣，平常喜歡寫寫side project，也歡迎跟我一起合作與交流，一直都相信與人想處更能了解自己的不足，我目前是做全端開發，碰過資料庫、後端RESTful API的開發，但未來想走純後端，僅管沒有很深入，但是也帶給我多啟發，以前總是在意要快速產出東西，但是後來慢慢發現，系統架構設計與文檔，才是軟體工程師最大的功課，所以越來越注重系統設計與程式碼質量。"
     },
     "myAward": [
-        {
-            "title": "APCS",
-            "time": "2025-06-14",
-            "description": "實作三級分，觀念四級分"
-        },
         {
             "title": "龍華程式競賽",
             "time": "2025-06-09",
@@ -46,21 +41,28 @@
             "title": "TQC Python",
             "time": "2025-06-13",
             "description": ""
+        },
+        {
+            "title": "APCS",
+            "time": "2025-06-14",
+            "description": "實作三級分，觀念四級分"
+        },
+        {
+            "title": "YTP（少年圖鈴計畫）",
+            "time": "2025-08-23",
+            "description": "決賽"
         }
     ],
     "myCard": [
         {
-            "icon": "calendar",
             "title": "2+",
             "description": "年開發經驗"
         },
         {
-            "icon": "github",
             "title": "10+",
             "description": "專案數量"
         },
         {
-            "icon": "code",
             "title": "3+",
             "description": "使用的程式語言"
         }

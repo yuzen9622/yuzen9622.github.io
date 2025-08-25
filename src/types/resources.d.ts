@@ -30,7 +30,7 @@ interface Resources {
       "avatar": "/avatar.webp",
       "description": "Hi, I'm Small Z (18y)! Now studying in the five-year program at National Taichung University of Science and Technology (NUTC).",
       "phone": "+886965303635",
-      "content": "I'm a 3rd-year Information Management student at NUTC, passionate about web development and building practical applications. I focus on full-stack development and enjoy turning ideas into functional solutions."
+      "content": "I'm a third-year Information Management student at NUTC. I love programming and web design. I enjoy working on my own projects and working with others, as this helps me to learn and grow. I specialise in full-stack development, and I have experience with databases and backend RESTful APIs. In the past, I thought that getting good results was the most important thing. But now I know that planning and preparation are also very important for a software engineer."
     },
     "myAward": [
       {
@@ -51,17 +51,14 @@ interface Resources {
     ],
     "myCard": [
       {
-        "icon": "calendar",
         "title": "2+",
         "description": "Years experience"
       },
       {
-        "icon": "github",
         "title": "10+",
         "description": "Projects"
       },
       {
-        "icon": "code",
         "title": "3+",
         "description": "Programming languages"
       }
@@ -166,7 +163,7 @@ interface Resources {
           "supabase",
           "tailwindcss"
         ],
-        "image": "project/chatto.png",
+        "image": "project/chatto.webp",
         "year": "2025",
         "sourceUrl": "https://github.com/yuzen9622/chat.to",
         "previewUrl": "https://chat-to-sage.vercel.app/introduce",
@@ -186,14 +183,14 @@ interface Resources {
           "html5",
           "css"
         ],
-        "image": "project/dcard.png",
+        "image": "project/dcard.webp",
         "year": "2025",
         "sourceUrl": "https://github.com/yuzen9622/Dcard",
         "previewUrl": "https://dcard-rosy.vercel.app/category/",
         "type": "web",
         "content": {
           "overview": "Dcard Clone is a blog-style web application inspired by popular social forums. Built with Django, it combines powerful backend capabilities with a straightforward user experience. The platform allows registered users to create posts, leave comments, and browse content with efficient categorization and pagination. With Bootstrap, the layout remains responsive across devices, while Django's admin panel offers simple management tools for site administrators.",
-          "feature": "User authentication and session management, article publishing and editing, comment system for interactive discussions, content categorization and pagination, Django admin integration for content management, mobile-friendly responsive design with Bootstrap."
+          "feature": "User authentication and session management, article publishing and editing, comment system for interactive discussions, content categorization and pagination, Django admin integration for content management, mobile-friendly responsive design."
         }
       },
       {
@@ -207,7 +204,7 @@ interface Resources {
           "nodedotjs",
           "css"
         ],
-        "image": "project/微財.png",
+        "image": "project/微財.webp",
         "year": "2024",
         "sourceUrl": "https://github.com/yuzen9622/Account-App",
         "previewUrl": "https://account-app-phi.vercel.app/",
@@ -226,7 +223,7 @@ interface Resources {
           "css",
           "javascript"
         ],
-        "image": "project/web3.png",
+        "image": "project/web3.webp",
         "year": "2023",
         "sourceUrl": "https://github.com/yuzen9622/web3",
         "previewUrl": "https://web3-six-omega.vercel.app/",
@@ -245,7 +242,7 @@ interface Resources {
           "javascript",
           "css"
         ],
-        "image": "project/weatherapp.png",
+        "image": "project/weatherapp.webp",
         "year": "2023",
         "sourceUrl": "https://github.com/yuzen9622/weather-app",
         "previewUrl": "https://yuzen9622.github.io/weather-app/",

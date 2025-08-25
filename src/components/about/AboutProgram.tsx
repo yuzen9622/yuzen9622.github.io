@@ -1,4 +1,9 @@
 import { ChevronRight, Code } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { NavLink } from "react-router-dom";
+
+import InMotionDiv from "../animations/InMotionDiv";
+import TrueFocus from "../gsap/text/TrueFoucsText";
 import {
   Card,
   CardContent,
@@ -6,11 +11,6 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import TrueFocus from "../gsap/text/TrueFoucsText";
-import { NavLink } from "react-router-dom";
-
-import { useTranslation } from "react-i18next";
-import InMotionDiv from "../animations/InMotionDiv";
 
 export default function AboutProgram() {
   const { t } = useTranslation("about");

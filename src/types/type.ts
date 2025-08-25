@@ -37,7 +37,6 @@ export type User = {
 };
 
 export type Card = {
-  icon: JSX.Element;
   title: string;
   description: string;
 };
@@ -77,6 +76,7 @@ export type ThemeProviderState = {
   theme: Theme;
   systemTheme: SystemTheme;
   setTheme: (theme: Theme) => void;
+  isDark: boolean;
 };
 
 export type ProfileProviderState = {

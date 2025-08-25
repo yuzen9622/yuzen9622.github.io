@@ -1,20 +1,24 @@
 import { motion } from "framer-motion";
-import { type ReactNode } from "react";
+
+import type { HTMLMotionProps } from "framer-motion";
+type InMotionDivProps = HTMLMotionProps<"div"> & {
+  delay?: number;
+};
 
 export default function InMotionDiv({
   children,
+  className,
   delay = 0,
-}: {
-  children: ReactNode;
-  delay?: number;
-}) {
+  ...props
+}: InMotionDivProps) {
   return (
     <motion.div
-      className=" w-full flex  justify-center  "
+      className={className}
       initial={{ opacity: 0, y: 40 }}
-      transition={{ duration: 0.8, ease: "easeInOut", delay: delay }}
+      transition={{ duration: 0.6, ease: "easeInOut", delay: delay }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
+      {...props}
     >
       {children}
     </motion.div>
