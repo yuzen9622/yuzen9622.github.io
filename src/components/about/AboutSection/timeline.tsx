@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import { cn } from "@/lib/utils";
@@ -11,13 +11,16 @@ export default function Timeline({
 }) {
   const timelineRefs = useRef<HTMLSpanElement[]>([]);
   const { t } = useTranslation("about");
-  const myAward = t("myAward", { returnObjects: true }) as Award[];
+  const myAward = useMemo(
+    () => t("myAward", { returnObjects: true }) as Award[],
+    [t]
+  );
 
   useEffect(() => {
     timelineRefs.current.forEach((timelineRef) => {
       setObserver(timelineRef);
     });
-  }, [setObserver]);
+  }, [setObserver, myAward]);
 
   return (
     <div className=" relative flex flex-col h-full ">
@@ -26,7 +29,7 @@ export default function Timeline({
           key={title}
           className={cn(
             " relative  flex w-full min-h-36  flex-1",
-            index % 2 == 0 ? "  justify-start" : "justify-end"
+            index % 2 == 0 ? "justify-start" : "justify-end"
           )}
         >
           <div className=" absolute inset-0  flex  -z-0 items-center flex-col justify-between">

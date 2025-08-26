@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Fragment } from "react";
+import { Fragment, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Badge } from "@/components/ui/badge";
@@ -11,6 +11,9 @@ export default function Main() {
   const { t } = useTranslation("about");
   const cards = t("myCard", { returnObjects: true });
   const BadgeMotion = motion.create(Badge);
+  const techField = useMemo(() => {
+    return ["Frontend", "Backend", "SQL Design", "UI Design", "AI/ML"];
+  }, []);
   return (
     <div className="flex-1">
       <motion.p
@@ -24,56 +27,23 @@ export default function Main() {
       </motion.p>
       <Separator className="my-4 shadow-3xl shadow-background" />
       <div className="space-x-2 space-y-2 flex  items-center justify-around flex-wrap">
-        <BadgeMotion
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut", delay: 0.1 }}
-          viewport={{ once: true }}
-          className="p-2 text-bold text-lg    text-secondary-foreground/70 shadow-xl/20 shadow-accent-foreground"
-          variant={"outline"}
-        >
-          Frontend
-        </BadgeMotion>
-        <BadgeMotion
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut", delay: 0.2 }}
-          viewport={{ once: true }}
-          className="p-2 text-bold text-lg text-secondary-foreground/70 shadow-xl/20 shadow-accent-foreground"
-          variant={"outline"}
-        >
-          Backend
-        </BadgeMotion>
-        <BadgeMotion
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut", delay: 0.3 }}
-          viewport={{ once: true }}
-          className="p-2 text-bold  shadow-xl/20 shadow-accent-foreground text-lg text-secondary-foreground/70 "
-          variant={"outline"}
-        >
-          SQL Design
-        </BadgeMotion>
-        <BadgeMotion
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut", delay: 0.4 }}
-          viewport={{ once: true }}
-          className="p-2 text-bold text-lg text-secondary-foreground/70 shadow-xl/20 shadow-accent-foreground"
-          variant={"outline"}
-        >
-          UI Design
-        </BadgeMotion>
-        <BadgeMotion
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut", delay: 0.5 }}
-          viewport={{ once: true }}
-          className="p-2 text-bold text-lg text-secondary-foreground/70 shadow-xl/20 shadow-accent-foreground"
-          variant={"outline"}
-        >
-          AI / ML
-        </BadgeMotion>
+        {techField.map((field, index) => (
+          <BadgeMotion
+            key={field}
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.6,
+              ease: "easeInOut",
+              delay: index * 0.1,
+            }}
+            viewport={{ once: true }}
+            className="p-2 text-bold text-lg    text-secondary-foreground/70 shadow-xl/20 shadow-accent-foreground"
+            variant={"outline"}
+          >
+            {field}
+          </BadgeMotion>
+        ))}
       </div>
       <Separator className="my-4 shadow-3xl shadow-background" />
       <div className="flex items-center  justify-around">
