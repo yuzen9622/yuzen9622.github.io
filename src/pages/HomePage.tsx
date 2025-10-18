@@ -1,8 +1,7 @@
 import { Helmet } from "react-helmet";
 
-import AboutHeader from "@/components/about/AboutHeader";
+import AboutHero from "@/components/about/AboutHero";
 import AboutSection from "@/components/about/AboutSection";
-import AboutSkill from "@/components/about/AboutSkill";
 
 export default function AboutPage() {
   return (
@@ -11,11 +10,9 @@ export default function AboutPage() {
         <title>Yuzen - Developer</title>
       </Helmet>
       <div>
-        <AboutHeader />
+        <AboutHero />
         <AboutSection />
       </div>
-
-      <AboutSkill />
     </div>
   );
 }

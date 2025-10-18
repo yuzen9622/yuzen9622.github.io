@@ -49,9 +49,15 @@ export default function ProjectCard({ project }: { project: Project }) {
               className="  w-full  aspect-video object-cover   h-full  group-hover:scale-110 transition-all"
             />
             {project.previewUrl && (
-              <div className="  absolute inset-0 w-full grid   place-content-center h-full group-hover:bg-secondary/70 group-hover:opacity-100 transition-opacity opacity-0 ">
-                <CircularText className="cursor-none" text={"Get*In*Touch*"} />
-              </div>
+              <>
+                <div className="  absolute z-1 inset-0 w-full grid   place-content-center h-full ">
+                  <CircularText
+                    className="cursor-none"
+                    text={"Get*In*Touch*"}
+                  />
+                </div>
+                <div className="absolute inset-0 w-full h-full group-hover:bg-secondary/70 scale-50 group-hover:scale-100 group-hover:opacity-100 transition-all opacity-0 "></div>
+              </>
             )}
           </div>
 

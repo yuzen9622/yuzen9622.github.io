@@ -149,14 +149,15 @@ export default function ViewProjectCard() {
                 </NavLink>
                 <button
                   className={
-                    " relative hover:text-background flex text-xs bg-secondary group z-10 rounded-3xl items-center  "
+                    " relative hover:text-background  cursor-pointer flex text-xs bg-secondary group z-10 rounded-3xl items-center  "
                   }
+                  type="button"
                   onClick={(e) => {
                     e.stopPropagation();
                     navigator.share({
                       title: `Project - ${project.title}`,
                       text: project.description,
-                      url: `https://yuzen9622.github.io/projects/${project.id}`,
+                      url: `${project.previewUrl}`,
                     });
                   }}
                 >

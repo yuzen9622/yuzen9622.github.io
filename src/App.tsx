@@ -40,7 +40,7 @@ function App() {
       <Toaster richColors />
       <div className=" fixed inset-0 z-0 w-dvw h-dvh bg-white dark:bg-black">
         <Squares
-          speed={0.5}
+          speed={0.3}
           squareSize={40}
           direction="diagonal"
           borderColor="#ffffff "

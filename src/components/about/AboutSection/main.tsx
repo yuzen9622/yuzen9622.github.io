@@ -46,7 +46,7 @@ export default function Main() {
         ))}
       </div>
       <Separator className="my-4 shadow-3xl shadow-background" />
-      <div className="flex items-center  justify-around">
+      <div className="flex items-center  justify-around ">
         {cards.map((card, index) => (
           <Fragment key={index}>
             <ExperienceCard title={card.title} description={card.description} />

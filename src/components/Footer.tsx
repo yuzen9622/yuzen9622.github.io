@@ -92,7 +92,7 @@ export default function Footer() {
         </div>
       </section>
       <section>
-        <span className=" text-xs text-gray-400 font-bold    bg-secondary px-3 py-2 rounded-3xl">
+        <span className=" text-xs text-accent-foreground font-bold    bg-secondary px-3 py-2 rounded-3xl">
           Copyright © 2025 {mySelf.nickName}
         </span>
       </section>
