@@ -7,12 +7,12 @@ export default function ProjectHeader() {
       <GlitchText
         speed={0.5}
         enableShadows
-        className="  text-black! dark:text-white! text-5xl"
+        className="  text-black! dark:text-white! text-5xl "
       >
         Projects
       </GlitchText>
-      <span className="flex items-center gap-2  backdrop-blur-xs bg-background/80  rounded-md">
-        <p className=" text-4xl   font-extrabold p-2   ">Creative</p>
+      <span className="flex items-center gap-2  text-[clamp(1rem,3vw,1.5rem)] backdrop-blur-xs bbh-sans-bartle-regular bg-background/80  rounded-md">
+        <p className="    font-extrabold p-2   ">Creative</p>
 
         <RotatingText
           texts={["Design", "Idea", "Coding"]}
@@ -25,7 +25,7 @@ export default function ProjectHeader() {
           splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
           transition={{ type: "spring", damping: 30, stiffness: 400 }}
           rotationInterval={3000}
-          mainClassName=" bg-blue-600 text-4xl  p-2 rounded-md  text-white font-extrabold"
+          mainClassName=" bg-blue-600  p-2 rounded-md  text-white font-extrabold"
         />
       </span>
     </div>

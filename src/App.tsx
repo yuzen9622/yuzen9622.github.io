@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
@@ -40,34 +40,6 @@ function App() {
       <Toaster richColors />
 
       <div className=" fixed inset-0 z-0 w-dvw h-dvh   bg-white dark:bg-black">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            x: [-50, 50, 50, -50],
-            y: [50, 50, -50, 50],
-          }}
-          whileInView={{ opacity: 1 }}
-          transition={{
-            opacity: { duration: 3, ease: "linear" },
-            x: { duration: 5, repeat: Infinity, ease: "linear" },
-            y: { duration: 5, repeat: Infinity, ease: "linear" },
-          }}
-          className=" w-40  h-40 rounded-3xl absolute top-0 right-1/12  bg-green-300/70 dark:bg-green-500/70  blur-3xl "
-        ></motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            x: [50, 50, -50, 50],
-            y: [50, -50, -50, 50],
-          }}
-          transition={{
-            opacity: { duration: 3, ease: "linear" },
-            x: { duration: 5, repeat: Infinity, ease: "linear" },
-            y: { duration: 5, repeat: Infinity, ease: "linear" },
-          }}
-          whileInView={{ opacity: 1 }}
-          className=" w-40  h-40 rounded-3xl  absolute bottom-0  left-1/12 bg-blue-300/70 dark:bg-blue-500/70  blur-3xl "
-        ></motion.div>
         <Squares
           speed={0.0}
           squareSize={100}

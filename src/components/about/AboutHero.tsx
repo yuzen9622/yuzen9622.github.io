@@ -15,8 +15,36 @@ export default function AboutHeader() {
   const { t, i18n } = useTranslation("about");
 
   return (
-    <div className="min-h-dvh flex flex-col">
+    <div className="min-h-dvh relative flex flex-col">
       <InMotionDiv delay={0.2}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{
+            x: [-50, 50, 50, -50],
+            y: [50, 50, -50, 50],
+          }}
+          whileInView={{ opacity: 1 }}
+          transition={{
+            opacity: { duration: 3, ease: "linear" },
+            x: { duration: 5, repeat: Infinity, ease: "linear" },
+            y: { duration: 5, repeat: Infinity, ease: "linear" },
+          }}
+          className=" w-40  h-40 rounded-3xl absolute lg:top-32 right-1/12 top-2/4 transition-all  bg-green-300 dark:bg-green-500/70  blur-3xl "
+        ></motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{
+            x: [50, 50, -50, 50],
+            y: [50, -50, -50, 50],
+          }}
+          transition={{
+            opacity: { duration: 3, ease: "linear" },
+            x: { duration: 5, repeat: Infinity, ease: "linear" },
+            y: { duration: 5, repeat: Infinity, ease: "linear" },
+          }}
+          whileInView={{ opacity: 1 }}
+          className=" w-40  h-40 rounded-3xl  absolute bottom-0  left-1/12 bg-blue-300 dark:bg-blue-500/70  blur-3xl "
+        ></motion.div>
         <Card className="mx-auto  w-11/12   justify-center border-none shadow-none  flex lg:flex-row items-center bg-transparent   flex-col   ">
           <CardContent className="h-full relative w-fit ">
             <motion.div

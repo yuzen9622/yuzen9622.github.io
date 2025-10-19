@@ -11,7 +11,7 @@ export default function ContactHeader() {
       >
         Contact
       </GlitchText>
-      <span className="flex items-center gap-2">
+      <span className="flex items-center gap-2 text-[clamp(1rem,3vw,1.5rem)] bbh-sans-bartle-regular">
         <RotatingText
           texts={["Got an Idea?", "Need a Dev?", "Ping Me!"]}
           splitBy="characters"
@@ -23,7 +23,7 @@ export default function ContactHeader() {
           splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
           transition={{ type: "spring", damping: 30, stiffness: 400 }}
           rotationInterval={3000}
-          mainClassName=" bg-blue-600 text-4xl  p-2 rounded-md  text-white font-extrabold"
+          mainClassName=" bg-blue-600  p-2 rounded-md  text-white font-extrabold"
         />
       </span>
     </div>

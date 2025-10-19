@@ -39,7 +39,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       >
         <HoverCursor title={project.title} divRef={divRef} />
         <CardHeader className=" flex flex-col  gap-3">
-          <Badge>
+          <Badge className="">
             {project.type.toUpperCase()}．{project.year}
           </Badge>
           <div className="  relative w-full h-full flex rounded-lg items-center justify-center overflow-hidden">
@@ -50,19 +50,19 @@ export default function ProjectCard({ project }: { project: Project }) {
             />
             {project.previewUrl && (
               <>
-                <div className="  absolute z-1 inset-0 w-full grid   place-content-center h-full ">
+                <div className="  absolute z-1 inset-0 w-full grid opacity-0 group-hover:opacity-100  place-content-center h-full ">
                   <CircularText
                     className="cursor-none"
                     text={"Get*In*Touch*"}
                   />
                 </div>
-                <div className="absolute inset-0 w-full h-full group-hover:bg-secondary/70 scale-50 group-hover:scale-100 group-hover:opacity-100 transition-all opacity-0 "></div>
+                <div className="absolute inset-0 w-full h-full  group-hover:bg-secondary/70 scale-75 group-hover:scale-100 group-hover:opacity-100 transition-all opacity-75 "></div>
               </>
             )}
           </div>
 
           <CardTitle className="flex justify-between items-center w-full">
-            <h1 className="text-3xl group-hover:translate-3.5 transition-all pr-3">
+            <h1 className="text-3xl group-hover:translate-3.5 transition-all pr-3 ">
               {project.title}
             </h1>
             <div className="*:data-[slot=avatar]:ring-background flex *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale  transition-all group-hover:translate-y-3.5">

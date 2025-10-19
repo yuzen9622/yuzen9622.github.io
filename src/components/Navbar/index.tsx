@@ -18,7 +18,7 @@ export default function Navbar() {
   const MotionLink = motion.create(NavLink);
   return (
     <>
-      <NavigationMenu className="p-3  w-11/12 rounded-full  h-fit hidden sm:block flex-none sticky top-2 z-10 bg-background/80  backdrop-blur-xs">
+      <NavigationMenu className="p-3 border border-border  w-11/12 rounded-full  h-fit hidden sm:block flex-none sticky top-2 z-10 bg-background/80  backdrop-blur-xs">
         <NavigationMenuList>
           {navigation.map((item, index) => (
             <li key={item.title}>
