@@ -9,6 +9,7 @@
     "build": "tsc -b && vite build && copy dist\\index.html dist\\404.html",
     "lint": "eslint .",
     "preview": "vite preview",
+    "preinstall": "npx only-allow pnpm",
     "deploy": "gh-pages -d dist",
     "toc": "i18next-resources-for-ts toc -i ./src/locales/en -o ./src/types/resources.ts",
     "interface": "i18next-resources-for-ts interface ./src/locales/en -o ./src/types/resources.d.ts"

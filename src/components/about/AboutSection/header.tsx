@@ -49,7 +49,7 @@ export default function Header() {
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeInOut", delay: 0.5 }}
         viewport={{ once: true }}
-        className=" text-secondary-foreground font-bold text-center"
+        className=" text-secondary-foreground  font-bold text-center"
       >
         Below are details of my experience, honours and strengths.
       </motion.p>

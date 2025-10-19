@@ -5,11 +5,11 @@ import AboutSection from "@/components/about/AboutSection";
 
 export default function AboutPage() {
   return (
-    <div className="space-y-5">
+    <div className="w-full overflow-hidden">
       <Helmet>
         <title>Yuzen - Developer</title>
       </Helmet>
-      <div>
+      <div className="flex flex-col   overflow-hidden">
         <AboutHero />
         <AboutSection />
       </div>

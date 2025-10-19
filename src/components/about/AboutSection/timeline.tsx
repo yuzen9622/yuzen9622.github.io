@@ -23,13 +23,13 @@ export default function Timeline({
   }, [setObserver, myAward]);
 
   return (
-    <div className=" relative flex flex-col h-full ">
+    <div className="  flex flex-col h-full ">
       {myAward.map(({ title, time, description }, index) => (
         <div
           key={title}
           className={cn(
             " relative  flex w-full min-h-36  flex-1",
-            index % 2 == 0 ? "justify-start" : "justify-end"
+            index % 2 === 0 ? "justify-start" : "justify-end"
           )}
         >
           <div className=" absolute inset-0  flex  -z-0 items-center flex-col justify-between">

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 
 import InMotionDiv from "../animations/InMotionDiv";
-import TrueFocus from "../gsap/text/TrueFoucsText";
+import TrueFocus from "@/components/gsap/text/TrueFocusText";
 import {
   Card,
   CardContent,
