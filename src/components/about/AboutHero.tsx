@@ -47,14 +47,7 @@ export default function AboutHeader() {
         ></motion.div>
         <Card className="mx-auto  w-11/12   justify-center border-none shadow-none  flex lg:flex-row items-center bg-transparent   flex-col   ">
           <CardContent className="h-full relative w-fit ">
-            <motion.div
-              animate={{
-                x: [-25, 25, -25, 25, -25],
-                y: [25, -25, 25, -25, 25],
-              }}
-              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-              className=" w-40  h-40 rounded-3xl absolute bottom-0 -z-0 left-3/12  bg-primary/70 blur-3xl "
-            ></motion.div>
+            <motion.div className=" w-40  h-40 rounded-3xl absolute bottom-2/12 -z-0 left-3/12  bg-primary/70 blur-3xl "></motion.div>
             <Avatar className="  relative w-3xs  z-0  h-full aspect-square">
               <AvatarImage
                 className=" rounded-full"
