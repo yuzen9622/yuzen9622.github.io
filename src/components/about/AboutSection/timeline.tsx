@@ -58,9 +58,9 @@ export default function Timeline({
               {time && (
                 <p className="text-lg text-secondary-foreground/70 ">{time}</p>
               )}
-              <h3 className="text-xl font-bold   group-hover:underline">
+              <h1 className="text-xl font-bold   group-hover:underline">
                 {title}
-              </h3>
+              </h1>
               <p className="text-sm text-secondary-foreground/70">
                 {description}
               </p>

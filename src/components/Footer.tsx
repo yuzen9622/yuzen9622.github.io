@@ -46,6 +46,7 @@ export default function Footer() {
               <NavLink
                 key={link.title}
                 to={link.link}
+                aria-label={link.title}
                 target="_BLANK"
                 className=" z-10 hover:text-background relative group outline p-3 rounded-full"
               >
