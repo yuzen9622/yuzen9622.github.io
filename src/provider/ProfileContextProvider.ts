@@ -19,7 +19,7 @@ const initialState: ProfileProviderState = {
   },
   myAward: [],
   myCard: [],
-  mySkill: [],
+
   projects: [],
   socialLink: [],
   techIcons: {

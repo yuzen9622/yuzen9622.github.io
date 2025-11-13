@@ -43,7 +43,6 @@ export type Card = {
 
 export type Award = { title: string; time: string; description: string };
 
-export type Skill = { title: string; process: number; group: string };
 export type ProjectContent = { overview: string; feature: string };
 export type Project = {
   id: number;
@@ -82,10 +81,16 @@ export type ThemeProviderState = {
 export type ProfileProviderState = {
   navigation: Navigation[];
   mySelf: User;
-  mySkill: Skill[];
   myAward: Award[];
   myCard: Card[];
   projects: Project[];
   socialLink: SocialLink[];
   techIcons: TechIcon;
+};
+export type Skill = {
+  name: string;
+  icon: React.ReactNode;
+  color: string;
+  desc?: string;
+  gridClass: string;
 };

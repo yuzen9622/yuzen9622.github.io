@@ -11,7 +11,7 @@ export default function Header() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["30% 150%", "center 100%"],
+    offset: ["start center", "center center"],
   });
   // 根據滾動進度改變位置與透明度
   const xName = useTransform(scrollYProgress, [0, 1], [-40, 0]);

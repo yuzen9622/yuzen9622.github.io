@@ -39,7 +39,7 @@ const getTransition = (duration: number, from: number) => ({
 const CircularText: React.FC<CircularTextProps> = ({
   text,
   spinDuration = 20,
-  onHover = "speedUp",
+  onHover,
   className = "",
 }) => {
   const letters = Array.from(text);

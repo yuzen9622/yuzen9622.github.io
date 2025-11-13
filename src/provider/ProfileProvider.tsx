@@ -54,24 +54,7 @@ const initialState: ProfileProviderState = {
       description: i18n.t("myCard.2.description"),
     },
   ],
-  mySkill: [
-    {
-      title: i18n.t("mySkill.0.title"),
-      process: Number(i18n.t("mySkill.0.process")),
-      group: i18n.t("mySkill.0.group"),
-    },
-    { title: "TypeScript", process: 90, group: "programming" },
-    { title: "C++", process: 70, group: "programming" },
-    { title: "C", process: 60, group: "programming" },
-    { title: "Python", process: 50, group: "programming" },
-    { title: "Java", process: 40, group: "programming" },
-    { title: "React.js", process: 80, group: "framework" },
-    { title: "Next.js", process: 70, group: "framework" },
-    { title: "Express.js", process: 60, group: "framework" },
-    { title: "Git", process: 65, group: "other" },
-    { title: "MySQL", process: 50, group: "other" },
-    { title: "MongoDB", process: 55, group: "other" },
-  ],
+
   projects: [],
   socialLink: [
     {

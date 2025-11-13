@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Separator } from "@/components/ui/separator";
 import { useRef } from "react";
+import SkillGrid from "@/components/about/AboutSection/SkillGrid";
 
 export default function Main() {
   const { t } = useTranslation("about");
@@ -21,7 +22,7 @@ export default function Main() {
   );
 
   return (
-    <div className=" lg:w-6/12 ">
+    <div className=" lg:w-6/12 flex flex-col ">
       <motion.p
         ref={ref}
         style={{
@@ -39,6 +40,7 @@ export default function Main() {
         {t("mySelf.content")}
       </motion.p>
       <Separator className="my-4 shadow-3xl shadow-background" />
+      <SkillGrid />
     </div>
   );
 }

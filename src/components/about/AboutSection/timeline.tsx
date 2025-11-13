@@ -60,7 +60,7 @@ export default function Timeline({
               )}
               <h1 className="text-xl font-bold   group-hover:underline">
                 {title}
-              </h1>
+              </h1>                                                          
               <p className="text-sm text-secondary-foreground/70">
                 {description}
               </p>
