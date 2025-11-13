@@ -1,3 +1,5 @@
+import SpotlightCard from "@/components/gsap/card/SpotlightCard";
+import { useTheme } from "@/hook/useTheme";
 import { cn } from "@/lib/utils";
 import type { Skill } from "@/types/type";
 import { motion } from "framer-motion";
@@ -8,6 +10,7 @@ export default function SkillMarquee({
   skills: Skill[];
   direction?: "left" | "right";
 }) {
+  const { isDark } = useTheme();
   return (
     <div className="min-w-0 group flex-1   cursor-default   overflow-hidden flex gap-4 bbh-sans-bartle-regular">
       <motion.div
@@ -21,15 +24,16 @@ export default function SkillMarquee({
       >
         {skills.map((skill, index) => {
           return (
-            <div
+            <SpotlightCard
+              spotlightColor={isDark ? "rgba(255, 255, 255, 0.6)" : skill.color}
               key={`${skill.name}-${index}`}
               className={cn(
-                `text-2xl  h-full border border-accent-foreground p-4 rounded-2xl flex items-center justify-center  transition-all`,
+                `text-2xl  border bg-secondary border-accent-foreground  h-full p-4 rounded-2xl flex items-center justify-center  transition-all`,
                 skill.gridClass
               )}
             >
               {skill.icon}
-            </div>
+            </SpotlightCard>
           );
         })}
       </motion.div>
@@ -44,15 +48,16 @@ export default function SkillMarquee({
       >
         {skills.map((skill, index) => {
           return (
-            <div
+            <SpotlightCard
+              spotlightColor={isDark ? "rgba(255, 255, 255, 0.6)" : skill.color}
               key={`${skill.name}-${index}`}
               className={cn(
-                `text-2xl  border border-accent-foreground  h-full p-4 rounded-2xl flex items-center justify-center  transition-all`,
+                `text-2xl bg-secondary  border border-accent-foreground  h-full p-4 rounded-2xl flex items-center justify-center  transition-all`,
                 skill.gridClass
               )}
             >
               {skill.icon}
-            </div>
+            </SpotlightCard>
           );
         })}
       </motion.div>
@@ -67,15 +72,16 @@ export default function SkillMarquee({
       >
         {skills.map((skill, index) => {
           return (
-            <div
+            <SpotlightCard
+              spotlightColor={isDark ? "rgba(255, 255, 255, 0.6)" : skill.color}
               key={`${skill.name}-${index}`}
               className={cn(
-                `text-2xl  h-full border border-accent-foreground  p-4 rounded-2xl flex items-center justify-center  transition-all`,
+                `text-2xl bg-secondary  border border-accent-foreground  h-full p-4 rounded-2xl flex items-center justify-center  transition-all`,
                 skill.gridClass
               )}
             >
               {skill.icon}
-            </div>
+            </SpotlightCard>
           );
         })}
       </motion.div>
