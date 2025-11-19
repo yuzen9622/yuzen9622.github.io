@@ -61,7 +61,7 @@ export default function MaskText() {
           <Card className="mx-auto  w-11/12   justify-center border-none shadow-none  flex lg:flex-row items-center bg-transparent   flex-col   ">
             <CardContent className="h-full relative w-fit ">
               <motion.div className=" w-40  h-40 rounded-3xl absolute bottom-2/12 -z-0 left-3/12  bg-primary/70 blur-3xl "></motion.div>
-              <Avatar className="  relative w-3xs  z-0  h-full aspect-square">
+              <Avatar className="  pointer-events-none  w-3xs    h-full aspect-square">
                 <AvatarImage
                   className=" rounded-full"
                   alt={t("mySelf.name")}
@@ -70,14 +70,6 @@ export default function MaskText() {
                   src={t("mySelf.avatar")}
                 />
                 <AvatarFallback>{t("mySelf.name")}</AvatarFallback>
-                <div className=" absolute flex items-center justify-center w-full h-full">
-                  <CircularText
-                    text={t("mySelf.circularText")}
-                    onHover="pause"
-                    spinDuration={20}
-                    className=" w-full h-full  cursor-pointer  text-white"
-                  />
-                </div>
               </Avatar>
             </CardContent>
             <CardContent className="  h-full flex justify-center   lg:items-start items-center flex-col gap-5 ">
@@ -174,7 +166,7 @@ export default function MaskText() {
             <Card className="mx-auto  w-11/12   justify-center border-none shadow-none  flex lg:flex-row items-center bg-transparent   flex-col   ">
               <CardContent className="h-full relative w-fit ">
                 <motion.div className=" w-40  h-40 rounded-3xl absolute bottom-2/12 -z-0 left-3/12  bg-primary/70 blur-3xl "></motion.div>
-                <Avatar className="  relative w-3xs  z-0  h-full aspect-square">
+                <Avatar className="  relative w-3xs  z-50  h-full aspect-square">
                   <AvatarImage
                     className=" rounded-full"
                     alt={t("mySelf.name")}

@@ -1,9 +1,10 @@
+"use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import Tool from "@/components/Navbar/Tool";
+import Tool from "@/components/layouts/Navbar/Tool";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -18,8 +19,8 @@ export default function Navbar() {
   const MotionLink = motion.create(NavLink);
   return (
     <>
-      <NavigationMenu className="p-3 border border-border  w-11/12 rounded-full  h-fit hidden sm:block flex-none sticky top-2 z-10 bg-background/80  backdrop-blur-xs">
-        <NavigationMenuList>
+      <NavigationMenu className="p-3  border border-border transition-all  w-11/12 rounded-full  h-fit hidden sm:block flex-none sticky top-2 z-10 bg-background/80  backdrop-blur-xs">
+        <NavigationMenuList className="transition-all">
           {navigation.map((item, index) => (
             <li key={item.title}>
               <NavigationMenuItem

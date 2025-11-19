@@ -89,6 +89,24 @@
 
 }
 
+.progress-circle {
+
+
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  position: relative;
+
+  /* 進度背景 */
+  background: conic-gradient(var(--primary) calc(var(--progress) * 1%),
+      transparent calc(var(--progress) * 1%));
+
+  /* 切出內圈（更乾淨的 mask 寫法） */
+  -webkit-mask: radial-gradient(circle calc(var(--size) * 0.45) at center, transparent 0, black 1);
+  mask: radial-gradient(circle calc(var(--size) * 0.45) at center, transparent 0, black 1);
+}
+
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

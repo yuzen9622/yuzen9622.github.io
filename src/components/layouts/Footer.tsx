@@ -1,3 +1,4 @@
+"use client";
 import { AtSign, MapPin } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
@@ -5,8 +6,8 @@ import { NavLink } from "react-router-dom";
 
 import { useProfile } from "@/hook/useProfile";
 
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Badge } from "./ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 
 export default function Footer() {
   const { navigation, mySelf } = useProfile();
