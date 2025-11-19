@@ -8,7 +8,7 @@ import HomePage from "@/pages/HomePage";
 import ProjectPage from "@/pages/ProjectPage";
 
 import ViewProjectCard from "./components/project/ui/ViewProjectCard";
-import MainLayout from "./components/layouts/MainLayoutTmp";
+import MainLayout from "./components/layouts/MainLayout";
 
 function App() {
   return (
