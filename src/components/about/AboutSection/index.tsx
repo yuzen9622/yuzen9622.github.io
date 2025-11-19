@@ -1,7 +1,7 @@
-import Header from "./header";
-import Journey from "./journey";
-import Main from "./main";
-import Marquee from "./marquee";
+import Header from "./Header";
+import Journey from "./Journey";
+import Main from "./Main";
+import Marquee from "./Marquee";
 
 export default function AboutSection() {
   return (
