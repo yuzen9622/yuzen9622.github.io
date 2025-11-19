@@ -13,7 +13,7 @@
             "image": "project/chatto.webp",
             "year": "2025",
             "sourceUrl": "https://github.com/yuzen9622/chat.to",
-            "previewUrl": "https://chat-to-sage.vercel.app/introduce",
+            "previewUrl": "https://chat.yuzen.dev",
             "type": "web",
             "content": {
                 "overview": "Chat.to 是一款專為日常交流設計的即時聊天應用程式，整合 Ably、Next.js、Supabase 與 NextAuth 等現代技術。它的特色在於以輕量化與簡潔設計為核心，讓用戶能快速進行對話與群組交流，同時保有雲端同步的安全性與穩定性。整體 UI 以 Tailwind CSS 打造，提供跨平台的一致體驗。這個專案展現了我在即時通訊、身份驗證與雲端資料儲存上的開發能力。",
@@ -33,7 +33,7 @@
             "image": "project/dcard.webp",
             "year": "2025",
             "sourceUrl": "https://github.com/yuzen9622/Dcard",
-            "previewUrl": "https://dcard-rosy.vercel.app/category/",
+            "previewUrl": "https://dcard.yuzen.dev",
             "type": "web",
             "content": {
                 "overview": "Dcard Clone 是一個以 Django 為基礎開發的部落格型網站，模擬社群平台的互動模式，讓使用者能發表文章、留言討論並進行分類瀏覽。透過 Django 的強大後端框架，專案內建完整的資料庫管理與安全性功能。這個專案展現了我在 Python Web 框架上的實作能力，特別是內容管理系統（CMS）的應用。",
@@ -54,7 +54,7 @@
             "image": "project/微財.webp",
             "year": "2024",
             "sourceUrl": "https://github.com/yuzen9622/Account-App",
-            "previewUrl": "https://account-app-phi.vercel.app/",
+            "previewUrl": "https://account.yuzen.dev",
             "type": "web",
             "content": {
                 "overview": "微財是一款以簡單直觀為核心的記帳應用程式，專注於協助使用者養成收支記錄的習慣，並提供基本的財務分析功能。透過 React 打造互動性良好的前端介面，搭配 Node.js 與 MongoDB 進行後端資料儲存與管理。整體設計上偏向輕量化，讓使用者能快速輸入資料，同時保有跨裝置的使用體驗。此專案展現了我對於 MERN 技術堆疊的實際應用。",

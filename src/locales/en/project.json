@@ -13,7 +13,7 @@
             "image": "project/chatto.webp",
             "year": "2025",
             "sourceUrl": "https://github.com/yuzen9622/chat.to",
-            "previewUrl": "https://chat-to-sage.vercel.app/introduce",
+            "previewUrl": "https://chat.yuzen.dev",
             "type": "web",
             "content": {
                 "overview": "Chat.to is designed as a modern real-time chat platform that emphasizes simplicity and speed. It integrates cloud-based services with Next.js and Supabase to ensure smooth communication, while NextAuth provides a secure login system. The app allows users to stay connected with both individuals and groups, making it ideal for casual chats or team collaboration.",
@@ -33,7 +33,7 @@
             "image": "project/dcard.webp",
             "year": "2025",
             "sourceUrl": "https://github.com/yuzen9622/Dcard",
-            "previewUrl": "https://dcard-rosy.vercel.app/category/",
+            "previewUrl": "https://dcard.yuzen.dev",
             "type": "web",
             "content": {
                 "overview": "Dcard Clone is a blog-style web application inspired by popular social forums. Built with Django, it combines powerful backend capabilities with a straightforward user experience. The platform allows registered users to create posts, leave comments, and browse content with efficient categorization and pagination. With Bootstrap, the layout remains responsive across devices, while Django's admin panel offers simple management tools for site administrators.",
@@ -54,7 +54,7 @@
             "image": "project/微財.webp",
             "year": "2024",
             "sourceUrl": "https://github.com/yuzen9622/Account-App",
-            "previewUrl": "https://account-app-phi.vercel.app/",
+            "previewUrl": "https://account.yuzen.dev",
             "type": "web",
             "content": {
                 "overview": "WealthEase is a personal finance tracker built to simplify budgeting for everyday users. It provides an intuitive interface where you can log your income and expenses, categorize your transactions, and visualize your financial flow. By connecting to a cloud database, the app ensures your financial data is always accessible and secure. With its responsive design, it’s equally effective on desktops and mobile devices.",
