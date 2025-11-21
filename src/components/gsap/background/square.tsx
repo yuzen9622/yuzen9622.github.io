@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
-import { useTheme } from "@/hook/useTheme";
-import { cn } from "@/lib/utils";
+import { useTheme } from "@/shared/hook/useTheme";
+import { cn } from "@/shared/lib/utils";
 
 type CanvasStrokeStyle = string | CanvasGradient | CanvasPattern;
 

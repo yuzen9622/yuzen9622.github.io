@@ -2,12 +2,13 @@
 import { ArrowUp, Languages, Moon, Sun } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import { useTheme } from "@/hook/useTheme";
+import { useTheme } from "@/shared/hook/useTheme";
 
 import { NavigationMenuItem } from "../../ui/navigation-menu";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { motion } from "framer-motion";
+import { CircleProgress } from "./CircleProgress";
 
 export default function Tool() {
   const { setTheme, theme, systemTheme } = useTheme();
@@ -19,13 +20,17 @@ export default function Tool() {
     () => motion.create(NavigationMenuItem),
     []
   );
-
+  const circleRef = useRef<SVGCircleElement>(null);
   const [observerScroll, setObserverScroll] = useState<{
     direction: "up" | "down";
     scrollY: number;
+    offset: number;
+    circumference: number;
   }>({
     direction: "down",
     scrollY: 0,
+    offset: 0,
+    circumference: 0,
   });
 
   useEffect(() => {
@@ -34,9 +39,18 @@ export default function Tool() {
         document.documentElement.scrollHeight - window.innerHeight;
       const scrollY = window.scrollY;
       const progress = (scrollY / totalHeight) * 100;
+
+      const r = circleRef.current?.getAttribute("r") ?? 45;
+      const circumference = 2 * Math.PI * Number(r);
+      const offset = circumference * (1 - progress / 100);
+
       setObserverScroll((prev) => ({
         direction: Number(progress.toFixed(0)) >= prev.scrollY ? "down" : "up",
-        scrollY: Number(progress.toFixed(0)),
+        scrollY: Number.isNaN(Number(progress.toFixed(0)))
+          ? 0
+          : Number(progress.toFixed(0)),
+        offset,
+        circumference,
       }));
     };
 
@@ -69,21 +83,19 @@ export default function Tool() {
         <MotionNavigationMenuItem
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="relative isolate p-1 cursor-pointer   text-foreground"
+          className="relative isolate  cursor-pointer   text-foreground"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          <span
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="   pointer-events-none absolute inset-0 rounded-full "
-            style={{
-              background: `conic-gradient(var(--primary) ${observerScroll.scrollY}%, transparent ${observerScroll.scrollY}%)`,
-            }}
-          />
-          <span className="relative  z-10 flex h-6 w-6 items-center justify-center rounded-full bg-background text-primary transition-colors hover:bg-primary hover:text-background">
+          <span className="relative  z-10 border  flex h-8 w-8 items-center justify-center rounded-full text-primary transition-colors hover:bg-primary hover:text-background">
             {observerScroll.scrollY === 100 ? (
               <ArrowUp size={18} />
             ) : (
-              <span className="text-xs ">{observerScroll.scrollY}</span>
+              <CircleProgress
+                ref={circleRef}
+                circumference={observerScroll.circumference}
+                offset={observerScroll.offset}
+                scrollY={observerScroll.scrollY}
+              />
             )}
           </span>
         </MotionNavigationMenuItem>

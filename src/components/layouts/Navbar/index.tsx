@@ -1,7 +1,7 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import Tool from "@/components/layouts/Navbar/Tool";
@@ -10,16 +10,35 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { useProfile } from "@/hook/useProfile";
-import { cn } from "@/lib/utils";
+import { useProfile } from "@/shared/hook/useProfile";
+import { cn } from "@/shared/lib/utils";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { AvatarImage } from "@radix-ui/react-avatar";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
-  const { navigation, mySelf } = useProfile();
+  const { navigation } = useProfile();
+  const { t } = useTranslation("about");
   const [isOpen, setIsOpen] = useState(false);
   const MotionLink = motion.create(NavLink);
+  const [isTop, setIsTop] = useState(true);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsTop(window.scrollY < 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <>
-      <NavigationMenu className="p-3  border border-border transition-all  w-11/12 rounded-full  h-fit hidden sm:block flex-none sticky top-2 z-10 bg-background/80  backdrop-blur-xs">
+      <NavigationMenu
+        className={cn(
+          "p-3  outline  hover:shadow-xs transition-[width]  w-11/12 rounded-full  h-fit hidden sm:block flex-none  fixed top-2 z-10 bg-background/80  backdrop-blur-xs"
+        )}
+      >
         <NavigationMenuList className="transition-all">
           {navigation.map((item, index) => (
             <li key={item.title}>
@@ -49,12 +68,22 @@ export default function Navbar() {
       {/** RWD navbar */}
       <NavigationMenu
         className={cn(
-          "p-3  w-11/12 max-w-none  h-fit  hidden max-sm:flex rounded-2xl justify-between flex-none sticky top-2 z-50  backdrop-blur-xs bg-background/80",
-          isOpen && "max-sm:backdrop-blur-none bg-transparent"
+          "p-3  w-11/12 max-w-none  h-fit  hidden max-sm:flex rounded-2xl transition-all justify-between flex-none fixed top-2 z-50  backdrop-blur-xs bg-background/80",
+          isOpen && "max-sm:backdrop-blur-none bg-transparent",
+          isTop && "w-full top-0 rounded-none"
         )}
       >
-        <NavLink to={"/"} className=" font-bold text-xl  text-primary">
-          {mySelf.name}
+        <NavLink to={"/"} className="relative font-bold text-xl  text-primary">
+          <Avatar className="  pointer-events-none  w-10 h-10     aspect-square">
+            <AvatarImage
+              className=" rounded-full"
+              alt={t("mySelf.name")}
+              width={48}
+              height={48}
+              src={t("mySelf.avatar")}
+            />
+            <AvatarFallback>{t("mySelf.name")}</AvatarFallback>
+          </Avatar>
         </NavLink>
         <NavigationMenuList>
           <div className="flex gap-2 items-center ">

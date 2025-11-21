@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useTheme } from "@/hook/useTheme";
+import { useTheme } from "@/shared/hook/useTheme";
 
 interface ShinyTextProps {
   text: string;

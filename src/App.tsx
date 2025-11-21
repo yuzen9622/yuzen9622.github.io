@@ -7,8 +7,9 @@ import ContactPage from "@/pages/ContactPage";
 import HomePage from "@/pages/HomePage";
 import ProjectPage from "@/pages/ProjectPage";
 
-import ViewProjectCard from "@/components/project/ui/ViewProjectCard";
+import ViewProjectCard from "@/features/project/ui/ViewProjectCard";
 import MainLayout from "@/components/layouts/MainLayout";
+import BlogPage from "./pages/BlogPage";
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
             <Route path=":title" element={<ViewProjectCard />} />
           </Route>
           <Route path="/contact" element={<ContactPage />} />
+
+          <Route path="/blog" element={<BlogPage />}>
+            <Route path=":id" />
+          </Route>
         </Routes>
       </AnimatePresence>
     </MainLayout>

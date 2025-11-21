@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 
-import AboutHero from "@/components/about/AboutHero";
-import AboutSection from "@/components/about/AboutSection";
+import AboutHero from "@/features/about/AboutHero";
+import AboutSection from "@/features/about/AboutSection";
 
 export default function AboutPage() {
   return (

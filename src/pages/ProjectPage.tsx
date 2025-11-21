@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet";
 import { Outlet } from "react-router-dom";
 
-import ProjectHeader from "@/components/project/ProjectHeader";
-import ProjectWrapper from "@/components/project/ProjectWrapper";
+import ProjectHeader from "@/features/project/ProjectHeader";
+import ProjectWrapper from "@/features/project/ProjectWrapper";
 
 export default function ProjectPage() {
   return (
