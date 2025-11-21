@@ -46,9 +46,11 @@ export default function Tool() {
 
       setObserverScroll((prev) => ({
         direction: Number(progress.toFixed(0)) >= prev.scrollY ? "down" : "up",
-        scrollY: Number.isNaN(Number(progress.toFixed(0)))
-          ? 0
-          : Number(progress.toFixed(0)),
+        scrollY:
+          Number.isNaN(Number(progress.toFixed(0))) ||
+          Number(progress.toFixed(0)) <= 0
+            ? 0
+            : Number(progress.toFixed(0)),
         offset,
         circumference,
       }));
