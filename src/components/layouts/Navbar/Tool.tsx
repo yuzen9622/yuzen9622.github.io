@@ -36,8 +36,9 @@ export default function Tool() {
   useEffect(() => {
     const handleScroll = () => {
       const totalHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scrollY = window.scrollY;
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrollY = window.pageYOffset ?? document.documentElement.scrollTop;
       const progress = (scrollY / totalHeight) * 100;
 
       const r = circleRef.current?.getAttribute("r") ?? 45;
