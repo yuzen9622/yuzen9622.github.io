@@ -12,7 +12,7 @@
 
 ###### **H6 標題 (Heading 6\)**
 
-## **1\. 文字格式 (Text Formatting)**
+## **1. 文字格式 (Text Formatting)**
 
 這段測試各種行內樣式：
 
@@ -25,7 +25,7 @@
 - [帶有 Title 的超連結](https://google.com)
 - <sub>下標 (Subscript)</sub> 與 <sup>上標 (Superscript)</sup> (若渲染器支援 HTML)
 
-## **2\. 列表 (Lists)**
+## **2. 列表 (Lists)**
 
 ### **無序列表 (Unordered List)**
 
@@ -50,7 +50,7 @@
 - [ ] 待處理的任務 A
 - [ ] 待處理的任務 B
 
-## **3\. 引用 (Blockquotes)**
+## **3. 引用 (Blockquotes)**
 
 這是第一層引用區塊。  
 這是一段很長的文字，用來測試換行之後的引用樣式是否正常顯示。  
@@ -59,16 +59,16 @@
 
 回到第一層引用。
 
-## **4\. 程式碼區塊 (Code Blocks)**
+## **4. 程式碼區塊 (Code Blocks)**
 
 ### **JavaScript (Syntax Highlighting)**
 
 ```js
 // 歡迎訊息函式
 function welcome(name) {
- const message \= \`Hello, ${name}\!\`;
- console.log(message);
- return true;
+  const message = `Hello, ${name}!`;
+  console.log(message);
+  return true;
 }
 
 welcome("Markdown User");
@@ -93,7 +93,7 @@ print(fibonacci(10))
 這是一塊沒有語法高亮的純文字區塊。  
 通常用於顯示 Log 或設定檔。
 
-## **5\. 表格 (Tables)**
+## **5. 表格 (Tables)**
 
 測試表格的置中、靠左與靠右對齊功能：
 
@@ -104,7 +104,7 @@ print(fibonacci(10))
 | 數學公式    | LaTeX        | **Pending** |
 | 樣式測試    | Code         | _Italic_    |
 
-## **6\. 數學公式 (LaTeX)**
+## **6. 數學公式 (LaTeX)**
 
 注意：需確保您的環境支援 MathJax 或 KaTeX。
 
@@ -117,13 +117,13 @@ $$f(x) = \int_{-\infty}^\infty \hat f(\xi)\,e^{2\pi i \xi x} \,d\xi$$
 
 $$M = \begin{bmatrix} 1 & 0 \\\ 0 & 1 \end{bmatrix}$$
 
-## **7\. 圖片與媒體 (Images)**
+## **7. 圖片與媒體 (Images)**
 
 **標準圖片：**
 
 **帶連結的圖片 (點擊可跳轉)：**
 
-## **8\. 其他元素**
+## **8. 其他元素**
 
 ### **水平分隔線 (Horizontal Rules)**
 
