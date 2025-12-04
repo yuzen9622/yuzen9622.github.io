@@ -1,4 +1,3 @@
-// src/features/blog/BlogList.tsx
 import { useState, useMemo } from "react";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -57,7 +56,6 @@ export default function BlogList() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Search and Filter */}
       <motion.div
         className="space-y-4"
         initial={{ opacity: 0, y: -20 }}

@@ -1,5 +1,3 @@
-// src/shared/types/blog.ts
-
 export type BlogPost = {
   id: string;
   title: string;
@@ -12,7 +10,7 @@ export type BlogPost = {
   coverImage: string;
   published: boolean;
   language: "en" | "zh";
-  content?: string; // Markdown content
+  content?: string;
 };
 
 export type BlogMetadata = {

@@ -1,4 +1,3 @@
-// src/features/blog/BlogCard.tsx
 import { Calendar } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";

@@ -1,4 +1,3 @@
-// src/shared/hook/useBlogLoader.ts
 import { useState, useEffect } from "react";
 import type { BlogPost } from "../types/blog";
 
@@ -10,7 +9,6 @@ export const useBlogLoader = () => {
   useEffect(() => {
     const loadBlogMetadata = async () => {
       try {
-        // Load metadata.json
         const response = await fetch("/content/blogs/metadata.json");
         if (!response.ok) throw new Error("Failed to load blog metadata");
 
