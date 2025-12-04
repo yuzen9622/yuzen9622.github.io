@@ -21,6 +21,11 @@
   font-style: normal;
 }
 
+pre code {
+  background: initial;
+  color: inherit;
+}
+
 :root {
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;

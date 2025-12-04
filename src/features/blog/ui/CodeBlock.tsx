@@ -53,7 +53,7 @@ export function CodeBlock({ className = "", children }: NotionCodeBlockProps) {
 
         {copied ? (
           <Tooltip>
-            <TooltipTrigger className=" p-1  backdrop-blur-md bg-background/10 rounded-3xl transition">
+            <TooltipTrigger className=" p-1 text-green-400  backdrop-blur-md  rounded-3xl transition">
               <CheckIcon size={16} />
             </TooltipTrigger>
             <TooltipContent>Copied!</TooltipContent>
@@ -63,7 +63,7 @@ export function CodeBlock({ className = "", children }: NotionCodeBlockProps) {
             <TooltipTrigger asChild>
               <button
                 onClick={handleCopy}
-                className=" p-1  backdrop-blur-md   bg-background/10  rounded-3xl transition"
+                className=" p-1  backdrop-blur-md  rounded-3xl transition"
               >
                 <CopyIcon size={16} />
               </button>
@@ -75,7 +75,6 @@ export function CodeBlock({ className = "", children }: NotionCodeBlockProps) {
       <SyntaxHighlighter
         style={isDark ? darcula : github}
         language={language}
-        PreTag="div"
         className=" rounded-md border text-base"
         useInlineStyles={true}
       >
