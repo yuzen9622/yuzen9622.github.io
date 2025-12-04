@@ -45,11 +45,15 @@ export function CodeBlock({ className = "", children }: NotionCodeBlockProps) {
   return (
     <pre className=" relative p-2 text-sm  rounded-3xl ">
       <div className="absolute  right-6 top-6 flex gap-2 text-xs">
-        {language && <pre className="p-1  transition">{language}</pre>}
+        {language && (
+          <pre className="px-3 py-2 backdrop-blur-md  text-primary rounded-3xl transition">
+            {language}
+          </pre>
+        )}
 
         {copied ? (
           <Tooltip>
-            <TooltipTrigger className=" p-1   transition">
+            <TooltipTrigger className=" p-1  backdrop-blur-md bg-background/10 rounded-3xl transition">
               <CheckIcon size={16} />
             </TooltipTrigger>
             <TooltipContent>Copied!</TooltipContent>
@@ -57,7 +61,10 @@ export function CodeBlock({ className = "", children }: NotionCodeBlockProps) {
         ) : (
           <Tooltip>
             <TooltipTrigger asChild>
-              <button onClick={handleCopy} className=" p-1   transition">
+              <button
+                onClick={handleCopy}
+                className=" p-1  backdrop-blur-md   bg-background/10  rounded-3xl transition"
+              >
                 <CopyIcon size={16} />
               </button>
             </TooltipTrigger>
