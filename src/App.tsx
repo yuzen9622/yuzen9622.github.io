@@ -6,10 +6,11 @@ import { Route, Routes } from "react-router-dom";
 import ContactPage from "@/pages/ContactPage";
 import HomePage from "@/pages/HomePage";
 import ProjectPage from "@/pages/ProjectPage";
+import BlogPage from "@/pages/BlogPage";
 
 import ViewProjectCard from "@/features/project/ui/ViewProjectCard";
 import MainLayout from "@/components/layouts/MainLayout";
-import BlogPage from "./pages/BlogPage";
+import BlogPost from "./features/blog/BlogPost";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
 
           <Route path="/blog" element={<BlogPage />}>
-            <Route path=":id" />
+            <Route path=":slug" element={<BlogPost />} />
           </Route>
         </Routes>
       </AnimatePresence>

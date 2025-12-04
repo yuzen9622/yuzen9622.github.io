@@ -1,7 +1,45 @@
+// src/pages/BlogPage.tsx
+import { Helmet } from "react-helmet";
+import { useParams } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import BlogList from "@/features/blog/BlogList";
+import BlogPost from "@/features/blog/BlogPost";
+import GlitchText from "@/components/gsap/text/GlitchText";
+import "@/features/blog/styles/blog-transitions.css";
+
 export default function BlogPage() {
+  const { slug } = useParams();
+
   return (
-    <div className=" relative h-dvh w-full flex items-center justify-center text-3xl">
-      Coming Soon...
-    </div>
+    <>
+      <Helmet>
+        <title>Yuzen - Blog{slug ? ` - ${slug}` : ""}</title>
+      </Helmet>
+
+      <AnimatePresence mode="wait">
+        {slug ? (
+          <BlogPost key={slug} />
+        ) : (
+          <div key="blog-list" className=" relative w-full min-h-screen pt-20">
+            {/* Header */}
+            <div className="w-full h-[33dvh] flex flex-col gap-10 items-center justify-center">
+              <GlitchText
+                speed={0.5}
+                enableShadows
+                className="text-black! dark:text-white! text-5xl"
+              >
+                Blog
+              </GlitchText>
+              <p className="text-xl text-muted-foreground text-center max-w-2xl px-4">
+                Thoughts, tutorials, and insights about web development
+              </p>
+            </div>
+
+            {/* Blog List */}
+            <BlogList />
+          </div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

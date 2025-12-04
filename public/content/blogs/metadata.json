@@ -1,0 +1,20 @@
+{
+    "posts": [
+        {
+            "id": "markdown-testing",
+            "title": "Markdown 全功能語法測試",
+            "slug": "markdown-testing",
+            "date": "2025-01-15",
+            "author": "Yuzen",
+            "excerpt": "這是一份用於測試 Markdown 渲染引擎與 CSS 樣式的綜合範例文章。內容涵蓋標題層級、文字格式、程式碼區塊、數學公式、表格與多媒體元件",
+            "tags": [
+                "notes",
+                "markdown",
+                "testing"
+            ],
+            "coverImage": "/blog/react-cover.webp",
+            "published": true,
+            "language": "zh"
+        }
+    ]
+}

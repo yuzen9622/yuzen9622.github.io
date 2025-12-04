@@ -1,0 +1,178 @@
+/* src/features/blog/blog-transitions.css */
+
+/* View Transition API support */
+@view-transition {
+    navigation: auto;
+}
+
+/* Smooth page transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.3s;
+}
+
+/* Card morphing animation */
+::view-transition-old(blog-card),
+::view-transition-new(blog-card) {
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Image transition */
+::view-transition-old(blog-image),
+::view-transition-new(blog-image) {
+    animation-duration: 0.4s;
+    mix-blend-mode: normal;
+}
+
+/* Title transition */
+::view-transition-old(blog-title),
+::view-transition-new(blog-title) {
+    animation-duration: 0.3s;
+}
+
+/* Fade in/out animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* Scale animations */
+@keyframes scaleUp {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes scaleDown {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+}
+
+/* Slide animations */
+@keyframes slideInFromBottom {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutToBottom {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+}
+
+/* Apply animations to view transitions */
+::view-transition-old(root) {
+    animation: fadeOut 0.3s ease-in-out;
+}
+
+::view-transition-new(root) {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Blog card specific transitions */
+[data-blog-card] {
+    view-transition-name: var(--view-transition-name);
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for blog content */
+.blog-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.blog-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.blog-content::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.3);
+    border-radius: 4px;
+}
+
+.blog-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.5);
+}
+
+/* Loading animation */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Backdrop blur effect */
+.backdrop-blur-blog {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Ensure smooth transitions on mobile */
+@media (prefers-reduced-motion: reduce) {
+
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
+    }
+
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
