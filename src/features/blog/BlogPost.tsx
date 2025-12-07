@@ -105,21 +105,15 @@ export default function BlogPost() {
                 </Button>
               </div>
 
-              {post.cover && (
-                <motion.div
-                  layoutId={`blog-image-${post.slug}`}
-                  className="w-full h-64 md:h-96 overflow-hidden rounded-lg mb-6"
-                >
-                  <img
-                    src={`${
-                      import.meta.env.MODE === "development"
-                        ? import.meta.env.VITE_API_END_POINT
-                        : ""
-                    }${getFallbackSrc(post.cover.formats)}`}
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-              )}
+              <motion.div
+                layoutId={`blog-image-${post.slug}`}
+                className="w-full h-64 md:h-96 overflow-hidden rounded-lg mb-6"
+              >
+                <img
+                  src={`${getFallbackSrc(post?.cover?.formats)}`}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
 
               <motion.div
                 className="space-y-4 mb-8"

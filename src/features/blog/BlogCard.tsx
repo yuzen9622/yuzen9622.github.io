@@ -1,7 +1,13 @@
 import { Calendar } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import type { Article } from "./types/blog";
 import { motion } from "framer-motion";
 import useBlog from "./hooks/useBlog";
@@ -24,42 +30,39 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
     >
       <NavLink to={`/blog/${post.slug}`}>
         <MotionCard className="group backdrop-blur-xs pt-0 bg-background/80 hover:shadow-lg transition-all h-full">
-          {post.cover && (
-            <motion.div
-              className="relative w-full h-48 overflow-hidden rounded-t-lg"
-              layoutId={`blog-image-${post.slug}`}
-            >
-              <img
-                src={`${
-                  import.meta.env.MODE === "development"
-                    ? import.meta.env.VITE_API_END_POINT
-                    : ""
-                }${getFallbackSrc(post.cover.formats)}`}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-              />
-            </motion.div>
-          )}
+          <motion.div
+            className="relative w-full h-48 overflow-hidden rounded-t-lg"
+            layoutId={`blog-image-${post.slug}`}
+          >
+            <img
+              src={`${getFallbackSrc(post?.cover?.formats)}`}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+            />
+          </motion.div>
+
           <CardHeader>
             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
               <Calendar size={16} />
               <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
             </div>
             <CardTitle className="group-hover:text-primary transition-colors">
-              <motion.span >
-                {post.title}
-              </motion.span>
+              <motion.span>{post.title}</motion.span>
             </CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground mb-4">{post.description}</p>
-            <div className="flex flex-wrap gap-2">
-              {post.categories.map((category) => (
-                <Badge key={category.name} variant="secondary">
-                  {category.name}
-                </Badge>
-              ))}
-            </div>
           </CardContent>
+          <CardFooter>
+            {post.categories.map((category) => (
+              <Badge
+                key={category.name}
+                variant="secondary"
+                className="px-3 py-2 rounded-3xl"
+              >
+                {category.name}
+              </Badge>
+            ))}
+          </CardFooter>
         </MotionCard>
       </NavLink>
     </motion.div>

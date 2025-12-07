@@ -5,8 +5,8 @@ export interface Article {
   documentId: string;
   slug: string;
   title: string;
-  cover: Cover | null;
-  author: Author | null;
+  cover?: Cover;
+  author?: Author;
   description: string;
   categories: Category[];
   publishedAt: string;

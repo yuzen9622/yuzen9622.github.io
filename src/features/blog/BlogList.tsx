@@ -6,6 +6,7 @@ import BlogCard from "./BlogCard";
 
 import { motion, AnimatePresence } from "framer-motion";
 import useBlog from "./hooks/useBlog";
+import BlogCardSkeleton from "./BlogCardSkeleton";
 export default function BlogList() {
   const [search, setSearch] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
@@ -34,17 +35,18 @@ export default function BlogList() {
   if (loading) {
     return (
       <div className="w-full min-h-[50vh] flex items-center justify-center">
-        <motion.p
-          className="text-2xl"
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
+        <motion.div
+          className="w-full max-w-6xl p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
         >
-          Loading posts...
-        </motion.p>
+          {Array.from({ length: 3 }).map((_, i) => (
+            <BlogCardSkeleton key={i} />
+          ))}
+        </motion.div>
       </div>
     );
   }
-
   if (error) {
     return (
       <div className="w-full min-h-[50vh] flex items-center justify-center">
@@ -83,16 +85,16 @@ export default function BlogList() {
         <div className="flex flex-wrap gap-2">
           <Badge
             variant={selectedTag === null ? "default" : "outline"}
-            className="cursor-pointer  backdrop-blur-md"
+            className="cursor-pointer  backdrop-blur-md px-3 py-1 rounded-3xl"
             onClick={() => setSelectedTag(null)}
           >
-            All
+            全部
           </Badge>
           {allTags.map((tag) => (
             <Badge
               key={tag}
               variant={selectedTag === tag ? "default" : "outline"}
-              className="cursor-pointer text-base  backdrop-blur-md"
+              className="cursor-pointer  backdrop-blur-md px-3 py-2 rounded-3xl"
               onClick={() => setSelectedTag(tag)}
             >
               {tag}
@@ -110,7 +112,7 @@ export default function BlogList() {
             exit={{ opacity: 0, scale: 0.9 }}
             className="text-center py-20"
           >
-            <p className="text-2xl text-muted-foreground">No posts found</p>
+            <p className="text-2xl text-muted-foreground">暫無文章</p>
           </motion.div>
         ) : (
           <motion.div

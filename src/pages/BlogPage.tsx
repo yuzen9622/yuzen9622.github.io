@@ -32,7 +32,7 @@ export default function BlogPage() {
             Blog
           </GlitchText>
           <p className="text-xl text-muted-foreground text-center max-w-2xl px-4">
-            Thoughts, tutorials, and insights about web development
+            這裡是我分享技術文章和心得的地方，希望你能在這裡找到有用的資訊！
           </p>
         </div>
         <BlogList />

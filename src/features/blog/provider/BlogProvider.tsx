@@ -5,14 +5,17 @@ import type { ImgResponse } from "../types/blog";
 
 export function BlogProvider({ children }: { children: React.ReactNode }) {
   const { posts, loading, error } = useBlogLoader();
-  function getFallbackSrc(data: ImgResponse): string {
-    // 邏輯：優先找 large -> medium -> small -> thumbnail
-    // 找到第一個存在的就回傳
-    if (data.large) return data.large.url;
-    if (data.medium) return data.medium.url;
-    if (data.small) return data.small.url;
-    if (data.thumbnail) return data.thumbnail.url;
-    return "/default-placeholder.png"; // 真的什麼都沒有時的預設圖
+  function getFallbackSrc(data?: ImgResponse): string {
+    const baseURL =
+      import.meta.env.MODE === "development"
+        ? import.meta.env.VITE_API_END_POINT
+        : "";
+
+    if (data?.large) return baseURL + data.large.url;
+    if (data?.medium) return baseURL + data.medium.url;
+    if (data?.small) return baseURL + data.small.url;
+    if (data?.thumbnail) return baseURL + data.thumbnail.url;
+    return "/blog/default-placeholder.webp";
   }
   return (
     <BlogContextProvider.Provider

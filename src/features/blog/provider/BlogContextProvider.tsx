@@ -3,7 +3,7 @@ import type { Article, ImgResponse } from "../types/blog";
 
 interface BlogContextType {
   posts: Article[] | null;
-  getFallbackSrc: (imgResponse: ImgResponse) => string;
+  getFallbackSrc: (imgResponse?: ImgResponse) => string;
   loading: boolean;
   error?: string | null;
 }
