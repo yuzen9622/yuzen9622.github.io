@@ -69,7 +69,7 @@ export default function ContactForm() {
   );
 
   return (
-    <Card className="  max-w-xl  w-11/12 flex-1 z-0">
+    <Card className=" relative  max-w-xl  w-11/12 flex-1 z-0">
       <CardHeader>
         <CardTitle className=" flex items-center gap-3">
           <Signature

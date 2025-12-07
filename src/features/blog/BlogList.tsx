@@ -3,26 +3,30 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import BlogCard from "./BlogCard";
-import { useBlogLoader } from "./hooks/useBlogLoader";
-import { motion, AnimatePresence } from "framer-motion";
 
+import { motion, AnimatePresence } from "framer-motion";
+import useBlog from "./hooks/useBlog";
 export default function BlogList() {
-  const { posts, loading, error } = useBlogLoader();
   const [search, setSearch] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-
+  const { posts, loading, error } = useBlog();
   const allTags = useMemo(() => {
+    if (!posts) return [];
     const tags = new Set<string>();
-    posts.forEach((post) => post.tags.forEach((tag) => tags.add(tag)));
+    posts.forEach((post) =>
+      post.categories.forEach((category) => tags.add(category.name))
+    );
     return Array.from(tags);
   }, [posts]);
 
   const filteredPosts = useMemo(() => {
-    return posts.filter((post) => {
+    return posts?.filter((post) => {
       const matchesSearch =
         post.title.toLowerCase().includes(search.toLowerCase()) ||
-        post.excerpt.toLowerCase().includes(search.toLowerCase());
-      const matchesTag = !selectedTag || post.tags.includes(selectedTag);
+        post.description.toLowerCase().includes(search.toLowerCase());
+      const matchesTag =
+        !selectedTag ||
+        post.categories.some((category) => category.name === selectedTag);
       return matchesSearch && matchesTag;
     });
   }, [posts, search, selectedTag]);
@@ -88,7 +92,7 @@ export default function BlogList() {
             <Badge
               key={tag}
               variant={selectedTag === tag ? "default" : "outline"}
-              className="cursor-pointer  backdrop-blur-md"
+              className="cursor-pointer text-base  backdrop-blur-md"
               onClick={() => setSelectedTag(tag)}
             >
               {tag}
@@ -98,7 +102,7 @@ export default function BlogList() {
       </motion.div>
 
       <AnimatePresence mode="wait">
-        {filteredPosts.length === 0 ? (
+        {filteredPosts?.length === 0 ? (
           <motion.div
             key="no-posts"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -115,8 +119,8 @@ export default function BlogList() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             <AnimatePresence mode="popLayout">
-              {filteredPosts.map((post, index) => (
-                <BlogCard key={post.id} post={post} index={index} />
+              {filteredPosts?.map((post, index) => (
+                <BlogCard key={post.slug} post={post} index={index} />
               ))}
             </AnimatePresence>
           </motion.div>

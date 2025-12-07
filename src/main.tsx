@@ -8,14 +8,17 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import { ProfileProvider } from "./shared/provider/ProfileProvider.tsx";
 import { ThemeProvider } from "./shared/provider/ThemeProvider.tsx";
+import { BlogProvider } from "./features/blog/provider/BlogProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider>
       <ProfileProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <BlogProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </BlogProvider>
       </ProfileProvider>
     </ThemeProvider>
   </StrictMode>

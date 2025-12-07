@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
-import type { BlogPost } from "../types/blog";
+import type { Article } from "../types/blog";
+import { BLOG_API } from "../service/blogAPI";
 
 export const useBlogLoader = () => {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState<Article[] | null>(null);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const loadBlogMetadata = async () => {
       try {
-        const response = await fetch("/content/blogs/metadata.json");
-        if (!response.ok) throw new Error("Failed to load blog metadata");
-
-        const metadata = await response.json();
-        setPosts(metadata.posts.filter((post: BlogPost) => post.published));
+        setLoading(true);
+        const response = await BLOG_API.ARTICLES();
+        const metadata = response.data;
+        setPosts(metadata.filter((post: Article) => post.publishedAt));
         setLoading(false);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Unknown error");
@@ -24,16 +24,5 @@ export const useBlogLoader = () => {
     loadBlogMetadata();
   }, []);
 
-  const loadPostContent = async (slug: string): Promise<string> => {
-    try {
-      const response = await fetch(`/content/blogs/posts/${slug}.md`);
-      if (!response.ok) throw new Error("Failed to load blog post");
-      return await response.text();
-    } catch (err) {
-      console.log(err);
-      throw new Error("Failed to load blog content");
-    }
-  };
-
-  return { posts, loading, error, loadPostContent };
+  return { posts, loading, error };
 };

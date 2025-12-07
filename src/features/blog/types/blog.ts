@@ -1,20 +1,43 @@
-export type BlogPost = {
-  id: string;
+export interface BlogAPIResponse<T> {
+  data: T;
+}
+export interface Article {
+  documentId: string;
+  slug: string;
+  title: string;
+  cover: Cover | null;
+  author: Author | null;
+  description: string;
+  categories: Category[];
+  publishedAt: string;
+  content: string;
+}
+export interface ArticleContent {
+  content: string;
   title: string;
   slug: string;
-  date: string;
-  author: string;
-  excerpt: string;
-  tags: string[];
-  readTime: number;
-  coverImage: string;
-  published: boolean;
-  language: "en" | "zh";
-  content?: string;
-};
+}
+export interface Cover {
+  formats: ImgResponse;
+}
+
+export interface ImgResponse {
+  thumbnail: { url: string } | null;
+  small: { url: string } | null;
+  medium: { url: string } | null;
+  large: { url: string } | null;
+}
+
+export interface Author {
+  name: string;
+}
+
+export interface Category {
+  name: string;
+}
 
 export type BlogMetadata = {
-  posts: BlogPost[];
+  posts: Article[];
 };
 
 export type BlogFilter = {

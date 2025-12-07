@@ -3,7 +3,7 @@ import RotatingText from "@/components/gsap/text/RotatingText";
 
 export default function ContactHeader() {
   return (
-    <div className=" w-full h-[33dvh] flex flex-col gap-10 items-center justify-center   animate-test">
+    <div className="mt-20 w-full h-[33dvh] flex flex-col gap-10 items-center justify-center   animate-test">
       <GlitchText
         speed={0.5}
         enableShadows

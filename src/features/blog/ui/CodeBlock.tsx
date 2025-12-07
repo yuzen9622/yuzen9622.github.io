@@ -43,8 +43,8 @@ export function CodeBlock({ className = "", children }: NotionCodeBlockProps) {
   if (!language) return <TypographyInlineCode>{children}</TypographyInlineCode>;
 
   return (
-    <pre className=" relative p-2 text-sm  rounded-3xl ">
-      <div className="absolute  right-6 top-6 flex gap-2 text-xs">
+    <pre className=" relative  text-sm   rounded-3xl ">
+      <div className="absolute  top-1.5 right-2   flex gap-2 text-xs">
         {language && (
           <pre className="px-3 py-2 backdrop-blur-md  text-primary rounded-3xl transition">
             {language}
