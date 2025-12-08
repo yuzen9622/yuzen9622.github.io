@@ -9,8 +9,11 @@ import {
 import { CheckIcon, CopyIcon } from "lucide-react";
 
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
-import github from "react-syntax-highlighter/dist/esm/styles/hljs/github";
-import darcula from "react-syntax-highlighter/dist/esm/styles/hljs/tomorrow-night";
+import {
+  shadesOfPurple,
+  atelierCaveLight,
+} from "react-syntax-highlighter/dist/esm/styles/hljs";
+
 import { useTheme } from "@/shared/hook/useTheme";
 import React from "react";
 
@@ -73,7 +76,7 @@ export function CodeBlock({ className = "", children }: NotionCodeBlockProps) {
         )}
       </div>
       <SyntaxHighlighter
-        style={isDark ? darcula : github}
+        style={isDark ? shadesOfPurple : atelierCaveLight}
         language={language}
         className=" rounded-md border text-base text-inherit!"
         useInlineStyles={true}
