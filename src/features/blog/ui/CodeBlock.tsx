@@ -75,7 +75,7 @@ export function CodeBlock({ className = "", children }: NotionCodeBlockProps) {
       <SyntaxHighlighter
         style={isDark ? darcula : github}
         language={language}
-        className=" rounded-md border text-base text-inherit"
+        className=" rounded-md border text-base text-inherit!"
         useInlineStyles={true}
       >
         {codeString}

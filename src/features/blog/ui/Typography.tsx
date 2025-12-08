@@ -35,7 +35,9 @@ export function TypographyBlockquote({
   children: React.ReactNode;
 }) {
   return (
-    <blockquote className="mt-6 border-l-2 pl-6 italic">{children}</blockquote>
+    <blockquote className="mt-6 border-l-3 bg-muted border-primary pl-6 italic">
+      {children}
+    </blockquote>
   );
 }
 export function TypographyTable({ children }: { children: React.ReactNode }) {

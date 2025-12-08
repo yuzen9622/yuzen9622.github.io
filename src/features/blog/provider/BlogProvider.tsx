@@ -6,10 +6,7 @@ import type { ImgResponse } from "../types/blog";
 export function BlogProvider({ children }: { children: React.ReactNode }) {
   const { posts, loading, error } = useBlogLoader();
   function getFallbackSrc(data?: ImgResponse): string {
-    const baseURL =
-      import.meta.env.MODE === "development"
-        ? import.meta.env.VITE_API_END_POINT
-        : "";
+    const baseURL = import.meta.env.VITE_API_END_POINT;
 
     if (data?.large) return baseURL + data.large.url;
     if (data?.medium) return baseURL + data.medium.url;
