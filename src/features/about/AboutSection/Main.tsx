@@ -35,7 +35,7 @@ export default function Main() {
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
         viewport={{ once: true }}
-        className=" w-11/12 mx-auto min-w-0 bg-linear-to-r from-secondary-foreground/70 to-primary max-lg:text-center font-bold text-secondary-foreground/70   leading-6 tracking-wide  indent-8 whitespace-pre-wrap"
+        className=" w-11/12 mx-auto min-w-0 bg-secondary-foreground max-lg:text-center font-bold text-primary   leading-6 tracking-wide  indent-8 whitespace-pre-wrap"
       >
         {t("mySelf.content")}
       </motion.p>

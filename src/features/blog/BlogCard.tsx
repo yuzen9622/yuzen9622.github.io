@@ -29,7 +29,7 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
       exit={{ opacity: 0, y: 40 }}
     >
       <NavLink to={`/blog/${post.slug}`}>
-        <MotionCard className="group backdrop-blur-xs pt-0 bg-background/80 hover:shadow-lg transition-all h-full">
+        <MotionCard className="group backdrop-blur-xs pt-0 bg-background/80 hover:shadow-lg transition-all h-full ㄍ">
           <motion.div
             className="relative w-full h-48 overflow-hidden rounded-t-lg"
             layoutId={`blog-image-${post.slug}`}
@@ -41,11 +41,11 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
           </motion.div>
 
           <CardHeader>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+            <div className="flex items-center   gap-2 text-sm text-muted-foreground mb-2">
               <Calendar size={16} />
               <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
             </div>
-            <CardTitle className="group-hover:text-primary transition-colors">
+            <CardTitle className=" group-hover:underline underline-offset-2 transition-colors">
               <motion.span>{post.title}</motion.span>
             </CardTitle>
           </CardHeader>

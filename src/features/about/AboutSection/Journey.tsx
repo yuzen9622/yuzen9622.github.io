@@ -14,7 +14,7 @@ export default function Journey() {
       <TimeLineObserver
         key={`${i18n.language}-${isDark}`}
         initialColor="transparent"
-        fillColor={isDark ? "#fff" : "#000000"}
+        fillColor={isDark ? "#FDF7F8" : "#2C3B4E"}
         handleObserve={(setObserver) => {
           return <Timeline setObserver={setObserver} />;
         }}

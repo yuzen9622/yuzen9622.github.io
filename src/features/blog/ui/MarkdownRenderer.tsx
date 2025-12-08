@@ -55,7 +55,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         a: ({ href, children }) => (
           <a
             href={href}
-            className="text-primary hover:underline"
+            className=" hover:underline"
             target={href?.startsWith("http") ? "_blank" : undefined}
             rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
           >

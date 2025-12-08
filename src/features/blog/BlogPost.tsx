@@ -82,7 +82,7 @@ export default function BlogPost() {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         // transition={{ duration: 0.3 }}
-        className="   absolute  inset-0 min-h-full h-fit z-10 bg-background pt-20"
+        className="   absolute  inset-0 max-h-dvh z-30 bg-background pt-2  overflow-y-auto"
       >
         {content ? (
           <motion.div
@@ -90,15 +90,15 @@ export default function BlogPost() {
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.9, y: 50 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="w-11/12 max-w-4xl mx-auto"
+            className="md:w-11/12 max-w-4xl mx-auto "
           >
-            <div className="backdrop-blur-xs bg-background/95 flex flex-col p-8 relative space-y-2">
+            <div className="backdrop-blur-xs bg-background/95 flex flex-col md:p-8 p-2 relative space-y-2 ">
               <div className="  sticky top-4 z-20">
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={handleBack}
-                  className=" self-start backdrop-blur-2xl "
+                  className=" self-start backdrop-blur-2xl px-3 bg-background/50 py-2 rounded-3xl "
                 >
                   <ChevronLeftIcon size={16} />
                   Back
@@ -107,7 +107,7 @@ export default function BlogPost() {
 
               <motion.div
                 layoutId={`blog-image-${post.slug}`}
-                className="w-full h-64 md:h-96 overflow-hidden rounded-lg mb-6"
+                className="w-full h-64 md:h-96 overflow-hidden rounded-3xl mb-6"
               >
                 <img
                   src={`${getFallbackSrc(post?.cover?.formats)}`}

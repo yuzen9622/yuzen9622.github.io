@@ -37,7 +37,7 @@ export default function HoverCursor({
         display: isHover ? "block" : "none",
       }}
       transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
-      className=" absolute text-xs  z-20  p-1 bg-secondary rounded-md text-primary"
+      className=" absolute text-xs  z-20  p-1 bg-secondary rounded-md text-primary-foreground"
     >
       {title}
     </motion.div>

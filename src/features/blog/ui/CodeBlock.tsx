@@ -46,7 +46,7 @@ export function CodeBlock({ className = "", children }: NotionCodeBlockProps) {
     <pre className=" relative  text-sm   rounded-3xl ">
       <div className="absolute  top-1.5 right-2   flex gap-2 text-xs">
         {language && (
-          <pre className="px-3 py-2 backdrop-blur-md  text-primary rounded-3xl transition">
+          <pre className="px-3 py-2 backdrop-blur-md  rounded-3xl transition">
             {language}
           </pre>
         )}
@@ -75,7 +75,7 @@ export function CodeBlock({ className = "", children }: NotionCodeBlockProps) {
       <SyntaxHighlighter
         style={isDark ? darcula : github}
         language={language}
-        className=" rounded-md border text-base"
+        className=" rounded-md border text-base text-inherit"
         useInlineStyles={true}
       >
         {codeString}

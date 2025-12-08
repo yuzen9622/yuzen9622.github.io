@@ -42,7 +42,7 @@ export default function MaskText() {
               x: { duration: 5, repeat: Infinity, ease: "linear" },
               y: { duration: 5, repeat: Infinity, ease: "linear" },
             }}
-            className=" w-40  h-40  rounded-3xl absolute lg:top-32 right-1/12 top-2/4 transition-all  bg-green-300 dark:bg-green-500/70  blur-3xl "
+            className=" w-40  h-40  rounded-3xl absolute dark:bg-primary right-0 top-0 transition-all  bg-primary/50  blur-3xl "
           ></motion.div>
           <motion.div
             initial={{ opacity: 0 }}
@@ -56,7 +56,7 @@ export default function MaskText() {
               y: { duration: 5, repeat: Infinity, ease: "linear" },
             }}
             whileInView={{ opacity: 1 }}
-            className=" w-40  h-40 rounded-3xl   absolute bottom-0  left-1/12 bg-blue-300 dark:bg-blue-500/70  blur-3xl "
+            className=" w-40  h-40 rounded-3xl   absolute bottom-0  dark:bg-primary   left-0 bg-primary/50   blur-3xl "
           ></motion.div>
           <Card className="mx-auto mt-20 w-11/12   justify-center border-none shadow-none  flex lg:flex-row items-center bg-transparent   flex-col   ">
             <CardContent className="h-full relative w-fit ">
@@ -81,13 +81,17 @@ export default function MaskText() {
                   key={i18n.language}
                   sequence={t("mySelf.bio", { returnObjects: true })}
                   speed={30}
-                  className="  lg:text-2xl text-lg text-white relative   font-bold bg-blue-600 w-fit rounded-md p-2"
+                  className="  lg:text-2xl text-lg text-white relative   font-bold bg-primary w-fit rounded-md p-2"
                   repeat={Infinity}
                 />
               </>
 
               <div className=" relative flex gap-3 lg:justify-start justify-center max-sm:flex-col items-center">
-                <Badge asChild variant={"outline"}>
+                <Badge
+                  asChild
+                  variant={"outline"}
+                  className=" backdrop-blur-xs"
+                >
                   <a
                     target="_BLANK"
                     href="https://www.google.com/maps/place/%E6%96%B0%E7%AB%B9%E7%B8%A3"
@@ -98,11 +102,14 @@ export default function MaskText() {
                     </p>
                   </a>
                 </Badge>
-                <Badge variant={"outline"} asChild>
+                <Badge
+                  variant={"outline"}
+                  asChild
+                  className=" backdrop-blur-xs"
+                >
                   <a href={`mailto:${t("mySelf.email")}`}>
                     <AtSign absoluteStrokeWidth size={20} />
                     <p className=" font-bold text-[16px]">
-                      {" "}
                       {t("mySelf.email")}
                     </p>
                   </a>
@@ -114,7 +121,7 @@ export default function MaskText() {
 
         <p className="text-[clamp(2rem,3vw,3.5rem)]/13 h-full  w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap">
           As a{" "}
-          <span className=" text-white p-1 rounded-md  bg-blue-600">
+          <span className=" text-white p-1 rounded-md  bg-primary">
             Full-Stack Developer
           </span>{" "}
           enjoy tackling bugs with precision, and continuously exploring new
@@ -147,7 +154,7 @@ export default function MaskText() {
                 x: { duration: 5, repeat: Infinity, ease: "linear" },
                 y: { duration: 5, repeat: Infinity, ease: "linear" },
               }}
-              className=" w-40  h-40 rounded-3xl  absolute lg:top-32 right-1/12 top-2/4 transition-all  bg-green-300 dark:bg-green-500/70  blur-3xl "
+              className=" w-40  h-40  rounded-3xl absolute lg:top-32 right-1/12 top-2/4 transition-all  bg-primary  dark:bg-primary/50   blur-3xl "
             ></motion.div>
             <motion.div
               initial={{ opacity: 0 }}
@@ -161,7 +168,7 @@ export default function MaskText() {
                 y: { duration: 5, repeat: Infinity, ease: "linear" },
               }}
               whileInView={{ opacity: 1 }}
-              className=" w-40  h-40 rounded-3xl  absolute bottom-0  left-1/12 bg-blue-300 dark:bg-blue-500/70  blur-3xl "
+              className=" w-40  h-40 rounded-3xl   absolute bottom-0  left-1/12 bg-primary dark:bg-primary/50   blur-3xl "
             ></motion.div>
             <Card className="mx-auto  w-11/12   justify-center border-none shadow-none  flex lg:flex-row items-center bg-transparent   flex-col   ">
               <CardContent className="h-full relative w-fit ">
@@ -193,7 +200,7 @@ export default function MaskText() {
                     key={i18n.language}
                     sequence={t("mySelf.bio", { returnObjects: true })}
                     speed={30}
-                    className="  lg:text-2xl text-lg text-white relative   font-bold bg-blue-600 w-fit rounded-md p-2"
+                    className="  lg:text-2xl text-lg text-primary relative   font-bold  bg-primary-foreground w-fit rounded-md p-2"
                     repeat={Infinity}
                   />
                 </>
@@ -233,7 +240,7 @@ export default function MaskText() {
           </div>
           <p className="text-[clamp(2rem,3vw,3.5rem)]/13 h-full  w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap ">
             As a{" "}
-            <span className=" text-blue-500 p-1 rounded-md  bg-white ">
+            <span className=" text-primary p-1 rounded-md  bg-secondary-foreground">
               Full-Stack Developer
             </span>{" "}
             enjoy tackling bugs with precision, and continuously exploring new

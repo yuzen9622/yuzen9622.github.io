@@ -28,7 +28,7 @@ export default function SkillMarquee({
               spotlightColor={isDark ? "rgba(255, 255, 255, 0.6)" : skill.color}
               key={`${skill.name}-${index}`}
               className={cn(
-                `text-2xl  border bg-secondary border-accent-foreground  h-full p-4 rounded-2xl flex items-center justify-center  transition-all`,
+                `text-2xl  border bg-card! border-accent-foreground  h-full p-4 rounded-2xl flex items-center justify-center  transition-all`,
                 skill.gridClass
               )}
             >
@@ -52,7 +52,7 @@ export default function SkillMarquee({
               spotlightColor={isDark ? "rgba(255, 255, 255, 0.6)" : skill.color}
               key={`${skill.name}-${index}`}
               className={cn(
-                `text-2xl bg-secondary  border border-accent-foreground  h-full p-4 rounded-2xl flex items-center justify-center  transition-all`,
+                `text-2xl bg-card!  border border-accent-foreground  h-full p-4 rounded-2xl flex items-center justify-center  transition-all`,
                 skill.gridClass
               )}
             >
@@ -76,7 +76,7 @@ export default function SkillMarquee({
               spotlightColor={isDark ? "rgba(255, 255, 255, 0.6)" : skill.color}
               key={`${skill.name}-${index}`}
               className={cn(
-                `text-2xl bg-secondary  border border-accent-foreground  h-full p-4 rounded-2xl flex items-center justify-center  transition-all`,
+                `text-2xl bg-card!  border border-accent-foreground  h-full p-4 rounded-2xl flex items-center justify-center  transition-all`,
                 skill.gridClass
               )}
             >

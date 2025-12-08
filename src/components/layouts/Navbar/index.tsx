@@ -68,7 +68,7 @@ export default function Navbar() {
       {/** RWD navbar */}
       <NavigationMenu
         className={cn(
-          "p-3  w-11/12 max-w-none  h-fit  hidden max-sm:flex rounded-2xl transition-all justify-between flex-none fixed top-2 z-10  backdrop-blur-xs bg-background/80",
+          "p-3  w-11/12 max-w-none  h-fit  hidden max-sm:flex rounded-2xl transition-all justify-between flex-none fixed top-2 z-20  backdrop-blur-xs bg-background/80",
           isOpen && "max-sm:backdrop-blur-none bg-transparent",
           isTop && "w-full top-0 rounded-none"
         )}

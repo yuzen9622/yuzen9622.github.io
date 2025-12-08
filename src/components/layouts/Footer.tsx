@@ -39,9 +39,7 @@ export default function Footer() {
               {mySelf.name}
             </h1>
           </span>
-          <span className="text-wrap text-primary font-bold">
-            {mySelf.description}
-          </span>
+          <span className="text-wrap  font-bold">{mySelf.description}</span>
           <div className="space-x-2 flex  justify-center">
             {socialLink.map((link) => (
               <NavLink
