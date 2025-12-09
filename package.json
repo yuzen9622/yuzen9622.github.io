@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && copy dist\\index.html dist\\404.html",
+    "prebuild": "tsc -b && vite build && copy dist\\index.html dist\\404.html",
+    "build":"tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "preinstall": "npx only-allow pnpm",
