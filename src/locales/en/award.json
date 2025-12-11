@@ -1,20 +1,20 @@
 {
     "awards": {
         "lung-hwa": {
-            "title": "龍華程式競賽",
-            "description": "特優"
+            "title": "Lung Hwa Programming Contest",
+            "description": "Grand Prize"
         },
         "tqc-python": {
             "title": "TQC Python",
-            "description": "合格"
+            "description": "Certified"
         },
         "apcs": {
             "title": "APCS",
-            "description": "實作三級分，觀念四級分"
+            "description": "3/5 in Implementation, 4/5 in Concepts"
         },
         "ytp": {
-            "title": "YTP（少年圖靈計畫）",
-            "description": "決賽"
+            "title": "YTP (Young Turing Program)",
+            "description": "Finalist"
         }
     }
 }

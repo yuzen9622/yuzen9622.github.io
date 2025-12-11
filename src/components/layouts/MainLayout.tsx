@@ -21,11 +21,7 @@ export default function MainLayout({
     const [prevPath, setPrevPath] = useState<string | null>(null);
 
     useEffect(() => {
-      if (
-        pathname === prevPath ||
-        pathname.split("/").length > 2 ||
-        (prevPath && prevPath.split("/").length > 2)
-      )
+      if (pathname === prevPath || (prevPath && prevPath.split("/").length > 2))
         return;
       window.scrollTo(0, 0); // Scrolls to the top-left of the window
 
@@ -38,7 +34,7 @@ export default function MainLayout({
   return (
     <div
       className={cn(
-        "  relative w-full flex bg-transparent   overflow-auto  items-center flex-col min-h-screen z-10  ",
+        "  relative w-full flex bg-transparent overflow-hidden items-center flex-col min-h-screen z-10  ",
         slug && "overflow-hidden max-h-dvh"
       )}
     >

@@ -7,12 +7,10 @@ export function BlogProvider({ children }: { children: React.ReactNode }) {
   const { posts, loading, error } = useBlogLoader();
 
   function getFallbackSrc(data?: ImgResponse): string {
-    const baseURL = import.meta.env.VITE_API_END_POINT;
-
-    if (data?.large) return baseURL + data.large.url;
-    if (data?.medium) return baseURL + data.medium.url;
-    if (data?.small) return baseURL + data.small.url;
-    if (data?.thumbnail) return baseURL + data.thumbnail.url;
+    if (data?.large) return data.large.url;
+    if (data?.medium) return data.medium.url;
+    if (data?.small) return data.small.url;
+    if (data?.thumbnail) return data.thumbnail.url;
     return "/blog/default-placeholder.webp";
   }
   return (
