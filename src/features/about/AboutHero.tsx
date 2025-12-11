@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
-import MaskText from "./ui/MaskHero";
+import MaskHero from "./ui/MaskHero";
 
-export default function AboutHeader() {
+export default function AboutHero() {
   return (
-    <div className="min-h-dvh   relative flex flex-col">
+    <div className="min-h-dvh relative flex flex-col">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         transition={{ duration: 0.6, ease: "easeInOut", delay: 0.5 }}
@@ -12,7 +12,7 @@ export default function AboutHeader() {
         viewport={{ once: true }}
         className="h-full flex-1 flex   justify-center"
       >
-        <MaskText />
+        <MaskHero />
       </motion.div>
     </div>
   );

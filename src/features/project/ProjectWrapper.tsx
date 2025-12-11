@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import ProjectCard from "./ui/ProjectCard";
 
-import type { Project } from "@/shared/types/type";
+import type { Project } from "@/shared/types";
 export default function ProjectWrapper() {
   // { projects } = useProfile();
   const { t } = useTranslation("project");

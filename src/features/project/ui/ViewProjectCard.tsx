@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/tooltip";
 import { useProfile } from "@/shared/hook/useProfile";
 
-import type { Project } from "@/shared/types/type";
+import type { Project } from "@/shared/types";
 export default function ViewProjectCard() {
   const { techIcons } = useProfile();
   const [isClosing, setIsClosing] = useState(false);

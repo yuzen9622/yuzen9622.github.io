@@ -1,7 +1,7 @@
 import SpotlightCard from "@/components/gsap/card/SpotlightCard";
 import { useTheme } from "@/shared/hook/useTheme";
 import { cn } from "@/shared/lib/utils";
-import type { Skill } from "@/shared/types/type";
+import type { Skill } from "@/shared/types";
 import { motion } from "framer-motion";
 export default function SkillMarquee({
   skills,

@@ -1,5 +1,5 @@
 import { Calendar } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -20,6 +20,7 @@ interface BlogCardProps {
 
 export default function BlogCard({ post, index = 0 }: BlogCardProps) {
   const { getFallbackSrc } = useBlog();
+  const { lng } = useParams<{ lng: string }>();
   const MotionCard = useMemo(() => motion.create(Card), []);
   return (
     <motion.div
@@ -28,7 +29,7 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       exit={{ opacity: 0, y: 40 }}
     >
-      <NavLink to={`/blog/${post.slug}`}>
+      <NavLink to={`/${lng}/blog/${post.slug}`}>
         <MotionCard className="group backdrop-blur-xs pt-0 bg-background/80 hover:shadow-lg transition-all h-full ㄍ">
           <motion.div
             className="relative w-full h-48 overflow-hidden rounded-t-lg"

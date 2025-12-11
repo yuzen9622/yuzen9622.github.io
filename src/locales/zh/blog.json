@@ -1,0 +1,10 @@
+{
+    "blog": {
+        "backToBlog": "回到部落格",
+        "postNotFound": "找不到這篇文章。",
+        "publishedOn": "發佈於 {{date}}",
+        "categories": "分類",
+        "tags": "標籤",
+        "all": "全部"
+    }
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import Squares from "@/components/gsap/background/square";
 import Navbar from "./Navbar";
 import { useLocation } from "react-router-dom";
@@ -12,11 +12,14 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   const location = useLocation();
-  const match = location.pathname.match(/^\/blog\/([^/]+)$/);
-  const slug = match ? match[1] : null;
-  const ScrollToTop = () => {
+  const match = location.pathname.match(/^\/(en|zh)\/blog\/([^/]+)$/);
+  console.log(match);
+  const slug = match ? match[2] : null;
+
+  const ScrollToTop = memo(() => {
     const { pathname } = useLocation();
     const [prevPath, setPrevPath] = useState<string | null>(null);
+
     useEffect(() => {
       if (
         pathname === prevPath ||
@@ -30,19 +33,18 @@ export default function MainLayout({
     }, [pathname, prevPath]); // Re-run effect whenever the pathname changes
 
     return null; // This component doesn't render any visible UI
-  };
+  });
 
   return (
     <div
       className={cn(
-        "  relative w-full flex bg-transparent    items-center flex-col min-h-screen z-10  ",
+        "  relative w-full flex bg-transparent   overflow-auto  items-center flex-col min-h-screen z-10  ",
         slug && "overflow-hidden max-h-dvh"
       )}
     >
       <Navbar />
       <ScrollToTop />
       <Toaster richColors />
-
       <div className=" fixed inset-0 z-0 w-dvw h-dvh   bg-background ">
         <Squares
           speed={0.0}
@@ -52,6 +54,7 @@ export default function MainLayout({
           hoverFillColor="transparent"
         />
       </div>
+
       {children}
       <Footer />
     </div>

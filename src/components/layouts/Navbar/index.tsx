@@ -2,7 +2,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 import Tool from "@/components/layouts/Navbar/Tool";
 import {
@@ -14,14 +14,15 @@ import { useProfile } from "@/shared/hook/useProfile";
 import { cn } from "@/shared/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { AvatarImage } from "@radix-ui/react-avatar";
-import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
-  const { navigation } = useProfile();
-  const { t } = useTranslation("about");
+  const { navigation, profile } = useProfile();
+  const { lng } = useParams();
+
   const [isOpen, setIsOpen] = useState(false);
   const MotionLink = motion.create(NavLink);
   const [isTop, setIsTop] = useState(true);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsTop(window.scrollY < 50);
@@ -54,7 +55,7 @@ export default function Navbar() {
                       isActive && "before:scale-100 before:opacity-100"
                     )
                   }
-                  to={item.route}
+                  to={{ pathname: `/${lng}/${item.route}` }}
                 >
                   <span>{item.title}</span>
                 </NavLink>
@@ -77,12 +78,12 @@ export default function Navbar() {
           <Avatar className="  pointer-events-none  w-10 h-10     aspect-square">
             <AvatarImage
               className=" rounded-full"
-              alt={t("mySelf.name")}
+              alt={profile.name}
               width={48}
               height={48}
-              src={t("mySelf.avatar")}
+              src={profile.avatar}
             />
-            <AvatarFallback>{t("mySelf.name")}</AvatarFallback>
+            <AvatarFallback>{profile.name}</AvatarFallback>
           </Avatar>
         </NavLink>
         <NavigationMenuList>

@@ -1,30 +1,23 @@
-import { useEffect, useMemo, useRef } from "react";
-import { useTranslation } from "react-i18next";
-
+import { useEffect, useRef } from "react";
 import { cn } from "@/shared/lib/utils";
+import { useProfile } from "@/shared/hook/useProfile";
 
-import type { Award } from "@/shared/types/type";
 export default function Timeline({
   setObserver,
 }: {
   setObserver: (target: Element, callbackFn?: (() => void) | undefined) => void;
 }) {
   const timelineRefs = useRef<HTMLSpanElement[]>([]);
-  const { t } = useTranslation("about");
-  const myAward = useMemo(
-    () => t("myAward", { returnObjects: true }) as Award[],
-    [t]
-  );
-
+  const { awards } = useProfile();
   useEffect(() => {
     timelineRefs.current.forEach((timelineRef) => {
       setObserver(timelineRef);
     });
-  }, [setObserver, myAward]);
+  }, [setObserver, awards]);
 
   return (
     <div className="  flex flex-col h-full ">
-      {myAward.map(({ title, time, description }, index) => (
+      {awards.map(({ title, time, description }, index) => (
         <div
           key={title}
           className={cn(
@@ -38,7 +31,7 @@ export default function Timeline({
             <div
               id={`timeline${index}`}
               ref={(ref) => {
-                if (ref && index !== myAward.length - 1)
+                if (ref && index !== awards.length - 1)
                   timelineRefs.current.push(ref);
               }}
               className={cn(

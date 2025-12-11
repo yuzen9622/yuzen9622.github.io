@@ -8,11 +8,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import useBlog from "./hooks/useBlog";
 import BlogCardSkeleton from "./BlogCardSkeleton";
 import { cn } from "@/shared/lib/utils";
+import { useTranslation } from "react-i18next";
 
 export default function BlogList() {
   const [search, setSearch] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-
+  const { t } = useTranslation("blog");
   const { posts, loading, error } = useBlog();
   const allTags = useMemo(() => {
     if (!posts) return [];
@@ -35,21 +36,6 @@ export default function BlogList() {
     });
   }, [posts, search, selectedTag]);
 
-  if (loading) {
-    return (
-      <div className="w-full min-h-[50vh] flex items-center justify-center">
-        <motion.div
-          className="w-full max-w-6xl p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          {Array.from({ length: 3 }).map((_, i) => (
-            <BlogCardSkeleton key={i} />
-          ))}
-        </motion.div>
-      </div>
-    );
-  }
   if (error) {
     return (
       <div className="w-full min-h-[50vh] flex items-center justify-center">
@@ -91,7 +77,7 @@ export default function BlogList() {
             className="cursor-pointer  backdrop-blur-md px-3 py-1 rounded-3xl"
             onClick={() => setSelectedTag(null)}
           >
-            全部
+            {t("blog.all")}
           </Badge>
           {allTags.map((tag) => (
             <Badge
@@ -105,32 +91,45 @@ export default function BlogList() {
           ))}
         </div>
       </motion.div>
-
-      <AnimatePresence mode="wait">
-        {filteredPosts?.length === 0 ? (
+      {loading ? (
+        <div className="w-full min-h-[50vh] flex items-center justify-center">
           <motion.div
-            key="no-posts"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            className="text-center py-20"
+            className="w-full max-w-6xl p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
           >
-            <p className="text-2xl text-muted-foreground">暫無文章</p>
+            {Array.from({ length: 3 }).map((_, i) => (
+              <BlogCardSkeleton key={i} />
+            ))}
           </motion.div>
-        ) : (
-          <motion.div
-            key="posts-grid"
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            <AnimatePresence mode="popLayout">
-              {filteredPosts?.map((post, index) => (
-                <BlogCard key={post.slug} post={post} index={index} />
-              ))}
-            </AnimatePresence>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      ) : (
+        <AnimatePresence mode="wait">
+          {filteredPosts?.length === 0 ? (
+            <motion.div
+              key="no-posts"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="text-center py-20"
+            >
+              <p className="text-2xl text-muted-foreground">暫無文章</p>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="posts-grid"
+              layout
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              <AnimatePresence mode="popLayout">
+                {filteredPosts?.map((post, index) => (
+                  <BlogCard key={post.slug} post={post} index={index} />
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
     </motion.div>
   );
 }

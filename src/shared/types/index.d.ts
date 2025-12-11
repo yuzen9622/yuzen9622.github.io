@@ -27,12 +27,14 @@ export type Navigation = { route: string; title: string };
 export type User = {
   name: string;
   nickName: string;
-  bio: Array<string | number>;
+  roles: (string | number)[];
   country: string;
+  headline: string;
+  tagline: string;
+  shortDesc: string;
+  desc: string;
   email: string;
   avatar: string;
-  description: string;
-  content: string;
   phone: string;
 };
 
@@ -41,7 +43,12 @@ export type Card = {
   description: string;
 };
 
-export type Award = { title: string; time: string; description: string };
+export type Award = {
+  id: string;
+  time: string;
+  title: string;
+  description: string;
+};
 
 export type ProjectContent = { overview: string; feature: string };
 export type Project = {
@@ -61,7 +68,7 @@ export type SocialLink = {
   title: string;
   icon: JSX.Element;
   link: string;
-  desc?: string;
+  desc: string;
 };
 
 export type Contact = {
@@ -80,11 +87,10 @@ export type ThemeProviderState = {
 
 export type ProfileProviderState = {
   navigation: Navigation[];
-  mySelf: User;
-  myAward: Award[];
-  myCard: Card[];
+  profile: User;
   projects: Project[];
   socialLink: SocialLink[];
+  awards: Award[];
   techIcons: TechIcon;
 };
 export type Skill = {

@@ -6,9 +6,9 @@ import { useRef } from "react";
 import SkillGrid from "@/features/about/AboutSection/SkillGrid";
 
 export default function Main() {
-  const { t } = useTranslation("about");
+  const { t } = useTranslation("profile");
   const ref = useRef(null);
-  // 追蹤元素滾動進度
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 80%", "end 50%"], // 元素進出視窗的區間
@@ -22,7 +22,7 @@ export default function Main() {
   );
 
   return (
-    <div className=" lg:w-6/12 flex flex-col ">
+    <div className="lg:w-6/12 flex flex-col">
       <motion.p
         ref={ref}
         style={{
@@ -37,7 +37,7 @@ export default function Main() {
         viewport={{ once: true }}
         className=" w-11/12 mx-auto min-w-0 bg-secondary-foreground max-lg:text-center font-bold text-primary   leading-6 tracking-wide  indent-8 whitespace-pre-wrap"
       >
-        {t("mySelf.content")}
+        {t("profile.description")}
       </motion.p>
       <Separator className="my-4 shadow-3xl shadow-background" />
       <SkillGrid />

@@ -186,6 +186,9 @@ importers:
       globals:
         specifier: ^16.2.0
         version: 16.3.0
+      i18next-browser-languagedetector:
+        specifier: ^8.2.0
+        version: 8.2.0
       postcss:
         specifier: ^8.5.6
         version: 8.5.6
@@ -1713,6 +1716,9 @@ packages:
 
   html-void-elements@3.0.0:
     resolution: {integrity: sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==}
+
+  i18next-browser-languagedetector@8.2.0:
+    resolution: {integrity: sha512-P+3zEKLnOF0qmiesW383vsLdtQVyKtCNA9cjSoKCppTKPQVfKd2W8hbVo5ZhNJKDqeM7BOcvNoKJOjpHh4Js9g==}
 
   i18next-resources-for-ts@1.6.0:
     resolution: {integrity: sha512-iDBax3MO5ajNS3lDC1aSsdWgwGyUYxHX1LCd6XsnHrb2cpLOwJTDsSDucyVGy/zHMQHYu3tsjkTZzdZIwQ8Y5A==}
@@ -4077,6 +4083,10 @@ snapshots:
   html-url-attributes@3.0.1: {}
 
   html-void-elements@3.0.0: {}
+
+  i18next-browser-languagedetector@8.2.0:
+    dependencies:
+      '@babel/runtime': 7.28.4
 
   i18next-resources-for-ts@1.6.0:
     dependencies:

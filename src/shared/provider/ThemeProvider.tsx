@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { ThemeProviderContext } from "./ThemeContextProvider";
 
-import type { Theme, SystemTheme } from "@/shared/types/type";
+import type { Theme, SystemTheme } from "@/shared/types";
 type ThemeProviderProps = {
   children: React.ReactNode;
   defaultTheme?: Theme;

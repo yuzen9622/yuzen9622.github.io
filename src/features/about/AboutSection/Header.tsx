@@ -1,12 +1,12 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useTranslation } from "react-i18next";
 
 import ShinyText from "@/components/gsap/text/ShinyText";
 import { Badge } from "@/components/ui/badge";
 import { useRef } from "react";
+import { useProfile } from "@/shared/hook/useProfile";
 
 export default function Header() {
-  const { t } = useTranslation("about");
+  const { profile } = useProfile();
   const MotionBadge = motion.create(Badge);
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -33,7 +33,7 @@ export default function Header() {
           style={{ x: xName, opacity }}
           className=" text-6xl   text-shadow-lg dark:text-shadow-secondary"
         >
-          {t("mySelf.name")}
+          {profile.name}
         </motion.h1>
         <motion.div style={{ x: xDev, opacity }}>
           <ShinyText

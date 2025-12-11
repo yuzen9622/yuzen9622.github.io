@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
-import type { SocialLink } from "@/shared/types/type";
+import type { SocialLink } from "@/shared/types";
 import { SquareArrowOutUpRight } from "lucide-react";
 
 export default function ContactCard({ title, icon, desc, link }: SocialLink) {

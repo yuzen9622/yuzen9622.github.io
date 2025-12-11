@@ -1,0 +1,20 @@
+{
+    "awards": {
+        "lung-hwa": {
+            "title": "龍華程式競賽",
+            "description": "特優"
+        },
+        "tqc-python": {
+            "title": "TQC Python",
+            "description": "合格"
+        },
+        "apcs": {
+            "title": "APCS",
+            "description": "實作三級分，觀念四級分"
+        },
+        "ytp": {
+            "title": "YTP（少年圖靈計畫）",
+            "description": "決賽"
+        }
+    }
+}

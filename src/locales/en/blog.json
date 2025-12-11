@@ -1,0 +1,10 @@
+{
+    "blog": {
+        "backToBlog": "Back to Blog",
+        "postNotFound": "post not found.",
+        "publishedOn": "Published on {{date}}",
+        "categories": "Categories",
+        "tags": "Tags",
+        "all": "All"
+    }
+}

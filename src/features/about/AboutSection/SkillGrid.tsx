@@ -9,7 +9,7 @@ import {
   SiCplusplus,
   SiMongodb,
 } from "react-icons/si";
-import type { Skill } from "@/shared/types/type";
+import type { Skill } from "@/shared/types";
 import SkillMarquee from "../ui/SkillMarquee";
 // 定義每個技能的資料
 const skills: Skill[] = [

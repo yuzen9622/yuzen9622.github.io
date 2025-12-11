@@ -12,13 +12,15 @@ import CircularText from "@/components/gsap/text/CircularText";
 import { Badge } from "@/components/ui/badge";
 import { AtSign, MapPin } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
+import { useProfile } from "@/shared/hook/useProfile";
 import { useTranslation } from "react-i18next";
 
-export default function MaskText() {
+export default function MaskHero() {
   const maskDiv = useRef<HTMLDivElement>(null);
   const { x, y } = useMousePosition(maskDiv);
   const [isHover, setIsHover] = useState(false);
-  const { t, i18n } = useTranslation("about");
+  const { profile } = useProfile();
+  const { i18n } = useTranslation();
   const handleMouseIn = () => {
     setIsHover(true);
   };
@@ -64,22 +66,22 @@ export default function MaskText() {
               <Avatar className="  pointer-events-none  w-3xs    h-full aspect-square">
                 <AvatarImage
                   className=" rounded-full"
-                  alt={t("mySelf.name")}
+                  alt={profile.name}
                   width={48}
                   height={48}
-                  src={t("mySelf.avatar")}
+                  src={profile.avatar}
                 />
-                <AvatarFallback>{t("mySelf.name")}</AvatarFallback>
+                <AvatarFallback>{profile.name}</AvatarFallback>
               </Avatar>
             </CardContent>
             <CardContent className="  h-full flex justify-center   lg:items-start items-center flex-col gap-5 ">
               <h1 className=" relative lg:text-5xl text-4xl font-extrabold text-primary">
-                {t("mySelf.name")}
+                {profile.name}
               </h1>
               <>
                 <TypeAnimation
                   key={i18n.language}
-                  sequence={t("mySelf.bio", { returnObjects: true })}
+                  sequence={profile.roles}
                   speed={30}
                   className="  lg:text-2xl text-lg text-white relative   font-bold bg-primary w-fit rounded-md p-2"
                   repeat={Infinity}
@@ -97,9 +99,7 @@ export default function MaskText() {
                     href="https://www.google.com/maps/place/%E6%96%B0%E7%AB%B9%E7%B8%A3"
                   >
                     <MapPin absoluteStrokeWidth size={20} />
-                    <p className=" font-bold text-[16px]">
-                      {t("mySelf.country")}
-                    </p>
+                    <p className=" font-bold text-[16px]">{profile.country}</p>
                   </a>
                 </Badge>
                 <Badge
@@ -107,11 +107,9 @@ export default function MaskText() {
                   asChild
                   className=" backdrop-blur-xs"
                 >
-                  <a href={`mailto:${t("mySelf.email")}`}>
+                  <a href={`mailto:${profile.email}`}>
                     <AtSign absoluteStrokeWidth size={20} />
-                    <p className=" font-bold text-[16px]">
-                      {t("mySelf.email")}
-                    </p>
+                    <p className=" font-bold text-[16px]">{profile.email}</p>
                   </a>
                 </Badge>
               </div>
@@ -120,10 +118,10 @@ export default function MaskText() {
         </div>
 
         <p className="text-[clamp(2rem,3vw,3.5rem)]/13 h-full  w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap">
-          As a{" "}
+          As a
           <span className=" text-white p-1 rounded-md  bg-primary">
             Full-Stack Developer
-          </span>{" "}
+          </span>
           enjoy tackling bugs with precision, and continuously exploring new
           technologies.
         </p>
@@ -176,15 +174,15 @@ export default function MaskText() {
                 <Avatar className="  relative w-3xs  z-50  h-full aspect-square">
                   <AvatarImage
                     className=" rounded-full"
-                    alt={t("mySelf.name")}
+                    alt={profile.name}
                     width={48}
                     height={48}
-                    src={t("mySelf.avatar")}
+                    src={profile.avatar}
                   />
-                  <AvatarFallback>{t("mySelf.name")}</AvatarFallback>
+                  <AvatarFallback>{profile.name}</AvatarFallback>
                   <div className=" absolute flex items-center justify-center w-full h-full">
                     <CircularText
-                      text={t("mySelf.circularText")}
+                      text={profile.tagline}
                       spinDuration={20}
                       className=" w-full h-full  cursor-pointer  text-white"
                     />
@@ -193,12 +191,12 @@ export default function MaskText() {
               </CardContent>
               <CardContent className="  h-full flex justify-center   lg:items-start items-center flex-col gap-5 ">
                 <h1 className=" relative lg:text-5xl text-4xl font-extrabold text-primary-foreground">
-                  {t("mySelf.name")}
+                  {profile.name}
                 </h1>
                 <>
                   <TypeAnimation
                     key={i18n.language}
-                    sequence={t("mySelf.bio", { returnObjects: true })}
+                    sequence={profile.roles}
                     speed={30}
                     className="  lg:text-2xl text-lg text-primary relative   font-bold  bg-primary-foreground w-fit rounded-md p-2"
                     repeat={Infinity}
@@ -217,7 +215,7 @@ export default function MaskText() {
                     >
                       <MapPin absoluteStrokeWidth size={20} />
                       <p className=" font-bold text-[16px]">
-                        {t("mySelf.country")}
+                        {profile.country}
                       </p>
                     </a>
                   </Badge>
@@ -226,12 +224,9 @@ export default function MaskText() {
                     asChild
                     className="text-primary-foreground"
                   >
-                    <a href={`mailto:${t("mySelf.email")}`}>
+                    <a href={`mailto:${profile.email}`}>
                       <AtSign absoluteStrokeWidth size={20} />
-                      <p className=" font-bold text-[16px]">
-                        {" "}
-                        {t("mySelf.email")}
-                      </p>
+                      <p className=" font-bold text-[16px]">{profile.email}</p>
                     </a>
                   </Badge>
                 </div>
@@ -239,15 +234,15 @@ export default function MaskText() {
             </Card>
           </div>
           <p className="text-[clamp(2rem,3vw,3.5rem)]/13 h-full  w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap ">
-            As a{" "}
-            <span className=" text-primary p-1 rounded-md  bg-secondary-foreground">
+            As a
+            <span className=" text-primary p-1 rounded-md  bg-background">
               Full-Stack Developer
-            </span>{" "}
+            </span>
             enjoy tackling bugs with precision, and continuously exploring new
             technologies.
           </p>
         </motion.div>
-      </div>{" "}
+      </div>
     </>
   );
 }

@@ -1,155 +1,53 @@
 interface Resources {
-  "about": {
-    "title": {
-      "about": "About",
-      "award": [
-        "Achievements ",
-        " Certifications"
-      ],
-      "mostLang": "Most Programming I Use",
-      "skill": [
-        "Programming",
-        "framework",
-        "SQL",
-        "CICD"
-      ]
-    },
-    "mySelf": {
-      "name": "Yuzen",
-      "nickName": "Small Z",
-      "bio": [
-        "Full Stack Debugger",
-        1000,
+  "award": {
+    "awards": {
+      "lung-hwa": {
+        "title": "龍華程式競賽",
+        "description": "特優"
+      },
+      "tqc-python": {
+        "title": "TQC Python",
+        "description": "合格"
+      },
+      "apcs": {
+        "title": "APCS",
+        "description": "實作三級分，觀念四級分"
+      },
+      "ytp": {
+        "title": "YTP（少年圖靈計畫）",
+        "description": "決賽"
+      }
+    }
+  },
+  "blog": {
+    "blog": {
+      "backToBlog": "Back to Blog",
+      "postNotFound": "post not found.",
+      "publishedOn": "Published on {{date}}",
+      "categories": "Categories",
+      "tags": "Tags",
+      "all": "All"
+    }
+  },
+  "profile": {
+    "profile": {
+      "roles": [
         "Full Stack Developer",
+        1000,
+        "Full Stack Debugger",
         1000
       ],
-      "call": "You can call me",
       "country": "Hsinchu, TW",
-      "circularText": "Creative*Coder*Dream*Builder*",
-      "email": "oscar48079@gmail.com",
-      "avatar": "/avatar.webp",
-      "description": "Hi, I'm Small Z (18y)! Now studying in the five-year program at National Taichung University of Science and Technology (NUTC).",
-      "phone": "+886965303635",
-      "content": "I'm a third-year Information Management student at NUTC. I love programming and web design. I enjoy working on my own projects and working with others, as this helps me to learn and grow. I specialise in full-stack development, and I have experience with databases and backend RESTful APIs. In the past, I thought that getting good results was the most important thing. But now I know that planning and preparation are also very important for a software engineer."
+      "headline": "You can call me Small Z",
+      "tagline": "Creative*Coder*Dream*Builder*",
+      "short_description": "Hi, I'm Small Z (18y). I'm currently studying in the five-year program at National Taichung University of Science and Technology (NUTC).",
+      "description": "I'm a third-year Information Management student at NUTC who loves programming and web design. I enjoy building my own projects and collaborating with others, as both help me grow. My strengths are backend development, data modeling (ER models), and designing RESTful APIs. I used to think results matter most, but now I believe careful planning is just as important for software engineering."
     },
-    "myAward": [
-      {
-        "title": "APCS",
-        "time": "2025-06-14",
-        "description": "Implementation Level 3, Concept Level 4"
-      },
-      {
-        "title": "LungHwa CPC",
-        "time": "2025-06-09",
-        "description": "High Distinction"
-      },
-      {
-        "title": "TQC Python",
-        "time": "2025-06-13",
-        "description": ""
-      }
-    ],
-    "myCard": [
-      {
-        "title": "2+",
-        "description": "Years experience"
-      },
-      {
-        "title": "10+",
-        "description": "Projects"
-      },
-      {
-        "title": "3+",
-        "description": "Programming languages"
-      }
-    ],
-    "skillGroup": {
-      "all": "all",
-      "pr": "programming",
-      "fw": "framework",
-      "other": "other"
-    },
-    "mySkill": [
-      {
-        "title": "JavaScript",
-        "process": 95,
-        "group": "programming"
-      },
-      {
-        "title": "TypeScript",
-        "process": 90,
-        "group": "programming"
-      },
-      {
-        "title": "C++",
-        "process": 70,
-        "group": "programming"
-      },
-      {
-        "title": "C",
-        "process": 60,
-        "group": "programming"
-      },
-      {
-        "title": "Python",
-        "process": 50,
-        "group": "programming"
-      },
-      {
-        "title": "Java",
-        "process": 40,
-        "group": "programming"
-      },
-      {
-        "title": "React.js",
-        "process": 80,
-        "group": "framework"
-      },
-      {
-        "title": "Next.js",
-        "process": 70,
-        "group": "framework"
-      },
-      {
-        "title": "Express.js",
-        "process": 60,
-        "group": "framework"
-      },
-      {
-        "title": "Git",
-        "process": 65,
-        "group": "other"
-      },
-      {
-        "title": "MySQL",
-        "process": 50,
-        "group": "other"
-      },
-      {
-        "title": "MongoDB",
-        "process": 55,
-        "group": "other"
-      }
-    ]
-  },
-  "contact": {
-    "socialLink": [
-      {
-        "title": "Instagram",
-        "desc": "My live!",
-        "link": "https://www.instagram.com/zn._622/"
-      },
-      {
-        "title": "GitHub",
-        "desc": "Let's dev some cool thing.",
-        "link": "https://github.com/yuzen9622/"
-      },
-      {
-        "title": "LinkedIn",
-        "desc": "Need Full Stack Developer ?",
-        "link": "https://www.linkedin.com/in/yu-zen-tsao-52824233b/"
-      }
-    ]
+    "social": {
+      "instagram": "My live!",
+      "github": "Let's dev some cool thing.",
+      "linkedin": "Need Full Stack Developer?"
+    }
   },
   "project": {
     "projects": [
@@ -166,7 +64,7 @@ interface Resources {
         "image": "project/chatto.webp",
         "year": "2025",
         "sourceUrl": "https://github.com/yuzen9622/chat.to",
-        "previewUrl": "https://chat-to-sage.vercel.app/introduce",
+        "previewUrl": "https://chat.yuzen.dev",
         "type": "web",
         "content": {
           "overview": "Chat.to is designed as a modern real-time chat platform that emphasizes simplicity and speed. It integrates cloud-based services with Next.js and Supabase to ensure smooth communication, while NextAuth provides a secure login system. The app allows users to stay connected with both individuals and groups, making it ideal for casual chats or team collaboration.",
@@ -186,7 +84,7 @@ interface Resources {
         "image": "project/dcard.webp",
         "year": "2025",
         "sourceUrl": "https://github.com/yuzen9622/Dcard",
-        "previewUrl": "https://dcard-rosy.vercel.app/category/",
+        "previewUrl": "https://dcard.yuzen.dev",
         "type": "web",
         "content": {
           "overview": "Dcard Clone is a blog-style web application inspired by popular social forums. Built with Django, it combines powerful backend capabilities with a straightforward user experience. The platform allows registered users to create posts, leave comments, and browse content with efficient categorization and pagination. With Bootstrap, the layout remains responsive across devices, while Django's admin panel offers simple management tools for site administrators.",
@@ -207,7 +105,7 @@ interface Resources {
         "image": "project/微財.webp",
         "year": "2024",
         "sourceUrl": "https://github.com/yuzen9622/Account-App",
-        "previewUrl": "https://account-app-phi.vercel.app/",
+        "previewUrl": "https://account.yuzen.dev",
         "type": "web",
         "content": {
           "overview": "WealthEase is a personal finance tracker built to simplify budgeting for everyday users. It provides an intuitive interface where you can log your income and expenses, categorize your transactions, and visualize your financial flow. By connecting to a cloud database, the app ensures your financial data is always accessible and secure. With its responsive design, it’s equally effective on desktops and mobile devices.",

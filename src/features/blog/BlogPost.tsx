@@ -15,12 +15,13 @@ import MarkdownRenderer from "./ui/MarkdownRenderer";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Category } from "./types/blog";
 import useBlog from "./hooks/useBlog";
+import { useTranslation } from "react-i18next";
 
 export default function BlogPost() {
-  const { slug } = useParams<{ slug: string }>();
+  const { slug, lng } = useParams<{ slug: string; lng: string }>();
   const navigate = useNavigate();
   const { posts, loading, getFallbackSrc } = useBlog();
-
+  const { t } = useTranslation("blog");
   const [content, setContent] = useState<string | null>(null);
   const post = posts?.find((p) => p.slug === slug);
 
@@ -33,16 +34,17 @@ export default function BlogPost() {
     if (document.startViewTransition) {
       window.scrollTo(0, 0);
       document.startViewTransition(() => {
-        navigate("/blog");
+        navigate(`/${lng}/blog`);
       });
     } else {
       window.scrollTo(0, 0);
-      navigate("/blog");
+      navigate(`/${lng}/blog`);
     }
   };
+
   if (loading) {
     return (
-      <div className=" absolute  w-full min-h-screen h-full bg-background z-10 ">
+      <div className=" absolute  w-full min-h-screen  h-full bg-background z-10 ">
         <div className=" fixed w-full h-screen flex items-center justify-center">
           <Loader2 className="animate-spin" size={48} />
         </div>
@@ -52,12 +54,12 @@ export default function BlogPost() {
 
   if (!post) {
     return (
-      <div className=" absolute  w-full min-h-screen h-full flex items-center justify-center">
+      <div className=" fixed  w-full  h-full overflow-hidden bg-background z-30 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
+          <h1 className="text-4xl font-bold mb-4">{t("blog.postNotFound")}</h1>
           <Button onClick={handleBack}>
             <ArrowLeft size={16} />
-            Back to Blog
+            {t("blog.backToBlog")}
           </Button>
         </div>
       </div>
@@ -98,7 +100,7 @@ export default function BlogPost() {
                   variant="ghost"
                   size="sm"
                   onClick={handleBack}
-                  className=" self-start backdrop-blur-2xl px-3 bg-background/50 py-2 rounded-3xl "
+                  className=" self-start backdrop-blur-2xl hover:bg-primary hover:text-white px-3 bg-background/50 py-2 rounded-3xl "
                 >
                   <ChevronLeftIcon size={16} />
                   Back

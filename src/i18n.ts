@@ -1,41 +1,56 @@
 // src/i18n.ts
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
 
 // ⬇️ 載入翻譯檔（en）
-import about_en from "@/locales/en/about.json";
+import profile_en from "@/locales/en/profile.json";
 import project_en from "@/locales/en/project.json";
-import contact_en from "@/locales/en/contact.json";
-
+import award_en from "@/locales/en/award.json";
+import blog_en from "@/locales/en/blog.json";
 // ⬇️ 載入翻譯檔（zh）
-import about_zh from "@/locales/zh/about.json";
+import profile_zh from "@/locales/zh/profile.json";
 import project_zh from "@/locales/zh/project.json";
-import contact_zh from "@/locales/zh/contact.json";
-
-i18n.use(initReactI18next).init({
-  lng: "en", // 預設語言（可改成 "en"）
-  fallbackLng: "en", // 語言找不到時用英文備用
-  debug: false,
-
-  ns: ["about", "project", "contact"], // 告訴 i18next 你有哪些命名空間
-  defaultNS: "about", // 預設命名空間（t() 沒指定會用這個）
-
-  resources: {
-    en: {
-      about: about_en,
-      project: project_en,
-      contact: contact_en,
+import award_zh from "@/locales/zh/award.json";
+import blog_zh from "@/locales/zh/blog.json";
+i18n
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    supportedLngs: ["en", "zh"],
+    debug: false,
+    detection: {
+      order: [
+        "path",
+        "cookie",
+        "localStorage",
+        "navigator",
+        "htmlTag",
+        "subdomain",
+      ],
+      caches: ["cookie"],
     },
-    zh: {
-      about: about_zh,
-      project: project_zh,
-      contact: contact_zh,
-    },
-  },
+    ns: ["profile", "project", "award", "blog"],
+    defaultNS: "profile",
 
-  interpolation: {
-    escapeValue: false, // React 已處理 XSS，這裡設 false 就好
-  },
-});
+    resources: {
+      en: {
+        profile: profile_en,
+        project: project_en,
+        blog: blog_en,
+        award: award_en,
+      },
+      zh: {
+        profile: profile_zh,
+        project: project_zh,
+        blog: blog_zh,
+        award: award_zh,
+      },
+    },
+
+    react: {
+      useSuspense: false,
+    },
+  });
 
 export default i18n;

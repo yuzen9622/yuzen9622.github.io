@@ -7,17 +7,11 @@ import {
 } from "@/components/ui/card";
 import { AtSign, Phone, QrCode } from "lucide-react";
 import ContactCard from "./ui/ContactCard";
-import { useTranslation } from "react-i18next";
-import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+
+import { useProfile } from "@/shared/hook/useProfile";
 
 export default function ContactContent() {
-  const { t } = useTranslation(["contact", "about"]);
-  const socialLink = t("socialLink", { returnObjects: true });
-  const iconMap = {
-    Instagram: <FaInstagram size={25} />,
-    GitHub: <FaGithub size={25} />,
-    LinkedIn: <FaLinkedin size={25} />,
-  };
+  const { socialLink, profile } = useProfile();
 
   return (
     <div className="w-full min-h-[50dvh] flex p-5 gap-5 max-lg:flex-col-reverse">
@@ -25,16 +19,16 @@ export default function ContactContent() {
         <CardHeader>
           <CardTitle className=" flex items-center gap-3">
             <img
-              src={t("about:mySelf.avatar")}
-              alt={t("about:mySelf.name")}
+              src={profile.avatar}
+              alt={profile.name}
               width={40}
               height={40}
               className=" w-12 h-12 aspect-square rounded-full"
             />
             <span>
-              <h1 className="text-2xl">{t("about:mySelf.name")}</h1>
+              <h1 className="text-2xl">{profile.name}</h1>
               <CardDescription>
-                <p>or you can call me {t("about:mySelf.nickName")}</p>
+                <p>or you can call me {profile.nickName}</p>
               </CardDescription>
             </span>
           </CardTitle>
@@ -42,15 +36,15 @@ export default function ContactContent() {
         <CardContent className=" flex flex-col gap-3">
           <ContactCard
             title={"Email"}
-            desc={t("about:mySelf.email")}
-            link={`mailto:${t("about:mySelf.email")}`}
+            desc={profile.email}
+            link={`mailto:${profile.email}`}
             icon={<AtSign />}
           />
           <ContactCard
             title="Phone"
-            link={`tel:${t("about:mySelf.phone")}`}
+            link={`tel:${profile.phone}`}
             icon={<Phone />}
-            desc={t("about:mySelf.phone")}
+            desc={profile.phone}
           />
         </CardContent>
       </Card>
@@ -74,7 +68,7 @@ export default function ContactContent() {
               title={item.title}
               link={item.link}
               desc={item.desc}
-              icon={iconMap[item.title]}
+              icon={item.icon}
             />
           ))}
         </CardContent>
