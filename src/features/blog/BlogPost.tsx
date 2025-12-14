@@ -5,7 +5,9 @@ import {
   Calendar,
   ChevronLeftIcon,
   Loader2,
+  MoonIcon,
   Share2,
+  SunIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -16,6 +18,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import type { Category } from "./types/blog";
 import useBlog from "./hooks/useBlog";
 import { useTranslation } from "react-i18next";
+import { useTheme } from "@/shared/hook/useTheme";
+import { LanguageSelector } from "@/components/shared/LangSwitch";
 
 export default function BlogPost() {
   const { slug, lng } = useParams<{ slug: string; lng: string }>();
@@ -24,7 +28,7 @@ export default function BlogPost() {
   const { t } = useTranslation("blog");
   const [content, setContent] = useState<string | null>(null);
   const post = posts?.find((p) => p.slug === slug);
-
+  const { isDark, setTheme } = useTheme();
   useEffect(() => {
     window.scrollTo(0, 0);
     if (post) setContent(post.content);
@@ -44,10 +48,8 @@ export default function BlogPost() {
 
   if (loading) {
     return (
-      <div className=" absolute  w-full min-h-screen  h-full bg-background z-10 ">
-        <div className=" fixed w-full h-screen flex items-center justify-center">
-          <Loader2 className="animate-spin" size={48} />
-        </div>
+      <div className=" fixed w-full h-screen flex items-center   bg-background z-10  justify-center">
+        <Loader2 className="animate-spin" size={48} />
       </div>
     );
   }
@@ -84,7 +86,7 @@ export default function BlogPost() {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         // transition={{ duration: 0.3 }}
-        className="   absolute  inset-0 max-h-dvh z-30 bg-background pt-2  overflow-y-auto"
+        className="   fixed  inset-0 max-h-dvh z-30 bg-background pt-2  overflow-y-auto"
       >
         {content ? (
           <motion.div
@@ -95,7 +97,7 @@ export default function BlogPost() {
             className="md:w-11/12 max-w-4xl mx-auto "
           >
             <div className="backdrop-blur-xs bg-background/95 flex flex-col md:p-8 p-2 relative space-y-2 ">
-              <div className="  sticky top-4 z-20">
+              <div className="  sticky top-4 z-20 flex justify-between">
                 <Button
                   variant="ghost"
                   size="sm"
@@ -105,6 +107,23 @@ export default function BlogPost() {
                   <ChevronLeftIcon size={16} />
                   Back
                 </Button>
+                <div className="space-x-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setTheme(isDark ? "light" : "dark");
+                    }}
+                    className=" relative p-2 bg-background/50  rounded-3xl   backdrop-blur-md cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary"
+                  >
+                    {isDark ? <SunIcon size={18} /> : <MoonIcon size={18} />}
+                  </button>
+                  <button
+                    type="button"
+                    className=" relative p-2 bg-background/50  rounded-3xl   backdrop-blur-md cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary"
+                  >
+                    <LanguageSelector />
+                  </button>
+                </div>
               </div>
 
               <motion.div

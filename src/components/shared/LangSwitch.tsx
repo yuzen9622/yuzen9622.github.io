@@ -1,18 +1,47 @@
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
+import { cn } from "@/shared/lib/utils";
 import { Languages } from "lucide-react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
-export function LangSwitcher() {
-  const { lng } = useParams();
-  const navigate = useNavigate();
+export function LanguageSelector() {
+  const { i18n } = useTranslation();
 
-  const switchTo = (newLng: string) => {
-    const newPath = window.location.pathname.replace(`/${lng}`, `/${newLng}`);
-    navigate(newPath);
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
   };
 
   return (
-    <button onClick={() => switchTo(lng === "en" ? "zh" : "en")}>
-      <Languages size={18} />
-    </button>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Languages size={18} />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        align="end"
+        sideOffset={14}
+        className="  backdrop-blur-md bg-background/50 space-y-2 w-fit"
+      >
+        <DropdownMenuItem
+          className={cn(
+            i18n.language === "en" && "bg-primary  text-primary-foreground"
+          )}
+          onClick={() => changeLanguage("en")}
+        >
+          English
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className={cn(
+            i18n.language === "zh-Hans" && "bg-primary  text-primary-foreground"
+          )}
+          onClick={() => changeLanguage("zh-Hans")}
+        >
+          中文
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

@@ -80,7 +80,13 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         td: ({ children }) => <TypographyTd>{children}</TypographyTd>,
         input: ({ type, disabled, checked, ...props }) => {
           if (type === "checkbox")
-            return <Checkbox checked={checked} disabled={disabled} />;
+            return (
+              <Checkbox
+                checked={checked}
+                className=" disabled:opacity-100"
+                disabled={disabled}
+              />
+            );
           return <input type={type} {...props} />;
         },
         img: ({ ...props }) => {

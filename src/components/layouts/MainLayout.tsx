@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useEffect, useMemo, useState } from "react";
 import Squares from "@/components/gsap/background/square";
 import Navbar from "./Navbar";
 import { useLocation } from "react-router-dom";
@@ -12,8 +12,12 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   const location = useLocation();
-  const match = location.pathname.match(/^\/(en|zh)\/blog\/([^/]+)$/);
-  console.log(match);
+
+  const match = useMemo(
+    () => location.pathname.match(/^\/(en|zh-Hans)\/blog\/([^/]+)$/),
+    [location.pathname]
+  );
+
   const slug = match ? match[2] : null;
 
   const ScrollToTop = memo(() => {
@@ -52,6 +56,7 @@ export default function MainLayout({
       </div>
 
       {children}
+
       <Footer />
     </div>
   );

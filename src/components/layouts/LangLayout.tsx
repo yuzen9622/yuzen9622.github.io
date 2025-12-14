@@ -1,5 +1,5 @@
 import { useParams, Navigate, Routes, Route } from "react-router-dom";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import i18n from "@/i18n";
 
 import ContactPage from "@/pages/ContactPage";
@@ -11,18 +11,17 @@ import ViewProjectCard from "@/features/project/ui/ViewProjectCard";
 import MainLayout from "@/components/layouts/MainLayout";
 import BlogPost from "@/features/blog/BlogPost";
 import { AnimatePresence } from "framer-motion";
-
+import { supportedLngs } from "@/i18n";
 export default function LangLayout() {
   const { lng } = useParams();
-  const supported = useMemo(() => ["en", "zh"], []);
 
   useEffect(() => {
-    if (i18n.language !== lng && supported.includes(lng!)) {
+    if (i18n.language !== lng && supportedLngs.includes(lng!)) {
       i18n.changeLanguage(lng);
     }
-  }, [lng, supported]);
-
-  if (!lng || !supported.includes(lng)) {
+  }, [lng]);
+  console.log("Current language:", i18n.language);
+  if (!lng || !supportedLngs.includes(lng)) {
     return <Navigate to="/en" replace />;
   }
 

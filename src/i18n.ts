@@ -13,11 +13,12 @@ import profile_zh from "@/locales/zh/profile.json";
 import project_zh from "@/locales/zh/project.json";
 import award_zh from "@/locales/zh/award.json";
 import blog_zh from "@/locales/zh/blog.json";
+export const supportedLngs = ["en", "zh-Hans"];
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    supportedLngs: ["en", "zh"],
+    supportedLngs,
     debug: false,
     detection: {
       order: [
@@ -40,7 +41,7 @@ i18n
         blog: blog_en,
         award: award_en,
       },
-      zh: {
+      "zh-Hans": {
         profile: profile_zh,
         project: project_zh,
         blog: blog_zh,

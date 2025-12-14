@@ -1,6 +1,6 @@
 // src/pages/BlogPage.tsx
 import { Helmet } from "react-helmet";
-import { Outlet, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import BlogList from "@/features/blog/BlogList";
 import BlogPost from "@/features/blog/BlogPost";
@@ -17,7 +17,6 @@ export default function BlogPage() {
 
       <AnimatePresence mode="wait">
         {slug && <BlogPost key={slug} />}
-        <Outlet />
       </AnimatePresence>
 
       <div key="blog-list" className=" relative w-full min-h-screen pt-20">
