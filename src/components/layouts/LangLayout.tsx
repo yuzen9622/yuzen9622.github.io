@@ -20,7 +20,6 @@ export default function LangLayout() {
       i18n.changeLanguage(lng);
     }
   }, [lng]);
-  console.log("Current language:", i18n.language);
   if (!lng || !supportedLngs.includes(lng)) {
     return <Navigate to="/en" replace />;
   }

@@ -107,19 +107,19 @@ export default function BlogPost() {
                   <ChevronLeftIcon size={16} />
                   Back
                 </Button>
-                <div className="space-x-2">
+                <div className="space-x-2 bg-background/50 p-1 rounded-3xl backdrop-blur-md">
                   <button
                     type="button"
                     onClick={() => {
                       setTheme(isDark ? "light" : "dark");
                     }}
-                    className=" relative p-2 bg-background/50  rounded-3xl   backdrop-blur-md cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary"
+                    className=" relative p-2   rounded-3xl  cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary"
                   >
                     {isDark ? <SunIcon size={18} /> : <MoonIcon size={18} />}
                   </button>
                   <button
                     type="button"
-                    className=" relative p-2 bg-background/50  rounded-3xl   backdrop-blur-md cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary"
+                    className=" relative p-2   rounded-3xl  cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary"
                   >
                     <LanguageSelector />
                   </button>
