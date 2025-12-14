@@ -5,6 +5,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import rehypeRaw from "rehype-raw";
+
 import "katex/dist/katex.min.css";
 
 import {
@@ -55,7 +56,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         a: ({ href, children }) => (
           <a
             href={href}
-            className=" hover:underline"
+            className=" hover:underline text-primary"
             target={href?.startsWith("http") ? "_blank" : undefined}
             rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
           >
@@ -81,6 +82,9 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           if (type === "checkbox")
             return <Checkbox checked={checked} disabled={disabled} />;
           return <input type={type} {...props} />;
+        },
+        img: ({ ...props }) => {
+          return <img className=" rounded-md " {...props} />;
         },
       }}
     >

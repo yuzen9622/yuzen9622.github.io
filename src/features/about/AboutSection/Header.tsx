@@ -1,41 +1,56 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 
 import ShinyText from "@/components/gsap/text/ShinyText";
 import { Badge } from "@/components/ui/badge";
-import { useRef } from "react";
+
 import { useProfile } from "@/shared/hook/useProfile";
 
 export default function Header() {
   const { profile } = useProfile();
   const MotionBadge = motion.create(Badge);
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start center", "center center"],
-  });
-  // 根據滾動進度改變位置與透明度
-  const xName = useTransform(scrollYProgress, [0, 1], [-40, 0]);
-  const xDev = useTransform(scrollYProgress, [0, 1], [40, 0]);
-  const yBadge = useTransform(scrollYProgress, [0, 1], [-40, 0]);
 
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+    },
+  };
+
+  const item = {
+    hidden: { y: 24, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+    transition: { duration: 0.45, ease: "easeOut" },
+  };
+
   return (
-    <section className=" justify-center items-center gap-3 flex-col flex w-full  ">
+    <motion.section
+      className="justify-center items-center gap-3 flex-col flex w-full"
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.4 }}
+    >
       <MotionBadge
-        style={{ y: yBadge, opacity }}
         variant={"secondary"}
-        className=" text-base  font-bold px-3 py-2 rounded-3xl shadow-2xl shadow-secondary-foreground "
+        className="text-base font-bold px-3 py-2 rounded-3xl shadow-2xl shadow-secondary-foreground"
+        initial={item.hidden}
+        animate={item.visible}
+        transition={{ duration: 0.45, ease: "easeOut" }}
       >
         Problem Solver
       </MotionBadge>
-      <span className="flex items-center gap-3  max-md:flex-col">
-        <motion.h1
-          style={{ x: xName, opacity }}
-          className=" text-6xl   text-shadow-lg dark:text-shadow-secondary"
-        >
+      <motion.span
+        className="flex items-center gap-3 max-md:flex-col"
+        variants={item}
+      >
+        <motion.h1 className="text-6xl text-shadow-lg dark:text-shadow-secondary">
           {profile.name}
         </motion.h1>
-        <motion.div style={{ x: xDev, opacity }}>
+        <motion.div>
           <ShinyText
             text="Developer"
             disabled={false}
@@ -43,10 +58,13 @@ export default function Header() {
             className="text-6xl"
           />
         </motion.div>
-      </span>
-      <motion.p className=" text-secondary-foreground  font-bold text-center">
+      </motion.span>
+      <motion.p
+        className="text-secondary-foreground font-bold text-center"
+        variants={item}
+      >
         Below are details of my experience, honours and strengths.
       </motion.p>
-    </section>
+    </motion.section>
   );
 }

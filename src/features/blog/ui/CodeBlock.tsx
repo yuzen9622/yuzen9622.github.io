@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { TypographyInlineCode } from "./Typography";
 import {
   Tooltip,
@@ -8,11 +8,11 @@ import {
 
 import { CheckIcon, CopyIcon } from "lucide-react";
 
-import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
-  shadesOfPurple,
-  atelierCaveLight,
-} from "react-syntax-highlighter/dist/esm/styles/hljs";
+  coldarkCold,
+  coldarkDark,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
 
 import { useTheme } from "@/shared/hook/useTheme";
 import React from "react";
@@ -20,12 +20,20 @@ import React from "react";
 interface NotionCodeBlockProps {
   className?: string;
   children: React.ReactNode;
+  file?: string;
 }
-export function CodeBlock({ className = "", children }: NotionCodeBlockProps) {
-  const match = /language-(\w+)/.exec(className);
-  const language = match ? match[1] : null;
+export function CodeBlock({
+  className = "",
+  children,
+  file,
+}: NotionCodeBlockProps) {
   const [copied, setCopied] = useState(false);
   const { isDark } = useTheme();
+
+  const language = useMemo(() => {
+    const match = /language-([a-z0-9+-]+)/i.exec(className);
+    return match ? match[1] : null;
+  }, [className]);
 
   const handleCopy = async () => {
     if (typeof children === "string" || Array.isArray(children)) {
@@ -39,15 +47,17 @@ export function CodeBlock({ className = "", children }: NotionCodeBlockProps) {
       }
     }
   };
-  const codeString = React.Children.toArray(children)
-    .map((child) => (typeof child === "string" ? child : ""))
-    .join("");
 
   if (!language) return <TypographyInlineCode>{children}</TypographyInlineCode>;
 
   return (
     <pre className=" relative  text-sm   rounded-3xl ">
       <div className="absolute  top-1.5 right-2   flex gap-2 text-xs">
+        {file && (
+          <pre className="px-3 py-2 backdrop-blur-md  rounded-3xl transition">
+            {file}
+          </pre>
+        )}
         {language && (
           <pre className="px-3 py-2 backdrop-blur-md  rounded-3xl transition">
             {language}
@@ -76,12 +86,12 @@ export function CodeBlock({ className = "", children }: NotionCodeBlockProps) {
         )}
       </div>
       <SyntaxHighlighter
-        style={isDark ? shadesOfPurple : atelierCaveLight}
+        style={isDark ? coldarkDark : coldarkCold}
         language={language}
         className=" rounded-md border text-base text-inherit!"
         useInlineStyles={true}
       >
-        {codeString}
+        {String(children).trim()}
       </SyntaxHighlighter>
     </pre>
   );

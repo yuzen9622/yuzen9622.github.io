@@ -12,7 +12,7 @@ export default function ProjectHeader() {
         Projects
       </GlitchText>
       <span className="flex items-center gap-2  text-[clamp(1rem,3vw,1.5rem)] backdrop-blur-xs bbh-sans-bartle-regular bg-background/80  rounded-md">
-        <p className="    font-extrabold p-2   ">Creative</p>
+        <p className="font-extrabold p-2">Creative</p>
 
         <RotatingText
           texts={["Design", "Idea", "Coding"]}

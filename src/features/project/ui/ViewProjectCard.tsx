@@ -28,7 +28,7 @@ export default function ViewProjectCard() {
   const { t } = useTranslation("project");
   const projects = t("projects", { returnObjects: true }) as Project[];
 
-  const { title } = useParams();
+  const { title, lng } = useParams<{ title: string; lng: string }>();
 
   const navigate = useNavigate();
   const project = projects.find((pro) => `${pro.id}` === title);
@@ -56,7 +56,7 @@ export default function ViewProjectCard() {
       <AnimatePresence
         onExitComplete={() => {
           if (isClosing) {
-            navigate("/projects", { viewTransition: true });
+            navigate(`/${lng}/projects`, { viewTransition: true });
           }
         }}
       >

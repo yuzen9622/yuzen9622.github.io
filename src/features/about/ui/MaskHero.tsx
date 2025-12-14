@@ -117,9 +117,9 @@ export default function MaskHero() {
           </Card>
         </div>
 
-        <p className="text-[clamp(2rem,3vw,3.5rem)]/13 h-full  w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap">
+        <p className="text-[clamp(2rem,2.5vw,3rem)]/13 h-full  w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap">
           As a
-          <span className=" text-white p-1 rounded-md  bg-primary">
+          <span className=" text-white p-1 rounded-md text-[clamp(2rem,3vw,3.5rem)]/13  bg-primary">
             Full-Stack Developer
           </span>
           enjoy tackling bugs with precision, and continuously exploring new
@@ -233,9 +233,9 @@ export default function MaskHero() {
               </CardContent>
             </Card>
           </div>
-          <p className="text-[clamp(2rem,3vw,3.5rem)]/13 h-full  w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap ">
+          <p className="text-[clamp(2rem,2.5vw,3rem)]/13 h-full  w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap ">
             As a
-            <span className=" text-primary p-1 rounded-md  bg-background">
+            <span className=" text-primary p-1 rounded-md text-[clamp(2rem,3vw,3.5rem)]/13 bg-primary-foreground">
               Full-Stack Developer
             </span>
             enjoy tackling bugs with precision, and continuously exploring new

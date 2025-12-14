@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import CircularText from "@/components/gsap/text/CircularText";
 import HoverCursor from "@/features/project/ui/HoverCursor";
@@ -22,12 +22,13 @@ import { useProfile } from "@/shared/hook/useProfile";
 import type { Project } from "@/shared/types";
 export default function ProjectCard({ project }: { project: Project }) {
   const { techIcons } = useProfile();
+  const { lng } = useParams<{ lng: string }>();
   const divRef = useRef<HTMLDivElement>(null);
 
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/projects/${project.id}`);
+    navigate(`/${lng}/projects/${project.id}`);
   };
 
   return (

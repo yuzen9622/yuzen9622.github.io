@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-
-    "build":"tsc -b && vite build",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "preinstall": "npx only-allow pnpm",
@@ -54,6 +53,8 @@
     "rehype-raw": "^7.0.0",
     "rehype-react": "^8.0.0",
     "rehype-slug": "^6.0.0",
+    "remark-code-title": "^0.2.5",
+    "remark-code-titles": "^0.1.2",
     "remark-gfm": "^4.0.1",
     "remark-html": "^16.0.1",
     "remark-math": "^6.0.0",
