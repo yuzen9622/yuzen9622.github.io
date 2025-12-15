@@ -14,83 +14,100 @@ export default function Footer() {
   const { t } = useTranslation("profile");
 
   return (
-    <footer className="w-full min-h-60 mt-5 dark:bg-none dark:border-t-2 backdrop-blur-xs bg-background flex flex-col items-center  justify-between gap-10  p-5">
-      <section className="flex gap-3 lg:flex-row flex-col w-full">
-        <div className="flex-1 text-center flex flex-col gap-3">
-          <span className="flex items-center gap-3 space-y-1 justify-center">
-            <Avatar className="  w-12   h-12 aspect-square">
-              <AvatarImage
-                className=" rounded-full aspect-square "
-                width={48}
-                height={48}
-                alt={profile.name}
-                src={profile.avatar}
-              />
-              <AvatarFallback className=" text-2xl">
-                {profile.name}
-              </AvatarFallback>
-            </Avatar>
-            <h1 className="  text-2xl font-extrabold">{profile.name}</h1>
-          </span>
-          <span className="text-wrap  font-bold ">
-            {t("profile.short_description")}
-          </span>
-        </div>
-        <div className="flex-1  space-y-1 text-center">
-          <h1 className="text-xl font-extrabold">Quick Links</h1>
-          <ul className=" space-y-1">
-            {navigation.map((item, index) => (
-              <li key={index}>
-                <NavLink
-                  className={
-                    "   hover:font-bold hover:translate-x-2 transition-all"
-                  }
-                  to={item.route}
-                >
-                  {item.title}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="flex-1  gap-2 flex flex-col items-center">
-          <h1 className=" text-xl font-extrabold ">Stay Contact</h1>
-          <Badge asChild variant={"outline"}>
-            <a
-              target="_BLANK"
-              href="https://www.google.com/maps/place/%E6%96%B0%E7%AB%B9%E7%B8%A3"
-            >
-              <MapPin absoluteStrokeWidth size={20} />
-              <p className=" font-bold text-[16px]"> {t("profile.country")}</p>
-            </a>
-          </Badge>
-          <Badge variant={"outline"} asChild>
-            <a href={`mailto:${profile.email}`}>
-              <AtSign absoluteStrokeWidth size={20} />
-              <p className=" font-bold text-[16px]"> {profile.email}</p>
-            </a>
-          </Badge>
-          <div className="space-x-2 flex  justify-center">
-            {socialLink.map((link) => (
-              <NavLink
-                key={link.title}
-                to={link.link}
-                aria-label={link.title}
-                target="_BLANK"
-                className=" z-10 hover:text-background relative group outline p-3 rounded-full"
-              >
-                <span> {link.icon}</span>
-                <div className=" absolute transition-all -z-10 inset-0 w-full h-full rounded-3xl bg-primary scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100"></div>
-              </NavLink>
-            ))}
+    <footer className="mt-8 w-full border-t border-border/60 bg-secondary/30 backdrop-blur-sm">
+      <div className="mx-auto w-full max-w-6xl px-6 py-10">
+        <section className="grid gap-10 md:grid-cols-3">
+          <div className="flex flex-col gap-4 text-center md:text-left">
+            <div className="flex items-center justify-center gap-3 md:justify-start">
+              <Avatar className="h-12 w-12">
+                <AvatarImage
+                  className="rounded-full aspect-square"
+                  width={48}
+                  height={48}
+                  alt={profile.name}
+                  src={profile.avatar}
+                />
+                <AvatarFallback className="text-2xl">
+                  {profile.name}
+                </AvatarFallback>
+              </Avatar>
+              <div className="flex flex-col">
+                <h2 className="text-xl font-extrabold leading-tight">
+                  {profile.name}
+                </h2>
+                <span className="text-sm font-semibold text-muted-foreground">
+                  {profile.nickName}
+                </span>
+              </div>
+            </div>
+
+            <p className="font-semibold leading-relaxed text-muted-foreground">
+              {t("profile.short_description")}
+            </p>
           </div>
+
+          <div className="space-y-3 text-center md:text-left">
+            <h2 className="text-lg font-extrabold">Quick Links</h2>
+            <ul className="space-y-2">
+              {navigation.map((item, index) => (
+                <li key={index}>
+                  <NavLink
+                    className="inline-flex items-center gap-2 font-semibold text-muted-foreground transition hover:text-foreground"
+                    to={item.route}
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary/70" />
+                    {item.title}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex flex-col items-center gap-3 text-center md:items-start md:text-left">
+            <h2 className="text-lg font-extrabold">Stay Contact</h2>
+
+            <Badge asChild variant={"outline"} className="bg-background/40">
+              <a
+                target="_BLANK"
+                rel="noopener noreferrer"
+                href="https://www.google.com/maps/place/%E6%96%B0%E7%AB%B9%E7%B8%A3"
+                className="gap-2"
+              >
+                <MapPin absoluteStrokeWidth size={18} />
+                <span className="font-semibold text-sm">{profile.country}</span>
+              </a>
+            </Badge>
+
+            <Badge variant={"outline"} asChild className="bg-background/40">
+              <a href={`mailto:${profile.email}`} className="gap-2">
+                <AtSign absoluteStrokeWidth size={18} />
+                <span className="font-semibold text-sm">{profile.email}</span>
+              </a>
+            </Badge>
+
+            <div className="mt-2 flex flex-wrap items-center justify-center gap-2 md:justify-start">
+              {socialLink.map((link) => (
+                <NavLink
+                  key={link.title}
+                  to={link.link}
+                  aria-label={link.title}
+                  target="_BLANK"
+                  className=" group relative grid h-10 w-10 place-items-center rounded-full border border-border/60 hover:text-background transition hover:-translate-y-0.5 hover:border-primary/60 "
+                >
+                  <span>{link.icon}</span>
+                  <span className="absolute inset-0 -z-10 rounded-full bg-primary scale-50 opacity-0 transition-all  group-hover:scale-100 group-hover:opacity-100" />
+                </NavLink>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <div className="mt-10 flex items-center justify-center">
+          <span className="rounded-full  border border-primary px-4 py-2 text-xs font-semibold text-secondary-foreground">
+            Copyright © 2025 {profile.nickName}
+          </span>
         </div>
-      </section>
-      <section>
-        <span className=" text-xs text-accent-foreground font-bold    bg-secondary px-3 py-2 rounded-3xl">
-          Copyright © 2025 {profile.nickName}
-        </span>
-      </section>
+      </div>
     </footer>
   );
 }

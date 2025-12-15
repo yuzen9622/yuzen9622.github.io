@@ -123,7 +123,7 @@ export default function Navbar() {
                       ease: "easeInOut",
                     }}
                     exit={{ y: 40, opacity: 0 }}
-                    to={item.route}
+                    to={{ pathname: `/${lng}/${item.route}` }}
                     onClick={() => setIsOpen(false)}
                     className={({ isActive }) =>
                       cn(

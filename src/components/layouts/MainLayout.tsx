@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useMemo, useState } from "react";
-import Squares from "@/components/gsap/background/square";
+
 import Navbar from "./Navbar";
 import { useLocation } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
@@ -38,22 +38,13 @@ export default function MainLayout({
   return (
     <div
       className={cn(
-        "  relative w-full flex bg-transparent overflow-hidden items-center flex-col min-h-screen z-10  ",
+        "  relative w-full flex bg-background overflow-hidden items-center flex-col min-h-screen z-10  ",
         slug && "overflow-hidden max-h-dvh"
       )}
     >
       <Navbar />
       <ScrollToTop />
       <Toaster richColors />
-      <div className=" fixed inset-0 z-0 w-dvw h-dvh   bg-background ">
-        <Squares
-          speed={0.0}
-          squareSize={100}
-          direction="diagonal"
-          borderColor="#ffffff "
-          hoverFillColor="transparent"
-        />
-      </div>
 
       {children}
 

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { useRef, useState } from "react";
 
 import { useMousePosition } from "@/shared/hook/useMousePosition";
@@ -21,6 +21,57 @@ export default function MaskHero() {
   const [isHover, setIsHover] = useState(false);
   const { profile } = useProfile();
   const { i18n } = useTranslation();
+
+  const container: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+    },
+  };
+
+  const item: Variants = {
+    hidden: { y: 18, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", stiffness: 320, damping: 26 },
+    },
+  };
+
+  const stack: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.06,
+      },
+    },
+  };
+
+  const cardContainer: Variants = {
+    hidden: { y: 18, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 280,
+        damping: 24,
+        staggerChildren: 0.12,
+        delayChildren: 0.08,
+      },
+    },
+  };
+
+  const fastItem: Variants = {
+    hidden: { y: 10, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", stiffness: 360, damping: 28 },
+    },
+  };
   const handleMouseIn = () => {
     setIsHover(true);
   };
@@ -30,8 +81,14 @@ export default function MaskHero() {
 
   return (
     <>
-      <div className=" relative  text-center   flex-1  flex flex-col items-center justify-center  ">
-        <div>
+      <motion.div
+        className="relative text-center flex-1 flex flex-col items-center justify-center"
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.35 }}
+      >
+        <motion.div variants={fastItem}>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{
@@ -60,71 +117,102 @@ export default function MaskHero() {
             whileInView={{ opacity: 1 }}
             className=" w-40  h-40 rounded-3xl   absolute bottom-0  dark:bg-primary   left-0 bg-primary/50   blur-3xl "
           ></motion.div>
-          <Card className="mx-auto mt-20 w-11/12   justify-center border-none shadow-none  flex lg:flex-row items-center bg-transparent   flex-col   ">
-            <CardContent className="h-full relative w-fit ">
-              <motion.div className=" w-40  h-40 rounded-3xl absolute bottom-2/12 -z-0 left-3/12  bg-primary/70 blur-3xl "></motion.div>
-              <Avatar className="  pointer-events-none  w-3xs    h-full aspect-square">
-                <AvatarImage
-                  className=" rounded-full"
-                  alt={profile.name}
-                  width={48}
-                  height={48}
-                  src={profile.avatar}
-                />
-                <AvatarFallback>{profile.name}</AvatarFallback>
-              </Avatar>
-            </CardContent>
-            <CardContent className="  h-full flex justify-center   lg:items-start items-center flex-col gap-5 ">
-              <h1 className=" relative lg:text-5xl text-4xl font-extrabold text-primary">
-                {profile.name}
-              </h1>
-              <>
-                <TypeAnimation
-                  key={i18n.language}
-                  sequence={profile.roles}
-                  speed={30}
-                  className="  lg:text-2xl text-lg text-white relative   font-bold bg-primary w-fit rounded-md p-2"
-                  repeat={Infinity}
-                />
-              </>
 
-              <div className=" relative flex gap-3 lg:justify-start justify-center max-sm:flex-col items-center">
-                <Badge
-                  asChild
-                  variant={"outline"}
-                  className=" backdrop-blur-xs"
-                >
-                  <a
-                    target="_BLANK"
-                    href="https://www.google.com/maps/place/%E6%96%B0%E7%AB%B9%E7%B8%A3"
+          <motion.div variants={cardContainer}>
+            <Card className="mx-auto mt-20 w-11/12 justify-center border-none shadow-none flex lg:flex-row items-center bg-transparent flex-col">
+              <motion.div variants={item}>
+                <CardContent className="h-full relative w-fit ">
+                  <motion.div className=" w-40  h-40 rounded-3xl absolute bottom-2/12 -z-0 left-3/12  bg-primary/70 blur-3xl "></motion.div>
+                  <Avatar className="pointer-events-none w-3xs h-full aspect-square">
+                    <AvatarImage
+                      className=" rounded-full"
+                      alt={profile.name}
+                      width={48}
+                      height={48}
+                      src={profile.avatar}
+                    />
+                    <AvatarFallback>{profile.name}</AvatarFallback>
+                  </Avatar>
+                </CardContent>
+              </motion.div>
+
+              <motion.div variants={stack}>
+                <CardContent className="h-full flex justify-center lg:items-start items-center flex-col gap-5">
+                  <motion.h1
+                    variants={item}
+                    className="relative lg:text-5xl text-4xl font-extrabold text-primary"
                   >
-                    <MapPin absoluteStrokeWidth size={20} />
-                    <p className=" font-bold text-[16px]">{profile.country}</p>
-                  </a>
-                </Badge>
-                <Badge
-                  variant={"outline"}
-                  asChild
-                  className=" backdrop-blur-xs"
-                >
-                  <a href={`mailto:${profile.email}`}>
-                    <AtSign absoluteStrokeWidth size={20} />
-                    <p className=" font-bold text-[16px]">{profile.email}</p>
-                  </a>
-                </Badge>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+                    {profile.name}
+                  </motion.h1>
 
-        <p className="text-[clamp(2rem,2.5vw,3rem)]/13 h-full  w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap">
-          As a
-          <span className=" text-white p-1 rounded-md text-[clamp(2rem,3vw,3.5rem)]/13  bg-primary">
+                  <motion.div variants={item}>
+                    <TypeAnimation
+                      key={i18n.language}
+                      sequence={profile.roles}
+                      speed={30}
+                      className="lg:text-2xl text-lg text-white relative font-bold bg-primary w-fit rounded-md p-2"
+                      repeat={Infinity}
+                    />
+                  </motion.div>
+
+                  <motion.div
+                    variants={stack}
+                    className="relative flex gap-3 lg:justify-start justify-center max-sm:flex-col items-center"
+                  >
+                    <motion.div variants={item}>
+                      <Badge
+                        asChild
+                        variant={"outline"}
+                        className="backdrop-blur-xs"
+                      >
+                        <a
+                          target="_BLANK"
+                          href="https://www.google.com/maps/place/%E6%96%B0%E7%AB%B9%E7%B8%A3"
+                        >
+                          <MapPin absoluteStrokeWidth size={20} />
+                          <p className="font-bold text-[16px]">
+                            {profile.country}
+                          </p>
+                        </a>
+                      </Badge>
+                    </motion.div>
+                    <motion.div variants={item}>
+                      <Badge
+                        variant={"outline"}
+                        asChild
+                        className="backdrop-blur-xs"
+                      >
+                        <a href={`mailto:${profile.email}`}>
+                          <AtSign absoluteStrokeWidth size={20} />
+                          <p className="font-bold text-[16px]">
+                            {profile.email}
+                          </p>
+                        </a>
+                      </Badge>
+                    </motion.div>
+                  </motion.div>
+                </CardContent>
+              </motion.div>
+            </Card>
+          </motion.div>
+        </motion.div>
+
+        <motion.p
+          variants={stack}
+          className="text-[clamp(2rem,2.5vw,3rem)]/13 h-full w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap"
+        >
+          <motion.span variants={item}>As a</motion.span>
+          <motion.span
+            variants={item}
+            className="text-white p-1 rounded-md text-[clamp(2rem,3vw,3.5rem)]/13 bg-primary"
+          >
             Full-Stack Developer
-          </span>
-          enjoy tackling bugs with precision, and continuously exploring new
-          technologies.
-        </p>
+          </motion.span>
+          <motion.span variants={item}>
+            enjoy tackling bugs with precision, and continuously exploring new
+            technologies.
+          </motion.span>
+        </motion.p>
         <motion.div
           onMouseEnter={handleMouseIn}
           onMouseLeave={handleMouseOut}
@@ -242,7 +330,7 @@ export default function MaskHero() {
             technologies.
           </p>
         </motion.div>
-      </div>
+      </motion.div>
     </>
   );
 }

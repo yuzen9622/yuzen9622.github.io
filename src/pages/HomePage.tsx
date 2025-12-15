@@ -11,7 +11,6 @@ export default function AboutPage() {
       </Helmet>
 
       <AboutHero />
-
       <AboutSection />
     </>
   );
