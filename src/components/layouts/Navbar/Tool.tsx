@@ -75,7 +75,7 @@ export default function Tool() {
       >
         {isDark ? <Sun size={18} /> : <Moon size={18} />}
       </NavigationMenuItem>
-      <NavigationMenuItem className="p-2  cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary">
+      <NavigationMenuItem className="">
         <LanguageSelector />
       </NavigationMenuItem>
       {observerScroll.scrollY !== 0 && (

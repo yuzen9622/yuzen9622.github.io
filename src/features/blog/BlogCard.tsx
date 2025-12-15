@@ -32,6 +32,7 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
       <NavLink to={`/${lng}/blog/${post.slug}`}>
         <MotionCard className="group backdrop-blur-xs pt-0 bg-background/80 hover:shadow-lg transition-all h-full ㄍ">
           <motion.div
+            layout
             className="relative w-full h-48 overflow-hidden rounded-t-lg"
             layoutId={`blog-image-${post.slug}`}
           >

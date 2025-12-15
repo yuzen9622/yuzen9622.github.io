@@ -7,17 +7,39 @@ import {
 import { cn } from "@/shared/lib/utils";
 import { Languages } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useLocation, useNavigate } from "react-router-dom";
+import { supportedLngs } from "@/i18n";
 
 export function LanguageSelector() {
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
+    const segments = location.pathname.split("/").filter(Boolean);
+    const nextSegments = [...segments];
+
+    if (nextSegments.length === 0) {
+      nextSegments.push(lng);
+    } else if (supportedLngs.includes(nextSegments[0])) {
+      nextSegments[0] = lng;
+    } else {
+      nextSegments.unshift(lng);
+    }
+
+    navigate(
+      {
+        pathname: `/${nextSegments.join("/")}`,
+        search: location.search,
+        hash: location.hash,
+      },
+      { replace: true }
+    );
   };
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger className="p-2  cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary">
         <Languages size={18} />
       </DropdownMenuTrigger>
       <DropdownMenuContent
@@ -29,7 +51,7 @@ export function LanguageSelector() {
           className={cn(
             i18n.language === "en" && "bg-primary  text-primary-foreground"
           )}
-          onClick={() => changeLanguage("en")}
+          onSelect={() => void changeLanguage("en")}
         >
           English
         </DropdownMenuItem>
@@ -37,7 +59,7 @@ export function LanguageSelector() {
           className={cn(
             i18n.language === "zh-Hans" && "bg-primary  text-primary-foreground"
           )}
-          onClick={() => changeLanguage("zh-Hans")}
+          onSelect={() => void changeLanguage("zh-Hans")}
         >
           中文
         </DropdownMenuItem>

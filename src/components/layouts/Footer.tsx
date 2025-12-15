@@ -74,7 +74,9 @@ export default function Footer() {
                 className="gap-2"
               >
                 <MapPin absoluteStrokeWidth size={18} />
-                <span className="font-semibold text-sm">{profile.country}</span>
+                <span className="font-semibold text-sm">
+                  {t("profile.country")}
+                </span>
               </a>
             </Badge>
 

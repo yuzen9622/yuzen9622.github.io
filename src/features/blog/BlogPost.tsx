@@ -117,16 +117,14 @@ export default function BlogPost() {
                   >
                     {isDark ? <SunIcon size={18} /> : <MoonIcon size={18} />}
                   </button>
-                  <button
-                    type="button"
-                    className=" relative p-2   rounded-3xl  cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary"
-                  >
+                  <button type="button" className="relative">
                     <LanguageSelector />
                   </button>
                 </div>
               </div>
 
               <motion.div
+                layout
                 layoutId={`blog-image-${post.slug}`}
                 className="w-full h-64 md:h-96 overflow-hidden rounded-3xl mb-6"
               >
