@@ -16,6 +16,11 @@ export default function AboutPage() {
           name="keywords"
           content="Yuzen, 全端開發, 前端, 後端, 個人網頁, 程式作品, 網頁設計, AI, Python,Portfolio, JavaScript, React, Next.js,small Z,Small Z"
         />
+        <meta property="og:title" content="Yuzen 的個人網頁" />
+        <meta
+          property="og:description"
+          content="探索 Yuzen 的作品集與技能，專注於全端開發、網頁設計與人工智慧。"
+        />
         <meta name="author" content="Yuzen" />
         <meta property="og:image" content="/avatar.webp" />
         <meta property="og:url" content="https://www.yuzen.dev/" />
