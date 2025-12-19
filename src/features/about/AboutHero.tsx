@@ -16,7 +16,7 @@ export default function AboutHero() {
         <div className="  absolute inset-0 z-0 w-dvw h-dvh   bg-background ">
           <Squares
             speed={0.0}
-            squareSize={100}
+            squareSize={50}
             direction="diagonal"
             borderColor="#ffffff "
             hoverFillColor="transparent"

@@ -61,7 +61,7 @@ export function LanguageSelector() {
           )}
           onSelect={() => void changeLanguage("zh-Hans")}
         >
-          中文
+          繁體中文
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

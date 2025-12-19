@@ -24,15 +24,15 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
   const MotionCard = useMemo(() => motion.create(Card), []);
   return (
     <motion.div
+      layout
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.3, delay: index * 0.1 }}
       exit={{ opacity: 0, y: 40 }}
     >
       <NavLink to={`/${lng}/blog/${post.slug}`}>
         <MotionCard className="group backdrop-blur-xs pt-0 bg-background/80 hover:shadow-lg transition-all h-full ㄍ">
           <motion.div
-            layout
             className="relative w-full h-48 overflow-hidden rounded-t-lg"
             layoutId={`blog-image-${post.slug}`}
           >

@@ -75,6 +75,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
         time: "2025-08-23",
       },
     ],
+    education: t("education:education", { returnObjects: true }),
     techIcons: {
       react: "React.js",
       typescript: "TypeScript",

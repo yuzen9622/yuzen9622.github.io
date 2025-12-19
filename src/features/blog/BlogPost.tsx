@@ -86,7 +86,7 @@ export default function BlogPost() {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         // transition={{ duration: 0.3 }}
-        className="   fixed  inset-0 max-h-dvh z-30 bg-background pt-2  overflow-y-auto"
+        className="   fixed  inset-0 max-h-dvh z-30 bg-background md:p-4 overflow-y-auto"
       >
         {content ? (
           <motion.div
@@ -94,10 +94,11 @@ export default function BlogPost() {
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.9, y: 50 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="md:w-11/12 max-w-4xl mx-auto "
+            className="md:w-11/12 max-w-4xl mx-auto relative "
           >
-            <div className="backdrop-blur-xs bg-background/95 flex flex-col md:p-8 p-2 relative space-y-2 ">
-              <div className="  sticky top-4 z-20 flex justify-between">
+            {" "}
+            <div className=" fixed  top-6 z-20  w-full  max-w-4xl mx-auto ">
+              <div className="w-11/12 justify-between mx-auto flex items-center ">
                 <Button
                   variant="ghost"
                   size="sm"
@@ -122,16 +123,40 @@ export default function BlogPost() {
                   </button>
                 </div>
               </div>
-
+            </div>
+            <div className="backdrop-blur-xs bg-background/95 flex flex-col  relative space-y-2 ">
               <motion.div
                 layout
                 layoutId={`blog-image-${post.slug}`}
-                className="w-full h-64 md:h-96 overflow-hidden rounded-3xl mb-6"
+                className="relative w-full h-72 md:h-[28rem] overflow-hidden  mb-6"
               >
                 <img
                   src={`${getFallbackSrc(post?.cover?.formats)}`}
-                  className="w-full h-full object-cover"
+                  alt={post.title}
+                  className="absolute inset-0 h-full w-full object-cover object-bottom"
                 />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/35 to-transparent" />
+
+                <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
+                  <motion.h1
+                    className="text-3xl md:text-5xl font-extrabold leading-tight"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    {post.title}
+                  </motion.h1>
+
+                  <motion.p
+                    className="mt-3 max-w-2xl text-sm md:text-lg font-semibold text-muted-foreground"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.28 }}
+                  >
+                    {post.description}
+                  </motion.p>
+                </div>
               </motion.div>
 
               <motion.div
@@ -140,12 +165,8 @@ export default function BlogPost() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <motion.h1 className="text-4xl md:text-5xl font-bold">
-                  {post.title}
-                </motion.h1>
-
                 <motion.div
-                  className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground"
+                  className="flex flex-wrap p-2 items-center gap-4 text-sm text-muted-foreground"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
@@ -164,7 +185,7 @@ export default function BlogPost() {
                 </motion.div>
 
                 <motion.div
-                  className="flex flex-wrap gap-2"
+                  className="flex flex-wrap gap-2 p-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
@@ -180,18 +201,9 @@ export default function BlogPost() {
                     </motion.div>
                   ))}
                 </motion.div>
-
-                <motion.p
-                  className="text-lg text-muted-foreground"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  {post.description}
-                </motion.p>
               </motion.div>
 
-              <motion.div className="space-y-2">
+              <motion.div className="space-y-2 p-2">
                 <MarkdownRenderer content={content} />
               </motion.div>
 

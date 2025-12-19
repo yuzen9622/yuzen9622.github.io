@@ -2,20 +2,20 @@ interface Resources {
   "award": {
     "awards": {
       "lung-hwa": {
-        "title": "龍華程式競賽",
-        "description": "特優"
+        "title": "Lung Hwa Programming Contest",
+        "description": "Grand Prize"
       },
       "tqc-python": {
         "title": "TQC Python",
-        "description": "合格"
+        "description": "Certified"
       },
       "apcs": {
         "title": "APCS",
-        "description": "實作三級分，觀念四級分"
+        "description": "3/5 in Implementation, 4/5 in Concepts"
       },
       "ytp": {
-        "title": "YTP（少年圖靈計畫）",
-        "description": "決賽"
+        "title": "YTP (Young Turing Program)",
+        "description": "Finalist"
       }
     }
   },
@@ -28,6 +28,26 @@ interface Resources {
       "tags": "Tags",
       "all": "All"
     }
+  },
+  "education": {
+    "education": [
+      {
+        "institution": "National Taichung University of Science and Technology",
+        "major": "Information Management",
+        "educationSystem": "Junior College",
+        "startYear": "2019",
+        "endYear": "current",
+        "description": "I built a solid foundation in programming at this school through coursework and projects, which sparked my long-term interest in software engineering and applied research."
+      },
+      {
+        "institution": "Hsinchu County Po-Ai Junior High School",
+        "major": "",
+        "educationSystem": "Junior High School",
+        "startYear": "2016",
+        "endYear": "2019",
+        "description": "I cultivated independent thinking abilities through self-directed learning and critical analysis, which laid the foundation for my later academic and technical development."
+      }
+    ]
   },
   "profile": {
     "profile": {

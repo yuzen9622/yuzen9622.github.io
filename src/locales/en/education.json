@@ -1,0 +1,21 @@
+{
+    "education": [
+        {
+            "institution": "National Taichung University of Science and Technology",
+            "major": "Information Management",
+            "educationSystem": "Junior College",
+            "startYear": "2019",
+            "endYear": "current",
+            "isCurrent": true,
+            "description": "I built a solid foundation in programming at this school through coursework and projects, which sparked my long-term interest in software engineering and applied research."
+        },
+        {
+            "institution": "Hsinchu County Po-Ai Junior High School",
+            "major": "",
+            "educationSystem": "Junior High School",
+            "startYear": "2016",
+            "endYear": "2019",
+            "description": "I cultivated independent thinking abilities through self-directed learning and critical analysis, which laid the foundation for my later academic and technical development."
+        }
+    ]
+}

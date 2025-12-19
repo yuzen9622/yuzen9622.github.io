@@ -77,6 +77,16 @@ export type Contact = {
   message: string;
   time: string;
 };
+export type Education = {
+  institution: string;
+  major: string;
+  startYear: string;
+  endYear: string;
+  isCurrent?: boolean;
+  description: string;
+  educationSystem: string;
+};
+
 /*provider type*/
 export type ThemeProviderState = {
   theme: Theme;
@@ -89,6 +99,7 @@ export type ProfileProviderState = {
   navigation: Navigation[];
   profile: User;
   projects: Project[];
+  education: Education[];
   socialLink: SocialLink[];
   awards: Award[];
   techIcons: TechIcon;
