@@ -96,7 +96,6 @@ export default function BlogPost() {
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="md:w-11/12 max-w-4xl mx-auto relative "
           >
-            {" "}
             <div className=" fixed  top-6 z-20  w-full  max-w-4xl mx-auto ">
               <div className="w-11/12 justify-between mx-auto flex items-center ">
                 <Button

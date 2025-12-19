@@ -59,7 +59,7 @@ export default function Navbar() {
                 >
                   <span>{item.title}</span>
                 </NavLink>
-              </NavigationMenuItem>{" "}
+              </NavigationMenuItem>
             </li>
           ))}
           <Tool />
