@@ -4,7 +4,7 @@ import "@/i18n";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-
+import { HelmetProvider } from "react-helmet-async";
 import App from "./App.tsx";
 import { ProfileProvider } from "./shared/provider/ProfileProvider.tsx";
 import { ThemeProvider } from "./shared/provider/ThemeProvider.tsx";
@@ -16,7 +16,9 @@ createRoot(document.getElementById("root")!).render(
       <ProfileProvider>
         <BlogProvider>
           <BrowserRouter>
-            <App />
+            <HelmetProvider>
+              <App />
+            </HelmetProvider>
           </BrowserRouter>
         </BlogProvider>
       </ProfileProvider>

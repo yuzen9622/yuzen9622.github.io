@@ -1,5 +1,4 @@
-// src/pages/BlogPage.tsx
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import BlogList from "@/features/blog/BlogList";

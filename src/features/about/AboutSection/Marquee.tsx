@@ -19,7 +19,6 @@ export default function Marquee() {
         className="flex gap-4 py-2      group-hover:[&>*]:rotate-0! after:absolute after:inset-0 after:w-10 after:h-full     justify-around flex-shrink-0"
       >
         {techField.map((field, index) => {
-          // 只對非*項目應用旋轉效果
           if (field === "*") {
             return (
               <span

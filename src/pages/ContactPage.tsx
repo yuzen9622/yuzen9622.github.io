@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 import ContactContent from "@/features/contact/ContactContent";
 import ContactForm from "@/features/contact/ContactForm";
