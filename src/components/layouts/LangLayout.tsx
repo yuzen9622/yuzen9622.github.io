@@ -21,7 +21,7 @@ export default function LangLayout() {
     }
   }, [lng]);
   if (!lng || !supportedLngs.includes(lng)) {
-    return <Navigate to="/en" replace />;
+    return <Navigate to="/zh-Hans" replace />;
   }
 
   return (
