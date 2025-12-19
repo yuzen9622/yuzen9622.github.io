@@ -10,6 +10,7 @@ export interface Article {
   description: string;
   categories: Category[];
   publishedAt: string;
+  isPublished: boolean;
   content: string;
 }
 export interface ArticleContent {

@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -12,6 +13,9 @@ import type { Article } from "./types/blog";
 import { motion } from "framer-motion";
 import useBlog from "./hooks/useBlog";
 import { useMemo } from "react";
+import { toast } from "sonner";
+
+import { useTranslation } from "react-i18next";
 
 interface BlogCardProps {
   post: Article;
@@ -21,6 +25,7 @@ interface BlogCardProps {
 export default function BlogCard({ post, index = 0 }: BlogCardProps) {
   const { getFallbackSrc } = useBlog();
   const { lng } = useParams<{ lng: string }>();
+  const { t } = useTranslation("toast");
   const MotionCard = useMemo(() => motion.create(Card), []);
   return (
     <motion.div
@@ -30,31 +35,38 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
       transition={{ duration: 0.3, delay: index * 0.1 }}
       exit={{ opacity: 0, y: 40 }}
     >
-      <NavLink to={`/${lng}/blog/${post.slug}`}>
-        <MotionCard className="group backdrop-blur-xs pt-0 bg-background/80 hover:shadow-lg transition-all h-full ㄍ">
-          <motion.div
-            className="relative w-full h-48 overflow-hidden rounded-t-lg"
+      <NavLink
+        onClick={() => {
+          if (post.isPublished) return;
+          toast.info(`「${post.title}」${t("toast.NotPublished")}`, {
+            duration: 3000,
+          });
+        }}
+        to={post.isPublished ? `/${lng}/blog/${post.slug}` : `/${lng}/blog`}
+      >
+        <MotionCard className="group backdrop-blur-xs rounded-none pt-0   bg-background/80 hover:shadow-lg transition-all h-full ">
+          <motion.img
             layoutId={`blog-image-${post.slug}`}
-          >
-            <img
-              src={`${getFallbackSrc(post?.cover?.formats)}`}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-            />
-          </motion.div>
+            className="h-48"
+            alt={post.title}
+            src={getFallbackSrc(post.cover?.formats)}
+          />
 
           <CardHeader>
-            <div className="flex items-center   gap-2 text-sm text-muted-foreground mb-2">
-              <Calendar size={16} />
-              <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
-            </div>
-            <CardTitle className=" group-hover:underline underline-offset-2 transition-colors">
+            <CardTitle className=" group-hover:underline underline-offset-2 text-xl transition-colors">
               <motion.span>{post.title}</motion.span>
             </CardTitle>
+            <CardDescription className="flex gap-2">
+              <Calendar size={16} />
+              <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
+            </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground mb-4">{post.description}</p>
+            <p className="text-muted-foreground mb-4 line-clamp-2">
+              {post.description}
+            </p>
           </CardContent>
-          <CardFooter>
+          <CardFooter className=" justify-self-end">
             {post.categories.map((category) => (
               <Badge
                 key={category.name}

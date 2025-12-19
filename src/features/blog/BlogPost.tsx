@@ -20,12 +20,13 @@ import useBlog from "./hooks/useBlog";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@/shared/hook/useTheme";
 import { LanguageSelector } from "@/components/shared/LangSwitch";
+import { toast } from "sonner";
 
 export default function BlogPost() {
   const { slug, lng } = useParams<{ slug: string; lng: string }>();
   const navigate = useNavigate();
   const { posts, loading, getFallbackSrc } = useBlog();
-  const { t } = useTranslation("blog");
+  const { t } = useTranslation();
   const [content, setContent] = useState<string | null>(null);
   const post = posts?.find((p) => p.slug === slug);
   const { isDark, setTheme } = useTheme();
@@ -58,14 +59,24 @@ export default function BlogPost() {
     return (
       <div className=" fixed  w-full  h-full overflow-hidden bg-background z-30 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">{t("blog.postNotFound")}</h1>
+          <h1 className="text-4xl font-bold mb-4">
+            {t("blog:blog.postNotFound")}
+          </h1>
           <Button onClick={handleBack}>
             <ArrowLeft size={16} />
-            {t("blog.backToBlog")}
+            {t("blog:blog.backToBlog")}
           </Button>
         </div>
       </div>
     );
+  }
+
+  if (!post.isPublished) {
+    toast.info(`「${post.title}」${t("toast:toast.NotPublished")}`, {
+      duration: 3000,
+    });
+    navigate(`/${lng}/blog`);
+    return null;
   }
 
   const handleShare = () => {
@@ -94,7 +105,7 @@ export default function BlogPost() {
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.9, y: 50 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="md:w-11/12 max-w-4xl mx-auto relative "
+            className="md:w-11/12 max-w-4xl mx-auto  "
           >
             <div className=" fixed  top-6 z-20  w-full  max-w-4xl mx-auto ">
               <div className="w-11/12 justify-between mx-auto flex items-center ">
@@ -125,7 +136,6 @@ export default function BlogPost() {
             </div>
             <div className="backdrop-blur-xs bg-background/95 flex flex-col  relative space-y-2 ">
               <motion.div
-                layout
                 layoutId={`blog-image-${post.slug}`}
                 className="relative w-full h-72 md:h-[28rem] overflow-hidden  mb-6"
               >

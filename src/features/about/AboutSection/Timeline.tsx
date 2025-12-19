@@ -22,23 +22,29 @@ export default function Timeline() {
   });
 
   const progress = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
-  const listVariants = {
-    hidden: {},
+
+  // 仿照 MaskHero：父層淡入 + staggerChildren
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
     visible: {
+      opacity: 1,
       transition: {
         staggerChildren: 0.12,
+        delayChildren: 0.1,
       },
     },
   };
 
+  // 子項目：往上 + 淡入（spring）
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 18 },
+    hidden: { y: 18, opacity: 0 },
     visible: {
-      opacity: 1,
       y: 0,
-      transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+      opacity: 1,
+      transition: { type: "spring", stiffness: 320, damping: 26 },
     },
   };
+
   return (
     <div
       ref={containerRef}
@@ -53,7 +59,7 @@ export default function Timeline() {
 
         <motion.ol
           className="relative pl-8"
-          variants={listVariants}
+          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.25 }}
@@ -79,7 +85,6 @@ export default function Timeline() {
                   key={`${institution}-${startYear}-${index}`}
                   className={cn("relative pb-10 last:pb-0 space-y-2")}
                   variants={itemVariants}
-                  whileInView="visible"
                 >
                   <div className=" flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
                     <span className="font-mono">{range}</span>
@@ -89,7 +94,8 @@ export default function Timeline() {
                       </Badge>
                     ) : null}
                   </div>
-                  <Card className="hover:shadow-lg ">
+
+                  <Card className="hover:shadow-lg">
                     <CardContent>
                       <CardTitle>
                         <h4 className="text-base font-semibold text-foreground">

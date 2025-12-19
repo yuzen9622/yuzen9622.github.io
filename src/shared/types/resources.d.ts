@@ -37,6 +37,7 @@ interface Resources {
         "educationSystem": "Junior College",
         "startYear": "2019",
         "endYear": "current",
+        "isCurrent": true,
         "description": "I built a solid foundation in programming at this school through coursework and projects, which sparked my long-term interest in software engineering and applied research."
       },
       {
@@ -171,6 +172,11 @@ interface Resources {
         }
       }
     ]
+  },
+  "toast": {
+    "toast": {
+      "NotPublished": "This post is not yet published."
+    }
   }
 }
 

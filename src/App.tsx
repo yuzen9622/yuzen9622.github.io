@@ -7,7 +7,7 @@ function App() {
   return (
     <Routes>
       <Route path="/:lng/*" element={<LangLayout />} />
-      <Route path="*" element={<Navigate to="/en" replace />} />
+      <Route path="*" element={<Navigate to="/zh-Hans" replace />} />
     </Routes>
   );
 }

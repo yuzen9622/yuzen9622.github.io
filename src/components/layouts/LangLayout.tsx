@@ -16,10 +16,11 @@ export default function LangLayout() {
   const { lng } = useParams();
 
   useEffect(() => {
-    if (i18n.language !== lng && supportedLngs.includes(lng!)) {
+    if (lng && i18n.language !== lng && supportedLngs.includes(lng!)) {
       i18n.changeLanguage(lng);
     }
   }, [lng]);
+
   if (!lng || !supportedLngs.includes(lng)) {
     return <Navigate to="/zh-Hans" replace />;
   }
