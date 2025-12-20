@@ -30,8 +30,8 @@ export default function BlogPost() {
   const [content, setContent] = useState<string | null>(null);
   const post = posts?.find((p) => p.slug === slug);
   const { isDark, setTheme } = useTheme();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
     if (post) setContent(post.content);
   }, [post]);
 

@@ -1,4 +1,4 @@
-import { Calendar } from "lucide-react";
+import { ArrowUpRightIcon, Calendar } from "lucide-react";
 import { NavLink, useParams } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -16,6 +16,7 @@ import { useMemo } from "react";
 import { toast } from "sonner";
 
 import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
 
 interface BlogCardProps {
   post: Article;
@@ -25,7 +26,7 @@ interface BlogCardProps {
 export default function BlogCard({ post, index = 0 }: BlogCardProps) {
   const { getFallbackSrc } = useBlog();
   const { lng } = useParams<{ lng: string }>();
-  const { t } = useTranslation("toast");
+  const { t } = useTranslation();
   const MotionCard = useMemo(() => motion.create(Card), []);
   return (
     <motion.div
@@ -38,13 +39,13 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
       <NavLink
         onClick={() => {
           if (post.isPublished) return;
-          toast.info(`「${post.title}」${t("toast.NotPublished")}`, {
+          toast.info(`「${post.title}」${t("toast:toast.NotPublished")}`, {
             duration: 3000,
           });
         }}
         to={post.isPublished ? `/${lng}/blog/${post.slug}` : `/${lng}/blog`}
       >
-        <MotionCard className="group backdrop-blur-xs rounded-none pt-0   bg-background/80 hover:shadow-lg transition-all h-full ">
+        <MotionCard className="group backdrop-blur-xs rounded-none pt-0 justify-between   bg-background/80 hover:shadow-lg transition-all h-full ">
           <motion.img
             layoutId={`blog-image-${post.slug}`}
             className="h-48"
@@ -66,16 +67,27 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
               {post.description}
             </p>
           </CardContent>
-          <CardFooter className=" justify-self-end">
-            {post.categories.map((category) => (
+          <CardFooter className=" justify-self-end flex justify-between">
+            {post.categories.slice(0, 2).map((category) => (
               <Badge
                 key={category.name}
-                variant="secondary"
+                variant="outline"
                 className="px-3 py-2 rounded-3xl"
               >
                 {category.name}
               </Badge>
             ))}
+            <Button
+              variant={post.isPublished ? "link" : "secondary"}
+              className="group-hover:underline"
+            >
+              {post.isPublished
+                ? t("blog:blog.ReadFull")
+                : t("blog:blog.NotPublished")}
+              {post.isPublished && (
+                <ArrowUpRightIcon className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+              )}
+            </Button>
           </CardFooter>
         </MotionCard>
       </NavLink>

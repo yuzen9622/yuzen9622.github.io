@@ -1,8 +1,20 @@
 import { useState, useMemo } from "react";
-import { Search } from "lucide-react";
+import { Search, SlidersHorizontal, ArrowDownWideNarrow } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import BlogCard from "./BlogCard";
+
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuCheckboxItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 import { motion, AnimatePresence } from "framer-motion";
 import useBlog from "./hooks/useBlog";
@@ -13,6 +25,8 @@ import { useTranslation } from "react-i18next";
 export default function BlogList() {
   const [search, setSearch] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [publishedOnly, setPublishedOnly] = useState(false);
+  const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
   const { t } = useTranslation("blog");
   const { posts, loading, error } = useBlog();
   const allTags = useMemo(() => {
@@ -25,16 +39,23 @@ export default function BlogList() {
   }, [posts]);
 
   const filteredPosts = useMemo(() => {
-    return posts?.filter((post) => {
+    const list = (posts ?? []).filter((post) => {
       const matchesSearch =
         post.title.toLowerCase().includes(search.toLowerCase()) ||
         post.description.toLowerCase().includes(search.toLowerCase());
       const matchesTag =
         !selectedTag ||
         post.categories.some((category) => category.name === selectedTag);
-      return matchesSearch && matchesTag;
+      const matchesPublished = !publishedOnly || post.isPublished;
+      return matchesSearch && matchesTag && matchesPublished;
     });
-  }, [posts, search, selectedTag]);
+
+    return list.slice().sort((a, b) => {
+      const aTime = Date.parse(a.publishedAt ?? "") || 0;
+      const bTime = Date.parse(b.publishedAt ?? "") || 0;
+      return sortOrder === "newest" ? bTime - aTime : aTime - bTime;
+    });
+  }, [posts, search, selectedTag, publishedOnly, sortOrder]);
 
   if (error) {
     return (
@@ -57,18 +78,71 @@ export default function BlogList() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <div className="relative  backdrop-blur-3xl rounded-3xl ">
-          <Search
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
-            size={20}
-          />
-          <Input
-            type="text"
-            placeholder="Search posts..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className=" px-3 py-2 pl-10 rounded-3xl"
-          />
+        <div className="flex items-center gap-2">
+          <div className="relative flex-1 backdrop-blur-3xl rounded-3xl">
+            <Search
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+              size={20}
+            />
+            <Input
+              type="text"
+              placeholder={t("blog.searchPlaceholder")}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="px-3 py-2 pl-10 rounded-3xl"
+            />
+          </div>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                className="rounded-3xl backdrop-blur-3xl"
+                aria-label={t("blog.filters")}
+              >
+                <SlidersHorizontal size={18} />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="end"
+              sideOffset={10}
+              className="backdrop-blur-md bg-background/50"
+            >
+              <DropdownMenuLabel className="flex items-center gap-2">
+                <SlidersHorizontal size={16} />
+                {t("blog.filters")}
+              </DropdownMenuLabel>
+              <DropdownMenuCheckboxItem
+                checked={publishedOnly}
+                onCheckedChange={(checked) =>
+                  setPublishedOnly(Boolean(checked))
+                }
+              >
+                {t("blog.publishedOnly")}
+              </DropdownMenuCheckboxItem>
+
+              <DropdownMenuSeparator />
+
+              <DropdownMenuLabel className="flex items-center gap-2">
+                <ArrowDownWideNarrow size={16} />
+                {t("blog.sort")}
+              </DropdownMenuLabel>
+              <DropdownMenuRadioGroup
+                value={sortOrder}
+                onValueChange={(value) =>
+                  setSortOrder(value === "oldest" ? "oldest" : "newest")
+                }
+              >
+                <DropdownMenuRadioItem value="newest">
+                  {t("blog.sortNewest")}
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="oldest">
+                  {t("blog.sortOldest")}
+                </DropdownMenuRadioItem>
+              </DropdownMenuRadioGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
         <div className="flex flex-wrap gap-2">

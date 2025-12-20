@@ -5,6 +5,12 @@
         "publishedOn": "Published on {{date}}",
         "categories": "Categories",
         "tags": "Tags",
-        "all": "All"
+        "all": "All",
+        "searchPlaceholder": "Search posts...",
+        "filters": "Filters",
+        "publishedOnly": "Published only",
+        "sort": "Sort",
+        "sortNewest": "Newest",
+        "sortOldest": "Oldest"
     }
 }

@@ -3,8 +3,16 @@
         "backToBlog": "回到部落格",
         "postNotFound": "找不到這篇文章。",
         "publishedOn": "發佈於 {{date}}",
+        "NotPublished": "尚未發布",
+        "ReadFull": "查看全文",
         "categories": "分類",
         "tags": "標籤",
-        "all": "全部"
+        "all": "全部",
+        "searchPlaceholder": "搜尋文章...",
+        "filters": "篩選",
+        "publishedOnly": "只顯示已發布",
+        "sort": "排序",
+        "sortNewest": "最新",
+        "sortOldest": "最舊"
     }
 }

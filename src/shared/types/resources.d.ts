@@ -26,7 +26,13 @@ interface Resources {
       "publishedOn": "Published on {{date}}",
       "categories": "Categories",
       "tags": "Tags",
-      "all": "All"
+      "all": "All",
+      "searchPlaceholder": "Search posts...",
+      "filters": "Filters",
+      "publishedOnly": "Published only",
+      "sort": "Sort",
+      "sortNewest": "Newest",
+      "sortOldest": "Oldest"
     }
   },
   "education": {
@@ -53,13 +59,14 @@ interface Resources {
   "profile": {
     "profile": {
       "roles": [
-        "Full Stack Developer",
+        "No need to prove anything",
         1000,
-        "Full Stack Debugger",
+        "Understand one thing at a time",
         1000
       ],
       "country": "Hsinchu, TW",
       "headline": "You can call me Small Z",
+      "slogan": "Focused on the problem, always exploring the new.",
       "tagline": "Creative*Coder*Dream*Builder*",
       "short_description": "Hi, I'm Small Z (18y). I'm currently studying in the five-year program at National Taichung University of Science and Technology (NUTC).",
       "description": "I'm a third-year Information Management student at NUTC who loves programming and web design. I enjoy building my own projects and collaborating with others, as both help me grow. My strengths are backend development, data modeling (ER models), and designing RESTful APIs. I used to think results matter most, but now I believe careful planning is just as important for software engineering."
