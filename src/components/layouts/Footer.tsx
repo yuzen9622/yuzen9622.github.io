@@ -44,6 +44,15 @@ export default function Footer() {
               className="transition hover:text-foreground"
             >
               shadcn/ui
+            </a>{" "}
+            {" · "}
+            <a
+              href="https://www.framer.com/motion/"
+              target="_BLANK"
+              rel="noopener noreferrer"
+              className="transition hover:text-foreground"
+            >
+              Framer Motion
             </a>
           </p>
         </div>
