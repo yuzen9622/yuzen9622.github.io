@@ -48,7 +48,7 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
         <MotionCard className="group backdrop-blur-xs rounded-none pt-0 justify-between   bg-background/80 hover:shadow-lg transition-all h-full ">
           <motion.img
             layoutId={`blog-image-${post.slug}`}
-            className="h-48"
+            className="h-48 object-cover"
             alt={post.title}
             src={getFallbackSrc(post.cover?.formats)}
           />

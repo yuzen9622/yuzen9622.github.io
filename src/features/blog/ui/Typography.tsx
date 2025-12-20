@@ -1,33 +1,63 @@
-export function TypographyH1({ children }: { children: React.ReactNode }) {
+import { cn } from "@/shared/lib/utils";
+
+type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> & {
+  children?: React.ReactNode;
+};
+
+export function TypographyH1({ children, className, ...props }: HeadingProps) {
   return (
-    <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-balance">
+    <h1
+      className={cn(
+        "scroll-mt-28 text-4xl font-extrabold tracking-tight text-balance",
+        className
+      )}
+      {...props}
+    >
       {children}
     </h1>
   );
 }
-export function TypographyH2({ children }: { children: React.ReactNode }) {
+export function TypographyH2({ children, className, ...props }: HeadingProps) {
   return (
-    <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+    <h2
+      className={cn(
+        "scroll-mt-28 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
+        className
+      )}
+      {...props}
+    >
       {children}
     </h2>
   );
 }
-export function TypographyH3({ children }: { children: React.ReactNode }) {
+export function TypographyH3({ children, className, ...props }: HeadingProps) {
   return (
-    <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+    <h3
+      className={cn(
+        "scroll-mt-28 text-2xl font-semibold tracking-tight",
+        className
+      )}
+      {...props}
+    >
       {children}
     </h3>
   );
 }
-export function TypographyH4({ children }: { children: React.ReactNode }) {
+export function TypographyH4({ children, className, ...props }: HeadingProps) {
   return (
-    <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
+    <h4
+      className={cn(
+        "scroll-mt-28 text-xl font-semibold tracking-tight",
+        className
+      )}
+      {...props}
+    >
       {children}
     </h4>
   );
 }
 export function TypographyP({ children }: { children: React.ReactNode }) {
-  return <p className="leading-7 [&:not(:first-child)]:mt-6">{children}</p>;
+  return <p className="leading-7 not-first:mt-6">{children}</p>;
 }
 export function TypographyBlockquote({
   children,
@@ -77,7 +107,7 @@ export const TypographyTr: React.FC<{ children: React.ReactNode }> = ({
 export const TypographyTh: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => (
-  <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right">
+  <th className="border px-4 py-2 text-left font-bold [[align=center]]:text-center [[align=right]]:text-right">
     {children}
   </th>
 );
@@ -85,7 +115,7 @@ export const TypographyTh: React.FC<{ children: React.ReactNode }> = ({
 export const TypographyTd: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => (
-  <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+  <td className="border px-4 py-2 text-left [[align=center]]:text-center [[align=right]]:text-right">
     {children}
   </td>
 );

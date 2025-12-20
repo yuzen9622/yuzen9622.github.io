@@ -41,9 +41,18 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
       remarkPlugins={[remarkGfm, remarkMath]}
       rehypePlugins={[rehypeSlug, rehypeKatex, rehypeRaw]}
       components={{
-        h1: ({ children }) => <TypographyH1>{children}</TypographyH1>,
-        h2: ({ children }) => <TypographyH2>{children}</TypographyH2>,
-        h3: ({ children }) => <TypographyH3>{children}</TypographyH3>,
+        h1: ({ node, ...props }) => {
+          void node;
+          return <TypographyH1 {...props} />;
+        },
+        h2: ({ node, ...props }) => {
+          void node;
+          return <TypographyH2 {...props} />;
+        },
+        h3: ({ node, ...props }) => {
+          void node;
+          return <TypographyH3 {...props} />;
+        },
         p: ({ children }) => <TypographyP>{children}</TypographyP>,
         code: ({ className = "", children, ...props }) => {
           return (

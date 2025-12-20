@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
   Calendar,
   ChevronLeftIcon,
   Loader2,
+  List,
   MoonIcon,
   Share2,
   SunIcon,
@@ -12,6 +13,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import MarkdownRenderer from "./ui/MarkdownRenderer";
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -22,6 +32,8 @@ import { useTheme } from "@/shared/hook/useTheme";
 import { LanguageSelector } from "@/components/shared/LangSwitch";
 import { toast } from "sonner";
 import { Helmet } from "react-helmet-async";
+import TableOfContents, { type TocItem } from "./ui/TableOfContents";
+import moment from "moment";
 export default function BlogPost() {
   const { slug, lng } = useParams<{ slug: string; lng: string }>();
   const navigate = useNavigate();
@@ -30,10 +42,92 @@ export default function BlogPost() {
   const [content, setContent] = useState<string | null>(null);
   const post = posts?.find((p) => p.slug === slug);
   const { isDark, setTheme } = useTheme();
+  const scrollRootRef = useRef<HTMLDivElement | null>(null);
+  const markdownRootRef = useRef<HTMLDivElement | null>(null);
+  const [tocItems, setTocItems] = useState<TocItem[]>([]);
+  const [activeHeadingId, setActiveHeadingId] = useState<string | null>(null);
 
   useEffect(() => {
     if (post) setContent(post.content);
   }, [post]);
+
+  useEffect(() => {
+    if (!content) return;
+
+    let cancelled = false;
+    const buildToc = () => {
+      if (cancelled) return;
+      const root = markdownRootRef.current;
+      if (!root) return;
+
+      const headings = Array.from(
+        root.querySelectorAll<HTMLHeadingElement>("h1[id], h2[id], h3[id]")
+      );
+
+      const items: TocItem[] = headings
+        .map((h) => {
+          const level = Number(h.tagName.replace("H", "")) as TocItem["level"];
+          const id = h.id;
+          const text = (h.textContent ?? "").trim();
+          if (!id || !text) return null;
+          return { id, text, level };
+        })
+        .filter((x): x is TocItem => Boolean(x));
+
+      setTocItems(items);
+      setActiveHeadingId((prev) => prev ?? items[0]?.id ?? null);
+    };
+
+    const raf = window.requestAnimationFrame(buildToc);
+    return () => {
+      cancelled = true;
+      window.cancelAnimationFrame(raf);
+    };
+  }, [content, post?.slug]);
+
+  useEffect(() => {
+    const root = markdownRootRef.current;
+    const scrollRoot = scrollRootRef.current;
+    if (!root || !scrollRoot) return;
+    if (tocItems.length === 0) return;
+
+    const headings = Array.from(
+      root.querySelectorAll<HTMLHeadingElement>("h1[id], h2[id], h3[id]")
+    );
+    if (headings.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort(
+            (a, b) =>
+              (a.target as HTMLElement).offsetTop -
+              (b.target as HTMLElement).offsetTop
+          );
+
+        const next = (visible[0]?.target as HTMLElement | undefined)?.id;
+        if (next) setActiveHeadingId(next);
+      },
+      {
+        root: scrollRoot,
+        rootMargin: "-20% 0px -70% 0px",
+        threshold: [0, 1],
+      }
+    );
+
+    headings.forEach((h) => observer.observe(h));
+    return () => observer.disconnect();
+  }, [tocItems]);
+
+  const handleNavigateToHeading = useCallback((id: string) => {
+    const el = markdownRootRef.current?.querySelector<HTMLElement>(
+      `#${CSS.escape(id)}`
+    );
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    setActiveHeadingId(id);
+  }, []);
 
   const handleBack = () => {
     if (document.startViewTransition) {
@@ -107,6 +201,7 @@ export default function BlogPost() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          ref={scrollRootRef}
           className="   fixed  inset-0 max-h-dvh z-30 bg-background md:p-4 overflow-y-auto"
         >
           {content ? (
@@ -115,7 +210,7 @@ export default function BlogPost() {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 50 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="md:w-11/12 max-w-4xl mx-auto  "
+              className="md:w-11/12 max-w-6xl mx-auto"
             >
               <div className=" fixed  top-6 z-20  w-full  max-w-4xl mx-auto ">
                 <div className="w-11/12 justify-between mx-auto flex items-center ">
@@ -138,6 +233,61 @@ export default function BlogPost() {
                     >
                       {isDark ? <SunIcon size={18} /> : <MoonIcon size={18} />}
                     </button>
+
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <button
+                          type="button"
+                          className="md:hidden relative p-2  rounded-3xl cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0 hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full before:-z-20 before:bg-primary"
+                          aria-label="Table of contents"
+                        >
+                          <List size={18} className="relative z-10 " />
+                        </button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end" className="w-72">
+                        <DropdownMenuLabel>目錄</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        {tocItems.length > 0 ? (
+                          tocItems.map((item) => {
+                            const isActive = item.id === activeHeadingId;
+                            const indent =
+                              item.level === 1
+                                ? "pl-2"
+                                : item.level === 2
+                                ? "pl-4"
+                                : item.level === 3
+                                ? "pl-6"
+                                : "pl-8";
+                            return (
+                              <DropdownMenuItem
+                                key={item.id}
+                                className={indent}
+                                onSelect={() =>
+                                  handleNavigateToHeading(item.id)
+                                }
+                              >
+                                <span
+                                  className={
+                                    isActive
+                                      ? "font-medium text-foreground"
+                                      : "text-muted-foreground"
+                                  }
+                                >
+                                  {item.text}
+                                </span>
+                              </DropdownMenuItem>
+                            );
+                          })
+                        ) : (
+                          <DropdownMenuItem disabled>
+                            <span className="text-muted-foreground">
+                              無可用標題
+                            </span>
+                          </DropdownMenuItem>
+                        )}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+
                     <button type="button" className="relative">
                       <LanguageSelector />
                     </button>
@@ -193,7 +343,7 @@ export default function BlogPost() {
                     <div className="flex items-center gap-2">
                       <Calendar size={16} />
                       <span>
-                        {new Date(post.publishedAt).toLocaleDateString()}
+                        {moment(post.publishedAt).format("YYYY.MM.DD")}
                       </span>
                     </div>
 
@@ -224,14 +374,26 @@ export default function BlogPost() {
                   </motion.div>
                 </motion.div>
 
-                <motion.div className="space-y-2 p-2">
-                  <MarkdownRenderer content={content} />
-                </motion.div>
+                <div className="md:flex md:gap-10">
+                  <motion.div
+                    className="space-y-2 p-2 min-w-0 flex-1"
+                    ref={markdownRootRef}
+                  >
+                    <MarkdownRenderer content={content} />
+                  </motion.div>
+
+                  <TableOfContents
+                    items={tocItems}
+                    activeId={activeHeadingId}
+                    onNavigate={handleNavigateToHeading}
+                    className="w-64 shrink-0"
+                  />
+                </div>
 
                 <Separator className="my-4" />
 
                 <motion.div
-                  className="flex items-center gap-4"
+                  className="flex items-center gap-4 p-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.7 }}
@@ -243,7 +405,6 @@ export default function BlogPost() {
                   />
                   <div>
                     <p className="font-bold">{post.author?.name}</p>
-                    <p className="text-sm text-muted-foreground">Developer</p>
                   </div>
                 </motion.div>
               </div>
