@@ -20,7 +20,7 @@ export default function SkillMarquee({
             : { x: ["calc(-100% - 16px)", "0%"] }
         }
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="flex gap-4 py-2  w-full     after:absolute after:inset-0 after:w-10 after:h-full     justify-around flex-shrink-0"
+        className="flex gap-4 py-2  w-full     after:absolute after:inset-0 after:w-10 after:h-full     justify-around shrink-0"
       >
         {skills.map((skill, index) => {
           return (
@@ -44,7 +44,7 @@ export default function SkillMarquee({
             : { x: ["calc(-100% - 16px)", "0%"] }
         }
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="flex gap-4 py-2     w-full    after:absolute after:inset-0 after:w-10 after:h-full     justify-around flex-shrink-0"
+        className="flex gap-4 py-2     w-full    after:absolute after:inset-0 after:w-10 after:h-full     justify-around shrink-0"
       >
         {skills.map((skill, index) => {
           return (
@@ -68,7 +68,7 @@ export default function SkillMarquee({
             : { x: ["calc(-100% - 16px)", "0%"] }
         }
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="flex gap-4 py-2  w-full   after:absolute after:inset-0 after:w-10 after:h-full     justify-around flex-shrink-0"
+        className="flex gap-4 py-2  w-full   after:absolute after:inset-0 after:w-10 after:h-full     justify-around shrink-0"
       >
         {skills.map((skill, index) => {
           return (

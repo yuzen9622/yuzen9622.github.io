@@ -5,7 +5,7 @@ export default function AboutHero() {
   return (
     <div className="min-h-dvh relative flex w-full flex-col">
       <div className="h-full flex-1 flex    justify-center">
-        <div className="  absolute inset-0 z-0 w-dvw h-dvh   bg-background ">
+        <div className="  absolute inset-0 z-0 w-dvw    bg-background ">
           <Squares
             speed={0.0}
             squareSize={50}

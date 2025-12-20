@@ -6,6 +6,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -50,7 +51,7 @@ export default function Timeline() {
       ref={containerRef}
       className="h-full w-full flex items-center justify-center"
     >
-      <div className="relative w-10/12">
+      <div className="relative md:w-10/12 px-2">
         <div className="pointer-events-none absolute left-3 top-0 bottom-0 w-px bg-border/60" />
         <motion.div
           className="pointer-events-none absolute left-3 top-0 bottom-0 w-px origin-top bg-primary"
@@ -96,15 +97,19 @@ export default function Timeline() {
                   </div>
 
                   <Card className="hover:shadow-lg">
-                    <CardContent>
+                    <CardHeader>
                       <CardTitle>
                         <h4 className="text-base font-semibold text-foreground">
                           {institution}
                         </h4>
                         {major ? (
-                          <CardDescription>{major}</CardDescription>
+                          <CardDescription className="font-extralight">
+                            {major}
+                          </CardDescription>
                         ) : null}
                       </CardTitle>
+                    </CardHeader>
+                    <CardContent>
                       {description && <p>{description}</p>}
                     </CardContent>
                   </Card>

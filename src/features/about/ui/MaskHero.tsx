@@ -199,12 +199,9 @@ export default function MaskHero() {
 
         <motion.p
           variants={stack}
-          className="text-[clamp(2rem,2.5vw,3rem)]/13 h-full w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap"
+          className="relative text-[clamp(2rem,2.5vw,3rem)]/13 h-full w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap before:content-['“'] before:absolute before:-top-2 before:-left-6 before:text-[clamp(3rem,4vw,4rem)] before:leading-none before:text-primary/70 after:content-['”'] after:absolute after:bottom-0 after:-right-2 after:text-[clamp(3rem,4vw,4rem)] after:leading-none after:text-primary/70"
         >
-          <motion.span
-            variants={item}
-            className="relative px-6 w-fit max-w-full before:content-['“'] before:absolute before:-top-2 before:-left-8 before:text-[clamp(3rem,4vw,4rem)] before:leading-none before:text-primary/70 after:content-['”'] after:absolute after:bottom-0 after:-right-2 after:text-[clamp(3rem,4vw,4rem)] after:leading-none after:text-primary/70"
-          >
+          <motion.span variants={item} className="  w-fit max-w-full ">
             {profile.slogan}
           </motion.span>
         </motion.p>
@@ -290,10 +287,8 @@ export default function MaskHero() {
               </motion.div>
             </Card>
           </div>
-          <p className="text-[clamp(2rem,2.5vw,3rem)]/13 h-full  w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap ">
-            <span className="relative px-6 w-fit max-w-full before:content-['“'] before:absolute before:-top-2 before:-left-8 before:text-[clamp(3rem,4vw,4rem)] before:leading-none before:text-primary-foreground/70 after:content-['”'] after:absolute after:bottom-0 after:-right-2 after:text-[clamp(3rem,4vw,4rem)] after:leading-none after:text-primary-foreground/70">
-              {profile.slogan}
-            </span>
+          <p className="relative text-[clamp(2rem,2.5vw,3rem)]/13 h-full  w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap before:content-['“'] before:absolute before:-top-2 before:-left-8 before:text-[clamp(3rem,4vw,4rem)] before:leading-none before:text-primary-foreground/70 after:content-['”'] after:absolute after:bottom-0 after:-right-2 after:text-[clamp(3rem,4vw,4rem)] after:leading-none after:text-primary-foreground/70">
+            <span className="  w-fit max-w-full ">{profile.slogan}</span>
           </p>
         </motion.div>
       </motion.div>
