@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon, Calendar } from "lucide-react";
+import { ArrowUpRightIcon } from "lucide-react";
 import { NavLink, useParams } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 import useBlog from "./hooks/useBlog";
 import { useMemo } from "react";
 import { toast } from "sonner";
-
+import moment from "moment";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 
@@ -58,8 +58,7 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
               <motion.span>{post.title}</motion.span>
             </CardTitle>
             <CardDescription className="flex gap-2">
-              <Calendar size={16} />
-              <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
+              <span>{moment(post.publishedAt).format("YYYY.MM.DD")}</span>
             </CardDescription>
           </CardHeader>
           <CardContent>

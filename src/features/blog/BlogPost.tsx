@@ -147,7 +147,7 @@ export default function BlogPost() {
               <div className="backdrop-blur-xs bg-background/95 flex flex-col  relative space-y-2 ">
                 <motion.div
                   layoutId={`blog-image-${post.slug}`}
-                  className="relative w-full h-72 md:h-[28rem] overflow-hidden  mb-6"
+                  className="relative w-full h-72 md:h-112 overflow-hidden  mb-6"
                 >
                   <img
                     src={`${getFallbackSrc(post?.cover?.formats)}`}
@@ -155,7 +155,7 @@ export default function BlogPost() {
                     className="absolute inset-0 h-full w-full object-cover object-bottom"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/35 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-background/95 via-background/35 to-transparent" />
 
                   <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
                     <motion.h1

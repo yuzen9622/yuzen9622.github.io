@@ -16,7 +16,7 @@ export default function Marquee() {
       <motion.div
         animate={{ x: ["0%", "calc(-100% - 16px)"] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="flex gap-4 py-2      group-hover:[&>*]:rotate-0! after:absolute after:inset-0 after:w-10 after:h-full     justify-around flex-shrink-0"
+        className="flex gap-4 py-2      group-hover:*:rotate-0! after:absolute after:inset-0 after:w-10 after:h-full     justify-around shrink-0"
       >
         {techField.map((field, index) => {
           if (field === "*") {
@@ -49,7 +49,7 @@ export default function Marquee() {
       <motion.div
         animate={{ x: ["0%", "calc(-100% - 16px)"] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="flex gap-4 py-2    group-hover:[&>*]:rotate-0!  justify-around flex-shrink-0"
+        className="flex gap-4 py-2    group-hover:*:rotate-0!  justify-around shrink-0"
       >
         {techField.map((field, index) => {
           // 只對非*項目應用旋轉效果

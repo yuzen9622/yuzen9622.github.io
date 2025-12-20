@@ -122,7 +122,7 @@ export default function MaskHero() {
             <Card className="mx-auto mt-20 justify-center border-none shadow-none flex lg:flex-row items-center bg-transparent flex-col">
               <motion.div variants={item}>
                 <CardContent className="h-full relative w-full ">
-                  <motion.div className=" w-40  h-40 rounded-3xl absolute bottom-2/12 -z-0 left-3/12  bg-primary/70 blur-3xl "></motion.div>
+                  <motion.div className=" w-40  h-40 rounded-3xl absolute bottom-2/12 z-0 left-3/12  bg-primary/70 blur-3xl "></motion.div>
                   <Avatar className="pointer-events-none w-3xs h-full aspect-square">
                     <AvatarImage
                       className=" rounded-full"

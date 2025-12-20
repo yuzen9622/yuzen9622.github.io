@@ -6,7 +6,7 @@ import SkillGrid from "./SkillGrid";
 
 export default function AboutSection() {
   return (
-    <section className=" w-full gap-4 -z-0 overflow-hidden min-h-dvh bg-background flex  items-center flex-col   pt-5 relative">
+    <section className=" w-full gap-4 z-0 overflow-hidden min-h-dvh bg-background flex  items-center flex-col   pt-5 relative">
       <Header />
       <Main />
       <div className="flex w-full  max-lg:flex-col justify-around  gap-5">
