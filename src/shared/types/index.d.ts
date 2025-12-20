@@ -31,6 +31,7 @@ export type User = {
   country: string;
   headline: string;
   tagline: string;
+  slogan: string;
   shortDesc: string;
   desc: string;
   email: string;

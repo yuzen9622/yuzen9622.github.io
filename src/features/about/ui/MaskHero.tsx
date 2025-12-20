@@ -119,9 +119,9 @@ export default function MaskHero() {
           ></motion.div>
           {/**第一層 */}
           <motion.div variants={cardContainer}>
-            <Card className="mx-auto mt-20 w-11/12 justify-center border-none shadow-none flex lg:flex-row items-center bg-transparent flex-col">
+            <Card className="mx-auto mt-20 justify-center border-none shadow-none flex lg:flex-row items-center bg-transparent flex-col">
               <motion.div variants={item}>
-                <CardContent className="h-full relative w-fit ">
+                <CardContent className="h-full relative w-full ">
                   <motion.div className=" w-40  h-40 rounded-3xl absolute bottom-2/12 -z-0 left-3/12  bg-primary/70 blur-3xl "></motion.div>
                   <Avatar className="pointer-events-none w-3xs h-full aspect-square">
                     <AvatarImage
@@ -201,16 +201,11 @@ export default function MaskHero() {
           variants={stack}
           className="text-[clamp(2rem,2.5vw,3rem)]/13 h-full w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap"
         >
-          <motion.span variants={item}>As a</motion.span>
           <motion.span
             variants={item}
-            className="text-white p-1 rounded-md text-[clamp(2rem,3vw,3.5rem)]/13 bg-primary"
+            className="relative px-6 w-fit max-w-full before:content-['“'] before:absolute before:-top-2 before:-left-8 before:text-[clamp(3rem,4vw,4rem)] before:leading-none before:text-primary/70 after:content-['”'] after:absolute after:-bottom-12 after:-right-2 after:text-[clamp(3rem,4vw,4rem)] after:leading-none after:text-primary/70"
           >
-            Full-Stack Developer
-          </motion.span>
-          <motion.span variants={item}>
-            enjoy tackling bugs with precision, and continuously exploring new
-            technologies.
+            {profile.slogan}
           </motion.span>
         </motion.p>
         <motion.div
@@ -296,12 +291,9 @@ export default function MaskHero() {
             </Card>
           </div>
           <p className="text-[clamp(2rem,2.5vw,3rem)]/13 h-full  w-11/12 flex items-center justify-center flex-col font-extrabold text-wrap ">
-            As a
-            <span className=" text-primary p-1 rounded-md text-[clamp(2rem,3vw,3.5rem)]/13 bg-primary-foreground">
-              Full-Stack Developer
+            <span className="relative px-6 w-fit max-w-full before:content-['“'] before:absolute before:-top-2 before:-left-8 before:text-[clamp(3rem,4vw,4rem)] before:leading-none before:text-primary-foreground/70 after:content-['”'] after:absolute after:-bottom-12 after:-right-2 after:text-[clamp(3rem,4vw,4rem)] after:leading-none after:text-primary-foreground/70">
+              {profile.slogan}
             </span>
-            enjoy tackling bugs with precision, and continuously exploring new
-            technologies.
           </p>
         </motion.div>
       </motion.div>

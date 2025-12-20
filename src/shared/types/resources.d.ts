@@ -38,7 +38,7 @@ interface Resources {
         "startYear": "2019",
         "endYear": "current",
         "isCurrent": true,
-        "description": "I built a solid foundation in programming at this school through coursework and projects, which sparked my long-term interest in software engineering and applied research."
+        "description": "Built a solid foundation in programming at this school through coursework and projects, which sparked my long-term interest in software engineering and applied research."
       },
       {
         "institution": "Hsinchu County Po-Ai Junior High School",
@@ -46,7 +46,7 @@ interface Resources {
         "educationSystem": "Junior High School",
         "startYear": "2016",
         "endYear": "2019",
-        "description": "I cultivated independent thinking abilities through self-directed learning and critical analysis, which laid the foundation for my later academic and technical development."
+        "description": "Cultivated independent thinking abilities through self-directed learning and critical analysis, which laid the foundation for my later academic and technical development."
       }
     ]
   },
@@ -175,7 +175,7 @@ interface Resources {
   },
   "toast": {
     "toast": {
-      "NotPublished": "This post is not yet published."
+      "NotPublished": "is not yet published."
     }
   }
 }

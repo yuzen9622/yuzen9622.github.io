@@ -24,6 +24,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
       roles: t("profile.roles", { returnObjects: true }),
       country: t("profile.country"),
       headline: t("profile.headline"),
+      slogan: t("profile.slogan"),
       tagline: t("profile.tagline"),
       shortDesc: t("profile.short_description"),
       desc: t("profile.description"),
