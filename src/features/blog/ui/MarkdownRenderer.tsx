@@ -23,6 +23,7 @@ import {
 } from "./Typography";
 import { CodeBlock } from "./CodeBlock";
 import { Checkbox } from "@/components/ui/checkbox";
+import { ArrowUpRightIcon } from "lucide-react";
 
 interface MarkdownRendererProps {
   content: string;
@@ -41,16 +42,13 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
       remarkPlugins={[remarkGfm, remarkMath]}
       rehypePlugins={[rehypeSlug, rehypeKatex, rehypeRaw]}
       components={{
-        h1: ({ node, ...props }) => {
-          void node;
+        h1: ({ ...props }) => {
           return <TypographyH1 {...props} />;
         },
-        h2: ({ node, ...props }) => {
-          void node;
+        h2: ({ ...props }) => {
           return <TypographyH2 {...props} />;
         },
-        h3: ({ node, ...props }) => {
-          void node;
+        h3: ({ ...props }) => {
           return <TypographyH3 {...props} />;
         },
         p: ({ children }) => <TypographyP>{children}</TypographyP>,
@@ -70,6 +68,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
           >
             {children}
+            <ArrowUpRightIcon className="inline " size={14} />
           </a>
         ),
         ul: ({ children }) => <TypographyList>{children}</TypographyList>,

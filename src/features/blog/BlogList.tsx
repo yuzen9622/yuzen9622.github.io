@@ -25,7 +25,7 @@ import { useTranslation } from "react-i18next";
 export default function BlogList() {
   const [search, setSearch] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [publishedOnly, setPublishedOnly] = useState(false);
+  const [publishedOnly, setPublishedOnly] = useState(true);
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
   const { t } = useTranslation("blog");
   const { posts, loading, error } = useBlog();

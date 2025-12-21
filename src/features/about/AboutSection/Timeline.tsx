@@ -51,7 +51,7 @@ export default function Timeline() {
       ref={containerRef}
       className="h-full w-full flex items-center justify-center"
     >
-      <div className="relative md:w-10/12 px-2">
+      <div className="relative md:w-10/12 px-4">
         <div className="pointer-events-none absolute left-3 top-0 bottom-0 w-px bg-border/60" />
         <motion.div
           className="pointer-events-none absolute left-3 top-0 bottom-0 w-px origin-top bg-primary"
@@ -110,7 +110,7 @@ export default function Timeline() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      {description && <p>{description}</p>}
+                      {description && <p className="text-sm">{description}</p>}
                     </CardContent>
                   </Card>
                 </motion.li>

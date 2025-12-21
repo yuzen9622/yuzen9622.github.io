@@ -105,13 +105,13 @@ export default function BlogPost() {
               (a.target as HTMLElement).offsetTop -
               (b.target as HTMLElement).offsetTop
           );
-
+        console.log(entries);
         const next = (visible[0]?.target as HTMLElement | undefined)?.id;
         if (next) setActiveHeadingId(next);
       },
       {
         root: scrollRoot,
-        rootMargin: "-20% 0px -70% 0px",
+        rootMargin: "0% 0px -70% 0px",
         threshold: [0, 1],
       }
     );
@@ -202,7 +202,7 @@ export default function BlogPost() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           ref={scrollRootRef}
-          className="   fixed  inset-0 max-h-dvh z-30 bg-background md:p-4 overflow-y-auto"
+          className="   fixed  inset-0 max-h-dvh z-30 bg-background  overflow-y-auto"
         >
           {content ? (
             <motion.div
@@ -215,13 +215,13 @@ export default function BlogPost() {
               <div className=" fixed  top-6 z-20  w-full  max-w-4xl mx-auto ">
                 <div className="w-11/12 justify-between mx-auto flex items-center ">
                   <Button
-                    variant="ghost"
+                    variant="link"
                     size="sm"
                     onClick={handleBack}
-                    className=" self-start backdrop-blur-2xl hover:bg-primary hover:text-white px-3 bg-background/50 py-2 rounded-3xl "
+                    className=" self-start backdrop-blur-2xl  text-primary bg-accent/50 py-2 rounded-3xl "
                   >
                     <ChevronLeftIcon size={16} />
-                    Back
+                    {t("blog:blog.backToBlog")}
                   </Button>
                   <div className="space-x-2 bg-background/50 p-1 rounded-3xl backdrop-blur-md">
                     <button
@@ -235,14 +235,11 @@ export default function BlogPost() {
                     </button>
 
                     <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <button
-                          type="button"
-                          className="md:hidden relative p-2  rounded-3xl cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0 hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full before:-z-20 before:bg-primary"
-                          aria-label="Table of contents"
-                        >
-                          <List size={18} className="relative z-10 " />
-                        </button>
+                      <DropdownMenuTrigger
+                        className="md:hidden relative p-2  rounded-3xl cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0 hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full before:-z-20 before:bg-primary"
+                        aria-label="Table of contents"
+                      >
+                        <List size={18} className=" z-10 " />
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end" className="w-72">
                         <DropdownMenuLabel>目錄</DropdownMenuLabel>
@@ -335,7 +332,7 @@ export default function BlogPost() {
                   transition={{ delay: 0.2 }}
                 >
                   <motion.div
-                    className="flex flex-wrap p-2 items-center gap-4 text-sm text-muted-foreground"
+                    className="flex flex-wrap p-4 items-center gap-4 text-sm text-muted-foreground"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3 }}
@@ -367,7 +364,7 @@ export default function BlogPost() {
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: 0.4 + index * 0.05 }}
                         >
-                          <Badge variant="secondary">{category.name}</Badge>
+                          <Badge variant="outline">{category.name}</Badge>
                         </motion.div>
                       )
                     )}
@@ -376,7 +373,7 @@ export default function BlogPost() {
 
                 <div className="md:flex md:gap-10">
                   <motion.div
-                    className="space-y-2 p-2 min-w-0 flex-1"
+                    className="space-y-2 p-4 min-w-0 flex-1"
                     ref={markdownRootRef}
                   >
                     <MarkdownRenderer content={content} />

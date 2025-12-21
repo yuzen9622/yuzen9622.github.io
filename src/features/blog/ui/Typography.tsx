@@ -21,7 +21,7 @@ export function TypographyH2({ children, className, ...props }: HeadingProps) {
   return (
     <h2
       className={cn(
-        "scroll-mt-28 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
+        "scroll-mt-28 border-b pb-4 text-3xl font-semibold tracking-tight first:mt-0",
         className
       )}
       {...props}
@@ -57,7 +57,9 @@ export function TypographyH4({ children, className, ...props }: HeadingProps) {
   );
 }
 export function TypographyP({ children }: { children: React.ReactNode }) {
-  return <p className="leading-7 not-first:mt-6">{children}</p>;
+  return (
+    <p className="leading-7 not-first:mt-6 text-muted-foreground">{children}</p>
+  );
 }
 export function TypographyBlockquote({
   children,
