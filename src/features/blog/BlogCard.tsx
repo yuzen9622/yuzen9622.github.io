@@ -67,15 +67,27 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
             </p>
           </CardContent>
           <CardFooter className=" justify-self-end flex justify-between">
-            {post.categories.slice(0, 2).map((category) => (
-              <Badge
-                key={category.name}
-                variant="outline"
-                className="px-3 py-2 rounded-3xl"
-              >
-                {category.name}
-              </Badge>
-            ))}
+            <span className="space-x-2">
+              {post.categories.slice(0, 2).map((category) => (
+                <Badge
+                  key={category.name}
+                  variant="outline"
+                  className="px-3 py-2 rounded-3xl inline"
+                >
+                  {category.name}
+                </Badge>
+              ))}
+              {post.categories.length > 2 && (
+                <Badge
+                  key="more"
+                  variant="outline"
+                  className="px-3 py-2 rounded-3xl inline"
+                >
+                  +{post.categories.length - 2}
+                </Badge>
+              )}
+            </span>
+
             <Button
               variant={post.isPublished ? "link" : "secondary"}
               className="group-hover:underline"

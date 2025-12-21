@@ -364,7 +364,12 @@ export default function BlogPost() {
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: 0.4 + index * 0.05 }}
                         >
-                          <Badge variant="outline">{category.name}</Badge>
+                          <Badge
+                            variant="outline"
+                            className="px-3 py-2 rounded-3xl inline"
+                          >
+                            {category.name}
+                          </Badge>
                         </motion.div>
                       )
                     )}
