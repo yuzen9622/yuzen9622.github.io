@@ -88,8 +88,9 @@ export function CodeBlock({
       <SyntaxHighlighter
         style={isDark ? coldarkDark : coldarkCold}
         language={language}
-        className=" rounded-md border text-base text-inherit!"
+        className=" rounded-md border text-base text-inherit! py-7!"
         useInlineStyles={true}
+        showLineNumbers
       >
         {String(children).trim()}
       </SyntaxHighlighter>

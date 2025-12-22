@@ -1,15 +1,11 @@
 import { cn } from "@/shared/lib/utils";
-
-export type TocItem = {
-  id: string;
-  text: string;
-  level: 1 | 2 | 3 | 4 | 5 | 6;
-};
+import type { TocItem } from "../types/blog";
 
 type Props = {
   items: TocItem[];
   activeId: string | null;
   onNavigate: (id: string) => void;
+  title: string;
   className?: string;
 };
 
@@ -18,6 +14,7 @@ export default function TableOfContents({
   activeId,
   onNavigate,
   className,
+  title,
 }: Props) {
   if (items.length === 0) return null;
 
@@ -28,10 +25,11 @@ export default function TableOfContents({
     >
       <div className="sticky top-24">
         <div className="text-xs font-semibold tracking-wide text-muted-foreground">
-          目錄
+          <span className="text-primary text-base">{title}</span>
         </div>
         <nav className="mt-3 border-l pl-3">
           <ul className="space-y-1">
+            <li></li>
             {items.map((item) => {
               const isActive = item.id === activeId;
               const indent =
@@ -53,7 +51,7 @@ export default function TableOfContents({
                     className={cn(
                       "w-full text-left text-sm leading-6 transition-colors",
                       isActive
-                        ? "text-foreground font-medium"
+                        ? " font-medium"
                         : "text-muted-foreground hover:text-foreground"
                     )}
                     aria-current={isActive ? "location" : undefined}

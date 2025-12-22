@@ -28,9 +28,13 @@ import { ArrowUpRightIcon } from "lucide-react";
 interface MarkdownRendererProps {
   content: string;
   className?: string;
+  setHeadingId: (id: string) => void;
 }
 
-export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
+export default function MarkdownRenderer({
+  content,
+  setHeadingId,
+}: MarkdownRendererProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
@@ -43,13 +47,13 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
       rehypePlugins={[rehypeSlug, rehypeKatex, rehypeRaw]}
       components={{
         h1: ({ ...props }) => {
-          return <TypographyH1 {...props} />;
+          return <TypographyH1 setHeadingId={setHeadingId} {...props} />;
         },
         h2: ({ ...props }) => {
-          return <TypographyH2 {...props} />;
+          return <TypographyH2 setHeadingId={setHeadingId} {...props} />;
         },
         h3: ({ ...props }) => {
-          return <TypographyH3 {...props} />;
+          return <TypographyH3 setHeadingId={setHeadingId} {...props} />;
         },
         p: ({ children }) => <TypographyP>{children}</TypographyP>,
         code: ({ className = "", children, ...props }) => {

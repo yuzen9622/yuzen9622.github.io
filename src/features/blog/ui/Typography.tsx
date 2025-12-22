@@ -2,9 +2,15 @@ import { cn } from "@/shared/lib/utils";
 
 type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> & {
   children?: React.ReactNode;
+  setHeadingId: (id: string) => void;
 };
 
-export function TypographyH1({ children, className, ...props }: HeadingProps) {
+export function TypographyH1({
+  children,
+  className,
+
+  ...props
+}: HeadingProps) {
   return (
     <h1
       className={cn(
@@ -17,7 +23,13 @@ export function TypographyH1({ children, className, ...props }: HeadingProps) {
     </h1>
   );
 }
-export function TypographyH2({ children, className, ...props }: HeadingProps) {
+export function TypographyH2({
+  children,
+  className,
+  onChange,
+  ...props
+}: HeadingProps) {
+  void onChange;
   return (
     <h2
       className={cn(
@@ -30,7 +42,12 @@ export function TypographyH2({ children, className, ...props }: HeadingProps) {
     </h2>
   );
 }
-export function TypographyH3({ children, className, ...props }: HeadingProps) {
+export function TypographyH3({
+  children,
+  className,
+
+  ...props
+}: HeadingProps) {
   return (
     <h3
       className={cn(

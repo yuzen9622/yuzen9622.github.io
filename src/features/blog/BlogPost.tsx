@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
@@ -31,103 +31,51 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "@/shared/hook/useTheme";
 import { LanguageSelector } from "@/components/shared/LangSwitch";
 import { toast } from "sonner";
-import { Helmet } from "react-helmet-async";
-import TableOfContents, { type TocItem } from "./ui/TableOfContents";
+
+import TableOfContents from "./ui/TableOfContents";
 import moment from "moment";
+import useToc from "./hooks/useToc";
+import Progress from "./ui/Progress";
+
 export default function BlogPost() {
   const { slug, lng } = useParams<{ slug: string; lng: string }>();
   const navigate = useNavigate();
   const { posts, loading, getFallbackSrc } = useBlog();
   const { t } = useTranslation();
-  const [content, setContent] = useState<string | null>(null);
-  const post = posts?.find((p) => p.slug === slug);
+
+  const post = useMemo(
+    () => posts?.find((p) => p.slug === slug),
+    [posts, slug]
+  );
+
   const { isDark, setTheme } = useTheme();
-  const scrollRootRef = useRef<HTMLDivElement | null>(null);
-  const markdownRootRef = useRef<HTMLDivElement | null>(null);
-  const [tocItems, setTocItems] = useState<TocItem[]>([]);
-  const [activeHeadingId, setActiveHeadingId] = useState<string | null>(null);
+
+  const markdownRootRef = useRef<HTMLDivElement>(null);
+  const [content, setContent] = useState<string | null>(null);
+
+  const {
+    toc,
+    handleNavigateToHeading,
+    buildToc,
+    activeHeadingId,
+    setHeadingId,
+  } = useToc();
+
+  const scrollRoot = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (post) setContent(post.content);
   }, [post]);
 
   useEffect(() => {
-    if (!content) return;
+    const id = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        buildToc(markdownRootRef.current);
+      });
+    });
 
-    let cancelled = false;
-    const buildToc = () => {
-      if (cancelled) return;
-      const root = markdownRootRef.current;
-      if (!root) return;
-
-      const headings = Array.from(
-        root.querySelectorAll<HTMLHeadingElement>("h1[id], h2[id], h3[id]")
-      );
-
-      const items: TocItem[] = headings
-        .map((h) => {
-          const level = Number(h.tagName.replace("H", "")) as TocItem["level"];
-          const id = h.id;
-          const text = (h.textContent ?? "").trim();
-          if (!id || !text) return null;
-          return { id, text, level };
-        })
-        .filter((x): x is TocItem => Boolean(x));
-
-      setTocItems(items);
-      setActiveHeadingId((prev) => prev ?? items[0]?.id ?? null);
-    };
-
-    const raf = window.requestAnimationFrame(buildToc);
-    return () => {
-      cancelled = true;
-      window.cancelAnimationFrame(raf);
-    };
-  }, [content, post?.slug]);
-
-  useEffect(() => {
-    const root = markdownRootRef.current;
-    const scrollRoot = scrollRootRef.current;
-    if (!root || !scrollRoot) return;
-    if (tocItems.length === 0) return;
-
-    const headings = Array.from(
-      root.querySelectorAll<HTMLHeadingElement>("h1[id], h2[id], h3[id]")
-    );
-    if (headings.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort(
-            (a, b) =>
-              (a.target as HTMLElement).offsetTop -
-              (b.target as HTMLElement).offsetTop
-          );
-        console.log(entries);
-        const next = (visible[0]?.target as HTMLElement | undefined)?.id;
-        if (next) setActiveHeadingId(next);
-      },
-      {
-        root: scrollRoot,
-        rootMargin: "0% 0px -70% 0px",
-        threshold: [0, 1],
-      }
-    );
-
-    headings.forEach((h) => observer.observe(h));
-    return () => observer.disconnect();
-  }, [tocItems]);
-
-  const handleNavigateToHeading = useCallback((id: string) => {
-    const el = markdownRootRef.current?.querySelector<HTMLElement>(
-      `#${CSS.escape(id)}`
-    );
-    if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-    setActiveHeadingId(id);
-  }, []);
+    return () => cancelAnimationFrame(id);
+  }, [content, buildToc]);
 
   const handleBack = () => {
     if (document.startViewTransition) {
@@ -185,112 +133,107 @@ export default function BlogPost() {
 
   return (
     <>
-      <Helmet>
-        <meta name="description" content={post.description} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.description} />
-        <meta property="og:type" content="article" />
-        <meta
-          property="og:image"
-          content={getFallbackSrc(post?.cover?.formats)}
-        />
-      </Helmet>
       <AnimatePresence mode="wait">
         <motion.div
           key="blog-post"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          ref={scrollRootRef}
+          ref={scrollRoot}
+          id="blog-scroll"
           className="   fixed  inset-0 max-h-dvh z-30 bg-background  overflow-y-auto"
         >
+          <div className=" fixed  top-0 z-20  w-full backdrop-blur-md bg-background/50 mx-auto ">
+            <div className="w-11/12 max-w-6xl justify-between mx-auto flex items-center ">
+              <Button
+                variant="link"
+                size="sm"
+                onClick={handleBack}
+                className="  text-primary  py-2 rounded-3xl "
+              >
+                <ChevronLeftIcon size={16} />
+                {t("blog:blog.backToBlog")}
+              </Button>
+              <div className="space-x-2 0 p-1 rounded-3xl  ">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setTheme(isDark ? "light" : "dark");
+                  }}
+                  className=" relative p-2   rounded-3xl  cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary"
+                >
+                  {isDark ? <SunIcon size={18} /> : <MoonIcon size={18} />}
+                </button>
+
+                <DropdownMenu>
+                  <DropdownMenuTrigger
+                    className="md:hidden relative p-2  rounded-3xl cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0 hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full before:-z-20 before:bg-primary"
+                    aria-label="Table of contents"
+                  >
+                    <List size={18} className=" z-10 " />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-72">
+                    <DropdownMenuLabel>目錄</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    {toc.length > 0 ? (
+                      toc.map((item) => {
+                        const isActive = item.id === activeHeadingId;
+                        const indent =
+                          item.level === 1
+                            ? "pl-2"
+                            : item.level === 2
+                            ? "pl-4"
+                            : item.level === 3
+                            ? "pl-6"
+                            : "pl-8";
+                        return (
+                          <DropdownMenuItem
+                            key={item.id}
+                            className={indent}
+                            onSelect={() =>
+                              handleNavigateToHeading(
+                                item.id,
+                                markdownRootRef.current
+                              )
+                            }
+                          >
+                            <span
+                              className={
+                                isActive
+                                  ? "font-medium text-primary"
+                                  : "text-muted-foreground"
+                              }
+                            >
+                              {item.text}
+                            </span>
+                          </DropdownMenuItem>
+                        );
+                      })
+                    ) : (
+                      <DropdownMenuItem disabled>
+                        <span className="text-muted-foreground">
+                          無可用標題
+                        </span>
+                      </DropdownMenuItem>
+                    )}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+
+                <button type="button" className="relative">
+                  <LanguageSelector />
+                </button>
+              </div>
+            </div>
+          </div>
+          <Progress root={scrollRoot.current} />
           {content ? (
             <motion.div
               initial={{ scale: 0.9, y: 50 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 50 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="md:w-11/12 max-w-6xl mx-auto"
+              className=" relative md:w-full max-w-6xl mx-auto"
             >
-              <div className=" fixed  top-6 z-20  w-full  max-w-4xl mx-auto ">
-                <div className="w-11/12 justify-between mx-auto flex items-center ">
-                  <Button
-                    variant="link"
-                    size="sm"
-                    onClick={handleBack}
-                    className=" self-start backdrop-blur-2xl  text-primary bg-accent/50 py-2 rounded-3xl "
-                  >
-                    <ChevronLeftIcon size={16} />
-                    {t("blog:blog.backToBlog")}
-                  </Button>
-                  <div className="space-x-2 bg-background/50 p-1 rounded-3xl backdrop-blur-md">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setTheme(isDark ? "light" : "dark");
-                      }}
-                      className=" relative p-2   rounded-3xl  cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0  hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full  before:-z-20 before:bg-primary"
-                    >
-                      {isDark ? <SunIcon size={18} /> : <MoonIcon size={18} />}
-                    </button>
-
-                    <DropdownMenu>
-                      <DropdownMenuTrigger
-                        className="md:hidden relative p-2  rounded-3xl cursor-pointer hover:text-background hover:before:scale-100 before:transition-all before:absolute before:scale-50 before:opacity-0 hover:before:opacity-100 before:rounded-3xl before:inset-0 before:w-full before:h-full before:-z-20 before:bg-primary"
-                        aria-label="Table of contents"
-                      >
-                        <List size={18} className=" z-10 " />
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end" className="w-72">
-                        <DropdownMenuLabel>目錄</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        {tocItems.length > 0 ? (
-                          tocItems.map((item) => {
-                            const isActive = item.id === activeHeadingId;
-                            const indent =
-                              item.level === 1
-                                ? "pl-2"
-                                : item.level === 2
-                                ? "pl-4"
-                                : item.level === 3
-                                ? "pl-6"
-                                : "pl-8";
-                            return (
-                              <DropdownMenuItem
-                                key={item.id}
-                                className={indent}
-                                onSelect={() =>
-                                  handleNavigateToHeading(item.id)
-                                }
-                              >
-                                <span
-                                  className={
-                                    isActive
-                                      ? "font-medium text-foreground"
-                                      : "text-muted-foreground"
-                                  }
-                                >
-                                  {item.text}
-                                </span>
-                              </DropdownMenuItem>
-                            );
-                          })
-                        ) : (
-                          <DropdownMenuItem disabled>
-                            <span className="text-muted-foreground">
-                              無可用標題
-                            </span>
-                          </DropdownMenuItem>
-                        )}
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-
-                    <button type="button" className="relative">
-                      <LanguageSelector />
-                    </button>
-                  </div>
-                </div>
-              </div>
               <div className="backdrop-blur-xs bg-background/95 flex flex-col  relative space-y-2 ">
                 <motion.div
                   layoutId={`blog-image-${post.slug}`}
@@ -379,15 +322,23 @@ export default function BlogPost() {
                 <div className="md:flex md:gap-10">
                   <motion.div
                     className="space-y-2 p-4 min-w-0 flex-1"
-                    ref={markdownRootRef}
+                    ref={(el) => {
+                      markdownRootRef.current = el;
+                    }}
                   >
-                    <MarkdownRenderer content={content} />
+                    <MarkdownRenderer
+                      content={content}
+                      setHeadingId={setHeadingId}
+                    />
                   </motion.div>
 
                   <TableOfContents
-                    items={tocItems}
+                    items={toc}
                     activeId={activeHeadingId}
-                    onNavigate={handleNavigateToHeading}
+                    onNavigate={(id) =>
+                      handleNavigateToHeading(id, markdownRootRef.current)
+                    }
+                    title={post.title}
                     className="w-64 shrink-0"
                   />
                 </div>
