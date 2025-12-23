@@ -59,7 +59,7 @@ export function CodeBlock({
           </pre>
         )}
         {language && (
-          <pre className="px-3 py-2 backdrop-blur-md  rounded-3xl transition">
+          <pre className="px-3 py-2 backdrop-blur-md   rounded-3xl transition">
             {language}
           </pre>
         )}
@@ -75,6 +75,7 @@ export function CodeBlock({
           <Tooltip>
             <TooltipTrigger asChild>
               <button
+              type="button"
                 onClick={handleCopy}
                 className=" p-1  backdrop-blur-md  rounded-3xl transition"
               >
