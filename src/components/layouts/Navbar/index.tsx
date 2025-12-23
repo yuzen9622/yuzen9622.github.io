@@ -55,7 +55,9 @@ export default function Navbar() {
                       isActive && "before:scale-100 before:opacity-100"
                     )
                   }
-                  to={{ pathname: `/${lng}/${item.route}` }}
+                  to={`/${lng}/${item.route}${
+                    item.hash ? `#${item.hash}` : ""
+                  }`}
                 >
                   <span>{item.title}</span>
                 </NavLink>
@@ -123,7 +125,9 @@ export default function Navbar() {
                       ease: "easeInOut",
                     }}
                     exit={{ y: 40, opacity: 0 }}
-                    to={{ pathname: `/${lng}/${item.route}` }}
+                    to={`/${lng}/${item.route}${
+                      item.hash ? `#${item.hash}` : ""
+                    }`}
                     onClick={() => setIsOpen(false)}
                     className={({ isActive }) =>
                       cn(

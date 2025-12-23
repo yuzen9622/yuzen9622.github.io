@@ -3,7 +3,7 @@ import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { ProfileProviderContext } from "./ProfileContextProvider";
 
 import type { ReactNode } from "react";
-import type { ProfileProviderState } from "@/shared/types";
+import type { ProfileProviderState, Project } from "@/shared/types";
 import { useTranslation } from "react-i18next";
 
 export function ProfileProvider({ children }: { children: ReactNode }) {
@@ -11,7 +11,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
   const initialState: ProfileProviderState = {
     navigation: [
       { title: "Yuzen", route: "" },
-      { title: "Project", route: "projects" },
+      { title: "Project", route: "", hash: "project" },
       { title: "Blog", route: "blog" },
       { title: "Contact", route: "contact" },
     ],
@@ -29,7 +29,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
       shortDesc: t("profile.short_description"),
       desc: t("profile.description"),
     },
-    projects: [],
+    projects: t("project:projects", { returnObjects: true }) as Project[],
     socialLink: [
       {
         title: "Instagram",

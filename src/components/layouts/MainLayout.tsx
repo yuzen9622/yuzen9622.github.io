@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 
 import Navbar from "./Navbar";
 import { useLocation } from "react-router-dom";
@@ -12,6 +12,31 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   const location = useLocation();
+
+  useEffect(() => {
+    if (!location.hash) return;
+
+    const id = location.hash.replace("#", "");
+
+    const tryScroll = () => {
+      const el = document.getElementById(id);
+      if (!el) return false;
+
+      const top = el.getBoundingClientRect().top + window.scrollY;
+      const navbarOffset = 96;
+      window.scrollTo({
+        top: Math.max(0, top - navbarOffset),
+        behavior: "smooth",
+      });
+      return true;
+    };
+    requestAnimationFrame(() => {
+      if (tryScroll()) return;
+      setTimeout(() => {
+        tryScroll();
+      }, 50);
+    });
+  }, [location.hash, location.pathname]);
 
   const match = useMemo(
     () => location.pathname.match(/^\/(en|zh-Hans)\/blog\/([^/]+)$/),

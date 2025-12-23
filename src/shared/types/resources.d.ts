@@ -1,190 +1,168 @@
 interface Resources {
-  "award": {
-    "awards": {
+  award: {
+    title: "Awards";
+    subtitle: "Highlights and certifications from my journey.";
+    awards: {
       "lung-hwa": {
-        "title": "Lung Hwa Programming Contest",
-        "description": "Grand Prize"
-      },
+        title: "Lung Hwa Programming Contest";
+        description: "Grand Prize";
+      };
       "tqc-python": {
-        "title": "TQC Python",
-        "description": "Certified"
-      },
-      "apcs": {
-        "title": "APCS",
-        "description": "3/5 in Implementation, 4/5 in Concepts"
-      },
-      "ytp": {
-        "title": "YTP (Young Turing Program)",
-        "description": "Finalist"
-      }
-    }
-  },
-  "blog": {
-    "blog": {
-      "backToBlog": "Back to Blog",
-      "postNotFound": "post not found.",
-      "publishedOn": "Published on {{date}}",
-      "categories": "Categories",
-      "tags": "Tags",
-      "all": "All",
-      "searchPlaceholder": "Search posts...",
-      "filters": "Filters",
-      "publishedOnly": "Published only",
-      "sort": "Sort",
-      "sortNewest": "Newest",
-      "sortOldest": "Oldest"
-    }
-  },
-  "education": {
-    "education": [
+        title: "TQC Python";
+        description: "Certified";
+      };
+      apcs: {
+        title: "APCS";
+        description: "3/5 in Implementation, 4/5 in Concepts";
+      };
+      ytp: {
+        title: "YTP (Young Turing Program)";
+        description: "Finalist";
+      };
+    };
+  };
+  blog: {
+    blog: {
+      backToBlog: "Back to Blog";
+      postNotFound: "post not found.";
+      publishedOn: "Published on {{date}}";
+      categories: "Categories";
+      tags: "Tags";
+      all: "All";
+      searchPlaceholder: "Search posts...";
+      filters: "Filters";
+      publishedOnly: "Published only";
+      sort: "Sort";
+      sortNewest: "Newest";
+      sortOldest: "Oldest";
+    };
+  };
+  education: {
+    education: [
       {
-        "institution": "National Taichung University of Science and Technology",
-        "major": "Information Management",
-        "educationSystem": "Junior College",
-        "startYear": "2019",
-        "endYear": "current",
-        "isCurrent": true,
-        "description": "Built a solid foundation in programming at this school through coursework and projects, which sparked my long-term interest in software engineering and applied research."
+        institution: "National Taichung University of Science and Technology";
+        major: "Information Management";
+        educationSystem: "Junior College";
+        startYear: "2019";
+        endYear: "current";
+        isCurrent: true;
+        description: "Built a solid foundation in programming at this school through coursework and projects, which sparked my long-term interest in software engineering and applied research.";
       },
       {
-        "institution": "Hsinchu County Po-Ai Junior High School",
-        "major": "",
-        "educationSystem": "Junior High School",
-        "startYear": "2016",
-        "endYear": "2019",
-        "description": "Cultivated independent thinking abilities through self-directed learning and critical analysis, which laid the foundation for my later academic and technical development."
+        institution: "Hsinchu County Po-Ai Junior High School";
+        major: "";
+        educationSystem: "Junior High School";
+        startYear: "2016";
+        endYear: "2019";
+        description: "Cultivated independent thinking abilities through self-directed learning and critical analysis, which laid the foundation for my later academic and technical development.";
       }
-    ]
-  },
-  "profile": {
-    "profile": {
-      "roles": [
+    ];
+  };
+  profile: {
+    profile: {
+      roles: [
         "No need to prove anything",
         1000,
         "Understand one thing at a time",
         1000
-      ],
-      "country": "Hsinchu, TW",
-      "headline": "You can call me Small Z",
-      "slogan": "Focused on the problem, always exploring the new.",
-      "tagline": "Creative*Coder*Dream*Builder*",
-      "short_description": "Hi, I'm Small Z (18y). I'm currently studying in the five-year program at National Taichung University of Science and Technology (NUTC).",
-      "description": "I'm a third-year Information Management student at NUTC who loves programming and web design. I enjoy building my own projects and collaborating with others, as both help me grow. My strengths are backend development, data modeling (ER models), and designing RESTful APIs. I used to think results matter most, but now I believe careful planning is just as important for software engineering."
-    },
-    "social": {
-      "instagram": "My live!",
-      "github": "Let's dev some cool thing.",
-      "linkedin": "Need Full Stack Developer?"
-    }
-  },
-  "project": {
-    "projects": [
+      ];
+      country: "Hsinchu, TW";
+      headline: "You can call me Small Z";
+      slogan: "Focused on the problem, always exploring the new.";
+      tagline: "Creative*Coder*Dream*Builder*";
+      short_description: "Hi, I'm Small Z (18y). I'm currently studying in the five-year program at National Taichung University of Science and Technology (NUTC).";
+      description: "I'm a third-year Information Management student at NUTC who loves programming and web design. I enjoy building my own projects and collaborating with others, as both help me grow. My strengths are backend development, data modeling (ER models), and designing RESTful APIs. I used to think results matter most, but now I believe careful planning is just as important for software engineering.";
+    };
+    social: {
+      instagram: "My live!";
+      github: "Let's dev some cool thing.";
+      linkedin: "Need Full Stack Developer?";
+    };
+  };
+  project: {
+    projects: [
       {
-        "id": 1,
-        "title": "chat.to",
-        "description": "Chat.to is a sleek, real-time chat application that lets you connect with friends and groups effortlessly. Powered by Ably, Next.js, Supabase, and NextAuth, it delivers a seamless, secure, and engaging messaging experience.",
-        "tech": [
-          "typescript",
-          "nextdotjs",
-          "supabase",
-          "tailwindcss"
-        ],
-        "image": "project/chatto.webp",
-        "year": "2025",
-        "sourceUrl": "https://github.com/yuzen9622/chat.to",
-        "previewUrl": "https://chat.yuzen.dev",
-        "type": "web",
-        "content": {
-          "overview": "Chat.to is designed as a modern real-time chat platform that emphasizes simplicity and speed. It integrates cloud-based services with Next.js and Supabase to ensure smooth communication, while NextAuth provides a secure login system. The app allows users to stay connected with both individuals and groups, making it ideal for casual chats or team collaboration.",
-          "feature": "Real-time messaging with Ably, group and individual chat support, secure user authentication with NextAuth, cloud database integration with Supabase, responsive and visually appealing UI powered by Tailwind CSS, seamless performance on both desktop and mobile devices."
-        }
+        id: 1;
+        title: "chat.to";
+        description: "Chat.to is a sleek, real-time chat application that lets you connect with friends and groups effortlessly. Powered by Ably, Next.js, Supabase, and NextAuth, it delivers a seamless, secure, and engaging messaging experience.";
+        tech: ["typescript", "nextdotjs", "supabase", "tailwindcss"];
+        image: "project/chatto.webp";
+        year: "2025";
+        sourceUrl: "https://github.com/yuzen9622/chat.to";
+        previewUrl: "https://chat.yuzen.dev";
+        type: "web";
+        content: {
+          overview: "Chat.to is designed as a modern real-time chat platform that emphasizes simplicity and speed. It integrates cloud-based services with Next.js and Supabase to ensure smooth communication, while NextAuth provides a secure login system. The app allows users to stay connected with both individuals and groups, making it ideal for casual chats or team collaboration.";
+          feature: "Real-time messaging with Ably, group and individual chat support, secure user authentication with NextAuth, cloud database integration with Supabase, responsive and visually appealing UI powered by Tailwind CSS, seamless performance on both desktop and mobile devices.";
+        };
       },
       {
-        "id": 2,
-        "title": "Dcard Clone",
-        "description": "A personal blog demo built with Django, featuring user authentication, article creation and management, commenting, categorization, and pagination. Utilizes Django’s built-in admin for easy content management and Bootstrap for responsive design.",
-        "tech": [
-          "python",
-          "django",
-          "html5",
-          "css"
-        ],
-        "image": "project/dcard.webp",
-        "year": "2025",
-        "sourceUrl": "https://github.com/yuzen9622/Dcard",
-        "previewUrl": "https://dcard.yuzen.dev",
-        "type": "web",
-        "content": {
-          "overview": "Dcard Clone is a blog-style web application inspired by popular social forums. Built with Django, it combines powerful backend capabilities with a straightforward user experience. The platform allows registered users to create posts, leave comments, and browse content with efficient categorization and pagination. With Bootstrap, the layout remains responsive across devices, while Django's admin panel offers simple management tools for site administrators.",
-          "feature": "User authentication and session management, article publishing and editing, comment system for interactive discussions, content categorization and pagination, Django admin integration for content management, mobile-friendly responsive design."
-        }
+        id: 2;
+        title: "Dcard Clone";
+        description: "A personal blog demo built with Django, featuring user authentication, article creation and management, commenting, categorization, and pagination. Utilizes Django’s built-in admin for easy content management and Bootstrap for responsive design.";
+        tech: ["python", "django", "html5", "css"];
+        image: "project/dcard.webp";
+        year: "2025";
+        sourceUrl: "https://github.com/yuzen9622/Dcard";
+        previewUrl: "https://dcard.yuzen.dev";
+        type: "web";
+        content: {
+          overview: "Dcard Clone is a blog-style web application inspired by popular social forums. Built with Django, it combines powerful backend capabilities with a straightforward user experience. The platform allows registered users to create posts, leave comments, and browse content with efficient categorization and pagination. With Bootstrap, the layout remains responsive across devices, while Django's admin panel offers simple management tools for site administrators.";
+          feature: "User authentication and session management, article publishing and editing, comment system for interactive discussions, content categorization and pagination, Django admin integration for content management, mobile-friendly responsive design.";
+        };
       },
       {
-        "id": 3,
-        "title": "WealthEase",
-        "description": "A simple and intuitive budgeting app that helps you easily manage your income and expenses, giving you control over your finances.",
-        "tech": [
-          "react",
-          "javascript",
-          "mongodb",
-          "nodedotjs",
-          "css"
-        ],
-        "image": "project/微財.webp",
-        "year": "2024",
-        "sourceUrl": "https://github.com/yuzen9622/Account-App",
-        "previewUrl": "https://account.yuzen.dev",
-        "type": "web",
-        "content": {
-          "overview": "WealthEase is a personal finance tracker built to simplify budgeting for everyday users. It provides an intuitive interface where you can log your income and expenses, categorize your transactions, and visualize your financial flow. By connecting to a cloud database, the app ensures your financial data is always accessible and secure. With its responsive design, it’s equally effective on desktops and mobile devices.",
-          "feature": "Add, edit, and delete income/expense records, categorize transactions for better tracking, MongoDB cloud integration for secure storage, real-time data updates via Node.js backend, responsive React interface optimized for mobile and desktop use."
-        }
+        id: 3;
+        title: "WealthEase";
+        description: "A simple and intuitive budgeting app that helps you easily manage your income and expenses, giving you control over your finances.";
+        tech: ["react", "javascript", "mongodb", "nodedotjs", "css"];
+        image: "project/微財.webp";
+        year: "2024";
+        sourceUrl: "https://github.com/yuzen9622/Account-App";
+        previewUrl: "https://account.yuzen.dev";
+        type: "web";
+        content: {
+          overview: "WealthEase is a personal finance tracker built to simplify budgeting for everyday users. It provides an intuitive interface where you can log your income and expenses, categorize your transactions, and visualize your financial flow. By connecting to a cloud database, the app ensures your financial data is always accessible and secure. With its responsive design, it’s equally effective on desktops and mobile devices.";
+          feature: "Add, edit, and delete income/expense records, categorize transactions for better tracking, MongoDB cloud integration for secure storage, real-time data updates via Node.js backend, responsive React interface optimized for mobile and desktop use.";
+        };
       },
       {
-        "id": 4,
-        "title": "Introduction to Web Technology",
-        "description": "This website serves as an educational platform introducing modern web technologies, covering both frontend and backend development, as well as CI/CD practices. It provides an overview of essential tools and frameworks used in the creation and deployment of modern websites and web applications.",
-        "tech": [
-          "html5",
-          "css",
-          "javascript"
-        ],
-        "image": "project/web3.webp",
-        "year": "2023",
-        "sourceUrl": "https://github.com/yuzen9622/web3",
-        "previewUrl": "https://web3-six-omega.vercel.app/",
-        "type": "web",
-        "content": {
-          "overview": "Introduction to Web Technology is a learning resource created to guide beginners through the fundamentals of web development. It covers core concepts of HTML, CSS, and JavaScript while also introducing backend basics and modern practices like CI/CD. The platform serves as both a reference and an interactive space to understand how websites and applications are built, deployed, and maintained.",
-          "feature": "Comprehensive introduction to frontend technologies (HTML, CSS, JavaScript), explanation of backend development basics, CI/CD workflow demonstrations, simple project examples for hands-on learning, responsive design for seamless access across devices."
-        }
+        id: 4;
+        title: "Introduction to Web Technology";
+        description: "This website serves as an educational platform introducing modern web technologies, covering both frontend and backend development, as well as CI/CD practices. It provides an overview of essential tools and frameworks used in the creation and deployment of modern websites and web applications.";
+        tech: ["html5", "css", "javascript"];
+        image: "project/web3.webp";
+        year: "2023";
+        sourceUrl: "https://github.com/yuzen9622/web3";
+        previewUrl: "https://web3-six-omega.vercel.app/";
+        type: "web";
+        content: {
+          overview: "Introduction to Web Technology is a learning resource created to guide beginners through the fundamentals of web development. It covers core concepts of HTML, CSS, and JavaScript while also introducing backend basics and modern practices like CI/CD. The platform serves as both a reference and an interactive space to understand how websites and applications are built, deployed, and maintained.";
+          feature: "Comprehensive introduction to frontend technologies (HTML, CSS, JavaScript), explanation of backend development basics, CI/CD workflow demonstrations, simple project examples for hands-on learning, responsive design for seamless access across devices.";
+        };
       },
       {
-        "id": 5,
-        "title": "Weather App",
-        "description": "A React-based weather app that fetches real-time and 3-hour interval forecasts from Taiwan's Central Weather Bureau API. It features location selection across Taiwan, responsive design for mobile devices, and dynamic display of temperature, humidity, wind speed, and weather conditions.",
-        "tech": [
-          "react",
-          "javascript",
-          "css"
-        ],
-        "image": "project/weatherapp.webp",
-        "year": "2023",
-        "sourceUrl": "https://github.com/yuzen9622/weather-app",
-        "previewUrl": "https://yuzen9622.github.io/weather-app/",
-        "type": "web",
-        "content": {
-          "overview": "Weather App provides a clear and reliable way to check real-time and forecast weather data across Taiwan. It leverages the Central Weather Bureau API to fetch accurate information, displaying conditions in a simple and visually engaging interface. Built with React, the app dynamically updates weather details and supports responsive layouts, making it practical for quick checks on any device.",
-          "feature": "Real-time weather updates, 3-hour interval forecasts, search and selection by city or region in Taiwan, dynamic visualization of temperature, humidity, wind speed, and conditions, responsive layout for both desktop and mobile users."
-        }
+        id: 5;
+        title: "Weather App";
+        description: "A React-based weather app that fetches real-time and 3-hour interval forecasts from Taiwan's Central Weather Bureau API. It features location selection across Taiwan, responsive design for mobile devices, and dynamic display of temperature, humidity, wind speed, and weather conditions.";
+        tech: ["react", "javascript", "css"];
+        image: "project/weatherapp.webp";
+        year: "2023";
+        sourceUrl: "https://github.com/yuzen9622/weather-app";
+        previewUrl: "https://yuzen9622.github.io/weather-app/";
+        type: "web";
+        content: {
+          overview: "Weather App provides a clear and reliable way to check real-time and forecast weather data across Taiwan. It leverages the Central Weather Bureau API to fetch accurate information, displaying conditions in a simple and visually engaging interface. Built with React, the app dynamically updates weather details and supports responsive layouts, making it practical for quick checks on any device.";
+          feature: "Real-time weather updates, 3-hour interval forecasts, search and selection by city or region in Taiwan, dynamic visualization of temperature, humidity, wind speed, and conditions, responsive layout for both desktop and mobile users.";
+        };
       }
-    ]
-  },
-  "toast": {
-    "toast": {
-      "NotPublished": "is not yet published."
-    }
-  }
+    ];
+  };
+  toast: {
+    toast: {
+      NotPublished: "is not yet published.";
+    };
+  };
 }
 
 export default Resources;

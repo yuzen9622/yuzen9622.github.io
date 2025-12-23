@@ -22,7 +22,7 @@ export type TechType =
 
 export type TechIcon = Record<TechType, string>;
 
-export type Navigation = { route: string; title: string };
+export type Navigation = { route: string; title: string; hash?: string };
 
 export type User = {
   name: string;
