@@ -24,6 +24,7 @@ import {
 import { CodeBlock } from "./CodeBlock";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowUpRightIcon } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
 interface MarkdownRendererProps {
   content: string;
@@ -103,6 +104,9 @@ export default function MarkdownRenderer({
         },
         img: ({ ...props }) => {
           return <img className=" rounded-md " {...props} />;
+        },
+        hr: ({ ...props }) => {
+          return <Separator className="my-6" {...props} />;
         },
       }}
     >
