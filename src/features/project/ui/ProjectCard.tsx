@@ -31,7 +31,11 @@ export default function ProjectCard({ index, project }: Props) {
       <motion.div
         ref={cardRef}
         initial={{ opacity: 0, x: 20 }}
-        whileInView={isCentered ? { opacity: 1, x: 0 } : undefined}
+        whileInView={
+          isCentered
+            ? { opacity: 1, x: 0, visibility: "visible" }
+            : { visibility: "hidden" }
+        }
         viewport={{ once: true }}
         transition={{
           type: "spring",
@@ -40,7 +44,7 @@ export default function ProjectCard({ index, project }: Props) {
           delay: index * 0.1,
         }}
         className={cn(
-          "min-h-96 flex gap-4 justify-between flex-col mb-4",
+          "min-h-96 flex gap-4 justify-between flex-col mb-4 ",
           index % 2 === 0 ? "md:flex-row " : "md:flex-row-reverse "
         )}
       >
