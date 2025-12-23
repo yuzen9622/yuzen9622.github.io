@@ -54,12 +54,12 @@ export default function Timeline() {
       <div className="relative md:w-10/12 px-4">
         <div className="pointer-events-none absolute left-3 top-0 bottom-0 w-px bg-border/60" />
         <motion.div
-          className="pointer-events-none absolute left-3 top-0 bottom-0 w-px origin-top bg-primary"
+          className="pointer-events-none absolute left-3 top-0 bottom-0 w-1 rounded-full origin-top bg-primary"
           style={{ scaleY: progress }}
         />
 
         <motion.ol
-          className="relative pl-8"
+          className="relative pl-8 mb-2"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

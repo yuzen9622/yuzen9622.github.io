@@ -1,6 +1,4 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
-
 import {
   Tooltip,
   TooltipContent,
@@ -22,9 +20,9 @@ export default function ProjectCard({ index, project }: Props) {
   const { techIcons } = useProfile();
 
   const cardRef = useRef<HTMLDivElement>(null);
-  const MotionSeparator = motion.create(Separator);
+
   const isCentered = useInView(cardRef, {
-    margin: "-45% 0px -45% 0px",
+    margin: "-45% 0px -20% 0px",
     amount: 0,
   });
 
@@ -42,7 +40,7 @@ export default function ProjectCard({ index, project }: Props) {
           delay: index * 0.1,
         }}
         className={cn(
-          "min-h-96 flex gap-4 justify-between flex-col",
+          "min-h-96 flex gap-4 justify-between flex-col mb-4",
           index % 2 === 0 ? "md:flex-row " : "md:flex-row-reverse "
         )}
       >
@@ -135,18 +133,6 @@ export default function ProjectCard({ index, project }: Props) {
           </span>
         </motion.div>
       </motion.div>
-      <MotionSeparator
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={isCentered ? { opacity: 1, y: 0 } : undefined}
-        viewport={{ once: true }}
-        transition={{
-          type: "spring",
-          stiffness: 100,
-          damping: 20,
-          delay: index * 0.1,
-        }}
-        className="my-6 md:my-10"
-      />
     </>
   );
 }
