@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import ProjectCard from "./ui/ProjectCard";
 import type { Project } from "@/shared/types";
-import RotatingText from "@/components/gsap/text/RotatingText";
 
 export default function Project() {
   const { projects } = useProfile();
@@ -11,10 +10,16 @@ export default function Project() {
 
   const { scrollYProgress } = useScroll({
     target: projectScrollRef,
-    offset: ["start 30%", "start 0%"],
+    // 讓進出視窗都有足夠的進度範圍，方便做淡入淡出
+    offset: ["start end", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  // 0~0.2 淡入，0.2~0.8 保持，0.8~1 淡出
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.2, 0.3],
+    [0, 1, 1, 0]
+  );
   //const filter = useMotionTemplate`blur(${blurPx}px)`;
 
   const sectionVariants = {
@@ -47,7 +52,7 @@ export default function Project() {
     <motion.section
       ref={projectScrollRef}
       id="project"
-      className="relative w-11/12 min-h-dvh pt-96 inter"
+      className="relative w-11/12 min-h-dvh pt-[100dvh] inter pb-10"
       variants={sectionVariants}
       initial="hidden"
       whileInView="show"
@@ -58,19 +63,7 @@ export default function Project() {
         className="fixed -z-10 top-0 inset-0 gap-6 w-dvw h-dvh flex items-center flex-col justify-center "
         variants={headerVariants}
       >
-        <RotatingText
-          texts={["Projects", "Showcase"]}
-          splitBy="characters"
-          staggerFrom={"last"}
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
-          exit={{ y: "-120%" }}
-          staggerDuration={0.025}
-          splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-          transition={{ type: "spring", damping: 30, stiffness: 400 }}
-          rotationInterval={3000}
-          mainClassName="text-7xl md:text-8xl  p-2 rounded-md   font-extrabold "
-        />
+        <h1 className=" text-8xl">Projects</h1>
         <motion.p>A cool thing I build</motion.p>
       </motion.div>
       <motion.div className="flex flex-col  py-4" variants={listVariants}>

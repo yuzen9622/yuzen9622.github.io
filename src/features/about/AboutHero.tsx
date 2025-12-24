@@ -3,9 +3,9 @@ import Squares from "@/components/gsap/background/square";
 
 export default function AboutHero() {
   return (
-    <div className="min-h-dvh relative flex w-full flex-col">
+    <section id="me" className="min-h-dvh relative flex w-full flex-col">
       <div className="h-full flex-1 flex    justify-center">
-        <div className="  absolute inset-0 z-0 w-dvw    bg-background ">
+        <div className="  absolute inset-0 z-0 w-你知   bg-background ">
           <Squares
             speed={0.0}
             squareSize={50}
@@ -16,6 +16,6 @@ export default function AboutHero() {
         </div>
         <MaskHero />
       </div>
-    </div>
+    </section>
   );
 }

@@ -79,12 +79,10 @@ export default function BlogPost() {
 
   const handleBack = () => {
     if (document.startViewTransition) {
-      window.scrollTo(0, 0);
       document.startViewTransition(() => {
         navigate(`/${lng}/blog`);
       });
     } else {
-      window.scrollTo(0, 0);
       navigate(`/${lng}/blog`);
     }
   };

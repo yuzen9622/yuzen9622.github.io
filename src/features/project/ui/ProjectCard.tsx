@@ -22,7 +22,7 @@ export default function ProjectCard({ index, project }: Props) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const isCentered = useInView(cardRef, {
-    margin: "-45% 0px -20% 0px",
+    margin: "-45% 0px -50% 0px",
     amount: 0,
   });
 
@@ -44,10 +44,18 @@ export default function ProjectCard({ index, project }: Props) {
           delay: index * 0.1,
         }}
         className={cn(
-          "min-h-96 flex gap-4 justify-between flex-col mb-4 ",
+          "relative min-h-96 flex gap-4 justify-between flex-col mb-4 ",
           index % 2 === 0 ? "lg:flex-row " : "lg:flex-row-reverse "
         )}
       >
+        <div
+          className={cn(
+            "  pointer-events-none absolute w-50 right-0  h-50 rounded-full blur-3xl opacity-100 dark:opacity-30 bg-[radial-gradient(circle,var(--primary)_0%,transparent_100%)] ",
+            index % 2 === 0
+              ? "lg:right-10 bottom-30 translate-y-1/2"
+              : "lg:left-20 bottom-30 translate-y-1/2"
+          )}
+        />
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={isCentered ? { opacity: 1, x: 0 } : undefined}
@@ -82,7 +90,7 @@ export default function ProjectCard({ index, project }: Props) {
           )}
         >
           <h2 className="text-5xl font-bold">{project.title}</h2>
-          <p className="mt-2 text-sm text-muted-foreground border backdrop-blur-md w-fit bg-background/50  rounded-md px-3 py-2 ">
+          <p className="mt-2 text-sm text-muted-foreground border  w-fit bg-background/50  rounded-md px-3 py-2 ">
             {project.description}
           </p>
           <div>

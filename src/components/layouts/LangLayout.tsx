@@ -2,7 +2,6 @@ import { useParams, Navigate, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import i18n from "@/i18n";
 
-import ContactPage from "@/pages/ContactPage";
 import HomePage from "@/pages/HomePage";
 import BlogPage from "@/pages/BlogPage";
 import MainLayout from "@/components/layouts/MainLayout";
@@ -27,7 +26,6 @@ export default function LangLayout() {
       <AnimatePresence mode="wait">
         <Routes>
           <Route index element={<HomePage />} />
-          <Route path="contact" element={<ContactPage />} />
           <Route path="blog" element={<BlogPage />}>
             <Route path=":slug" element={<BlogPost />} />
           </Route>

@@ -29,6 +29,7 @@ export default function BlogList() {
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
   const { t } = useTranslation("blog");
   const { posts, loading, error } = useBlog();
+
   const allTags = useMemo(() => {
     if (!posts) return [];
     const tags = new Set<string>();

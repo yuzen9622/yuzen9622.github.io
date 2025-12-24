@@ -10,7 +10,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
   const { t } = useTranslation();
   const initialState: ProfileProviderState = {
     navigation: [
-      { title: "Yuzen", route: "" },
+      { title: "Yuzen", route: "", hash: "me" },
       { title: "Project", route: "", hash: "project" },
       { title: "Blog", route: "blog" },
       { title: "Contact", route: "", hash: "contact" },
