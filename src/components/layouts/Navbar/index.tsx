@@ -37,7 +37,7 @@ export default function Navbar() {
     <>
       <NavigationMenu
         className={cn(
-          "p-3   outline  hover:shadow-xs transition-[width]  w-11/12 rounded-full  h-fit hidden sm:block flex-none  fixed top-2 z-10 bg-background/80  backdrop-blur-xs"
+          "p-3   outline  hover:shadow-xs transition-[width]  w-11/12 rounded-full  h-fit hidden sm:block flex-none  fixed top-2 z-20 bg-background/80  backdrop-blur-xs"
         )}
       >
         <NavigationMenuList className="transition-all">
@@ -109,7 +109,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className=" fixed z-10  bg-background/80  sm:hidden w-dvw h-dvh backdrop-blur-3xl flex justify-center flex-col items-center gap-10 "
+            className=" fixed z-20  bg-background/80  sm:hidden w-dvw h-dvh backdrop-blur-3xl flex justify-center flex-col items-center gap-10 "
           >
             <AnimatePresence mode="wait">
               {isOpen &&

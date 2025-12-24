@@ -70,7 +70,7 @@ export default function Project() {
       <div
         ref={titleScrollRef}
         aria-hidden="true"
-        className=" relative w-dvw h-[150dvh]"
+        className=" relative w-dvw h-dvh"
       ></div>
       <motion.div
         className="flex flex-col items-center  py-4"

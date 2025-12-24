@@ -51,7 +51,7 @@ export default function Contact() {
         </div>
         <div className=" lg:text-xl text-base text-center space-y-3 ">
           <h2 className=" text-primary bbh-sans-bartle-regular">[Social]</h2>
-          <div className="flex gap-2 w-full  ">
+          <div className="flex gap-2 w-full items-center justify-center">
             {socialLink.map((social) => (
               <a
                 href={social.link}
