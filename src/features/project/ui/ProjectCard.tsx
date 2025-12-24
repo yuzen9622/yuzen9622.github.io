@@ -40,11 +40,10 @@ export default function ProjectCard({ index, project }: Props) {
         transition={{
           type: "spring",
           stiffness: 100,
-          damping: 20,
-          delay: index * 0.1,
+          damping: 10,
         }}
         className={cn(
-          "relative min-h-96 flex gap-4 justify-between flex-col mb-4 ",
+          "relative min-h-10/12 w-11/12 flex gap-4 justify-between flex-col mb-4 ",
           index % 2 === 0 ? "lg:flex-row " : "lg:flex-row-reverse "
         )}
       >

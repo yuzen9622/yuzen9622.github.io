@@ -52,7 +52,7 @@ export default function Project() {
     <motion.section
       ref={projectScrollRef}
       id="project"
-      className="relative w-11/12 min-h-dvh pt-[100dvh] inter pb-10"
+      className="relative  opacity-0 min-h-dvh pt-[100dvh] inter pb-10"
       variants={sectionVariants}
       initial="hidden"
       whileInView="show"
@@ -63,10 +63,13 @@ export default function Project() {
         className="fixed -z-10 top-0 inset-0 gap-6 w-dvw h-dvh flex items-center flex-col justify-center "
         variants={headerVariants}
       >
-        <h1 className=" text-8xl">Projects</h1>
+        <h1 className=" md:text-8xl text-6xl">Projects</h1>
         <motion.p>A cool thing I build</motion.p>
       </motion.div>
-      <motion.div className="flex flex-col  py-4" variants={listVariants}>
+      <motion.div
+        className="flex flex-col items-center  py-4"
+        variants={listVariants}
+      >
         {projects.map((project, index) => (
           <ProjectCard key={project.id} project={project} index={index} />
         ))}
