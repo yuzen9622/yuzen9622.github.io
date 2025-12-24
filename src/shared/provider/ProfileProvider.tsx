@@ -13,7 +13,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
       { title: "Yuzen", route: "" },
       { title: "Project", route: "", hash: "project" },
       { title: "Blog", route: "blog" },
-      { title: "Contact", route: "contact" },
+      { title: "Contact", route: "", hash: "contact" },
     ],
     profile: {
       name: "Yuzen",

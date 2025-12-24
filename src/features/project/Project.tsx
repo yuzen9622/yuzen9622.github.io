@@ -1,10 +1,5 @@
 import { useProfile } from "@/shared/hook/useProfile";
-import {
-  motion,
-  useMotionTemplate,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import ProjectCard from "./ui/ProjectCard";
 import type { Project } from "@/shared/types";
@@ -19,8 +14,8 @@ export default function Project() {
     offset: ["start 30%", "start 0%"],
   });
 
-  const blurPx = useTransform(scrollYProgress, [0.7, 2], [0, 40]);
-  const filter = useMotionTemplate`blur(${blurPx}px)`;
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  //const filter = useMotionTemplate`blur(${blurPx}px)`;
 
   const sectionVariants = {
     hidden: { opacity: 0 },
@@ -59,7 +54,7 @@ export default function Project() {
       viewport={{ once: true }}
     >
       <motion.div
-        style={{ filter }}
+        style={{ opacity }}
         className="fixed -z-10 top-0 inset-0 gap-6 w-dvw h-dvh flex items-center flex-col justify-center "
         variants={headerVariants}
       >
@@ -74,7 +69,7 @@ export default function Project() {
           splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
           transition={{ type: "spring", damping: 30, stiffness: 400 }}
           rotationInterval={3000}
-          mainClassName="text-6xl md:text-8xl  p-2 rounded-md   font-extrabold "
+          mainClassName="text-7xl md:text-8xl  p-2 rounded-md   font-extrabold "
         />
         <motion.p>A cool thing I build</motion.p>
       </motion.div>

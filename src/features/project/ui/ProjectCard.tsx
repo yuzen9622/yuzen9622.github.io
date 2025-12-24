@@ -45,7 +45,7 @@ export default function ProjectCard({ index, project }: Props) {
         }}
         className={cn(
           "min-h-96 flex gap-4 justify-between flex-col mb-4 ",
-          index % 2 === 0 ? "md:flex-row " : "md:flex-row-reverse "
+          index % 2 === 0 ? "lg:flex-row " : "lg:flex-row-reverse "
         )}
       >
         <motion.div
@@ -61,7 +61,7 @@ export default function ProjectCard({ index, project }: Props) {
           className="h-full flex-1 "
         >
           <img
-            className="object-cover w-full rounded-3xl h-full"
+            className="object-cover w-full aspect-video rounded-3xl h-full"
             src={`/${project.image}`}
             alt={project.title}
           />
@@ -77,8 +77,8 @@ export default function ProjectCard({ index, project }: Props) {
             delay: index * 0.1,
           }}
           className={cn(
-            "flex-1 flex flex-col justify-center md:px-6 gap-4 ",
-            index % 2 === 0 ? "md:text-left" : "md:text-right"
+            "flex-1 flex flex-col justify-center lg:px-6 gap-4 ",
+            index % 2 === 0 ? "lg:text-left" : "lg:text-right"
           )}
         >
           <h2 className="text-5xl font-bold">{project.title}</h2>
