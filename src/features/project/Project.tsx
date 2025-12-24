@@ -7,21 +7,22 @@ import type { Project } from "@/shared/types";
 export default function Project() {
   const { projects } = useProfile();
   const projectScrollRef = useRef<HTMLElement>(null);
+  const titleScrollRef = useRef<HTMLDivElement>(null);
 
-  const { scrollYProgress } = useScroll({
-    target: projectScrollRef,
-    // 讓進出視窗都有足夠的進度範圍，方便做淡入淡出
+  const { scrollYProgress: titleScrollYProgress } = useScroll({
+    target: titleScrollRef,
     offset: ["start end", "end start"],
   });
-
-  // 0~0.2 淡入，0.2~0.8 保持，0.8~1 淡出
   const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.2, 0.2, 0.3],
+    titleScrollYProgress,
+    [0, 0.5, 0.6, 0.7],
     [0, 1, 1, 0]
   );
-  //const filter = useMotionTemplate`blur(${blurPx}px)`;
-
+  const translateY = useTransform(
+    titleScrollYProgress,
+    [0, 0.5, 0.7],
+    [1000, 50, 0]
+  );
   const sectionVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -52,20 +53,25 @@ export default function Project() {
     <motion.section
       ref={projectScrollRef}
       id="project"
-      className="relative  opacity-0 min-h-dvh pt-[100dvh] inter pb-10"
+      className="relative  min-h-dvh inter pb-10"
       variants={sectionVariants}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
     >
       <motion.div
-        style={{ opacity }}
-        className="fixed -z-10 top-0 inset-0 gap-6 w-dvw h-dvh flex items-center flex-col justify-center "
+        style={{ opacity, translateY }}
+        className="fixed -z-10 top-0 inset-0  gap-6 w-dvw h-dvh flex items-center flex-col justify-center "
         variants={headerVariants}
       >
         <h1 className=" md:text-8xl text-6xl">Projects</h1>
         <motion.p>A cool thing I build</motion.p>
       </motion.div>
+      <div
+        ref={titleScrollRef}
+        aria-hidden="true"
+        className=" relative w-dvw h-[150dvh]"
+      ></div>
       <motion.div
         className="flex flex-col items-center  py-4"
         variants={listVariants}

@@ -7,7 +7,7 @@ import {
 import { useProfile } from "@/shared/hook/useProfile";
 import { cn } from "@/shared/lib/utils";
 import type { Project } from "@/shared/types";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRightFromCircleIcon } from "lucide-react";
 import { useRef } from "react";
 
@@ -20,30 +20,38 @@ export default function ProjectCard({ index, project }: Props) {
   const { techIcons } = useProfile();
 
   const cardRef = useRef<HTMLDivElement>(null);
-
-  const isCentered = useInView(cardRef, {
+  const titleScrollRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: titleScrollRef,
+    offset: ["start end", "end start"],
+  });
+  const isCentered = useInView(titleScrollRef, {
     margin: "-45% 0px -50% 0px",
     amount: 0,
   });
 
+  const translateY = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.7, 1],
+    [500, 50, 0, -500]
+  );
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.5, 0.7],
+    [0, 1, 1, 0]
+  );
   return (
     <>
+      <div
+        ref={titleScrollRef}
+        aria-hidden="true"
+        className=" relative w-dvw min-h-[150dvh]"
+      ></div>
       <motion.div
         ref={cardRef}
-        initial={{ opacity: 0, x: 20 }}
-        whileInView={
-          isCentered
-            ? { opacity: 1, x: 0, visibility: "visible" }
-            : { visibility: "hidden" }
-        }
-        viewport={{ once: true }}
-        transition={{
-          type: "spring",
-          stiffness: 100,
-          damping: 10,
-        }}
+        style={{ opacity, translateY }}
         className={cn(
-          "relative min-h-10/12 w-11/12 flex gap-4 justify-between flex-col mb-4 ",
+          "fixed  top-20 min-h-dvh w-11/12 flex gap-4 justify-between flex-col mb-4  ",
           index % 2 === 0 ? "lg:flex-row " : "lg:flex-row-reverse "
         )}
       >
@@ -56,16 +64,16 @@ export default function ProjectCard({ index, project }: Props) {
           )}
         />
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={isCentered ? { opacity: 1, x: 0 } : undefined}
-          viewport={{ once: true }}
-          transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 20,
-            delay: index * 0.1,
-          }}
-          className="h-full flex-1 "
+          // initial={{ opacity: 0, x: 20 }}
+          // whileInView={isCentered ? { opacity: 1, x: 0 } : undefined}
+          // viewport={{ once: true }}
+          // transition={{
+          //   type: "spring",
+          //   stiffness: 100,
+          //   damping: 20,
+          //   delay: index * 0.1,
+          // }}
+          className="h-fit md:flex-1 "
         >
           <img
             className="object-cover w-full aspect-video rounded-3xl h-full"
@@ -74,17 +82,17 @@ export default function ProjectCard({ index, project }: Props) {
           />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 20,
-            delay: index * 0.1,
-          }}
+          // initial={{ opacity: 0, x: -20 }}
+          // whileInView={{ opacity: 1, x: 0 }}
+          // viewport={{ once: true }}
+          // transition={{
+          //   type: "spring",
+          //   stiffness: 100,
+          //   damping: 20,
+          //   delay: index * 0.1,
+          // }}
           className={cn(
-            "flex-1 flex flex-col justify-center lg:px-6 gap-4 ",
+            "flex-1 flex flex-col md:justify-center lg:px-6 gap-4 ",
             index % 2 === 0 ? "lg:text-left" : "lg:text-right"
           )}
         >
