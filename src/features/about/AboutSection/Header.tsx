@@ -52,7 +52,7 @@ export default function Header() {
         className="inter text-secondary-foreground font-bold text-center relative w-fit max-lg:mx-auto lg:mx-0 before:content-[''] before:absolute before:-left-3 before:top-[0.75em] before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full before:bg-primary/70 after:content-[''] after:absolute after:-right-3 after:top-[0.75em] after:h-1.5 after:w-1.5 after:-translate-y-1/2 after:rounded-full after:bg-primary/70"
         variants={item}
       >
-        Below are details of my experience, honours and strengths.
+        My experience, honours and strengths.
       </motion.p>
     </motion.section>
   );

@@ -52,13 +52,15 @@ export default function MainLayout({
         slug && "overflow-hidden max-h-dvh"
       )}
     >
-      <Navbar />
+      <div className="relative z-10 flex w-full items-center flex-col min-h-screen">
+        <Navbar />
 
-      <Toaster />
+        <Toaster />
 
-      {children}
+        {children}
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 }

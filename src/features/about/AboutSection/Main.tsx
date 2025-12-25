@@ -1,4 +1,10 @@
-import { motion, useScroll, useTransform, type Variants } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  type Variants,
+} from "framer-motion";
 
 import { useTranslation } from "react-i18next";
 import { Separator } from "@/components/ui/separator";
@@ -15,9 +21,15 @@ export default function Main() {
     offset: ["start 80%", "end 50%"], // 元素進出視窗的區間
   });
 
+  const smoothScrollYProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 30,
+    mass: 0.25,
+  });
+
   // 顏色從灰到黑
   const backgroundPosition = useTransform(
-    scrollYProgress,
+    smoothScrollYProgress,
     [0, 1],
     ["0%", "-100%"]
   );
@@ -48,7 +60,7 @@ export default function Main() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="w-11/12 mx-auto min-w-0 max-lg:text-center font-bold text-primary leading-6 tracking-wide"
+        className="w-11/12 max-w-2xl mx-auto min-w-0 text-center font-bold text-primary leading-6 tracking-wide"
       >
         {lines.map((line, index) => {
           if (line.trim() === "") {
@@ -66,7 +78,7 @@ export default function Main() {
                 color: "transparent",
               }}
               className={
-                "block min-w-0 bg-secondary-foreground whitespace-pre-wrap"
+                "block min-w-0   bg-secondary-foreground whitespace-pre-wrap"
               }
             >
               {line}

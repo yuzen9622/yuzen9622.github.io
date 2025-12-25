@@ -1,6 +1,6 @@
 import { useProfile } from "@/shared/hook/useProfile";
 import { cn } from "@/shared/lib/utils";
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, useSpring, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
 export default function Contact() {
   const { socialLink, profile } = useProfile();
@@ -9,7 +9,12 @@ export default function Contact() {
     target: contactScrollRef,
     offset: ["start end", "end start"],
   });
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const smoothScrollYProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 30,
+    mass: 0.25,
+  });
+  const opacity = useTransform(smoothScrollYProgress, [0, 0.5], [0, 1]);
   return (
     <motion.div
       id="contact"

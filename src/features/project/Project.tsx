@@ -1,5 +1,5 @@
 import { useProfile } from "@/shared/hook/useProfile";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import ProjectCard from "./ui/ProjectCard";
 import type { Project } from "@/shared/types";
@@ -13,15 +13,21 @@ export default function Project() {
     target: titleScrollRef,
     offset: ["start end", "end start"],
   });
+
+  const smoothTitleScrollYProgress = useSpring(titleScrollYProgress, {
+    stiffness: 90,
+    damping: 10,
+    mass: 0.25,
+  });
   const opacity = useTransform(
-    titleScrollYProgress,
-    [0, 0.5, 0.6, 0.7],
+    smoothTitleScrollYProgress,
+    [0, 0.3, 0.6, 0.7],
     [0, 1, 1, 0]
   );
   const translateY = useTransform(
-    titleScrollYProgress,
+    smoothTitleScrollYProgress,
     [0, 0.5, 0.7],
-    [1000, 50, 0]
+    [1000, -100, -200]
   );
   const sectionVariants = {
     hidden: { opacity: 0 },

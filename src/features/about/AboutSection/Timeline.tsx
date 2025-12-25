@@ -1,7 +1,13 @@
 import { useRef } from "react";
 import { cn } from "@/shared/lib/utils";
 import { useProfile } from "@/shared/hook/useProfile";
-import { motion, useScroll, useTransform, type Variants } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  type Variants,
+} from "framer-motion";
 import {
   Card,
   CardContent,
@@ -22,7 +28,13 @@ export default function Timeline() {
     offset: ["start end", "end start"],
   });
 
-  const progress = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
+  const smoothScrollYProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 30,
+    mass: 0.25,
+  });
+
+  const progress = useTransform(smoothScrollYProgress, [0, 0.9], [0, 1]);
 
   // 仿照 MaskHero：父層淡入 + staggerChildren
   const containerVariants: Variants = {
@@ -96,10 +108,10 @@ export default function Timeline() {
                     ) : null}
                   </div>
 
-                  <Card className="hover:shadow-lg">
+                  <Card className="hover:shadow-lg bg-transparent border hover:border-primary duration-500 transition-all shadow-none">
                     <CardHeader>
                       <CardTitle>
-                        <h4 className="text-base font-semibold text-foreground">
+                        <h4 className="text-lg  text-foreground">
                           {institution}
                         </h4>
                         {major ? (
@@ -110,7 +122,9 @@ export default function Timeline() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      {description && <p className="text-sm">{description}</p>}
+                      {description && (
+                        <p className="text-sm font-light">{description}</p>
+                      )}
                     </CardContent>
                   </Card>
                 </motion.li>
