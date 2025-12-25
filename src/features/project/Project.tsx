@@ -19,15 +19,16 @@ export default function Project() {
     damping: 10,
     mass: 0.25,
   });
+
   const opacity = useTransform(
     smoothTitleScrollYProgress,
-    [0, 0.3, 0.6, 0.7],
+    [0, 0.3, 0.6, 0.8],
     [0, 1, 1, 0]
   );
   const translateY = useTransform(
     smoothTitleScrollYProgress,
     [0, 0.5, 0.7],
-    [1000, -100, -200]
+    [700, -100, -200]
   );
   const sectionVariants = {
     hidden: { opacity: 0 },
@@ -67,7 +68,7 @@ export default function Project() {
     >
       <motion.div
         style={{ opacity, translateY }}
-        className="fixed -z-10 top-0 inset-0  gap-6 w-dvw h-dvh flex items-center flex-col justify-center "
+        className="fixed -z-10 top-0 inset-0 opacity-0  gap-6 w-dvw h-dvh flex items-center flex-col justify-center "
         variants={headerVariants}
       >
         <h1 className=" md:text-8xl text-6xl">Projects</h1>

@@ -13,6 +13,7 @@ import {
   useScroll,
   useSpring,
   useTransform,
+  type Variants,
 } from "framer-motion";
 import { ArrowUpRightFromCircleIcon } from "lucide-react";
 import { useRef } from "react";
@@ -20,6 +21,108 @@ import { useRef } from "react";
 type Props = {
   index: number;
   project: Project;
+};
+
+const viewportSettings = { once: true, amount: 0.45 };
+
+const contentVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 120,
+      damping: 20,
+      staggerChildren: 0.14,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const contentItemVariants: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 280, damping: 24 },
+  },
+};
+
+const textContainerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.025 },
+  },
+};
+
+const letterVariants: Variants = {
+  hidden: { y: "100%", opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { type: "spring", stiffness: 420, damping: 32 },
+  },
+};
+
+const techContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08, delayChildren: 0.06 },
+  },
+};
+
+const techItemVariants: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 260, damping: 22 },
+  },
+};
+
+const actionContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
+  },
+};
+
+const actionVariants: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 260, damping: 24 },
+  },
+};
+
+type AnimatedTextProps = {
+  text?: string;
+  className?: string;
+};
+
+const AnimatedText = ({ text, className }: AnimatedTextProps) => {
+  if (!text) return null;
+
+  return (
+    <motion.span
+      className={cn("inline-flex flex-wrap", className)}
+      variants={textContainerVariants}
+    >
+      {Array.from(text).map((char, index) => (
+        <motion.span
+          key={`${char}-${index}`}
+          className="inline-block"
+          variants={letterVariants}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
 };
 
 function GeometricOverlay({ index }: { index: number }) {
@@ -95,7 +198,7 @@ export default function ProjectCard({ index, project }: Props) {
   const translateY = useTransform(
     smoothScrollYProgress,
     [0, 0.3, 0.7, 1],
-    [500, 50, 0, -500]
+    [700, 150, 0, -300]
   );
   const opacity = useTransform(
     smoothScrollYProgress,
@@ -169,48 +272,70 @@ export default function ProjectCard({ index, project }: Props) {
                 "flex-1 flex flex-col md:justify-center lg:px-6 gap-4 ",
                 index % 2 === 0 ? "lg:text-left" : "lg:text-right"
               )}
+              variants={contentVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportSettings}
             >
-              <h2 className="text-5xl font-bold">{project.title}</h2>
-              <p className="mt-2 text-sm font-extralight  line-clamp-3 text-muted-foreground    ">
+              <motion.h2
+                className="text-5xl font-bold"
+                variants={contentItemVariants}
+              >
+                <AnimatedText text={project.title} />
+              </motion.h2>
+              <motion.p
+                className="mt-2 text-sm font-extralight  line-clamp-3 text-muted-foreground    "
+                variants={contentItemVariants}
+              >
                 {project.content.overview}
-              </p>
-              <div>
+              </motion.p>
+              <motion.div
+                variants={techContainerVariants}
+                className="flex flex-wrap gap-2"
+              >
                 {project.tech.map((item) => (
-                  <Tooltip key={item}>
-                    <TooltipTrigger
-                      className={cn(
-                        "transition-all duration-300",
-                        isCentered ? "ml-2" : "-ml-2"
-                      )}
-                    >
-                      <Avatar className="">
-                        <AvatarImage
-                          className="p-2 bg-secondary "
-                          src={`https://cdn.simpleicons.org/${item}/gray`}
-                          alt={item}
-                        />
-                        <AvatarFallback>{item}</AvatarFallback>
-                      </Avatar>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{techIcons[item]}</p>
-                    </TooltipContent>
-                  </Tooltip>
+                  <motion.div key={item} variants={techItemVariants}>
+                    <Tooltip>
+                      <TooltipTrigger
+                        className={cn(
+                          "transition-all duration-300",
+                          isCentered ? "ml-2" : "-ml-2"
+                        )}
+                      >
+                        <Avatar className="">
+                          <AvatarImage
+                            className="p-2 bg-secondary "
+                            src={`https://cdn.simpleicons.org/${item}/gray`}
+                            alt={item}
+                          />
+                          <AvatarFallback>{item}</AvatarFallback>
+                        </Avatar>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{techIcons[item]}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </motion.div>
                 ))}
-              </div>
-              <span className="space-x-4">
+              </motion.div>
+              <motion.span
+                className="space-x-4"
+                variants={actionContainerVariants}
+              >
                 {project.sourceUrl && (
-                  <a
+                  <motion.a
+                    variants={actionVariants}
                     href={project.sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className=" rounded-3xl px-3 py-2 hover:bg-primary hover:text-accent transition-colors"
                   >
                     Github
-                  </a>
+                  </motion.a>
                 )}
                 {project.previewUrl && (
-                  <a
+                  <motion.a
+                    variants={actionVariants}
                     href={project.previewUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -221,9 +346,9 @@ export default function ProjectCard({ index, project }: Props) {
                     </p>
 
                     <ArrowUpRightFromCircleIcon className="   transition-all opacity-0 translate-x-1 group-hover:translate-x-0 group-hover:opacity-100 inline-block ml-1 mb-0.5 w-4 h-4" />
-                  </a>
+                  </motion.a>
                 )}
-              </span>
+              </motion.span>
             </motion.div>
           </div>
         </div>
@@ -279,45 +404,67 @@ export default function ProjectCard({ index, project }: Props) {
               "flex-1 flex flex-col md:justify-center lg:px-6 gap-4 ",
               index % 2 === 0 ? "lg:text-left" : "lg:text-right"
             )}
+            variants={contentVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
           >
-            <h2 className="text-5xl font-bold">{project.title}</h2>
-            <p className="mt-2 text-sm  line-clamp-3 overflow-hidden text-muted-foreground   w-fit bg-background/50   ">
-              {project.description}
-            </p>
-            <div>
+            <motion.h2
+              className="text-5xl font-bold"
+              variants={contentItemVariants}
+            >
+              <AnimatedText text={project.title} />
+            </motion.h2>
+            <motion.p
+              className="mt-2 text-sm  line-clamp-3 font-extralight overflow-hidden text-muted-foreground   w-fit bg-background/50   "
+              variants={contentItemVariants}
+            >
+              {project.content.overview}
+            </motion.p>
+            <motion.div
+              variants={techContainerVariants}
+              className="flex flex-wrap gap-2"
+            >
               {project.tech.map((item) => (
-                <Tooltip key={item}>
-                  <TooltipTrigger
-                    className={cn("transition-all duration-300", "ml-2")}
-                  >
-                    <Avatar className="">
-                      <AvatarImage
-                        className="p-2 bg-secondary "
-                        src={`https://cdn.simpleicons.org/${item}/gray`}
-                        alt={item}
-                      />
-                      <AvatarFallback>{item}</AvatarFallback>
-                    </Avatar>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{techIcons[item]}</p>
-                  </TooltipContent>
-                </Tooltip>
+                <motion.div key={item} variants={techItemVariants}>
+                  <Tooltip>
+                    <TooltipTrigger
+                      className={cn("transition-all duration-300", "ml-2")}
+                    >
+                      <Avatar className="">
+                        <AvatarImage
+                          className="p-2 bg-secondary "
+                          src={`https://cdn.simpleicons.org/${item}/gray`}
+                          alt={item}
+                        />
+                        <AvatarFallback>{item}</AvatarFallback>
+                      </Avatar>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{techIcons[item]}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </motion.div>
               ))}
-            </div>
-            <span className="space-x-4">
+            </motion.div>
+            <motion.span
+              className="space-x-4"
+              variants={actionContainerVariants}
+            >
               {project.sourceUrl && (
-                <a
+                <motion.a
+                  variants={actionVariants}
                   href={project.sourceUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className=" rounded-3xl px-3 py-2 hover:bg-primary hover:text-accent transition-colors"
                 >
                   Github
-                </a>
+                </motion.a>
               )}
               {project.previewUrl && (
-                <a
+                <motion.a
+                  variants={actionVariants}
                   href={project.previewUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -328,9 +475,9 @@ export default function ProjectCard({ index, project }: Props) {
                   </p>
 
                   <ArrowUpRightFromCircleIcon className="   transition-all opacity-0 translate-x-1 group-hover:translate-x-0 group-hover:opacity-100 inline-block ml-1 mb-0.5 w-4 h-4" />
-                </a>
+                </motion.a>
               )}
-            </span>
+            </motion.span>
           </motion.div>
         </div>
       </motion.div>
