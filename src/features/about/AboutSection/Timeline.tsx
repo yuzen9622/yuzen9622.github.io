@@ -71,7 +71,7 @@ export default function Timeline() {
         />
 
         <motion.ol
-          className="relative pl-8 mb-2"
+          className="relative pl-6 mb-2"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -108,7 +108,7 @@ export default function Timeline() {
                     ) : null}
                   </div>
 
-                  <Card className="hover:shadow-lg bg-transparent border hover:border-primary duration-500 transition-all shadow-none">
+                  <Card className="hover:shadow-lg bg-transparent gap-2 border hover:border-primary duration-500 transition-all shadow-none">
                     <CardHeader>
                       <CardTitle>
                         <h4 className="text-lg  text-foreground">
