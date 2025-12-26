@@ -12,7 +12,6 @@ import {
 import type { Skill } from "@/shared/types";
 import SkillMarquee from "../ui/SkillMarquee";
 
-
 const skills: Skill[] = [
   {
     name: "React",

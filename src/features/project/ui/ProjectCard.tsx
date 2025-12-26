@@ -416,7 +416,7 @@ export default function ProjectCard({ index, project }: Props) {
               <AnimatedText text={project.title} />
             </motion.h2>
             <motion.p
-              className="mt-2 text-sm  line-clamp-3 font-extralight overflow-hidden text-muted-foreground   w-fit bg-background/50   "
+              className="mt-2 text-sm  line-clamp-3 font-extralight overflow-hidden text-muted-foreground   w-fit  "
               variants={contentItemVariants}
             >
               {project.content.overview}

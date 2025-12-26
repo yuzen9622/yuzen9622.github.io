@@ -55,7 +55,7 @@ const ContactBadge = ({
       href={href}
       target={target}
       rel={target === "_BLANK" ? "noreferrer" : undefined}
-      className="flex items-center gap-2"
+      className="flex items-center gap-2  transition-colors"
     >
       {icon}
       <p className={cn("font-bold text-[16px]", textClassName)}>{label}</p>
@@ -317,8 +317,7 @@ export default function MaskHero() {
                   <ContactBadge
                     key={link.id}
                     {...link}
-                    badgeClassName="text-primary-foreground"
-                    textClassName="text-primary-foreground"
+                    badgeClassName="text-primary-foreground hover:text-accent-foreground"
                   />
                 ))}
               </div>
