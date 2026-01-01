@@ -98,6 +98,26 @@
                 "overview": "Weather App provides a clear and reliable way to check real-time and forecast weather data across Taiwan. It leverages the Central Weather Bureau API to fetch accurate information, displaying conditions in a simple and visually engaging interface. Built with React, the app dynamically updates weather details and supports responsive layouts, making it practical for quick checks on any device.",
                 "feature": "Real-time weather updates, 3-hour interval forecasts, search and selection by city or region in Taiwan, dynamic visualization of temperature, humidity, wind speed, and conditions, responsive layout for both desktop and mobile users."
             }
+        },
+        {
+            "id": 5,
+            "title": "Taipei Accessible Navigation",
+            "description": "An accessible navigation platform integrating real-time public transport data and barrier-free facility information to provide safe and convenient route planning for people with mobility challenges.",
+            "tech": [
+                "mongodb",
+                "typescript",
+                "tailwindcss",
+                "nextdotjs",
+                "nodedotjs"
+            ],
+            "image": "project/taipei-a11y.webp",
+            "year": "2025",
+            "sourceUrl": "https://github.com/yuzen9622/taipei-accessible-map",
+            "previewUrl": "https://a11y.taipei.yuzen.dev",
+            "type": "web",
+            "content": {
+                "overview": "The Taipei Accessible Navigation System is a smart navigation platform designed specifically for individuals with mobility challenges, elderly users, and wheelchair users. It integrates accessibility facility information in Taipei (such as elevator locations and accessible exits in metro stations) with real-time public transport updates (bus arrival times, etc.) to provide truly accessible route planning."
+            }
         }
     ]
 }
