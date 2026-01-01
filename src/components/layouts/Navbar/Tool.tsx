@@ -4,9 +4,9 @@ import { ArrowUp, Moon, Sun } from "lucide-react";
 import { useTheme } from "@/shared/hook/useTheme";
 
 import { NavigationMenuItem } from "../../ui/navigation-menu";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { CircleProgress } from "./CircleProgress";
 
 import { LanguageSelector } from "@/components/shared/LangSwitch";
@@ -22,48 +22,17 @@ export default function Tool() {
     []
   );
   const circleRef = useRef<SVGCircleElement>(null);
-  const [observerScroll, setObserverScroll] = useState<{
-    direction: "up" | "down";
-    scrollY: number;
-    offset: number;
-    circumference: number;
-  }>({
-    direction: "down",
-    scrollY: 0,
-    offset: 0,
-    circumference: 0,
+  const { scrollYProgress } = useScroll();
+  const [scrollYPercent, setScrollYPercent] = useState(0);
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const percent = Math.max(0, Math.min(100, Math.round(latest * 100)));
+    setScrollYPercent(percent);
   });
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-      const scrollY = window.pageYOffset ?? document.documentElement.scrollTop;
-      const progress = (scrollY / totalHeight) * 100;
-
-      const r = circleRef.current?.getAttribute("r") ?? 45;
-      const circumference = 2 * Math.PI * Number(r);
-      const offset = circumference * (1 - progress / 100);
-
-      setObserverScroll((prev) => ({
-        direction: Number(progress.toFixed(0)) >= prev.scrollY ? "down" : "up",
-        scrollY:
-          Number.isNaN(Number(progress.toFixed(0))) ||
-          Number(progress.toFixed(0)) <= 0
-            ? 0
-            : Number(progress.toFixed(0)),
-        offset,
-        circumference,
-      }));
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const r = 45;
+  const circumference = 2 * Math.PI * r;
+  const offset = circumference * (1 - scrollYPercent / 100);
 
   return (
     <>
@@ -78,7 +47,7 @@ export default function Tool() {
       <NavigationMenuItem className="">
         <LanguageSelector />
       </NavigationMenuItem>
-      {observerScroll.scrollY !== 0 && (
+      {scrollYPercent !== 0 && (
         <MotionNavigationMenuItem
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -86,14 +55,14 @@ export default function Tool() {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           <span className="relative  z-10 border  flex h-8 w-8 items-center justify-center rounded-full text-primary transition-colors hover:bg-primary hover:text-background">
-            {observerScroll.scrollY === 100 ? (
+            {scrollYPercent === 100 ? (
               <ArrowUp size={18} />
             ) : (
               <CircleProgress
                 ref={circleRef}
-                circumference={observerScroll.circumference}
-                offset={observerScroll.offset}
-                scrollY={observerScroll.scrollY}
+                circumference={circumference}
+                offset={offset}
+                scrollY={scrollYPercent}
               />
             )}
           </span>

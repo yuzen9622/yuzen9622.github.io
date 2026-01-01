@@ -52,21 +52,15 @@ export function CodeBlock({
 
   return (
     <pre className=" relative  text-sm   rounded-3xl ">
-      <div className="absolute  top-1.5 right-2   flex gap-2 text-xs">
-        {file && (
-          <pre className="px-3 py-2 backdrop-blur-md  rounded-3xl transition">
-            {file}
-          </pre>
-        )}
+      <div className="absolute  top-1.5 px-3  py-2 rounded-3xl right-2  border  flex gap-3 text-xs">
+        {file && <pre className=" bg-transparent transition">{file}</pre>}
         {language && (
-          <pre className="px-3 py-2 backdrop-blur-md   rounded-3xl transition">
-            {language}
-          </pre>
+          <p className="   bg-transparent   transition">{language}</p>
         )}
 
         {copied ? (
           <Tooltip>
-            <TooltipTrigger className=" p-1 text-green-400  backdrop-blur-md  rounded-3xl transition">
+            <TooltipTrigger className="  text-green-400  backdrop-blur-md  transition">
               <CheckIcon size={16} />
             </TooltipTrigger>
             <TooltipContent>Copied!</TooltipContent>
@@ -75,9 +69,9 @@ export function CodeBlock({
           <Tooltip>
             <TooltipTrigger asChild>
               <button
-              type="button"
+                type="button"
                 onClick={handleCopy}
-                className=" p-1  backdrop-blur-md  rounded-3xl transition"
+                className="  backdrop-blur-md  rounded-3xl transition"
               >
                 <CopyIcon size={16} />
               </button>
@@ -89,7 +83,7 @@ export function CodeBlock({
       <SyntaxHighlighter
         style={isDark ? coldarkDark : coldarkCold}
         language={language}
-        className=" rounded-md border text-base text-inherit! py-7!"
+        className=" rounded-md border text-base text-inherit! pt-10!"
         useInlineStyles={true}
         showLineNumbers
       >

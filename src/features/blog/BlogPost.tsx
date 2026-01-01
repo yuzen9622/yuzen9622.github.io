@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
@@ -24,7 +24,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import MarkdownRenderer from "./ui/MarkdownRenderer";
 
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValueEvent,
+  useScroll,
+} from "framer-motion";
 import type { Category } from "./types/blog";
 import useBlog from "./hooks/useBlog";
 import { useTranslation } from "react-i18next";
@@ -37,6 +42,8 @@ import moment from "moment";
 import useToc from "./hooks/useToc";
 import Progress from "./ui/Progress";
 
+const MemoMarkdownRenderer = memo(MarkdownRenderer);
+
 export default function BlogPost() {
   const { slug, lng } = useParams<{ slug: string; lng: string }>();
   const navigate = useNavigate();
@@ -47,6 +54,11 @@ export default function BlogPost() {
     () => posts?.find((p) => p.slug === slug),
     [posts, slug]
   );
+
+  const coverSrc = useMemo(() => {
+    if (!post) return "";
+    return getFallbackSrc(post.cover?.formats);
+  }, [getFallbackSrc, post]);
 
   const { isDark, setTheme } = useTheme();
 
@@ -59,9 +71,44 @@ export default function BlogPost() {
     buildToc,
     activeHeadingId,
     setHeadingId,
+    recalcHeadingPositions,
+    setActiveHeadingByScroll,
   } = useToc();
 
   const scrollRoot = useRef<HTMLDivElement>(null);
+  const [scrollContainer, setScrollContainer] = useState<HTMLDivElement | null>(
+    null
+  );
+  const setScrollRootRef = useCallback((node: HTMLDivElement | null) => {
+    scrollRoot.current = node;
+    setScrollContainer(node);
+  }, []);
+
+  const { scrollYProgress } = useScroll({
+    container: scrollContainer ? scrollRoot : undefined,
+  });
+
+  const rafIdRef = useRef<number | null>(null);
+  const latestScrollTopRef = useRef<number>(0);
+
+  useMotionValueEvent(scrollYProgress, "change", () => {
+    const el = scrollRoot.current;
+    if (!el) return;
+
+    latestScrollTopRef.current = el.scrollTop;
+    if (rafIdRef.current != null) return;
+
+    rafIdRef.current = requestAnimationFrame(() => {
+      rafIdRef.current = null;
+      setActiveHeadingByScroll(latestScrollTopRef.current);
+    });
+  });
+
+  useEffect(() => {
+    return () => {
+      if (rafIdRef.current != null) cancelAnimationFrame(rafIdRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (post) setContent(post.content);
@@ -70,12 +117,21 @@ export default function BlogPost() {
   useEffect(() => {
     const id = requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        buildToc(markdownRootRef.current);
+        buildToc(markdownRootRef.current, scrollContainer);
       });
     });
 
     return () => cancelAnimationFrame(id);
-  }, [content, buildToc]);
+  }, [content, buildToc, scrollContainer]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      recalcHeadingPositions(markdownRootRef.current, scrollContainer);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [recalcHeadingPositions, scrollContainer]);
 
   const handleBack = () => {
     if (document.startViewTransition) {
@@ -137,7 +193,7 @@ export default function BlogPost() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          ref={scrollRoot}
+          ref={setScrollRootRef}
           id="blog-scroll"
           className="   fixed  inset-0 max-h-dvh z-30 bg-background  overflow-y-auto"
         >
@@ -223,7 +279,7 @@ export default function BlogPost() {
               </div>
             </div>
           </div>
-          <Progress root={scrollRoot.current} />
+          <Progress root={scrollContainer} />
           {content ? (
             <motion.div
               initial={{ scale: 0.9, y: 50 }}
@@ -238,7 +294,7 @@ export default function BlogPost() {
                   className="relative w-full h-72 md:h-112 overflow-hidden  mb-6"
                 >
                   <img
-                    src={`${getFallbackSrc(post?.cover?.formats)}`}
+                    src={coverSrc}
                     alt={post.title}
                     className="absolute inset-0 h-full w-full object-cover object-bottom"
                   />
@@ -324,7 +380,7 @@ export default function BlogPost() {
                       markdownRootRef.current = el;
                     }}
                   >
-                    <MarkdownRenderer
+                    <MemoMarkdownRenderer
                       content={content}
                       setHeadingId={setHeadingId}
                     />

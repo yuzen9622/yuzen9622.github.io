@@ -25,6 +25,8 @@ type Props = {
 
 const viewportSettings = { once: true, amount: 0.45 };
 
+const CARD_SCROLL_SPACER_DVH = 150;
+
 const contentVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
@@ -125,57 +127,6 @@ const AnimatedText = ({ text, className }: AnimatedTextProps) => {
   );
 };
 
-function GeometricOverlay({ index }: { index: number }) {
-  const isEven = index % 2 === 0;
-
-  const circleGroup = isEven
-    ? {
-        large: { cx: 920, cy: 320, r: 220, dash: "320 780", opacity: 0.18 },
-        medium: { cx: 980, cy: 620, r: 160, dash: "200 520", opacity: 0.24 },
-        small: { cx: 980, cy: 620, r: 90, dash: "80 220", opacity: 0.3 },
-        guide: {
-          horiz: { x1: 640, y1: 560, x2: 1120, y2: 560, opacity: 0.25 },
-          vert: { x1: 880, y1: 800, x2: 880, y2: 320, opacity: 0.18 },
-        },
-      }
-    : {
-        large: { cx: 260, cy: 360, r: 240, dash: "360 840", opacity: 0.18 },
-        medium: { cx: 220, cy: 160, r: 150, dash: "180 560", opacity: 0.24 },
-        small: { cx: 220, cy: 160, r: 90, dash: "80 220", opacity: 0.32 },
-        guide: {
-          horiz: { x1: -20, y1: 500, x2: 420, y2: 500, opacity: 0.25 },
-          vert: { x1: 200, y1: 800, x2: 200, y2: 260, opacity: 0.25 },
-        },
-      };
-
-  return (
-    <div className="pointer-events-none absolute inset-0 z-0 text-foreground/40 dark:text-foreground/25">
-      <svg
-        className="h-full w-full flex items-center"
-        viewBox="0 0 1200 800"
-        preserveAspectRatio="none"
-      >
-        <g fill="none" stroke="currentColor" strokeWidth="1">
-          <line
-            x1={circleGroup.guide.horiz.x1}
-            y1={circleGroup.guide.horiz.y1}
-            x2={circleGroup.guide.horiz.x2}
-            y2={circleGroup.guide.horiz.y2}
-            opacity={circleGroup.guide.horiz.opacity}
-          />
-          <line
-            x1={circleGroup.guide.vert.x1}
-            y1={circleGroup.guide.vert.y1}
-            x2={circleGroup.guide.vert.x2}
-            y2={circleGroup.guide.vert.y2}
-            opacity={circleGroup.guide.vert.opacity}
-          />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
 export default function ProjectCard({ index, project }: Props) {
   const { techIcons } = useProfile();
 
@@ -197,12 +148,12 @@ export default function ProjectCard({ index, project }: Props) {
 
   const translateY = useTransform(
     smoothScrollYProgress,
-    [0, 0.3, 0.7, 1],
-    [700, 150, 0, -300]
+    [0, 0.2, 0.8, 1],
+    [700, 0, 0, -300]
   );
   const opacity = useTransform(
     smoothScrollYProgress,
-    [0, 0.3, 0.5, 0.7],
+    [0, 0.15, 0.6, 0.8],
     [0, 1, 1, 0]
   );
 
@@ -215,18 +166,17 @@ export default function ProjectCard({ index, project }: Props) {
       <div
         ref={titleScrollRef}
         aria-hidden="true"
-        className=" relative hidden md:block w-dvw min-h-[150dvh]"
+        className="relative hidden md:block w-dvw"
+        style={{ minHeight: `${CARD_SCROLL_SPACER_DVH}dvh` }}
       ></div>
       <motion.div
         ref={cardRef}
         style={{ opacity, translateY }}
         className={cn(
-          "md:fixed hidden md:block   top-20 mb-4  min-h-dvh w-11/12"
+          "md:fixed hidden md:block   top-40 mb-4  min-h-dvh w-11/12"
         )}
       >
         <div className="relative overflow-hidden rounded-3xl border bg-background/40 backdrop-blur-md p-6">
-          <GeometricOverlay index={index} />
-
           <div
             aria-hidden
             className={cn(
@@ -358,8 +308,6 @@ export default function ProjectCard({ index, project }: Props) {
           "md:hidden relative mb-4 min-h-fit p-4 rounded-md border w-11/12 bg-background overflow-hidden"
         )}
       >
-        <GeometricOverlay index={index} />
-
         <div
           aria-hidden
           className={cn(

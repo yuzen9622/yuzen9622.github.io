@@ -25,11 +25,7 @@ export default function Project() {
     [0, 0.3, 0.6, 0.8],
     [0, 1, 1, 0]
   );
-  const translateY = useTransform(
-    smoothTitleScrollYProgress,
-    [0, 0.5, 0.7],
-    [700, -100, -200]
-  );
+
   const sectionVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -57,36 +53,34 @@ export default function Project() {
   } as const;
 
   return (
-    <motion.section
-      ref={projectScrollRef}
-      id="project"
-      className="relative  min-h-dvh inter pb-10"
-      variants={sectionVariants}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true }}
-    >
+    <>
       <motion.div
-        style={{ opacity, translateY }}
-        className="fixed -z-10 top-0 inset-0 opacity-0  gap-6 w-dvw h-dvh flex items-center flex-col justify-center "
+        style={{ opacity }}
+        id="project"
+        className="sticky top-20 z-10 inter opacity-0 gap-6 w-dvw h-dvh flex items-center flex-col justify-center"
         variants={headerVariants}
+        ref={titleScrollRef}
       >
         <h1 className=" md:text-8xl text-6xl">Projects</h1>
         <motion.p>A cool thing I build</motion.p>
       </motion.div>
-      <div
-        ref={titleScrollRef}
-        aria-hidden="true"
-        className=" relative w-dvw h-dvh"
-      ></div>
-      <motion.div
-        className="flex flex-col items-center  py-4"
-        variants={listVariants}
+      <motion.section
+        ref={projectScrollRef}
+        className="relative  min-h-dvh inter pb-10"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
       >
-        {projects.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
-        ))}
-      </motion.div>
-    </motion.section>
+        <motion.div
+          className="flex flex-col items-center  py-4"
+          variants={listVariants}
+        >
+          {projects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
+          ))}
+        </motion.div>
+      </motion.section>
+    </>
   );
 }

@@ -10,11 +10,10 @@ export default function AboutPage() {
       <Helmet>
         <title>Yuzen - Developer</title>
       </Helmet>
-
       <AboutHero />
       <AboutSection />
       <Project />
-      <Contact/>
+      <Contact />
     </>
   );
 }

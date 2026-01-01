@@ -48,7 +48,7 @@ export default function MainLayout({
   return (
     <div
       className={cn(
-        "  relative w-full flex bg-background overflow-hidden items-center flex-col min-h-screen z-10  ",
+        "  relative w-full flex bg-background overflow-x-hidden items-center flex-col min-h-screen z-10  ",
         slug && "overflow-hidden max-h-dvh"
       )}
     >
